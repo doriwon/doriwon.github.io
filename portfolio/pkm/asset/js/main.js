@@ -182,7 +182,7 @@ $(document).ready(function(){
 			$(".header .gnb li").removeClass("on");
 			$(".header .gnb li").eq(3).addClass("on");
 		}		
-		if(scroll >= content.eq(5).offset().top - headertop){
+		if(scroll >= content.eq(5).offset().top - headertop - 250){
 			$(".header .gnb li").removeClass("on");
 			$(".header .gnb li").eq(4).addClass("on");
 		}		
