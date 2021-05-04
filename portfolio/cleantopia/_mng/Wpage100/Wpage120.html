@@ -1,0 +1,156 @@
+<!--- contents_area --->
+	<div class="contents_area">
+		<div class="title">게시판 관리</div>
+		<!--- 검색 --->
+		<div class="pdc_form">
+			<table class="pdc_table" cellspacing="0" border="0" summary="조회기간, 검색으로 구성되어 있습니다.">
+				<form name="wForm" id="wForm" method="post">
+					<input type="hidden" name="act" value="pw">
+					<input type="hidden" name="idx" value="">
+					<caption>등록</caption>
+					<colgroup>
+						<col width="130px">
+						<col width="*">
+					</colgroup>
+					<tbody>
+
+					<tr>
+						<th scope="col">게시판 관리</th>
+						<td scope="col">
+							코드:<input id="b_cd" name="b_cd" type="text" class="text01" style="width: 80px;" data-valid="notnull" data-alert="코드" />&nbsp;
+							이름:<input id="b_name" name="b_name" type="text" class="text01" style="width: 150px;" data-valid="notnull" data-alert="게시판이름" />&nbsp;
+							행수:<input id="b_row" name="b_row" type="text" class="text01" style="width: 30px;" data-valid="notnull" data-alert="행수" />	&nbsp;						
+							사용기능:
+							<input id="b_noti" name="b_noti" class="text01" type="checkbox" value="Y" />공지&nbsp;						
+							<input id="b_thum" name="b_thum" class="text01" type="checkbox" value="Y" />썸네일&nbsp;
+							<input id="b_file" name="b_file" class="text01" type="checkbox" value="Y" />첨부(단일)&nbsp;
+							<input id="b_files" name="b_files" class="text01" type="checkbox" value="Y" />첨부(다수)&nbsp;
+							&nbsp;&nbsp;&nbsp;						
+							<a href="javascript:void(0);" onclick="save();" style="vertical-align:middle"><span class="btn gray" id="txtBtn">등록</span></a>
+						</td>
+					</tr>
+					</tbody>
+				</form>
+			</table>
+		</div>
+		<!--- //검색 --->
+
+
+		<!--- 리스트 --->
+		<div class="board">
+
+			<table class="board_list" summary="번호, 위치, 제목, 게시기간, 등록일로 구성되었습니다. ">
+			<form name="lForm" id="lForm"  method="post">
+				<input type="hidden" name="act" value="pd">
+				<caption>제품목록</caption>
+				<colgroup>
+					<col width="5%">
+					<col width="7%">
+					<col width="10%">
+					<col width="*">
+					<col width="10%">
+					<col width="8%">
+					<col width="8%">
+					<col width="8%">
+					<col width="8%">
+					<col width="8%">
+				</colgroup>
+				<thead>
+				<tr>
+					<th scope="col"><input type=checkbox id="idx[]" onclick="Form_checkAll(document.lForm, 'idx[]');"></th>
+					<th scope="col">번호</th>
+					<th scope="col">코드</th>
+					<th scope="col">게시판명</th>
+					<th scope="col">페이지행수</th>
+					<th scope="col">공지</th>
+					<th scope="col">썸네일</th>
+					<th scope="col">첨부(단일)</th>
+					<th scope="col">첨부(다수)</th>
+					<th scope="col">수정</th>
+					
+				</tr>
+				</thead>
+				<tbody>
+				<?for($i=0; $i<count($rowList); $i++) {?>
+				<tr>
+					<td><input type=checkbox name="idx[]" value="<?=$rowList[$i]['idx']?>"></td>
+					<td><?=$rowList[$i]['no']?></td>
+					<td><?=$rowList[$i]['b_cd']?></td>
+					<td><?=$rowList[$i]['b_name']?></td>					
+					<td><?=$rowList[$i]['b_row']?></td>
+					<td><?=$rowList[$i]['b_noti']?></td>
+					<td><?=$rowList[$i]['b_thum']?></td>
+					<td><?=$rowList[$i]['b_file']?></td>
+					<td><?=$rowList[$i]['b_files']?></td>
+					<td><span class="btn white editRow">수정</span></td>
+				</tr>
+				<?}?>
+				</tbody>
+			</form>
+			</table>
+
+			<p class="btn_right">
+				<a href="javascript:void(0)" onclick="deleteAll()"><span class="btn white type1 sch_bt">선택삭제</span></a>
+
+			</p>
+
+
+			<!-- paging1 -->
+			<? include_once("inc/paging.php"); ?>
+			<!-- //paging -->
+
+		</div>
+		<!--- //리스트 --->
+
+	</div>
+	<!--- //contents_area --->
+
+	<script>
+	function save() {
+		if(web.formValidation(document.getElementById("wForm"))) {
+			$("#wForm").submit();
+		} 
+	}
+
+	
+
+	function deleteAll() {
+		var numberOfChecked = $('input:checkbox:checked').length;
+		if(numberOfChecked < 1) {
+			alert("선택된 데이타가 없습니다.");
+			return;
+		}
+		if(confirm("선택된 데이타를 삭제하시겠습니까?")) {
+			var lForm = document.getElementById("lForm");
+			lForm.submit();
+		}
+	}
+	$(document).ready(function(){
+		$(".editRow").click(function () {
+			var frm = document.wForm;
+			var b_noti = false;
+			var b_thum = false;
+			var b_file = false;
+			var b_files = false;
+			frm.act.value = "pe";
+			frm.idx.value = $(this).parent().parent().find(":checkbox").val();
+
+			$("#b_cd").val($(this).parent().parent().find("td:eq(2)").text());
+			$("#b_name").val($(this).parent().parent().find("td:eq(3)").text());
+			$("#b_row").val($(this).parent().parent().find("td:eq(4)").text());
+
+			if($(this).parent().parent().find("td:eq(5)").text()=="Y") b_noti = true;
+			if($(this).parent().parent().find("td:eq(6)").text()=="Y") b_thum = true;
+			if($(this).parent().parent().find("td:eq(7)").text()=="Y") b_file = true;
+			if($(this).parent().parent().find("td:eq(8)").text()=="Y") b_files = true;
+
+			$("#b_noti").prop('checked', b_noti) ;
+			$("#b_thum").prop('checked', b_thum) ;
+			$("#b_file").prop('checked', b_file) ;
+			$("#b_files").prop('checked', b_files) ;
+
+			$("#txtBtn").text('수정');
+		});
+	});
+
+	</script>

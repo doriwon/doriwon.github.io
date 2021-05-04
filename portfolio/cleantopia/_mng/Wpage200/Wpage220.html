@@ -1,0 +1,185 @@
+<!--- contents_area --->
+	<div class="contents_area">
+		<div class="title"><?=$board_name?> 관리</div>
+		<!--- 검색 --->
+		<div class="pdc_form">
+			<table class="pdc_table" cellspacing="0" border="0" summary="조회기간, 검색으로 구성되어 있습니다.">
+				<form name="sform">
+				<input type="hidden" name="WS" value="<?=$_GET['WS']?>" />
+				<input type="hidden" name="b_cd" value="<?=$b_cd?>" />
+					<caption>관리자 로그관리 조회</caption>
+					<colgroup>
+						<col width="130px">
+						<col width="*">
+					</colgroup>
+					<tbody>
+
+					<tr>
+						<th scope="col">조회기간</th>
+						<td scope="col">
+							<input id="sch_from" name="sch_from" title="기간" type="text" class="text01" style="width: 120px;"  value="<?=$s_sdate?>" />
+
+							&nbsp;&nbsp;~&nbsp;
+							<input id="sch_to" name="sch_to"  title="기간" type="text" class="text01" style="width: 120px;"  value="<?=$s_edate?>"/>
+							&nbsp;&nbsp;&nbsp;
+							<a href="javascript:void(0);" onclick="goBoardPreiodModifyEvent('today');"><span class="btn gray">오늘</span></a>
+							<a href="javascript:void(0);" onclick="goBoardPreiodModifyEvent('week');"><span class="btn gray">일주일</span></a>
+							<a href="javascript:void(0);" onclick="goBoardPreiodModifyEvent('month', 1);"><span class="btn gray">1개월</span></a>
+							<a href="javascript:void(0);" onclick="goBoardPreiodModifyEvent('month', 2);"><span class="btn gray">2개월</span></a>
+							<a href="javascript:void(0);" onclick="goBoardPreiodModifyEvent('');"><span class="btn gray">전체</span></a>
+						</td>
+					</tr>
+
+					<tr>
+						<th scope="col">검색</th>
+						<td scope="col">
+							<select name="kfield" class="select">
+								<option value="">전체</option>
+								<option value="title" <? if ($kfield == "title") {?> selected <? } ?>>제목</option>
+								<option value="contents" <? if ($kfield == "contents") {?> selected <? } ?>>내용</option>
+								<?php if($b_cd=="qna") { ?>
+								<option value="name" <? if ($kfield == "name") {?> selected <? } ?>>성명</option>								
+								<?php } ?>
+
+							</select>
+							<input type="text" name="kword" class="text01" style="width: 120px;" value="<?=$kword?>"/>
+							<a href="javascript:ChKind();"><span class="btn white type1 sch_bt">검색</span></a>
+						</td>
+					</tr>
+					</tbody>
+					</form>
+			</table>
+		</div>
+		<!--- //검색 --->
+		
+		<!--- 리스트 --->		
+		<div class="board">
+			<form name="lform" method="post">
+			<input type="hidden" name="b_cd" value="<?=$b_cd?>" />
+			<input type="hidden" name="page" value="<?=$cpage?>" />
+			<table class="board_list" summary="번호, 위치, 제목, 게시기간, 등록일로 구성되었습니다. ">
+				<caption>제품목록</caption>
+				<colgroup>
+					<col width="5%">
+					<col width="5%">
+					<?if($b_cd=="inquiry") { ?>
+					<col width="12%">
+					<col width="12%">
+					<col width="12%">
+					<col width="*">
+					<col width="13%">		
+					<col width="10%">	
+					<?}elseif($b_cd=="flowmeter") { ?>
+					<col width="12%">
+					<col width="12%">
+					<col width="12%">
+					<col width="*">
+					<col width="*">
+					<col width="13%">		
+					<col width="13%">		
+					<col width="10%">	
+					<?}else{?>
+					<col width="*">
+					<col width="15%">
+					<col width="10%">
+					<?}?>
+				</colgroup>
+				<thead>
+				<tr>
+					<th scope="col"><input type=checkbox  id="idx[]" name="checkA" onclick="Form_checkAll(document.lform,'idx[]');"></th>
+					<th scope="col">번호</th>
+					<?if($b_cd=="inquiry") { ?>
+					<th scope="col">회사명</th>
+					<th scope="col">이름</th>
+					<th scope="col">연락처</th>
+					<th scope="col">제목</th>
+					<th scope="col">작성일</th>		
+					<th scope="col">상태</th>	
+					<?}elseif($b_cd=="flowmeter") { ?>
+					<th scope="col">이름</th>
+					<th scope="col">연락처</th>
+					<th scope="col">유량계</th>
+					<th scope="col">유체</th>
+					<th scope="col">교정</th>
+					<th scope="col">작성일</th>		
+					<th scope="col">상태</th>	
+					<?}else{?>
+					<th scope="col">제목</th>
+					<th scope="col">작성일</th>
+					<th scope="col">조회수</th>					
+					<?}?>
+				</tr>
+				</thead>
+				<tbody class="tbd">
+				<?for($i=0; $i<count($rowList); $i++) {
+						if($rowList[$i]['attach_file']){ 
+							$rowList[$i]['attach_file'] = "<a href='/Lib/download.php?fdir={$rowList[$i]['b_cd']}&fname={$rowList[$i]['attach_file']}&name={$rowList[$i]['attach_file_name']}'><span class='btn gray'>다운로드</span></a>";
+						}
+				?>
+				<tr onclick="web.pageMove('','act=pv,idx=<?=$rowList[$i]['idx']?>')">
+					<td onclick="event.cancelBubble = true;"><input type=checkbox name="idx[]" value="<?=$rowList[$i]['idx']?>"></td>
+					<td><?=($rowList[$i]['notice']=="1")?"공지":$rowList[$i]['no'];?></td>
+					<?if($b_cd=="inquiry") { ?>
+					<td><?=$rowList[$i]['corp']?></td>
+					<td><?=$rowList[$i]['name']?></td>
+					<td><?=$rowList[$i]['hp']?></td>
+					<td class="left"><?=$rowList[$i]['title']?></td>
+					<td><?=date("Y.m.d", strtotime($rowList[$i]['reg_dt']));?></td>
+					<td><?=$rowList[$i]['stat']?></td>
+					<?}elseif($b_cd=="flowmeter") { ?>
+					<td><?=$rowList[$i]['name']?></td>
+					<td><?=$rowList[$i]['hp']?></td>
+					<td><?=$rowList[$i]['f_flowkind']?></td>
+					<td><?=$rowList[$i]['f_fluidkind']?></td>
+					<td><?=$rowList[$i]['f_size']?></td>
+					<td><?=date("Y.m.d", strtotime($rowList[$i]['reg_dt']));?></td>
+					<td><?=$rowList[$i]['stat']?></td>
+					<?}else{?>
+					<td class="left"><?=$rowList[$i]['title']?></td>
+					<td><?=date("Y.m.d", strtotime($rowList[$i]['reg_dt']));?></td>
+					<td><?=$rowList[$i]['hit']?></td>		
+					<?}?>
+				</tr>
+				<?}?>
+				</tbody>
+			</table>
+			</form>
+
+			<p class="btn_right">
+				<a href="javascript:Pdelete();"><span class="btn white type1 sch_bt">선택삭제</span></a>
+			</p>
+
+
+			<!-- paging1 -->
+			<? include_once("inc/paging.php"); ?>
+			<!-- //paging -->
+
+		</div>
+		<!--- //리스트 --->
+
+	</div>
+	<!--- //contents_area --->
+	<script type="text/javascript" src="./common/js/cal_cmd.js"></script>
+	<script type="text/javascript" src="./common/js/cal_list.js"></script>
+	<script language="javascript">
+	<!--
+	function Pdelete(){
+		var frm=document.lform;
+
+		if(!Form_chkCheckbox(frm,'idx[]','삭제할 대상을 선택해주세요.')) return;
+
+		if (confirm('정말로 삭제하시겠습니까?'))
+		{
+			frm.action="./index.php?WS=<?=$_GET['WS']?>&lng=<?=$lng?>&act=pd";
+			frm.submit();
+		}
+	}
+
+	function ChKind()	{
+		var frm=document.sform;
+		//if(!frm.kword.value) {alert('검색어를 입력해주세요');frm.kword.focus();return;}		
+		frm.action="index.php";
+		frm.submit();
+	}
+	-->
+	</script>

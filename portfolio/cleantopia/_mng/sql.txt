@@ -1,0 +1,83 @@
+/* 카운터 */
+CREATE TABLE IF NOT EXISTS `tb_count` (
+  `idx` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '고유번호',
+  `gu` varchar(300) DEFAULT NULL COMMENT 'pc, mobile',
+  `c_date` varchar(20) DEFAULT NULL COMMENT '날짜',
+  `c_time` varchar(20) DEFAULT NULL COMMENT '시간 24시간',
+  `c_cnt` bigint(20) DEFAULT '0' COMMENT '카운트',
+  PRIMARY KEY (`idx`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='접속자분석' AUTO_INCREMENT=1 ;
+
+
+/* 관리자 테이블 */
+CREATE TABLE `tb_admin` (
+  `idx` int(11) NOT NULL AUTO_INCREMENT,
+  `m_id` varchar(30) NOT NULL,
+  `m_pwd` varchar(500) NOT NULL,
+  `m_name` varchar(50) NOT NULL,
+  `m_phone` varchar(500) NOT NULL,
+  `m_email` varchar(100) NOT NULL,
+  `m_grd` int(5) NOT NULL COMMENT '권한',
+  `m_auth1` varchar(200) DEFAULT NULL COMMENT '게시판권',
+  `m_auth2` varchar(200) DEFAULT NULL COMMENT '참여나눔권한',
+  `m_use` tinyint(4) NOT NULL DEFAULT '1' COMMENT '1:사용, 2:중지, 3:퇴사',
+  `reg_dt` datetime NOT NULL COMMENT '등록일',
+  `mod_dt` datetime DEFAULT NULL COMMENT '수정일',
+  `reg_ip` varchar(20) NOT NULL COMMENT '등록IP',
+  PRIMARY KEY (`idx`)
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='관리계정';
+
+INSERT INTO tb_admin
+(m_id, m_pwd, m_name, m_phone, m_email, m_grd, m_use, reg_dt, mod_dt, reg_ip) 
+VALUES ('admin', password('1111'), '관리', HEX(AES_ENCRYPT('010-111-2222','mrromance')), 'aa@aa.com', 1, 1, now(), now(), '111');
+//패스워드 : 1111 단방향
+//휴대폰양방향 : SELECT *, AES_DECRYPT(UNHEX(m_phone), 'mrromance') as phone FROM tb_admin
+
+--------------
+
+--
+-- 테이블 구조 `tb_count`
+--
+
+
+
+
+CREATE TABLE `tb_board_set` (
+  `idx` int(11) NOT NULL AUTO_INCREMENT,
+  `b_cd` varchar(50) NOT NULL COMMENT '게시판코드',
+  `b_name` varchar(100) NOT NULL COMMENT '게시판명칭',
+  `b_kind` varchar(20) NOT NULL COMMENT '게시판종류',
+  `b_row` int(5) NOT NULL COMMENT '페이지당 ROW수',
+  `b_state` int(11) NOT NULL DEFAULT '0',
+  `b_noti` char(1) NOT NULL DEFAULT 'N' COMMENT '공지사용여부',
+  `b_thum` char(1) NOT NULL DEFAULT 'N' COMMENT '썸네일사용여부',
+  `b_file` char(1) NOT NULL DEFAULT 'N' COMMENT '첨부(단일) 사용여부',
+  `b_files` char(1) NOT NULL DEFAULT 'N' COMMENT '첨부(다수)사용여부',
+	`reg_dt` datetime NOT NULL COMMENT '등록일',
+  `mod_dt` datetime DEFAULT NULL COMMENT '수정일',
+  `reg_ip` varchar(20) NOT NULL COMMENT '등록IP',
+  PRIMARY KEY (`idx`)
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='게시판 설정파일';
+
+/* 게시판 */
+CREATE TABLE IF NOT EXISTS `tb_board_data` (
+	`idx` int(11) NOT NULL AUTO_INCREMENT,
+	`b_cd` varchar(30) DEFAULT NULL COMMENT '',
+	`survey1` varchar(50) DEFAULT NULL COMMENT '연령대',
+	`survey2` varchar(50) DEFAULT NULL COMMENT '성별',
+	`survey3` varchar(50) DEFAULT NULL COMMENT '경험',
+	`survey4` varchar(50) DEFAULT NULL COMMENT '좋아하는이유',
+	`survey5` varchar(50) DEFAULT NULL COMMENT '시간보내기',
+	`name` varchar(30) DEFAULT NULL,
+	`hp` varchar(30) DEFAULT NULL,
+	`store` varchar(50) DEFAULT NULL COMMENT '수령매장',
+	`talkSend` varchar(50) DEFAULT NULL,
+	`talkResult` varchar(50) DEFAULT NULL,
+	`reg_dt` datetime NOT NULL COMMENT '등록일',
+	`mod_dt` datetime DEFAULT NULL COMMENT '수정일',
+	`reg_ip` varchar(20) NOT NULL COMMENT '등록IP',
+	PRIMARY KEY (`idx`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='게시판 데이타' AUTO_INCREMENT=1 ;
+
+
+====

@@ -1,0 +1,118 @@
+<!--- contents_area --->
+	<div class="contents_area">
+
+		<div class="title">팝업 관리</div>
+
+		<!--- 리스트 --->
+		<div class="board">
+			<form name="wform" id="wform" method="post" enctype="multipart/form-data" >
+			<input type="hidden" name="act" value="pw" />
+			<input type="hidden" name="idx" value="<?=$row['idx']?>" />
+			<input type="hidden" name="b_cd" value="<?=$b_cd?>" />
+			<input type="hidden" name="page" value="<?=$cpage?>" />
+				<table class="board_view" summary="번호, 위치, 제목, 게시기간, 등록일로 구성되었습니다. ">
+					<caption>제품목록</caption>
+					<colgroup>
+						<col width="200">
+						<col width="*">
+					</colgroup>
+					<tbody>
+					<tr> 
+						<th scope="col">
+							<p>노출언어</p>
+						</th>
+						<td scope="col">
+							<input name="arr_viewlng[]" type="checkbox" style="width:20px" value="kr" <? if(strpos($row['viewlng'], "kr") !== false):?> checked <? endif; ?>/>KR&nbsp;&nbsp;
+							<input name="arr_viewlng[]" type="checkbox" style="width:20px" value="en" <? if(strpos($row['viewlng'], "en") !== false):?> checked <? endif; ?>/>EN&nbsp;&nbsp;
+							<input name="arr_viewlng[]" type="checkbox" style="width:20px" value="cn" <? if(strpos($row['viewlng'], "cn") !== false):?> checked <? endif; ?>/>CN&nbsp;&nbsp;
+							<input name="arr_viewlng[]" type="checkbox" style="width:20px" value="vn" <? if(strpos($row['viewlng'], "vn") !== false):?> checked <? endif; ?>/>VN&nbsp;&nbsp;
+
+						</td>  
+					</tr>
+					<tr>
+						<th>게시기간</th>
+						<td>
+						<input id="sch_from" name="view_ymd_s" class="text01" type="text" style="width:100px" value="<?=$row['view_ymd_s']?>"  data-valid="notnull" data-alert="게시기간">
+						~
+						<input id="sch_to" name="view_ymd_e" class="text01" type="text" style="width:100px" value="<?=$row['view_ymd_e']?>"  data-valid="notnull" data-alert="게시기간">
+
+						</td>
+					</tr>
+					
+					<tr>
+						<th>제목</th>
+						<td><input type="text" class="text01" style="width: 50%;" name="title" id="title"  data-valid="notnull" data-alert="배너이름"  value="<?=$row['title']?>"/></td>
+					</tr>
+					
+					<!-- <tr>
+						<th>위치설정</th>
+						<td>
+						TOP : <input id="p_top"  name="p_top" class="text01" type="text" style="width:100px" value="<?=$row['p_top']?>"  data-valid="notnull" data-alert="위치값">px &nbsp;&nbsp;
+						LEFT : <input id="p_left" name="p_left" class="text01" type="text" style="width:100px" value="<?=$row['p_left']?>"  data-valid="notnull" data-alert="위치값">px
+
+						</td>
+					</tr> -->
+					<tr>
+						<th>이미지(420*476px)</th>
+						<td><input type="file" name="attach_thum" id="attach_thum" class="text02"> &nbsp;&nbsp;&nbsp;<?if($row['attach_thum']){?>파일 : <img src="<?=$row['attach_thum']?>" height="30px" ><?}?>
+						</td>
+					</tr>
+					<tr>
+						<th>링크URL</th>
+						<td><input type="text" class="text01" style="width: 50%;" name="url" id="url" value="<?=$row['url']?>"/></td>
+					</tr>
+					<tr> 
+						<th scope="col">
+							<p>타켓설정</p>
+						</th>
+						<td scope="col">
+							<input name="target" type="radio" style="width:20px" value="_blank" <? if($row['target']=="_blank"):?> checked <? endif; ?>/>새창으로&nbsp;&nbsp;
+							<input name="target" type="radio" style="width:20px" value="_self" <? if($row['target']=="_self"):?> checked <? endif; ?>/>현재페이지&nbsp;&nbsp;
+							(링크URL 있을경우 링크 이동방법설정)
+						</td>  
+					</tr>
+					</tbody>
+				</table>
+
+				<p class="btn_right">
+					<a href="javascript:Pwrite();"><span class="btn white type1 sch_bt"><? if ($row['idx']) echo '수정'; else echo '등록';?></span></a>
+					<? if ($row['idx']) {?><a href="javascript:Pdelete();"><span class="btn white type1 sch_bt">삭제</span></a><?}?>
+					<a href="<?=$_SESSION['URL_QUERY']['PAGING']?>"><span class="btn white type1 sch_bt">목록</span></a>
+				</p>
+
+			</form>
+
+		</div>
+		<!--- //리스트 --->
+
+
+	</div>
+	<!--- //contents_area --->
+<script type="text/javascript" src="./common/js/cal_cmd.js"></script>
+<script type="text/javascript" src="./common/js/cal_list.js"></script>
+<script type="text/javascript">
+	
+
+	function Pwrite() {
+		var frm=document.wform;
+		if(web.formValidation(frm)) {
+			if (frm.idx.value) frm.act.value='pe';	//수정일경우
+
+			frm.action='index.php?WS=<?=$_GET['WS']?>';
+			frm.submit();
+		}
+	}
+
+	function Pdelete(){
+		if (confirm('정말로 삭제하시겠습니까?'))
+		{
+			var frm=document.wform;
+			frm.act.value='pd';
+			frm.action="index.php?WS=<?=$_GET['WS']?>";
+			frm.submit();
+		}
+	}
+
+	
+
+</script>

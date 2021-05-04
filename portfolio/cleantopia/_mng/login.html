@@ -1,0 +1,120 @@
+<?php require "../Conf/config.php"; ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<link href="./common/css/style.css" rel="stylesheet" type="text/css">
+
+<title><?=$WEBCNF['TITLE']?></title>
+<script type="text/javascript" src="./common/js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="./common/js/web.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$(document).on("keyup","#id,#pwd", function(){
+			if(event.keyCode==13) { 
+				loginProc() ;
+			}
+		});
+		getLogin();
+
+	});
+	function loginProc() {
+		if (document.getElementById("idcheck").checked) {
+			saveLogin(document.getElementById("id").value);
+		} else {
+			saveLogin("");
+		}
+		if(web.formValidation(document.getElementById("loginForm"))) {
+			$("#loginForm").attr("action","loginsucc.php");	
+			$("#loginForm").submit();
+		}
+	}
+
+	function login_Enter() {
+		if(event.keyCode==13) { 
+			loginProc() ;
+		}
+	}
+	function setsave(name, value, expiredays) {
+		 var today = new Date();
+		 today.setDate(today.getDate() + expiredays);
+		 document.cookie = name + "=" + escape(value) + "; path=/; expires="
+						 + today.toGMTString() + ";";
+		 
+	}
+	// id를 받아와 쿠키에 저장할지 쿠키에서 삭제할지 결정.
+	function saveLogin(id) {
+		 if (id != "") {				 
+			setsave("lgnId", id, 7); // userid 쿠키에 id 값을 7일간 저장
+		 } else {
+			setsave("lgnId", id, -1); // userid 쿠키 삭제
+		 }
+	}
+
+	// 화면 로드시 아이디
+	function getLogin() {	 
+		// lgnId 쿠키에서 id 값을 가져온다.
+		 var cook = document.cookie + ";";
+		 var idx = cook.indexOf("lgnId", 0);
+		 var val = "";
+		if (idx != -1) {
+				 cook = cook.substring(idx, cook.length);
+				 begin = cook.indexOf("=", 0) + 1;
+				 end = cook.indexOf(";", begin);
+				 val = unescape(cook.substring(begin, end));
+		 }
+		// 가져온 쿠키값이 있으면
+		if (val != "") {
+				 document.getElementById("id").value = val;
+				 document.getElementById("idcheck").checked = true;
+		 }
+	}
+</script>
+</head>
+<body>
+
+	<!--- 로그인 페이지는 기존 스타일에서 변동이 없습니다.--->
+
+	<!--- login --->
+	<div id="login">
+		
+		<!--- 회사명 --->
+		<h1><?=$WEBCNF['TITLE']?></h1>
+		<!--- //회사명 --->
+
+		<!--- loginbox --->
+		<div class="loginbox">
+			<!--- 로그인 타이틀 --->
+			<div class="title"><img src="./images/login_title.gif" /></div>
+			<!--- //로그인 타이틀 --->
+
+			<!--- 로그인 폼 --->
+			<div class="login_form">
+			<form name="loginForm" id="loginForm" method="post">
+				<label class="label_id">
+					<span><img src="./images/login_text_id.gif" alt="아이디"></span>
+					<input type="text" name="id" id="id" data-valid="notnull" data-alert="아이디"/>
+				</label>
+
+				<label class="label_pw">
+					<span><img src="./images/login_text_pw.gif" alt="패스워드"></span>
+					<input type="password" name="pwd" id="pwd"/>
+				</label>
+
+				<div class="loginbtn"><a href="javascript:loginProc()"><img src="./images/btn_login.gif" alt="로그인"></a></div>
+				<div class="id_save"><label><input name="idcheck" id="idcheck" type="checkbox" value="Y" type="checkbox"/>아이디 저장하기</label></div>
+			</form>
+			</div>
+			<!--- //로그인 폼 --->
+
+		</div>
+		<!--- loginbox --->
+		
+
+	</div>
+	<!--- //login --->
+
+</body>
+</html> 

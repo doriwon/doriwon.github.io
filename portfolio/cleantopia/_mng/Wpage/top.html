@@ -1,0 +1,19 @@
+<div class="header">
+	<div class="inner logo">
+		<!--- 로고 --->
+		<a href="index.php"><h1><?=$WEBCNF['TITLE']?></h1></a>
+		<span>contents management system</span>
+		<!--- //로고 --->
+
+		<!--- 상단 버튼 --->
+		<div class="header_btn">
+			<a href="index.php"><img src="./images/header_btn1.gif" alt="화면관리" /></a>
+			<?if($_SESSION['admin_grd']=="1"){?>
+			<a href="index.php?WS=910"><img src="./images/header_btn2.gif" alt="통계관리" /></a>
+			<?}?>
+			<a href="./logout.php" class="logout"><img src="./images/btn_logout.gif" alt="로그아웃"/></a>
+		</div>
+		<!--- 상단 버튼 --->
+
+	</div>
+</div>

@@ -1,0 +1,212 @@
+<!--- contents_area --->
+	<div class="contents_area">
+
+		<div class="title"><?=$board_name?> 관리</div>
+
+		<!--- 리스트 --->
+		<div class="board">
+			<form name="wform" id="wform" method="post" enctype="multipart/form-data" >
+			<input type="hidden" name="act" value="pw" />
+			<input type="hidden" name="idx" value="<?=$row['idx']?>" />
+			<input type="hidden" name="lng" value="<?=$lng?>" />
+			<input type="hidden" name="b_cd" value="<?=$b_cd?>" />
+			<input type="hidden" name="page" value="<?=$cpage?>" />
+				<table class="board_view" summary="번호, 위치, 제목, 게시기간, 등록일로 구성되었습니다. ">
+					<caption>제품목록</caption>
+					<colgroup>
+						<col width="200">
+						<col width="*">
+					</colgroup>
+					<tbody>
+					<?if($bcd_conf['b_noti']=="Y"){?>
+					<tr >
+						<th>공지</th>
+						<td><input type="checkbox" class="text01" name="notice" id="notice" value="1" <?=($row['notice']=="1")?"checked":"";?>></td>
+					</tr>
+					<?}?>
+					<?if($aryHitChkList[$b_cd]){?>
+					<tr >
+						<th>조회수</th>
+						<td><input type="text" class="text01" style="width: 30px;" name="hit" id="hit" value="<?=($row['hit'])?$row['hit']:0;?>"></td>
+					</tr>
+					<?}?>
+					<?if($aryCateChkList[$b_cd]){?>
+					<tr >
+						<th>카테고리</th>
+						<td>
+							<select name="cate" id="cate" class="select"  data-valid="notnull" data-alert="카테고리" >
+								<option value="">카테고리선택</option>
+								<?foreach($cateArr[$b_cd] as $val) {?>								
+								<option value="<?=$val?>" <?=($row['cate']==$val)?"selected":"";?>><?=$val?></option>		
+								<?}?>
+							</select>
+						</td>
+					</tr>
+					<?}?>
+					
+					<tr >
+						<th>제목</th>
+						<td><input type="text" class="text01" style="width: 50%;ime-mode:active;" name="title" id="title"  data-valid="notnull" data-alert="제목"  value='<?=$row['title']?>' /></td>
+					</tr>
+					<?if($b_cd != "data"){?>
+					<tr>
+						<th>내용</th>
+						<td><textarea style="width: 98%; height: 300px; border: 1px solid #ccc;ime-mode:active;" name="contents" id="contents" data-valid="notnull" data-alert="내용" ><?=$row['contents']?></textarea></td>
+					</tr>
+					<?}?>
+					<?if($aryUrlChkList[$b_cd]){?>
+					<tr >
+						<th>유튜브</th>
+						<td>https://www.youtube.com/watch?v=<input type="text" class="text01" style="width: 100px;" name="youtube" id="youtube" value="<?=$row['youtube']?>">(예 : https://www.youtube.com/watch?v=<font color='red'>JlWjsV1_INM</font></td>
+					</tr>
+					<?}?>
+					<?if($bcd_conf['b_thum']=="Y"){?>
+					<tr>
+						<th>썸네일</th>
+						<td><input type="file" name="attach_thum" id="attach_thum" class="text02" value=""> &nbsp;&nbsp;&nbsp;<?if($row['attach_thum']){?>파일 : <img src="<?=$row['attach_thum']?>" height="30px" ><?}?>
+						</td>
+					</tr>
+					<?}?>
+					<?if($bcd_conf['b_file']=="Y"){?>
+					<tr>
+						<th>첨부파일</th>
+						<td><input type="file" name="attach_file" id="attach_file" class="text02" value=""> &nbsp;&nbsp;&nbsp;<?if($row['attach_file']){?>파일 : <a href="/Lib/download.php?fdir=<?=$row['b_cd']?>&fname=<?=$row['attach_file']?>"><?=$row['attach_file_name']?></a><?}?>
+						</td>
+					</tr>
+					<?}?>
+					<?if($bcd_conf['b_files']=="Y"){?>
+					<? if (count($fileList) <1 ) {?>
+					<tr class="fileCls">
+						<th>파일 <span class="btn gray addFile">추가</span></th>
+						<td>
+							<input type="file" name="f_file0" class="text02" data-alert="파일"></td>
+					</tr>
+					<? } else { 
+								for($i=0; $i<count($fileList); $i++) {
+					?>
+					<tr class="fileCls">
+						<th>파일 <? if($i<1) {?><span class="btn gray addFile">추가</span><span class='btn white' alt='first' onclick='delTr(this)'>삭제</span><? } else { ?><span class='btn white' onclick='delTr(this)'>삭제</span><? }?></th>
+						<td>							
+							<input type="file" name="f_file<?=$i?>" class="text02" data-alert="파일">
+							<input type="hidden" name="fidx[]" value="<?=$fileList[$i]['fidx']?>" >
+							<?if($fileList[$i]['f_file']){?>
+								파일 : 
+								<?if($fileList[$i]['f_kind']=="1"){?><img src="/<?=$WEBDIR['fdata']?>/<?=$b_cd?>/<?=$fileList[$i]['f_file']?>" height="30px">&nbsp;<?}?>
+								<a href="/Lib/download.php?fdir=<?=$row['b_cd']?>&fname=<?=$fileList[$i]['f_file']?>"><?=$fileList[$i]['f_file_name']?></a>
+							<?}?>
+						</td>
+					</tr>
+					<?		}
+							} ?>
+					<?}?>
+					</tbody>
+				</table>
+
+				<p class="btn_right">
+					<a href="javascript:Pwrite();"><span class="btn white type1 sch_bt"><? if ($row['idx']) echo '수정'; else echo '등록';?></span></a>
+					<? if ($row['idx']) {?><a href="javascript:Pdelete();"><span class="btn white type1 sch_bt">삭제</span></a><?}?>
+					<a href="<?=$_SESSION['URL_QUERY']['PAGING']?>"><span class="btn white type1 sch_bt">목록</span></a>
+				</p>
+
+			</form>
+
+		</div>
+		<!--- //리스트 --->
+
+
+	</div>
+	<!--- //contents_area --->
+
+	<script type="text/javascript" src="/common/nse/js/HuskyEZCreator.js"></script>
+<script type="text/javascript">
+	var oEditors = [];
+	var editskin = "/common/nse/SmartEditor2Skin.html";
+	if ( document.getElementById("contents") ) {
+		(function () {
+			nhn.husky.EZCreator.createInIFrame({
+				htParams : {
+					fOnBeforeUnload : function(){},
+				},
+				fOnBeforeUnload : function(){},
+				oAppRef: oEditors,
+				elPlaceHolder: "contents",
+				sSkinURI: editskin,
+				fCreator: "createSEditor2"
+			});
+		})();
+	}
+
+	function Pwrite() {
+		var frm=document.wform;
+		if(web.formValidation(frm)) {
+			if (frm.idx.value) frm.act.value='pe';	//수정일경우
+			if (document.getElementById("contents") ) oEditors[0].exec("UPDATE_CONTENTS_FIELD", []);		
+			frm.action='index.php?WS=<?=$_GET['WS']?>';
+			frm.submit();
+		}
+	}
+
+	function Pdelete(){
+		if (confirm('정말로 삭제하시겠습니까?'))
+		{
+			var frm=document.wform;
+			frm.act.value='pd';
+			frm.action="index.php?WS=<?=$_GET['WS']?>";
+			frm.submit();
+		}
+	}
+
+	function delTr(obj) {
+		var first = $(obj).attr("alt");
+		var fidx = $(obj).parent().parent().find("td").find("input:hidden").val();
+		if(fidx) {
+			if(confirm("선택하신 파일만 삭제하시겠습니까?")) {
+				$.ajax({
+					url : "index_proc.php?WS=<?=$_GET['WS']?>",
+					method : "post",
+					data : {"fidx":fidx, "act" : "pa", "b_cd" : "<?=$b_cd?>"},
+					dataType : "json",
+					success : function(result) {			
+						if(result.code == true) {
+							if(first=="first"){
+								location.reload();
+							}else{
+								$(obj).parent().parent().remove();
+							}
+						} else {
+							alert("다시 시도해주세요.");
+						}
+					},
+					error : function(err) {alert("Error.");}
+				});
+			}
+		} else {
+			$(obj).parent().parent().remove();
+		}		
+	}
+
+	var $fc = "<?=count($fileList)?>";	
+	if($fc =="") $fc = 0;	
+
+	$(document).ready(function(){
+		// 항목추가 버튼 클릭시
+		$(".addFile").click(function(){
+			$fc++;
+			var clickedRow = $(this).parent().parent();
+			var cls = clickedRow.attr("class"); //class가 있는 요소 오브젝트로 담김
+			var newrow = "<tr class='fileCls'> ";
+			newrow += "<th>파일 <span class='btn white' onclick='delTr(this)'>삭제</span></th> ";
+			newrow += "	<td> ";		
+			newrow += "	<input type='file' name='f_file"+$fc+"' class='text02' data-alert='파일'><input type='hidden' name='fidx[]'> ";
+			newrow += "	</td> ";
+			newrow += "	</tr> ";
+		
+			$(newrow).find("td").find("input:file").attr("name","f_file"+$fc);
+			
+			$(newrow).insertAfter($(".board_view ."+cls+":last"));	// class가 board_view인 요소 안의 마지막 class인 요소 선택
+
+
+		});           
+	});
+
+</script>

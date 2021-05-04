@@ -1,0 +1,157 @@
+<!--- contents_area --->
+	<div class="contents_area">
+
+		<div class="title"><?=$board_name?> 관리</div>
+
+		<!--- 리스트 --->
+		<div class="board">
+			<form name="wform" id="wform" method="post" enctype="multipart/form-data" >
+			<input type="hidden" name="act" value="pw" />
+			<input type="hidden" name="idx" value="<?=$row['idx']?>" />
+			<input type="hidden" name="b_cd" value="<?=$b_cd?>" />
+			<input type="hidden" name="page" value="<?=$cpage?>" />
+				<table class="board_view" summary="번호, 위치, 제목, 게시기간, 등록일로 구성되었습니다. ">
+					<caption>제품목록</caption>
+					<colgroup>
+						<col width="200">
+						<col width="*">
+					</colgroup>
+					<tbody>
+					<tr>
+						<th>날짜</th>
+						<td>
+							<input id="start_ymd" name="start_ymd" title="기간" type="text" class="text01 calymd" style="width: 120px;"  value="<?=$row['start_ymd']?>" />
+
+							
+						</td>
+					</tr>
+					<tr>
+						<th>시간</th>
+						<td>							
+							<input id="time_hh" name="time_hh" title="기간" type="text" class="text01" style="width: 120px;"  value="<?=$row['time_hh']?>" />
+							
+						</td>
+					</tr>
+					
+					<tr >
+						<th>공개</th>
+						<td><input type="checkbox" class="text01" name="view_yn" id="view_yn" value="y" <?=($row['view_yn']!="n")?"checked":"";?>></td>
+					</tr>
+					<tr >
+						<th>일정구분</th>
+						<td>
+							<select name="b_cd" id="b_cd" class="select"  data-valid="notnull" data-alert="일정구분" >
+								<option value="">일정구분선택</option>
+								<?foreach($calKindList as $key => $val) {?>								
+								<option value="<?=$key?>" <?=($row['b_cd']==$key)?"selected":"";?>><?=$val?></option>		
+								<?}?>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<th>제목</th>
+						<td><input id="title" name="title" title="제목" type="text" class="text01" style="width: 80%;ime-mode:active;"  value="<?=$row['title']?>" /></td>
+					</tr>
+						
+					<tr>
+						<th>일정내용</th>
+						<td><textarea style="width: 98%; height: 80px; border: 1px solid #ccc;ime-mode:active;" name="contents" id="contents" data-valid="notnull" data-alert="내용" ><?=$row['contents']?></textarea></td>
+					</tr>
+					</tbody>
+				</table>
+
+				<p class="btn_right">
+				<? if($row['idx']) { ?>
+				<?	if($row['m_id'] == $_SESSION['admin_id'] || $_SESSION['admin_grd'] =="1") { ?>
+					<a href="javascript:Pwrite();"><span class="btn white type1 sch_bt">수정</span></a>
+					<a href="javascript:Pdelete();"><span class="btn white type1 sch_bt">삭제</span></a>
+				<?	} ?>
+				<? } else { ?>
+					<a href="javascript:Pwrite();"><span class="btn white type1 sch_bt">등록</span></a>
+				<? } ?>
+					<a href="<?=$_SESSION['URL_QUERY']['PAGING']?>"><span class="btn white type1 sch_bt">목록</span></a>
+				</p>
+
+			</form>
+
+		</div>
+		<!--- //리스트 --->
+
+
+	</div>
+	<!--- //contents_area --->
+
+<script type="text/javascript" src="./common/js/cal_cmd.js"></script>
+<script type="text/javascript" src="./common/js/cal_list.js"></script>
+<script type="text/javascript">
+	$(function() {
+		// 조회기간 검색 달력 설정
+		$( ".calymd" ).datepicker({
+		  showOn: "button",
+		  buttonImage: "./images/btn_calendar.gif",
+		  buttonImageOnly: true,
+		  buttonText: "Select date",
+		  dateFormat: "yy-mm-dd"
+		});		
+		
+
+		//버튼이미지CSS
+		$("img.ui-datepicker-trigger").attr("style", "vertical-align: middle;");   
+	});
+	
+
+
+	function Pwrite() {
+		var frm=document.wform;
+		if(web.formValidation(frm)) {
+			if (frm.idx.value) frm.act.value='pe';	//수정일경우			
+			frm.action='index.php?WS=<?=$_GET['WS']?>';
+			frm.submit();
+		}
+	}
+
+	function Pdelete(){
+		if (confirm('정말로 삭제하시겠습니까?'))
+		{
+			var frm=document.wform;
+			frm.act.value='pd';
+			frm.action="index.php?WS=<?=$_GET['WS']?>";
+			frm.submit();
+		}
+	}
+
+	function delTr(obj) {
+		var first = $(obj).attr("alt");
+		var fidx = $(obj).parent().parent().find("td").find("input:hidden").val();
+		if(fidx) {
+			if(confirm("선택하신 파일만 삭제하시겠습니까?")) {
+				$.ajax({
+					url : "index_proc.php?WS=<?=$_GET['WS']?>",
+					method : "post",
+					data : {"fidx":fidx, "act" : "pa", "b_cd" : "<?=$b_cd?>"},
+					dataType : "json",
+					success : function(result) {			
+						if(result.code == true) {
+							if(first=="first"){
+								location.reload();
+							}else{
+								$(obj).parent().parent().remove();
+							}
+						} else {
+							alert("다시 시도해주세요.");
+						}
+					},
+					error : function(err) {alert("Error.");}
+				});
+			}
+		} else {
+			$(obj).parent().parent().remove();
+		}		
+	}
+
+
+	$(document).ready(function(){
+	
+	});
+
+</script>

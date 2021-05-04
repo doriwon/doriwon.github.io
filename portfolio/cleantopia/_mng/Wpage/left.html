@@ -1,0 +1,33 @@
+
+<!--- left --->
+	<div class="side_menu">
+		<!--- 리스트 --->
+		
+		<ul>
+			<li>
+				<a href="#">설정</a>
+				<ul>
+					<li>-<a href="index.php?WS=130">[<?=$_SESSION['admin_name']?>] 정보</a></li>
+					<? if ($_SESSION['admin_grd']=="1") { ?>
+					<li>-<a href="index.php?WS=110">관리자관리</a></li>
+					<?if ($_SERVER['REMOTE_ADDR'] =="211.168.226.176") {?><li>-<a href="index.php?WS=120">게시판관리</a></li><?}?>
+					<?} ?>
+				</ul>
+			</li>
+		</ul>
+		<?if($_SESSION['admin_grd']=="1" || $_SESSION['admin_auth1']) {?>
+		<ul>
+			<li>
+				<a href="#">이벤트관리</a>
+				<ul>
+					<li>-<a href="index.php?WS=220&b_cd=event">굿즈이벤트</a></li>		
+				</ul>
+			</li>
+		</ul>
+		
+		<?}?>
+		
+
+		<!--- //리스트 --->
+	</div>
+	<!--- //left --->

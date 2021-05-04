@@ -1,0 +1,292 @@
+<!--- contents_area --->
+<link href='./common/fullcalendar/fullcalendar.min.css' rel='stylesheet' />
+<link href='./common/fullcalendar/fullcalendar.print.min.css' rel='stylesheet' media='print' />
+<script src='./common/fullcalendar/lib/moment.min.js'></script>
+<script src='./common/fullcalendar/lib/jquery.min.js'></script>
+<script src='./common/fullcalendar/fullcalendar.min.js'></script>
+<script src='./common/fullcalendar/locale-all.js'></script>
+
+<!---
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/locale-all.js'></script>
+--->
+
+<link rel="stylesheet" href="./common/remodal/remodal.css">
+<link rel="stylesheet" href="./common/remodal/remodal-default-theme.css">
+
+<script>
+  $(document).ready(function() {
+		
+
+		var initialLocaleCode = 'ko';
+		var calendar = $('#calendar').fullCalendar({		
+    editable:true,
+		locale: initialLocaleCode,
+    header:{
+     left:'prev,next today',
+     center:'title',
+		 right:'month'
+     //right:'month,agendaWeek,agendaDay'
+    },
+    events: 'index_proc.php?WS=<?=$_GET['WS']?>&act=cl&b_cd=<?=$b_cd?>',
+	  //events: './get-events.php',
+    selectable:true,
+    selectHelper:true,
+    select: function(start, end, allDay) {
+			var start = $.fullCalendar.formatDate(start, "Y-MM-DD");
+			var end = $.fullCalendar.formatDate(end, "Y-MM-DD");
+			console.log(start);
+			console.log(end);
+
+			/*
+			var title = prompt("Enter Event Title");
+			if(title) {
+				var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
+				var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
+				$.ajax({
+				 url:"./Wpage300/insert.php",
+				 type:"POST",
+				 dataType: 'text',
+				 data:{title:title, start_ymd:start, end_ymd:end},
+				 success:function() {
+					console.log("aa");
+					calendar.fullCalendar('refetchEvents');
+					alert("Added Successfully");
+				 },
+				 error:function(error){
+					console.log(error);
+				 }
+				})
+			 }
+			 */
+    },
+    //editable:true,
+    eventResize:function(event)
+    {
+     var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
+     var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
+     var title = event.title;
+     var id = event.id;
+     $.ajax({
+      url:"./Wpage300/update.php",
+      type:"POST",
+      data:{title:title, start:start, end:end, id:id},
+      success:function(){
+       calendar.fullCalendar('refetchEvents');
+       alert('Event Update');
+      }
+     })
+    },
+
+    eventDrop:function(event)
+    {
+     var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
+     var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
+     var title = event.title;
+     var id = event.id;
+     $.ajax({
+      url:"./Wpage300/update.php",
+      type:"POST",
+      data:{title:title, start:start, end:end, id:id},
+      success:function()
+      {
+       calendar.fullCalendar('refetchEvents');
+       alert("Event Updated");
+      }
+     });
+    },
+		/*
+		eventRender: function (event, element) {
+				console.log(event);
+				console.log(element);
+				element.click(function () {
+						var start = $.fullCalendar.formatDate(event.start, "YYYY-MM-DD");
+						var end = $.fullCalendar.formatDate(event.end, "YYYY-MM-DD");
+
+						$("#name").html(event.title);
+						$("#startTime").html(start);
+						$("#endTime").html(end);
+						//$("#eventContent").dialog({modal: true, title: event.title, width: 350});
+
+
+						$("#refuse_button").click(function ()
+						{
+								var id = event._id;
+								var confirmed_number = 2;
+								var decision = confirm("Do you really want to refuse that?");
+
+								if (decision)
+								{
+										$.ajax({
+												url: "http://localhost/calendar_directory/confirm_events.php",
+												data: '&id=' + id + '&confirmed_number=' + confirmed_number,
+												type: "POST",
+												success: function (json)
+												{
+														console.log(id);
+														return;
+												}
+										});
+								}
+						});
+
+						$("#confirm_button").click(function ()
+						{
+								var id = event._id;
+								var confirmed_number = 1;
+								var decision = confirm("Do you really want to confirm that?");
+								if (decision)
+								{
+										$.ajax({
+												url: "http://localhost/calendar_directory/confirm_events.php",
+												data: '&id=' + id + '&confirmed_number=' + confirmed_number,
+												type: "POST",
+												success: function (json) {
+														console.log("confirmed");
+														return;
+												}
+										});
+								}
+						})
+				});
+		},
+		
+
+    eventClick:function(event) {
+		 console.log(event);
+		  $("#eventContent").dialog({ modal: true, title: event.title, width:350}); 
+		
+     if(confirm("Are you sure you want to remove it?"))
+     {
+      var id = event.id;
+      $.ajax({
+       url:"./Wpage300/delete.php",
+       type:"POST",
+       data:{id:id},
+       success:function()
+       {
+        calendar.fullCalendar('refetchEvents');
+        alert("Event Removed");
+       }
+      })
+     }
+		
+    },
+		*/
+
+		eventRender: function(event, element) {
+		
+			element.attr('href', '#modal');
+			element.click(function() {	
+				 $.ajax({
+					url:"index_proc.php?WS=<?=$_GET['WS']?>&b_cd=<?=$b_cd?>&act=cv",
+					type:"POST",
+					data:{idx:event.id},
+					success:function(res){
+					 $("#idx").val(res['idx']);
+					 $("#modal1Title").text(res['title']);
+					 $("#modal1Desc").text(res['contents']);
+					 
+					}
+				 })				
+			});
+		}
+   });
+
+	 
+  });
+
+	
+	$(document).on('opening', '.remodal', function () {
+    //console.log('opening');
+  });
+
+  $(document).on('opened', '.remodal', function () {
+    //console.log('opened');
+  });
+
+  $(document).on('closing', '.remodal', function (e) {
+		
+  });
+
+  $(document).on('closed', '.remodal', function (e) {
+    //console.log('closed' + (e.reason ? ', reason: ' + e.reason : ''));
+  });
+
+  $(document).on('confirmation', '.remodal', function () {
+    //console.log('confirmation');
+  });
+
+  $(document).on('cancellation', '.remodal', function () {
+    var idx = $("#idx").val();
+		console.log(idx);
+		location.href="index.php?WS=<?=$_GET['WS']?>&b_cd=<?=$b_cd?>&act=pv&idx="+idx;    
+  });
+
+
+
+</script>
+
+<script src="./common/remodal/remodal.js"></script>
+<style>
+	.remodal-bg.with-red-theme.remodal-is-opening,
+	.remodal-bg.with-red-theme.remodal-is-opened {
+		filter: none;
+	}
+
+	.remodal-overlay.with-red-theme {
+		background-color: #f44336;
+	}
+
+	.remodal.with-red-theme {
+		background: #fff;
+	}
+</style>
+
+
+
+
+	<div class="contents_area">
+		<div class="title"><?=$board_name?> 관리</div>
+		<div>
+			<p id="btnSw" style="float:left">
+				<a href="index.php?WS=310&b_cd=person"><span class="btn type1 sch_bt <?=($b_cd=='person')?"gray":"white";?>">개인일정</span></a>
+				<a href="index.php?WS=310&b_cd=center"><span class="btn type1 sch_bt <?=($b_cd=='center')?"gray":"white";?>"">센터일정</span></a>
+				<a href="index.php?WS=310&b_cd=car"><span class="btn type1 sch_bt <?=($b_cd=='car')?"gray":"white";?>"">차량관리</span></a>
+				<a href="index.php?WS=310&b_cd=room"><span class="btn type1 sch_bt <?=($b_cd=='room')?"gray":"white";?>"">상담실관리</span></a>
+			</p>
+			<p style="float:right">
+				<a href="index.php?WS=<?=$_GET['WS']?>&act=pv"><span class="btn white type1 sch_bt">일정등록하기</span></a>	
+			</p>
+		</div>
+		<div style="clear:both"></div>
+		<hr/>
+
+		
+		
+
+		<div id='calendar'></div>
+
+		<div class="remodal" data-remodal-id="modal" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
+			<button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+			<div>
+				<input type="hidden" name="idx" id="idx" value="">
+				<h2 id="modal1Title"></h2>
+				<p id="modal1Desc">
+				</p>
+
+			</div>
+			<br>
+			<button data-remodal-action="cancel" class="remodal-cancel">수정/삭제</button>
+			<button data-remodal-action="confirm" class="remodal-confirm">닫기</button>
+		</div>
+
+	
+	</div>
+	https://www.sitepoint.com/14-jquery-modal-dialog-boxes/
+

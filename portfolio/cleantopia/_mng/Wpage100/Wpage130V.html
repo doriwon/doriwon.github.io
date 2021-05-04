@@ -1,0 +1,78 @@
+<!--- contents_area --->
+	<div class="contents_area">
+
+		<div class="title">정보 수정</div>
+
+		<!--- 리스트 --->
+		<div class="board">
+			<form name="wform" id="wform" method="post" enctype="multipart/form-data" >
+			<input type="hidden" name="act" value="pw" />
+			<input type="hidden" name="idx" value="<?=$row['idx']?>" />
+			<input type="hidden" name="page" value="<?=$cpage?>" />
+				<table class="board_view" summary="번호, 위치, 제목, 게시기간, 등록일로 구성되었습니다. ">
+					<caption>제품목록</caption>
+					<colgroup>
+						<col width="200">
+						<col width="*">
+					</colgroup>
+					<tbody>
+
+					<tr >
+						<th>아이디</th>
+						<td><input type="text" class="text01" style="width: 50%;" name="m_id" id="m_id"  data-valid="notnull"  value="<?=$row['m_id']?>" <?if($row['m_id']){?> readonly <?}?>/></td>
+					</tr>
+					<tr >
+						<th>비밀번호</th>
+						<td><input type="password" class="text01" style="width: 50%;" name="m_pwd" id="m_pwd"  data-alert="비밀번호"/>(변경시만 입력해주세요)</td>
+					</tr>
+					<tr >
+						<th>이름</th>
+						<td><input type="text" class="text01" style="width: 50%;" name="m_name" id="m_name"  data-valid="notnull"  data-alert="이름" value="<?=$row['m_name']?>"/></td>
+					</tr>
+					<tr >
+						<th>휴대폰</th>
+						<td><input type="text" class="text01" style="width: 50%;" name="m_phone" id="m_phone"  data-alert="휴대폰" value="<?=$row['m_phone']?>"/></td>
+					</tr>
+					<tr >
+						<th>이메일</th>
+						<td><input type="text" class="text01" style="width: 50%;" name="m_email" id="m_email"  data-alert="이메일" value="<?=$row['m_email']?>"/><?if($_SESSION['admin_grd']=="1"){?><br/>(*문의접수 안내메일이 등록된 이메일로 발송됩니다.)<?}?></td>
+					</tr>
+					
+					</tbody>
+				</table>
+
+				<p class="btn_right">
+					<a href="javascript:Pwrite();"><span class="btn white type1 sch_bt"><? if ($row['idx']) echo '수정'; else echo '등록';?></span></a>
+					<!-- <? if ($row['idx']) {?><a href="javascript:Pdelete();"><span class="btn white type1 sch_bt">삭제</span></a><?}?>
+					<a href="<?=$_SESSION['URL_QUERY']['PAGING']?>"><span class="btn white type1 sch_bt">목록</span></a> -->
+				</p>
+				
+
+			</form>
+
+		</div>
+		<!--- //리스트 --->
+
+
+	</div>
+	<!--- //contents_area --->
+<script type="text/javascript">
+	function Pwrite() {
+		var frm=document.wform;
+		if(web.formValidation(frm)) {
+			if (frm.idx.value) frm.act.value='pe';	//수정일경우
+			frm.action="index.php?WS=<?=$_GET['WS']?>";
+			frm.submit();
+		}
+	}
+
+	function Pdelete(){
+		if (confirm('정말로 삭제하시겠습니까?'))
+		{
+			var frm=document.wform;
+			frm.act.value='pd';
+			frm.action="index.php?WS=<?=$_GET['WS']?>";
+			frm.submit();
+		}
+	}
+</script>

@@ -1,0 +1,98 @@
+<!--- contents_area --->
+    <div class="contents_area">
+        <div class="title">접속 통계</div>
+        <!--- 검색 --->
+        <div class="pdc_form">
+            <table class="pdc_table" cellspacing="0" border="0" summary="조회기간, 검색으로 구성되어 있습니다.">
+                <form name="sf">
+
+                    <caption>관리자 로그관리 조회</caption>
+                    <colgroup>
+                        <col width="130px">
+                        <col width="*">
+                    </colgroup>
+                    <tbody>
+
+                    <tr>
+                        <th scope="col">검색</th>
+                        <td scope="col">
+                            <select name="sel_date" class="select" onchange="web.pageMove('','sel_date='+this.value)">
+														<?php for($i=0; $i<count($SelList); $i++) { ?>
+														<option value="<?=$SelList[$i]['sel_date']?>" <?if ($sel_date == $SelList[$i]['sel_date']):?> selected <?php endif; ?>><?=substr($SelList[$i]['sel_date'], 0, 4);?>년 <?=substr($SelList[$i]['sel_date'], 4, 6);?>월</option>							
+														<?php }?>
+                            </select>
+                        </td>
+                    </tr>
+                    </tbody>
+            </table>
+        </div>
+        <!--- //검색 --->
+
+
+        <!--- 리스트 --->
+        <div class="board">
+
+            <table class="board_list" summary="번호, 위치, 제목, 게시기간, 등록일로 구성되었습니다. ">
+                <caption>제품목록</caption>
+                <colgroup>
+
+                    <col width="90px"/>
+                    <col width="60px" />
+                    <col width="60px" />
+                    <col width="60px" />
+                    <col width="400px"/>
+                </colgroup>
+                <thead>
+                <tr>
+                    <th scope="col">날짜</th>
+                    <th scope="col">접속자</th>
+                    <th scope="col">홈페이지</th>
+                    <th scope="col">모바일</th>
+                    <th scope="col">그래프</th>
+                </tr>
+                </thead>
+                <tbody>
+								<?php 
+								$sum_sumhap = 0;
+								$sum_h_sum = 0;
+								$sum_m_sum = 0;
+								for($i=0; $i<count($VisitList); $i++) {
+
+								$sum_sumhap += $VisitList[$i]['sumhap'];
+								$sum_h_sum += $VisitList[$i]['h_sum'];
+								$sum_m_sum += $VisitList[$i]['m_sum'];
+								$percent = ($VisitList[$i]['sumhap']/$maxVisit) * 100;
+								?>
+								<tr>
+									<td><?=$VisitList[$i]['c_date']?></td>
+									<td><?=$VisitList[$i]['sumhap']?></td>
+									<td><?=$VisitList[$i]['h_sum']?></td>
+									<td><?=$VisitList[$i]['m_sum']?></td>
+									<td style="text-align:left"><img src="images/ico_redbar.gif" alt="" style="width:<?=$percent?>%;height:20px;"></td>
+								</tr>
+								
+								<?php 
+								}
+								?>
+								<tr>
+									<td>TOTAL</td>
+									<td><?=$sum_sumhap?></td>
+									<td><?=$sum_h_sum?></td>
+									<td><?=$sum_m_sum?></td>
+									<td style="text-align:left"></td>
+								</tr>
+
+
+                
+
+                </tbody>
+            </table>
+
+
+        </div>
+        <!--- //리스트 --->
+
+
+    </div>
+
+    <!--- //contents_area --->

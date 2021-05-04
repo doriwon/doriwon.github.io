@@ -1,0 +1,171 @@
+<!--- contents_area --->
+<link href='./common/fullcalendar/fullcalendar.min.css' rel='stylesheet' />
+<link href='./common/fullcalendar/fullcalendar.print.min.css' rel='stylesheet' media='print' />
+<script src='./common/fullcalendar/lib/moment.min.js'></script>
+<script src='./common/fullcalendar/lib/jquery.min.js'></script>
+<script src='./common/fullcalendar/fullcalendar.min.js'></script>
+<script src='./common/fullcalendar/locale-all.js'></script>
+
+<!---
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/locale-all.js'></script>
+--->
+
+<link rel="stylesheet" href="./common/remodal/remodal.css">
+<link rel="stylesheet" href="./common/remodal/remodal-default-theme.css">
+
+<script>
+  $(document).ready(function() {
+		
+
+		var initialLocaleCode = 'ko';
+		var calendar = $('#calendar').fullCalendar({		
+    editable:true,
+		locale: initialLocaleCode,
+    header:{
+     left:'prev,next today',
+     center:'title',
+		 right:'month'
+     //right:'month,agendaWeek,agendaDay'
+    },
+    events: 'index_proc.php?WS=<?=$_GET['WS']?>&act=cl&b_cd=<?=$b_cd?>',
+	  //events: './get-events.php',
+    selectable:true,
+    selectHelper:true,
+    select: function(start, end, allDay) {
+			var start = $.fullCalendar.formatDate(start, "Y-MM-DD");
+			var end = $.fullCalendar.formatDate(end, "Y-MM-DD");
+				location.href="index.php?WS=<?=$_GET['WS']?>&act=pl&b_cd=<?=$b_cd?>&sch_Day="+start;
+				
+			//alert(start);
+			//날짜선택시
+			//$('[data-remodal-id=modal2]').remodal().open();;
+    },
+		eventRender: function(event, element) {		
+			element.attr('href', '#modal');
+			element.click(function() {	
+				 $.ajax({
+					url:"index_proc.php?WS=<?=$_GET['WS']?>&b_cd=<?=$b_cd?>&act=cv",
+					type:"POST",
+					data:{idx:event.id},
+					success:function(res){
+					 console.log(res);
+					 $contents = res['contents'];
+					 $("#idx").val(res['idx']);
+					 $("#modal1Title").text(res['start_ymd']);
+					 $("#modal1col1").text(res['b_cd']);
+					 $("#modal1col2").text(res['m_name']);
+					 $("#modal1col3").text(res['time_hh']);
+					 $("#modal1col4").text(res['title']);
+					 $("#modal1Desc").html($contents);
+					 
+					},
+					error:function(){alert('데이타를 가져오는데 실패했습니다.');$("button[class ='remodal-close']").trigger("click"); }
+				 });			
+			});
+		},
+   });
+  });
+
+	
+	$(document).on('opening', '.remodal', function () {});
+
+  $(document).on('opened', '.remodal', function () {});
+
+  $(document).on('closing', '.remodal', function (e) {});
+
+  $(document).on('closed', '.remodal', function (e) {});
+
+	$(document).on('cancellation', '.remodal', function () {});
+
+  $(document).on('confirmation', '.remodal', function () {
+    var idx = $("#idx").val();
+		console.log(idx);
+		location.href="index.php?WS=<?=$_GET['WS']?>&b_cd=<?=$b_cd?>&act=pv&idx="+idx;   
+  });
+
+  
+
+
+
+</script>
+
+<script src="./common/remodal/remodal.js"></script>
+<style>
+	.remodal-bg.with-red-theme.remodal-is-opening,
+	.remodal-bg.with-red-theme.remodal-is-opened {
+		filter: none;
+	}
+
+	.remodal-overlay.with-red-theme {
+		background-color: #f44336;
+	}
+
+	.remodal.with-red-theme {
+		background: #fff;
+	}
+</style>
+
+
+
+
+	<div class="contents_area">
+		<? require './Wpage300/inc_top.php'; ?>
+
+		<div id='calendar'></div>
+
+		<div class="remodal" data-remodal-id="modal" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
+			<button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+			<div>
+				<input type="hidden" name="idx" id="idx" value="">
+				<h2 id="modal1Title">2018-10-30</h2>
+				<br/>
+				<table class="pdc_table" cellspacing="0" border="0">					
+					<tr>
+						<th>구분</th>
+						<th>담당자</th>
+						<th>시간</th>						
+						<th>제목</th>						
+					</tr>
+					<tr>
+						<td style="text-align:center" id="modal1col1"></td>
+						<td style="text-align:center" id="modal1col2"></td>
+						<td style="text-align:center" id="modal1col3"></td>						
+						<td style="text-align:center" id="modal1col4"></td>						
+					</tr>
+					<tr>
+						<th>내용</th>
+						<td colspan="3">
+							<p id="modal1Desc"></p>
+						</td>
+					</tr>
+				</table>
+
+			</div>
+			
+
+			<br>
+			<button data-remodal-action="cancel" class="remodal-cancel">닫기</button>
+			<button data-remodal-action="confirm" class="remodal-confirm">상세</button>
+		</div>
+		<div>*일정클릭시 해당일정내용만확인/달력내클릭시 해당일의 일정 모두 조회됩니다.</div>
+
+		<!-- <div data-remodal-id="modal2" role="dialog" aria-labelledby="modal2Title" aria-describedby="modal2Desc">
+			<div>
+				<h2 id="modal2Title">2010-11-11 일정</h2>
+
+				<p id="modal2Desc">
+					리스트 들어가겠습니다.
+				</p>
+			</div>
+			<br>
+			<button data-remodal-action="confirm" class="remodal-confirm">닫기</button>
+		</div> -->
+
+	
+	</div>

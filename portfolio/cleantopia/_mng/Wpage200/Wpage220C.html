@@ -1,0 +1,131 @@
+	<!--- contents_area --->
+	<div class="contents_area">
+
+		<div class="title"><?=$board_name?> 관리</div>
+
+		<!--- 리스트 --->
+		<div class="board">
+			<form name="wform" id="wform" method="post" enctype="multipart/form-data" >
+			<input type="hidden" name="act" value="pu" />
+			<input type="hidden" name="idx" value="<?=$row['idx']?>" />
+			<input type="hidden" name="lng" value="<?=$lng?>" />
+			<input type="hidden" name="b_cd" value="<?=$b_cd?>" />
+			<input type="hidden" name="page" value="<?=$cpage?>" />
+				<table class="board_view" summary="번호, 위치, 제목, 게시기간, 등록일로 구성되었습니다. ">
+					<caption>제품목록</caption>
+					<colgroup>
+						<col width="200">
+						<col width="300">
+						<col width="200">
+						<col width="*">
+					</colgroup>
+					<tbody>
+						<?if($b_cd=="inquiry") { ?>
+						<tr>
+							<th>담당자</th>
+							<td><?=$row['name']?></td>
+							<th>회사명</th>
+							<td><?=$row['corp']?></td>
+						</tr>
+						<tr>
+							<th>연락처</th>
+							<td><?=$row['hp']?></td>
+							<th>이메일</th>
+							<td><?=$row['email']?></td>
+						</tr>						
+						<tr>
+							<th>제목</th>
+							<td colspan="3"><?=$row['title']?></td>
+						</tr>				
+						<tr>
+							<th>내용</th>
+							<td colspan="3"><?=nl2br($row['contents'])?></td>
+						</tr>
+					<?}?>
+					<?if($b_cd=="flowmeter") { ?>
+						<tr>
+							<th>신청인</th>
+							<td><?=$row['name']?></td>
+							<th>연락처</th>
+							<td><?=$row['hp']?></td>
+						</tr>
+						<tr>
+							<th>유량계종류</th>
+							<td><?=$row['f_flowkind']?></td>
+							<th>유체종류</th>
+							<td><?=$row['f_fluidkind']?></td>
+						</tr>						
+						<tr>
+							<th>구경</th>
+							<td><?=$row['f_size']?></td>
+							<th>수량</th>
+							<td><?=$row['f_amount']?></td>
+						</tr>	
+						<tr>
+							<th>교정여부</th>
+							<td><?=$row['f_type']?></td>
+							<th></th>
+							<td></td>
+						</tr>	
+					<?}?>
+					<?if($row['attach_file']){?>
+						<tr>
+							<th>첨부파일</th>
+							<td colspan="3"><a href="/Lib/download.php?fdir=<?=$row['b_cd']?>&fname=<?=$row['attach_file']?>"><?=$row['attach_file_name']?></a>
+							</td>
+						</tr>
+					<?}?>
+
+						<tr>
+							<th>처리내용</th>
+							<td colspan="3"><textarea style="width: 98%; height:150px; border: 1px solid #ccc;" name="comment" id="comment" ><?=$row['comment']?></textarea></td>
+						</tr>		
+						<tr>
+							<th>상태</th>
+							<td colspan="3">
+								<input type="radio" name="stat" value="대기" <?=($row['stat'] == '대기' || !$row['stat'])?" checked":"";?> data-valid="notnull" data-alert="상태" >대기 &nbsp;
+								<input type="radio" name="stat" value="보류" <?=($row['stat'] == '보류')?' checked':'';?>>보류 &nbsp;
+								<input type="radio" name="stat" value="완료" <?=($row['stat'] == '완료')?' checked':'';?>>완료 &nbsp;							
+						</tr>
+					
+				
+					</tbody>
+				</table>
+
+				<p class="btn_right">
+					<a href="javascript:Pwrite();"><span class="btn white type1 sch_bt"><? if ($row['idx']) echo '수정'; else echo '등록';?></span></a>
+					<? if ($row['idx']) {?><a href="javascript:Pdelete();"><span class="btn white type1 sch_bt">삭제</span></a><?}?>
+					<a href="javascript:void(0);" onclick="javascript:web.pageMove('','','act,idx')"><span class="btn white type1 sch_bt">목록</span></a>
+				</p>
+
+			</form>
+
+		</div>
+		<!--- //리스트 --->
+
+
+	</div>
+	<!--- //contents_area --->
+
+	<script type="text/javascript" src="<?=$WEBDIR['web_default']?>common/nse/js/HuskyEZCreator.js"></script>
+<script type="text/javascript">
+
+	function Pwrite() {
+		var frm=document.wform;
+		if(web.formValidation(frm)) {
+			frm.action='index.php?WS=<?=$_GET['WS']?>';
+			frm.submit();
+		}
+	}
+
+	function Pdelete(){
+		if (confirm('정말로 삭제하시겠습니까?'))
+		{
+			var frm=document.wform;
+			frm.act.value='pd';
+			frm.action="index.php?WS=<?=$_GET['WS']?>";
+			frm.submit();
+		}
+	}
+
+</script>
