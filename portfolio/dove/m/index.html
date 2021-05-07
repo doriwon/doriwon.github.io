@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="kr">
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0, user-scalable=yes">
+	<meta name="format-detection" content="telephone=no">
+	<title>도브 촉촉나눔 EVENT</title>
+	<link rel="stylesheet" type="text/css" href="../pc/asset/css/reset.css"/>
+	<link rel="stylesheet" type="text/css" href="asset/css/dove.css"/>	
+	<script type="text/javascript" src="../pc/asset/js/jquery-3.4.1.min.js"></script>	
+	<script type="text/javascript" src="../pc/asset/js/jquery-ui.min.js"></script>	
+	<script type="text/javascript" src="../pc/asset/js/raindrops.js"></script>	
+	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+</head>
+<body>
+	<div class="dove">
+		<img src="asset/images/m_dove_tit.jpg" alt="">
+		<div class="cont cont01 rel">
+			<img src="asset/images/dove_cont01.png" alt="">
+			<div class="event rel">	
+				<img src="asset/images/m_dove_event_bg.jpg" alt="">
+				<!-- step01 -->
+				<div class="step step01" data-step="1">
+					<div class="canvas_wrap"></div>
+					<img src="asset/images/dove_event_step01_tit.png" alt="" class="tit">
+					<img src="asset/images/m_dove_event_step01_click.png" alt="" class="click">
+                    <div class="water_wrap">
+						<div class="dot dot01" alt="1">도브 바디워시</div>
+						<div class="dot dot02" alt="2">도브 훼이셜 클렌징 무스</div>
+						<div class="dot dot03" alt="3">도브 핸드워시</div>
+						<div class="dot dot04" alt="4">도브 뷰티바</div>
+						<div class="dot dot05" alt="5">도브 포켓크림</div>
+					</div>
+					<div class="pop step01_1 hid">
+						<div class="pop_inner">
+							<img src="asset/images/dove_event_step01_pop.png" alt="">
+							<a  href="javascript:void(0)" class="btn stepNext" onclick="gtag('event', '클릭', {'event_category' : '도브프로젝트', 'event_label' : '다음단계'});">다음단계</a>
+						</div>
+						<div class="pop_bg"></div>
+					</div>
+				</div>
+				<!-- //step01 -->
+
+				<!-- step02 -->
+				<div class="step step02 hid" data-step="2">
+					<img src="asset/images/dove_event_step02_tit.png" alt="" class="tit">
+					<div class="rel">
+						<img src="asset/images/m_dove_event_step02_bg.jpg" alt="">
+						<div class="message_wrap">
+							<div class="name"><input type="text" name="tname" id="tname" placeholder="받으실 분"></div>
+							<textarea name="contents" id="contents" cols="30" rows="10" placeholder="도브로 촉촉함을 선물할게요"></textarea>	
+							<p class="info">*60자 메시지</p>
+							<button class="btn stepNext">작성완료</button>
+						</div>
+					</div>
+				</div>
+				<!-- //step02 -->
+
+				<!-- step03 -->
+				<div class="step step03 hid" data-step="3">
+					<img src="asset/images/dove_event_step03_tit.png" alt="" class="tit">
+					<ul class="write_wrap">
+						<li>
+							<div class="name">참여자 성명</div>
+							<div class="input_wrap"><input type="text" name="name" id="name"></div>
+						</li>
+						<li>
+							<div class="name">참여자 연락처</div>
+							<div class="input_wrap ver2 clearfix" id="smsDiv1">
+								<input type="text" name="hp" id="hp" numberOnly="true" maxlength="12">
+								<button class="blue_btn" id="smsSend" onclick="smsSend()">인증하기</button>
+							</div>
+							<div class="input_wrap ver2 clearfix mt10 hid" id="smsDiv2">
+								<input type="hidden" name="optchk" id="optchk" value="n">
+								<input type="text" name="otp" id="otp">
+								<button class="blue_btn"  onclick="smsAuth()">인증하기</button>
+								<p class="input_time">입력시간 <span id="countTime"></span></p>
+							</div>
+							
+						</li>
+						<li>
+							<div class="name">참여자 본인 주소</div>
+							<div class="input_wrap ver2 clearfix">
+								<input type="text" name="post" id="post" readonly onclick="alert('우편번호를 검색해주세요.')">
+								<button class="blue_btn" onclick="postcode()">우편번호</button>
+							</div>
+							<div class="input_wrap mt10"><input type="text" name="addr1" id="addr1" readonly></div>
+							<div class="input_wrap mt10"><input type="text" name="addr2" id="addr2"></div>
+						</li>
+					</ul>
+					<p class="info_txt">선물을 전달하실 분 주소는 당첨 확정 되신 분들에게만, 개별 확인 드릴 예정입니다.</p>
+					<div class="agree_wrap">
+						<div class="agree_cont">
+							<p class="fs14"><strong>이벤트 참가 신청 및 개인정보 수집∙이용 동의</strong></p>
+							<strong>[필수] 개인정보 수집 및 이용 동의</strong><br>
+							유니레버코리아㈜가 도브 이벤트 참가를 위해 수집하는 개인정보와 이용 목적은 아래와 같습니다. <br>
+							<table>
+								<caption>개인정보와 이용 목적</caption>
+								<tbody>
+									<tr>
+										<th>수집 이용 목적</th>
+										<td>이벤트 응모 접수, 당첨 및 경품 발송</td>
+									</tr>
+									<tr>
+										<th>필수 수집 이용 항목</th>
+										<td>이름, 휴대폰번호, 주소</td>
+									</tr>
+									<tr>
+										<th><strong>보유 이용 기간</strong></th>
+										<td><strong>이벤트 참여일로부터 3개월 간</strong></td>
+									</tr>
+								</tbody>	
+							</table>
+							<p class="dot"> 고객님은 본 동의를 거절할 수 있으나, 동의 하지 않으실 경우 이벤트 응모가 불가함을 알려드립니다. </p><br>
+							
+							<strong>[필수] 개인정보 처리 업무 위탁 동의</strong><br>
+							유니레버코리아㈜는 서비스 이행 및 향상을 위해서 아래와 같이 개인 정보를 외부 전문 업체에 위탁하고 있으며, 관계 법령에 따른 개인 정보보호 규정을 준수하여 이용자의 권익을 보호하고 개인 정보와 관련한 고객의 고충을 원활하게 처리할 수 있도록 최선을 다하고 있습니다. 유니레버코리아㈜는 수집된 개인 정보를 아래와 같은 외부 기관에 위탁하고 있으며, 명시된 목적 이외의 용도로 사용되지 않습니다. <br>
+							<table>
+								<caption>개인정보와 이용 목적</caption>
+								<tbody>
+									<tr>
+										<th>수탁자명</th>
+										<td>업무 내용</td>
+									</tr>
+									<tr>
+										<th>(주)웰콤퍼블리시스월드와이드, ㈜ 미스터로맨스</th>
+										<td>웹사이트 운영, 관리, 개인정보수집</td>
+									</tr>
+									<tr>
+										<th>(주)젠택애니로지스 ㈜이팀즈</th>
+										<td>경품 배송 및 CS</td>
+									</tr>
+								</tbody>	
+							</table>
+							<p class="dot"> 고객님은 본 동의를 거절할 수 있으나, 동의 하지 않으실 경우 이벤트 응모가 불가함을 알려드립니다.</p>
+							<p class="dot"> 보유 및 이용 기간 : 경품 배송을 위한 목적 달성 후 즉시 폐기</p>
+							<p class="dot"> 법령에 따른 개인 정보의 수집/이용, 계약의 이행/편의 증진을 위한 개인 정보 처리 위탁 및 개인 정보 처리와 관련된 일반 사항은 서비스의 개인 정보 처리 방침에 따릅니다.</p>
+						</div>
+						<input id="agree" name="agree" type="checkbox" checked>
+						<label for="agree">개인정보 활용 방침에 동의합니다</label>
+					</div>
+					<div class="btn_wrap clearfix txt_center">
+						<!--a  href="javascript:void(0)" class="share" id="kakao-link-btn" onclick="gtag('event', '클릭', {'event_category' : '도브프로젝트', 'event_label' : '공유하기'});" ><img src="asset/images/m_dove_event_step03_btn01.png" alt="공유하기"></a-->
+						<a  href="javascript:void(0)" style="float: inherit;" class="submit stepNext" onclick="gtag('event', '클릭', {'event_category' : '도브프로젝트', 'event_label' : '참여하기'});"><img src="asset/images/m_dove_event_step03_btn02.png" alt="참여하기"></a>
+					</div>
+					<div class="step03_1 pop hid">
+						<div class="pop_inner">
+							<a href="javascript:void(0);" class="btn_close close_btn hide_txt btn">닫기</a>
+							<img src="asset/images/dove_event_step03_pop_tit.png" alt="">
+							<div class="box_wrap">
+								<img src="asset/images/dove.jpg" alt="">
+								<p class="tit" id="kakao_title"></p>
+								<p class="cont" id="kakao_description"></p>
+							</div>
+							<div class="pop_btn_wrap clearfix txt_center">
+								<a  href="javascript:void(0)" class="share_btn" id="kakao-link-btn" onclick="gtag('event', '클릭', {'event_category' : '도브프로젝트', 'event_label' : '공유하기'});"><img src="asset/images/m_dove_event_step03_btn01.png" alt="공유하기"></a>
+								<a  href="javascript:void(0)" class="close_btn" onclick="gtag('event', '클릭', {'event_category' : '도브프로젝트', 'event_label' : '공유하기닫기'});"><img src="asset/images/m_dove_event_step03_btn03.png" alt="닫기"></a>
+							</div>
+						</div>
+						<div class="pop_bg"></div>
+					</div>
+				</div>
+				<!-- //step03 -->
+			</div>
+		</div>
+		<div class="cont cont02 rel"><img src="asset/images/dove_cont02.png" alt=""></div>
+		<!-- 1218(금)부터, cont02.css.bg수정 ->
+		<div class="cont cont03 rel">
+			<img src="asset/images/dove_cont03.png" alt="">
+			<a href="#1" target="_blank" class="btn" onclick="gtag('event', '클릭', {'event_category' : '도브프로젝트', 'event_label' : '선물하기_바로가기'});">선물하기 바로가기</a>
+		</div>
+		<!-- //1218(금)부터 -->
+		<div class="cont cont04 rel">
+			<img src="asset/images/dove_cont04.png" alt="">
+			<a href="https://smartstore.naver.com/iwon13/products/4196987821" target="_blank" class="btn btn01" onclick="gtag('event', '클릭', {'event_category' : '도브프로젝트', 'event_label' : '도브포켓크림_구매하기'});">도브 포켓크림 구매하기</a>
+			<a href="https://smartstore.naver.com/iwon13/products/5122852648" target="_blank" class="btn btn02" onclick="gtag('event', '클릭', {'event_category' : '도브프로젝트', 'event_label' : '도브훼이셜클렌징무스_구매하기'});">도브 훼이셜 클렌징 무스 구매하기</a>
+			<a href="https://smartstore.naver.com/iwon13/products/4287599655" target="_blank" class="btn btn03" onclick="gtag('event', '클릭', {'event_category' : '도브프로젝트', 'event_label' : '도브핸드워시_구매하기'});">도브 핸드워시 구매하기</a>
+			<a href="https://smartstore.naver.com/iwon13/products/423014645" target="_blank" class="btn btn04" onclick="gtag('event', '클릭', {'event_category' : '도브프로젝트', 'event_label' : '도브뷰티바_구매하기'});">도브 뷰티바 구매하기</a>
+			<a href="https://smartstore.naver.com/iwon13/products/423003828" target="_blank" class="btn btn05" onclick="gtag('event', '클릭', {'event_category' : '도브프로젝트', 'event_label' : '도브바디워시_구매하기'});">도브 바디워시 구매하기</a>
+		</div>
+		<img src="asset/images/m_dove_footer.jpg" alt="">
+	</div>
+	<div class="check_pop" style="display: none;">
+		<div class="dt">
+			<div class="inner">
+				<img src="../pc/asset/images/check_pop.jpg" alt="">
+				<a href="javascript:void(0)" class="check_close_btn hide_txt" onclick="gtag('event', '클릭', {'event_category' : '도브프로젝트', 'event_label' : '이벤트당첨확인_닫기'});">닫기</a>
+				<input type="text" name="hp1" id="hp1" placeholder="010" class="hp_input hp1" value="010" numberonly='true'>
+				<input type="text" name="hp2" id="hp2" class="hp_input hp2" numberonly='true' maxlength="4">
+				<input type="text" name="hp3" id="hp3" class="hp_input hp3" numberonly='true' maxlength="4">
+				<a href="javascript:void(0)" class="submit_btn" onclick="gtag('event', '클릭', {'event_category' : '도브프로젝트', 'event_label' : '이벤트당첨확인_확인'});">확인</a>
+			</div>
+		</div>
+		<div class="pop_bg"></div>
+	</div>
+	<div id="postLayer" style="display:none;position:fixed;overflow:hidden;z-index:1001;-webkit-overflow-scrolling:touch;">
+		<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="width: initial;cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">
+	</div>
+	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+	<script src="/post.js"></script>
+	<script src="/event_new.js?v=1"></script>
+
+	<script>
+		// 이벤트확인 팝업
+		$(".check_pop .check_close_btn, .check_pop .pop_bg").click(function () {
+			$(".check_pop").fadeOut();
+		});
+
+		// step01 - 클릭커서 제거
+		$(".dove .step01").on('click', function() {
+			$(this).find(".click").fadeOut();
+		});
+
+		// step01 - 물방울 색 채우기
+		$(".dove .step01 .dot").on('click', function() {
+			$(this).addClass("on")
+		});
+
+		// step01 - 배경 물 채우기				
+		$(".dove .canvas_wrap").raindrops({
+			//canvasWidth: 3000,
+			waveLength: 150,
+			canvasHeight: 1300,
+			rippleSpeed: 0.01,
+			frequency: 3,
+			density: 0
+		});
+
+		var i = 0
+		$(".dove .step01 .dot").on('click', function() {
+			$(".canvas_wrap canvas").addClass("up" + i++);
+		});
+
+		// step01 - 팝업
+		$(".dove .step01 .pop .btn").on('click', function() {
+			$(this).parents(".pop").fadeOut();
+		});
+
+		// step02 - 커서 제어
+		$(".dove .message_wrap .name, .dove .message_wrap .name").click(function(){
+			$(".dove .message_wrap .name").addClass("off");
+		});
+	</script>
+</body>
+</html>
