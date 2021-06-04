@@ -1,0 +1,492 @@
+@charset "UTF-8";
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+.pc.camping_wrap {
+  min-width: 1280px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.pc.camping_wrap {
+  position: relative;
+  width: 1920px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.pc .camping {
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  width: 1920px;
+}
+.pc .camping * {
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+}
+.pc .camping img {
+  display: inline-block;
+  max-width: 100%;
+  vertical-align: top;
+}
+.pc .camping .btn,
+.pc .camping .btn2 {
+  font-size: 0;
+  text-indent: -9999px;
+  display: block;
+  position: absolute;
+  height: 27px;
+}
+.pc .camping .clearfix:after {
+  display: block;
+  clear: both;
+  content: "";
+}
+.pc .camping .rel {
+  position: relative;
+}
+.pc .camping .video_wrap .video {
+  padding-bottom: 56.25%;
+}
+.pc .camping .video_wrap .video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+.pc .camping .txt,
+.pc .camping .img {
+  position: absolute;
+}
+
+/* animation*/
+.animated {
+  visibility: hidden;
+  animation-name: none;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+.animated.on {
+  visibility: visible;
+}
+.animated.on:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  animation-duration: 1s;
+}
+.fadeIn {
+  visibility: visible;
+  animation-name: fadeIn;
+  animation-duration: 1s;
+  animation-delay: 0.2s;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.delay300 {
+  animation-delay: 0.3s;
+}
+.delay500 {
+  animation-delay: 0.7s;
+}
+.delay1000 {
+  animation-delay: 1s;
+}
+
+/* tit */
+.tit {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+.tit .img_wrap {
+  position: relative;
+  height: 100vh;
+  background-size: cover;
+  background-color: #fff;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  transition: transform 4.5s cubic-bezier(0.23, 1, 0.32, 1);
+  -webkit-transition: transform 4.5s cubic-bezier(0.23, 1, 0.32, 1);
+  background-image: url("images/camping_tit.jpg");
+}
+.tit.active .img_wrap {
+  transform: scale(1);
+  -webkit-transform: scale(1);
+}
+.tit .img_wrap:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #5c4c15;
+  opacity: 1;
+  transition: opacity 1s;
+  -webkit-transition: opacity 1s;
+}
+.tit.active .img_wrap:after {
+  opacity: 0;
+}
+.side-frame-wrap {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+.side-frame-wrap [class*="frame-"] {
+  position: absolute;
+  background-color: #5c4c15;
+  transition: transform 2.5s cubic-bezier(0.23, 1, 0.32, 1);
+  -webkit-transition: transform 2.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+body.aside-active .side-frame-wrap [class*="frame-"] {
+  transition: transform 1.5s cubic-bezier(0.23, 1, 0.32, 1);
+  -webkit-transition: transform 1.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.side-frame-wrap .frame-y,
+body.aside-active .side-frame-wrap .frame-y {
+  width: 100%;
+  height: 40px;
+  transform: scaleY(1);
+  -webkit-transform: scaleY(1);
+}
+.side-frame-wrap .frame-x,
+body.aside-active .side-frame-wrap .frame-x {
+  top: 0;
+  height: 100%;
+  transform: scaleX(1);
+  -webkit-transform: scaleX(1);
+}
+.tit.active .side-frame-wrap .frame-y {
+  transform: scaleY(0);
+  -webkit-transform: scaleY(0);
+}
+.tit.active .side-frame-wrap .frame-x {
+  transform: scaleX(0);
+  -webkit-transform: scaleX(0);
+}
+.side-frame-wrap [class*="frame-"].top {
+  top: 0;
+  transform-origin: 50% 0;
+}
+.side-frame-wrap [class*="frame-"].right {
+  right: 0;
+  width: 190px;
+  transform-origin: 100%;
+}
+.side-frame-wrap [class*="frame-"].bottom {
+  bottom: 0;
+  transform-origin: 50% 100%;
+}
+.side-frame-wrap [class*="frame-"].left {
+  left: 0;
+  width: 70px;
+  transform-origin: 0;
+}
+
+.pc .camping .tit .txt {
+  z-index: 2;
+}
+.pc .camping .tit .txt01 {
+  right: 0;
+  left: 0;
+  top: 287px;
+  margin: 0 auto;
+}
+.pc .camping .tit .txt02 {
+  left: 220px;
+  top: 610px;
+}
+
+/* cont */
+.pc .camping .cont01 .img01 {
+  top: 120px;
+  right: 360px;
+}
+.pc .camping .cont01 .img02 {
+  left: 0;
+  top: 475px;
+}
+.pc .camping .cont01 .img03 {
+  left: 242px;
+  top: 475px;
+}
+.pc .camping .cont01 .img04 {
+  left: 518px;
+  bottom: 120px;
+}
+.pc .camping .cont01 .btn {
+  left: 1254px;
+  width: 314px;
+}
+.pc .camping .cont01 .btn01 {
+  top: 1186px;
+}
+.pc .camping .cont01 .btn02 {
+  top: 1219px;
+}
+.pc .camping .cont01 .btn03 {
+  top: 1251px;
+}
+.pc .camping .cont01 .btn04 {
+  top: 1283px;
+}
+
+.pc .camping .cont02 .img01 {
+  top: 120px;
+  left: 0;
+}
+.pc .camping .cont02 .img02 {
+  top: 120px;
+  right: 0;
+}
+.pc .camping .cont02 .img03 {
+  top: 832px;
+  left: 313px;
+}
+.pc .camping .cont02 .img04 {
+  top: 832px;
+  left: 781px;
+}
+.pc .camping .cont02 .btn {
+  left: 1272px;
+  width: 302px;
+}
+.pc .camping .cont02 .btn01 {
+  top: 1056px;
+}
+.pc .camping .cont02 .btn02 {
+  top: 1086px;
+}
+.pc .camping .cont02 .btn03 {
+  top: 1118px;
+}
+.pc .camping .cont02 .btn04 {
+  top: 1150px;
+}
+.pc .camping .cont02 .video_wrap {
+  position: absolute;
+  width: 1135px;
+  bottom: 368px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+.pc .camping .cont03 .img01 {
+  top: 120px;
+  left: 201px;
+}
+.pc .camping .cont03 .img02 {
+  top: 120px;
+  right: 0;
+}
+.pc .camping .cont03 .img03 {
+  top: 605px;
+  right: 0;
+}
+.pc .camping .cont03 .img04 {
+  top: 1491px;
+  left: 592px;
+}
+.pc .camping .cont03 .img05 {
+  top: 1491px;
+  right: 0;
+}
+.pc .camping .cont03 .img06 {
+  top: 2121px;
+  right: 141px;
+}
+.pc .camping .cont03 .img07 {
+  bottom: 332px;
+  left: 0;
+}
+.pc .camping .cont03 .img08 {
+  bottom: 120px;
+  left: 554px;
+}
+.pc .camping .cont03 .btn {
+  left: 1117px;
+  width: 293px;
+}
+.pc .camping .cont03 .btn01 {
+  top: 668px;
+}
+.pc .camping .cont03 .btn02 {
+  top: 699px;
+}
+.pc .camping .cont03 .btn03 {
+  top: 729px;
+}
+.pc .camping .cont03 .btn04 {
+  top: 765px;
+}
+.pc .camping .cont03 .btn05 {
+  top: 799px;
+}
+.pc .camping .cont03 .btn06 {
+  top: 832px;
+}
+
+.pc .camping .cont03 .btn2 {
+  left: 777px;
+  width: 317px;
+}
+.pc .camping .cont03 .btn07 {
+  bottom: 880px;
+}
+.pc .camping .cont03 .btn08 {
+  bottom: 847px;
+}
+.pc .camping .cont03 .btn09 {
+  bottom: 815px;
+}
+.pc .camping .cont03 .btn10 {
+  bottom: 786px;
+}
+.pc .camping .cont03 .btn11 {
+  bottom: 748px;
+}
+.pc .camping .cont03 .btn12 {
+  bottom: 716px;
+}
+.pc .camping .cont03 .btn13 {
+  bottom: 687px;
+}
+.pc .camping .cont03 .btn14 {
+  bottom: 655px;
+}
+
+.pc .camping .cont04 .img01 {
+  top: 123px;
+  left: 729px;
+}
+.pc .camping .cont04 .img02 {
+  top: 478px;
+  left: 0;
+}
+.pc .camping .cont04 .img03 {
+  top: 913px;
+  left: 0;
+}
+.pc .camping .cont04 .img04 {
+  top: 1027px;
+  left: 518px;
+}
+.pc .camping .cont04 .btn {
+  left: 393px;
+  width: 178px;
+}
+.pc .camping .cont04 .btn01 {
+  top: 484px;
+}
+.pc .camping .cont04 .btn02 {
+  top: 515px;
+}
+.pc .camping .cont04 .btn03 {
+  top: 544px;
+}
+.pc .camping .cont04 .btn04 {
+  top: 576px;
+}
+.pc .camping .cont04 .btn05 {
+  top: 608px;
+}
+.pc .camping .cont04 .btn06 {
+  top: 641px;
+}
+.pc .camping .cont04 .btn2 {
+  left: 1252px;
+  width: 212px;
+}
+.pc .camping .cont04 .btn07 {
+  bottom: 535px;
+}
+.pc .camping .cont04 .btn08 {
+  bottom: 502px;
+}
+.pc .camping .cont04 .btn09 {
+  bottom: 470px;
+}
+.pc .camping .cont04 .btn10 {
+  bottom: 439px;
+}
+.pc .camping .cont04 .btn11 {
+  bottom: 407px;
+}
+.pc .camping .cont04 .btn12 {
+  bottom: 373px;
+}
+
+.pc .camping .cont05 .img01 {
+  top: 0;
+  left: 0;
+}
+.pc .camping .cont05 .img02 {
+  top: 0;
+  right: 0;
+}
+.pc .camping .cont05 .img03 {
+  bottom: 136px;
+  left: 313px;
+}
+.pc .camping .cont05 .img04 {
+  bottom: 136px;
+  left: 781px;
+}
+.pc .camping .cont05 .btn {
+  left: 996px;
+  width: 184px;
+}
+.pc .camping .cont05 .btn01 {
+  top: 381px;
+}
+.pc .camping .cont05 .btn02 {
+  top: 409px;
+}
+.pc .camping .cont05 .btn03 {
+  top: 438px;
+}
+.pc .camping .cont05 .btn04 {
+  top: 472px;
+}
+.pc .camping .cont05 .btn2 {
+  left: 1269px;
+  width: 213px;
+}
+.pc .camping .cont05 .btn07 {
+  bottom: 569px;
+}
+.pc .camping .cont05 .btn08 {
+  bottom: 538px;
+}
+.pc .camping .cont05 .btn09 {
+  bottom: 508px;
+}
+.pc .camping .cont05 .btn10 {
+  bottom: 476px;
+}
+.pc .camping .cont05 .btn11 {
+  bottom: 434px;
+}

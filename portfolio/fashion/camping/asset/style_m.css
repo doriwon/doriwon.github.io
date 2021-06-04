@@ -1,0 +1,510 @@
+@charset "UTF-8";
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+.mo.camping {
+  overflow: hidden;
+}
+.mo.camping * {
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+}
+.mo.camping img {
+  display: inline-block;
+  width: 100%;
+  vertical-align: top;
+}
+.mo.camping .clearfix:after {
+  display: block;
+  clear: both;
+  content: "";
+}
+.mo.camping .rel {
+  position: relative;
+}
+.mo.camping .video_wrap {
+  width: 100%;
+  left: 0;
+  position: absolute;
+}
+.mo.camping .video {
+  padding-bottom: 56.13%;
+}
+.mo.camping .video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+.mo.camping .btn,
+.mo.camping .btn2 {
+  font-size: 0;
+  text-indent: -9999px;
+  display: block;
+  position: absolute;
+}
+
+.mo.camping .txt,
+.mo.camping .img {
+  position: absolute;
+}
+
+/* animation*/
+.animated {
+  visibility: hidden;
+  animation-name: none;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+.animated.on {
+  visibility: visible;
+}
+
+.animated.on:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  animation-duration: 1s;
+}
+.fadeIn {
+  visibility: visible;
+  animation-name: fadeIn;
+  animation-duration: 1s;
+  animation-delay: 0.2s;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.delay300 {
+  animation-delay: 0.3s;
+}
+.delay500 {
+  animation-delay: 0.7s;
+}
+.delay1000 {
+  animation-delay: 1s;
+}
+
+.tit {
+  position: relative;
+  height: 140.1333333333333vw;
+  overflow: hidden;
+}
+.tit .img_wrap {
+  position: relative;
+  height: 140.1333333333333vw;
+  background-size: cover;
+  background-color: #fff;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  transition: transform 4.5s cubic-bezier(0.23, 1, 0.32, 1);
+  -webkit-transition: transform 4.5s cubic-bezier(0.23, 1, 0.32, 1);
+  background-image: url("images/m_camping_tit.jpg");
+}
+.tit.active .img_wrap {
+  transform: scale(1);
+  -webkit-transform: scale(1);
+}
+.tit .img_wrap:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #5c4c15;
+  opacity: 1;
+  transition: opacity 1s;
+  -webkit-transition: opacity 1s;
+}
+.tit.active .img_wrap:after {
+  opacity: 0;
+}
+.side-frame-wrap {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+.side-frame-wrap [class*="frame-"] {
+  position: absolute;
+  background-color: #5c4c15;
+  transition: transform 2.5s cubic-bezier(0.23, 1, 0.32, 1);
+  -webkit-transition: transform 2.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+body.aside-active .side-frame-wrap [class*="frame-"] {
+  transition: transform 1.5s cubic-bezier(0.23, 1, 0.32, 1);
+  -webkit-transition: transform 1.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.side-frame-wrap .frame-y,
+body.aside-active .side-frame-wrap .frame-y {
+  width: 100%;
+  height: 40px;
+  transform: scaleY(1);
+  -webkit-transform: scaleY(1);
+}
+.side-frame-wrap .frame-x,
+body.aside-active .side-frame-wrap .frame-x {
+  top: 0;
+  height: 100%;
+  transform: scaleX(1);
+  -webkit-transform: scaleX(1);
+}
+.tit.active .side-frame-wrap .frame-y {
+  transform: scaleY(0);
+  -webkit-transform: scaleY(0);
+}
+.tit.active .side-frame-wrap .frame-x {
+  transform: scaleX(0);
+  -webkit-transform: scaleX(0);
+}
+.side-frame-wrap [class*="frame-"].top {
+  top: 0;
+  transform-origin: 50% 0;
+}
+.side-frame-wrap [class*="frame-"].right {
+  right: 0;
+  width: 14.66666666666667%; /* 110px */
+  transform-origin: 100%;
+}
+.side-frame-wrap [class*="frame-"].bottom {
+  bottom: 0;
+  transform-origin: 50% 100%;
+}
+.side-frame-wrap [class*="frame-"].left {
+  left: 0;
+  width: 14.66666666666667%;
+  transform-origin: 0;
+}
+.mo.camping .tit .txt {
+  z-index: 2;
+  width: 100%;
+}
+.mo.camping .tit .txt01 {
+  top: 0;
+  left: 0;
+}
+.mo.camping .tit .txt02 {
+  top: 61.84586108468126%;
+  left: 0;
+}
+.mo.camping .cont01 .img01 {
+  width: 85.33333333333333%;
+  right: 0;
+  top: 15.33613445378151%;
+}
+.mo.camping .cont01 .img02 {
+  width: 30.26666666666667%;
+  left: 0;
+  top: 49.11764705882353%;
+}
+.mo.camping .cont01 .img03 {
+  width: 32.93333333333333%;
+  left: 30.26666666666667%;
+  top: 49.11764705882353%;
+}
+.mo.camping .cont01 .img04 {
+  width: 89.33333333333333%;
+  left: 5.333333333333333%;
+  bottom: 15.25210084033613%;
+}
+.mo.camping .cont01 .btn {
+  left: 22.26666666666667%;
+  width: 57.33333333333333%;
+  height: 1.890756302521008%;
+}
+.mo.camping .cont01 .btn01 {
+  bottom: 11.34453781512605%;
+}
+.mo.camping .cont01 .btn02 {
+  bottom: 9.159663865546218%;
+}
+.mo.camping .cont01 .btn03 {
+  bottom: 6.932773109243697%;
+}
+.mo.camping .cont01 .btn04 {
+  bottom: 4.789915966386555%;
+}
+
+.mo.camping .cont02 .img01 {
+  width: 89.33333333333333%;
+  right: 5.333333333333333%;
+  top: 4.238784881667255%;
+}
+.mo.camping .cont02 .img02 {
+  width: 30.53333333333333%;
+  right: 0;
+  top: 22.99540798304486%;
+}
+.mo.camping .cont02 .img03 {
+  width: 45.6%;
+  left: 0;
+  top: 43.55351465913105%;
+}
+.mo.camping .cont02 .img04 {
+  width: 45.6%;
+  left: 49.06666666666667%;
+  top: 43.55351465913105%;
+}
+.mo.camping .cont02 .video_wrap {
+  width: 89.33333333333333%;
+  left: 5.333333333333333%;
+  bottom: 17.76757329565525%;
+  margin: 0 auto;
+}
+.mo.camping .cont02 .btn {
+  left: 22.26666666666667%;
+  width: 57.33333333333333%;
+  height: 1.589544330625221%;
+}
+.mo.camping .cont02 .btn01 {
+  top: 60.9325326739668%;
+}
+.mo.camping .cont02 .btn02 {
+  top: 62.59272341928647%;
+}
+.mo.camping .cont02 .btn03 {
+  top: 64.28823737195337%;
+}
+.mo.camping .cont02 .btn04 {
+  top: 66.12504415400918%;
+}
+
+.mo.camping .cont03 .img01 {
+  width: 82.53333333333333%;
+  right: 0%;
+  top: 16.30094043887147%;
+}
+.mo.camping .cont03 .img02 {
+  width: 33.73333333333333%;
+  left: 0;
+  top: 30.76578593819973%;
+}
+.mo.camping .cont03 .img03 {
+  width: 33.73333333333333%;
+  left: 0;
+  top: 39.07299596954769%;
+}
+.mo.camping .cont03 .img04 {
+  width: 70.53333333333333%;
+  right: 0;
+  top: 46.32781012091357%;
+}
+.mo.camping .cont03 .img05 {
+  width: 67.46666666666667%;
+  left: 5.333333333333333%;
+  bottom: 25.83967756381549%;
+}
+.mo.camping .cont03 .img06 {
+  width: 33.86666666666667%;
+  right: 0;
+  bottom: 14.1961486789073%;
+}
+.mo.camping .cont03 .img07 {
+  width: 53.86666666666667%;
+  left: 5.333333333333333%;
+  bottom: 5.642633228840125%;
+}
+.mo.camping .cont03 .img08 {
+  width: 49.6%;
+  right: 5.333333333333333%;
+  bottom: 2.619793999104344%;
+}
+.mo.camping .cont03 .btn {
+  left: 16.4%;
+  width: 57.46666666666667%;
+  height: 1.074787281683833%;
+}
+.mo.camping .cont03 .btn01 {
+  top: 8.7102552619794%;
+}
+.mo.camping .cont03 .btn02 {
+  top: 9.695476936856247%;
+}
+.mo.camping .cont03 .btn03 {
+  top: 10.83743842364532%;
+}
+.mo.camping .cont03 .btn04 {
+  top: 11.97939991043439%;
+}
+.mo.camping .cont03 .btn05 {
+  top: 13.14375279892521%;
+}
+.mo.camping .cont03 .btn06 {
+  top: 14.30810568741603%;
+}
+.mo.camping .cont03 .btn2 {
+  right: 36.8%;
+  width: 63.33333333333333%;
+  height: 1.074787281683833%;
+}
+.mo.camping .cont03 .btn07 {
+  bottom: 22.61531571876399%;
+}
+.mo.camping .cont03 .btn08 {
+  bottom: 21.42857142857143%;
+}
+.mo.camping .cont03 .btn09 {
+  bottom: 20.28660994178236%;
+}
+.mo.camping .cont03 .btn10 {
+  bottom: 19.23421406180027%;
+}
+.mo.camping .cont03 .btn11 {
+  bottom: 18.00268696820421%;
+}
+.mo.camping .cont03 .btn12 {
+  bottom: 16.92789968652038%;
+}
+.mo.camping .cont03 .btn13 {
+  bottom: 15.74115539632781%;
+}
+.mo.camping .cont03 .btn14 {
+  bottom: 14.64397671294223%;
+}
+
+.mo.camping .cont04 .img01 {
+  width: 85.33333333333333%;
+  right: 0%;
+  top: 16.37383177570093%;
+}
+.mo.camping .cont04 .img02 {
+  width: 33.86666666666667%;
+  left: 0;
+  top: 37.38317757009346%;
+}
+.mo.camping .cont04 .img03 {
+  width: 33.86666666666667%;
+  left: 0;
+  top: 51.51401869158879%;
+}
+.mo.camping .cont04 .img04 {
+  width: 89.33333333333333%;
+  right: 5.333333333333333%;
+  bottom: 15.73831775700935%;
+}
+.mo.camping .cont04 .btn,
+.mo.camping .cont04 .btn2 {
+  left: 39.73333333333333%;
+  width: 34.53333333333333%;
+  height: 1.719626168224299%;
+}
+.mo.camping .cont04 .btn01 {
+  top: 40.07476635514019%;
+}
+.mo.camping .cont04 .btn02 {
+  top: 41.75700934579439%;
+}
+.mo.camping .cont04 .btn03 {
+  top: 43.62616822429907%;
+}
+.mo.camping .cont04 .btn04 {
+  top: 45.53271028037383%;
+}
+.mo.camping .cont04 .btn05 {
+  top: 47.4392523364486%;
+}
+.mo.camping .cont04 .btn06 {
+  top: 49.34579439252336%;
+}
+.mo.camping .cont04 .btn2 {
+  left: 29.6%;
+  width: 41.86666666666667%;
+}
+
+.mo.camping .cont04 .btn07 {
+  bottom: 12.71028037383178%;
+}
+.mo.camping .cont04 .btn08 {
+  bottom: 10.72897196261682%;
+}
+.mo.camping .cont04 .btn09 {
+  bottom: 8.785046728971963%;
+}
+.mo.camping .cont04 .btn10 {
+  bottom: 6.953271028037383%;
+}
+.mo.camping .cont04 .btn11 {
+  bottom: 5.08411214953271%;
+}
+.mo.camping .cont04 .btn12 {
+  bottom: 3.327102803738318%;
+}
+
+.mo.camping .cont05 .img01 {
+  width: 89.33333333333333%;
+  left: 5.333333333333333%;
+  top: 6.006006006006006%;
+}
+.mo.camping .cont05 .img02 {
+  width: 30.8%;
+  right: 0;
+  top: 33.28328328328328%;
+}
+.mo.camping .cont05 .img03 {
+  width: 42.26666666666667%;
+  left: 0;
+  bottom: 18.01801801801802%;
+}
+.mo.camping .cont05 .img04 {
+  width: 42.4%;
+  left: 44.93333333333333%;
+  bottom: 18.01801801801802%;
+}
+.mo.camping .cont05 .btn,
+.mo.camping .cont05 .btn2 {
+  left: 7.866666666666667%;
+  width: 34.26666666666667%;
+  height: 2.502502502502503%;
+}
+.mo.camping .cont05 .btn01 {
+  bottom: 50.4004004004004%;
+}
+.mo.camping .cont05 .btn02 {
+  bottom: 47.74774774774775%;
+}
+.mo.camping .cont05 .btn03 {
+  bottom: 45.24524524524525%;
+}
+.mo.camping .cont05 .btn04 {
+  bottom: 42.64264264264264%;
+}
+.mo.camping .cont05 .btn2 {
+  left: 43.2%;
+  width: 43.2%;
+}
+.mo.camping .cont05 .btn05 {
+  bottom: 13.76376376376376%;
+}
+.mo.camping .cont05 .btn06 {
+  bottom: 11.26126126126126%;
+}
+.mo.camping .cont05 .btn07 {
+  bottom: 8.608608608608609%;
+}
+.mo.camping .cont05 .btn08 {
+  bottom: 6.106106106106106%;
+}
+.mo.camping .cont05 .btn09 {
+  bottom: 3.653653653653654%;
+}

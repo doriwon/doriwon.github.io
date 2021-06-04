@@ -1,0 +1,1426 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, viewport-fit=cover">
+    <title>ODUMAK</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js"></script>
+</head>
+<body>
+	<style>
+		/*reset + common*/
+		@import url('https://fonts.googleapis.com/earlyaccess/notosanskr.css');
+		body{
+			margin:0;
+			padding:0;
+			font-family: 'Noto Sans KR', sans-serif;
+		}
+		.odumak{
+			position:relative;
+			background-color:#fff;
+			text-align: center;
+		}
+		.odumak *{
+			margin:0;
+			padding:0;
+			line-height:1;
+			font-family: 'Noto Sans KR', sans-serif;
+			letter-spacing:-0.025em;
+		}
+		.odumak .clearfix:after{
+			content:'';
+			display:block;
+			clear:both;
+			overflow:hidden;
+			height:0;
+		}
+		.odumak .f_left{float:left;}
+		.odumak .f_right{float:right;}
+		.odumak h1,
+		.odumak h2,
+		.odumak h3,
+		.odumak h4,
+		.odumak h5,
+		.odumak h6{
+			margin:0;
+			padding:0;
+		}
+		.odumak ol,
+		.odumak ul,
+		.odumak li{
+			list-style:none;
+			margin:0;
+			padding:0;
+		}
+		.odumak a{
+			text-decoration: none;
+			color: #000;
+		}
+		.odumak button{
+			background:none;
+			border:none;
+			cursor:pointer;
+		}
+		.odumak img{
+			width:100%;
+			vertical-align:top;
+		}
+		.odumak strong{font-weight:600;}
+		.odumak .wbka{-ms-word-break:keep-all;word-break:keep-all;}
+		.odumak .rel{position:relative;}
+		.odumak .ib{display:inline-block;}
+		.odumak .dt{display:table;width: 100%;}
+		.odumak .tc{display:table-cell;vertical-align:middle;}
+		.odumak .txt_center{text-align:center;}
+		.odumak .txt_left{text-align:left;}
+		.odumak .txt_right{text-align:right;}
+		.odumak .hide_txt{text-indent: -9999px;}
+		.odumak .bg_black{background-color:#000000;}
+		.odumak .bg_yellow{background-color:#fdf2d8;}
+		.odumak .bg_white{background-color:#fff;}
+		.odumak .bg_gray{background: #f8f6f3;}
+		.odumak .mt3{margin-top:0.46875vw;}
+		.odumak .mt6{margin-top:0.9375vw;}
+		.odumak .mt10 {margin-top: 1.5625vw;}
+		.odumak .mt27{margin-top:4.21875vw;}
+		.odumak .mt37{margin-top:5.78125vw;}
+		.odumak .mt50 {margin-top: 7.8125vw;}		
+		.odumak .mr10 {margin-right: 1.5625vw;}							
+		.odumak .pt14{padding-top:2.1875vw;}
+		.odumak .pt18{padding-top:2.8125vw;}
+		.odumak .pt20{padding-top:3.125vw;}
+		.odumak .pt27{padding-top:4.21875vw;}
+		.odumak .pt30{padding-top: 4.6875vw;}
+		.odumak .pt32{padding-top:5vw;}
+		.odumak .pt35{padding-top:5.46875vw;}
+		.odumak .pt40{padding-top:6.25vw;}
+		.odumak .pt45{padding-top:7.03125vw;}
+		.odumak .pt50{padding-top:7.8125vw;}
+		.odumak .pt51{padding-top:7.96875vw;}
+		.odumak .pt60{padding-top:9.375vw;}
+		.odumak .pt70{padding-top: 10.9375vw;}
+		.odumak .pt77{padding-top:12.03125vw;}
+		.odumak .pt86{padding-top:13.4375vw;}
+		.odumak .pt92{padding-top:14.375vw;}
+		.odumak .pt95{padding-top:14.84375vw;}
+		.odumak .pt120{padding-top: 18.75vw;}
+		.odumak .pt162{padding-top:25.3125vw;}
+		.odumak .pb26{padding-bottom: 4.0625vw;}
+		.odumak .pb30{padding-bottom: 4.6875vw;}							
+		.odumak .pb35{padding-bottom:5.46875vw;}
+		.odumak .pb40{padding-bottom: 6.25vw;}
+		.odumak .pb44{padding-bottom: 6.875vw;}
+		.odumak .pb47{padding-bottom:7.34375vw;}
+		.odumak .pb50{padding-bottom: 7.8125vw;}
+		.odumak .pb66{padding-bottom:10.3125vw;}
+		.odumak .pb68{padding-bottom:10.625vw;}
+		.odumak .pb77{padding-bottom:12.03125vw;}
+		.odumak .pb85{padding-bottom:13.28125vw;}
+		.odumak .pb90{padding-bottom:14.0625vw;}
+		.odumak .pb95{padding-bottom:14.84375vw;}
+		.odumak .pl20{padding-left: 3.125vw;}
+		.odumak .pl30{padding-left: 4.6875vw;}
+		.odumak .pl45{padding-left: 7.03125vw;}
+		.odumak .fs20{font-size:3.125vw;}
+		.odumak .fs22{font-size:3.4375vw;}
+		.odumak .fs24{font-size:3.75vw;}
+		.odumak .fs26{font-size:4.0625vw;}
+		.odumak .fs28{font-size:4.375vw;}
+		.odumak .fs30 {font-size: 4.6875vw;}
+		.odumak .fs34{font-size:5.3125vw;}
+		.odumak .fs36{font-size:5.625vw;}
+		.odumak .fs40{font-size:6.25vw;}
+		.odumak .fs50{font-size:7.8125vw;}
+		.odumak .fs60{font-size:9.375vw;}
+		.odumak .fw200{font-weight:200;}
+		.odumak .fw300{font-weight:300;}
+		.odumak .fw500{font-weight:500;}
+		.odumak .fw600{font-weight:600;}
+		.odumak .lh21 {line-height: 1.571em;}
+		.odumak .lh22{line-height:1.455em;} /* 22px 32px*/
+		.odumak .lh22_ver2{line-height:1.545em;} /* 22px 34px*/
+		.odumak .lh24{line-height:1.500em;} /* 24px 36px*/
+		.odumak .lh26 {line-height: 1.462em;}
+		.odumak .lh36{line-height:1.278em;} /* 36px 46px*/
+		.odumak .lh40{line-height:1.250em;} /* 40px 50px*/
+		.odumak .lh50{line-height:1.200em;} /* 50px 60px*/
+		.odumak .chapt{width:22.8125%;}
+		.odumak .ck_point{width: 11.19791666666667vw;}
+		.odumak .txt_bg{background:#eaddc6;padding:0 1.09375vw;}	 
+		.odumak .txt_bg2{background:#f1e5d0;}
+		.odumak .txt_bg3{background:#eaddc6;}
+		.odumak .lsm5{letter-spacing:-0.05em;}
+		.odumak .w290 {width: 49.15254237288136%;}
+		.odumak .w193 {width: 32.2%;}
+
+		.odumak .inner{
+			margin-left:3.90625vw;
+			margin-right:3.90625vw;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+		.odumak .img {position:absolute;}
+		.odumak .tit {background:url('https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/odumak_visual_bg1_low.jpg') ;}
+		.odumak .tit .v_tit{
+			position:relative;
+			z-index:2;
+			width:100%;
+			display: block;
+		}
+		.odumak .tit .bg{
+			position:absolute;
+			top:0;
+			left:0;
+			width:100%;
+			height:100%;
+			z-index: 1;
+		}
+		.odumak .tit .bg1 {animation:light1 10s ease infinite;}
+		.odumak .tit .bg2 {animation:light2 10s ease infinite;}
+		.odumak .tit .bg3 {animation:light3 10s ease infinite;}
+		.odumak .tit .bg4 {animation:light4 10s ease infinite;}
+		@keyframes light1{
+			0%{opacity:1;}																
+			25%{opacity:0;}																
+			50%{opacity:0;}
+			75%{opacity:0;}
+			100% {opacity:1}
+		}
+		@keyframes light2{
+			0%{opacity:0;}																
+			25%{opacity:1;}																
+			50%{opacity:0;}
+			75%{opacity:0;}
+			100% {opacity:0}								
+		}
+		@keyframes light3{
+			0%{opacity:0;}																
+			25%{opacity:0;}																
+			50%{opacity:1;}
+			75%{opacity:0;}
+			100% {opacity:0}
+		}
+		@keyframes light4{
+			0%{opacity:0;}																
+			25%{opacity:0;}																
+			50%{opacity:0;}
+			75%{opacity:1;}
+			100% {opacity:0}								
+		}
+		
+		/* 사이드네비 */
+		.odumak .nav_btn{
+			display: none;
+			width:3.4375vw;
+			height: 100%;
+			position: fixed;
+			top: 0;
+			left:3.125vw;
+			z-index: 11;
+			color: rgba(255,255,255,.6);
+			overflow: hidden;
+		}
+		.odumak .nav_btn *{
+			background-repeat: no-repeat;
+			-webkit-background-size: contain;
+			background-size: contain;
+		}
+		.odumak .nav_btn .tc{
+			width: 100%;
+			height: 100%;
+		}
+		.odumak .nav_btn .tc>div,
+		.odumak .nav_btn .tab2 li{margin-bottom:4.6875vw;}
+		.odumak .nav_btn .tab1:before{
+			height: 100vw;
+			width: 1px;
+			background: rgba(255,255,255,.4);
+			position: absolute;
+			bottom: 120%;
+			left: 1.5625vw;
+			content:'';
+		}
+		.odumak .nav_btn .tab3:before{
+			height: 100vw;
+			width: 1px;
+			background: rgba(255,255,255,.4);
+			position: absolute;
+			top: 120%;
+			left: 1.5625vw;
+			content:'';
+		}
+		.odumak .nav_btn .tab1{height: 14.6875vw;}
+		.odumak .nav_btn .tab2>a{
+			margin-bottom: 1.09375vw;
+			height:12.34375vw;
+		}
+		.odumak .nav_btn .tab2 li a{height: 4.53125vw;}
+		.odumak .nav_btn .tab3{height: 14.375vw;}
+
+		.odumak .nav_btn a{
+			width:100%;
+			height:100%;
+			display: block;
+		}
+		.odumak .nav_btn .tab1 a{background-image:url('https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_nav_btn01.png');}
+		.odumak .nav_btn .tab2 a{background-image:url('https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_nav_btn02.png');}
+		.odumak .nav_btn .tab2 li:first-child a{background-image:url('https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_nav_btn02_01.png');}
+		.odumak .nav_btn .tab2 li:nth-child(2) a{background-image:url('https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_nav_btn02_02.png');}
+		.odumak .nav_btn .tab2 li:last-child a{background-image:url('https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_nav_btn02_03.png');}
+		.odumak .nav_btn .tab3 a{background-image:url('https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_nav_btn03.png');}
+
+		.odumak .nav_btn .tab1 a.on{background-image:url('https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_nav_btn01_on.png');}
+		.odumak .nav_btn .tab2 a.on{background-image:url('https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_nav_btn02_on.png');}
+		.odumak .nav_btn .tab2 li:first-child a.on{background-image:url('https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_nav_btn02_01_on.png');}
+		.odumak .nav_btn .tab2 li:nth-child(2) a.on{background-image:url('https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_nav_btn02_02_on.png');}
+		.odumak .nav_btn .tab2 li:last-child a.on{background-image:url('https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_nav_btn02_03_on.png');}
+		.odumak .nav_btn .tab3 a.on{background-image:url('https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_nav_btn03_on.png');}
+
+		.odumak .nav_btn .tab1 a.gray{background-image:url('https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_nav_btn01_gray.png');}
+		.odumak .nav_btn .tab2 a.gray{background-image:url('https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_nav_btn02_gray.png');}
+		.odumak .nav_btn .tab2 li:first-child a.gray{background-image:url('https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_nav_btn02_01_gray.png');}
+		.odumak .nav_btn .tab2 li:nth-child(2) a.gray{background-image:url('https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_nav_btn02_02_gray.png');}
+		.odumak .nav_btn .tab2 li:last-child a.gray{background-image:url('https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_nav_btn02_03_gray.png');}
+		.odumak .nav_btn .tab3 a.gray{background-image:url('https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_nav_btn03_gray.png');}
+
+		.odumak .nav_btn .tab1 a.gray.on{background-image:url('https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_nav_btn01_on.png');}
+		.odumak .nav_btn .tab2 a.gray.on{background-image:url('https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_nav_btn02_on.png');}
+		.odumak .nav_btn .tab2 li:first-child a.gray.on{background-image:url('https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_nav_btn02_01_on.png');}
+		.odumak .nav_btn .tab2 li:nth-child(2) a.gray.on{background-image:url('https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_nav_btn02_02_on.png');}
+		.odumak .nav_btn .tab2 li:last-child a.gray.on{background-image:url('https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_nav_btn02_03_on.png');}
+		.odumak .nav_btn .tab3 a.gray.on{background-image:url('https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_nav_btn03_on.png');}
+		
+		/* 서브타이틀 */
+		.odumak .sub_tit .video_wrap{width: 100%;}
+		.odumak .sub_tit .video_wrap .video{padding-bottom:56.25%;}
+		.odumak .sub_tit .video_wrap .video iframe{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100% !important;
+			height: 100% !important;
+		} 
+		.odumak .two_row li{width: 49.1%;}
+		.odumak .txt_box li p{
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+			-ms-word-break: keep-all;
+			word-break: keep-all;
+		}
+		/* 상단 */
+		.odumak .cont1{
+			background: #f7ebe5 url('https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_visual_cont1_bg.jpg') top 6.71875vw center no-repeat;
+			background-size:75% auto;
+			padding:25.78125vw 0 23.125vw;
+		}
+		.odumak .cont1 .gif{width:48.9%;}
+		.odumak .cont1 .gif01{float: left;}
+		.odumak .cont1 .gif02{float: right;}
+		.odumak .cont2 {z-index: 1;}
+		.odumak .cont2 .txt{
+			position: relative;
+			z-index: 1;
+			width:67.5%;
+			position: absolute;
+			top: -12.65625vw;
+			left: 0;
+			right: 0;
+			margin: 0 auto;
+		}
+		.odumak .cont2 .img01{
+			width:100%;
+		}
+		.odumak .cont2 .img02{
+			margin:-5.3125vw 0 2.1875vw 34.0625vw;
+			width:51.25%;
+		}
+		.odumak .cont2 .img03{
+			width:49.21875%;
+			margin-left: 16.25vw;
+		}
+		.odumak .cont3{
+			margin-top:-17.5vw;
+			background: #f7ebe5;
+			padding:25.15625vw 5.46875vw 1.09375vw;
+		}
+		.odumak .cont3 li{
+			background:#fff;
+			border:1px solid #b2875d;
+			width:100%;
+			margin-bottom:4.84375vw;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+		.odumak .cont3 li .txt_wrap{height:54.21875vw;}
+		.odumak .cont3 li .txt_wrap span{color: #b2875d;}
+		.odumak .cont3 li .txt_wrap .txt{
+			line-height:1.278em;
+			padding:1.09375vw 0 2.8125vw;
+		}
+		.odumak .cont3 li .txt_wrap .desc{line-height: 1.455em;}
+		.odumak .cont4 p{
+			position: absolute;
+			right: 0;
+			left: 0;
+			top:22.5vw;
+			line-height:1.250em;
+			color: #fff;
+		}
+		.odumak .cont5{
+			padding:9.53125vw 0 11.875vw;
+			background:#fff7e1;
+		}
+		.odumak .cont5 .about {
+			width:23.125%;
+			vertical-align: unset;
+		}
+		.odumak .cont5 .gif{
+			margin-top:-4.53125vw;
+			margin-left: 5.3125vw;
+			width:51.71875%;
+			z-index: 1;
+		}
+		.odumak .cont5 .img02{margin-top:-5.78125vw;}
+		.odumak .cont5 .img02 img{width:79.84375%;}
+		.odumak .cont6 .img02 img{width:80.46875%;}
+		.odumak .cont6 .gif{width:86.71875%;}
+		.odumak .cont7 ul .vs:before{
+			content:'';
+			position: absolute;
+			top:8.75vw;
+			right:-4.0625vw;
+			width:6.5625vw;
+			height:6.5625vw;
+			background: url('https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/odumak_cont7_ico.png') no-repeat;
+			background-size: contain;
+		}
+		.odumak .cont7 .txt01{
+			width:17.65625vw;
+			padding:1.09375vw 0 0 0.78125vw;
+		}
+		.odumak .cont7 .txt02{
+			width:14.21875vw;
+			padding:1.09375vw 0 0 0.625vw;
+		}
+		.odumak .cont7 .txt03{
+			padding:1.09375vw 0 0 0.625vw;
+			width:9.0625vw;
+		}
+		.odumak .cont8 .txt01{
+			width:6.25vw;
+			vertical-align: middle;
+		}
+		.odumak .cont8 .txt02{
+			width:3.90625vw;
+			padding-top: 0.46875vw;
+		}
+		.odumak .cont8 .txt03{
+			padding-top: 0.46875vw;
+			width:17.34375vw;
+		}
+		.odumak .cont9{background:#f8f6f3;}
+		.odumak .cont9 .white_box{
+			padding:5.3125vw 3.4375vw 5.625vw 30.15625vw;
+			background: #fff;
+			border:0.3125vw solid #eaddc6;
+			-webkit-border-radius: 1.5625vw;
+			-moz-border-radius: 1.5625vw;
+			border-radius: 1.5625vw;
+			position: relative;
+			text-align: left;
+			letter-spacing:-0.05em;	
+		}
+		.odumak .cont9 .white_box img{
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left:3.90625vw;
+			margin: auto;
+			width:23.75vw;
+		}
+		.odumak .cont9 .txt{
+			width:17.65625vw;
+			padding-top:1.09375vw;
+		}
+		.odumak .cont10 .white_box2{
+			border:1px solid #e5cea7;
+			padding:6.875vw 3.90625vw 5.46875vw;
+		}
+		.odumak .cont10 .txt01{
+			width:8.59375vw;
+			padding:1.25vw 0 0 1.09375vw;
+		}
+		.odumak .cont10 .txt02{
+			width:26.71875vw;
+			vertical-align:inherit;
+		}
+		.odumak .cont11{background: #f8f6f3;}
+		.odumak .cont11 .txt{
+			width:17.8125vw;
+			vertical-align: sub;
+		}
+		.odumak .cont12 table{
+			line-height:1.417em;
+			border-top: 1px solid rgba(0,0,0,.3);
+			width:100%;
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+		.odumak .cont12 table th,
+		.odumak .cont12 table td{
+			font-size:3.4375vw;
+			line-height:1.545em;
+			border-bottom: 1px solid rgba(0,0,0,.3);									
+			vertical-align: middle;
+			font-weight: 300;
+			-ms-word-break: keep-all;
+			word-break: keep-all;
+		}
+		.odumak .cont12 table th{font-size:3.75vw;}
+		.odumak .cont12 table td{
+			padding:3.59375vw 4.6875vw;
+			border-left:1px solid rgba(0,0,0,.3);
+			color:rgba(0,0,0,.7);
+		}
+		.odumak .cont12 table strong{font-weight: 600;}
+		.odumak .cont12 table .bg_ylw{background: #f4ead9;}
+		.odumak .cont12 table .bg_gry{
+			color:#000;
+			background: #f8f6f3;
+		}
+		/* 탭 */
+		/* .odumak .tab{
+			visibility: hidden; 
+			height: 0;
+			line-height: 1;
+		}
+		.odumak .tab.on{visibility: visible; height: auto;} */
+		.odumak .tab{display: none;}
+		.odumak .tab.on {display:block;}
+		.odumak .tab .video_wrap{
+			padding-top: 3.125%;
+			padding-bottom: 9.114583333333333%;
+		}
+		/*.odumak .tab .video_wrap .video{padding-bottom:56.25%;}*/
+		.odumak .tab .video_wrap .video iframe{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100% !important;
+			height: 100% !important;
+		}		
+		/* 탭 네비 */
+		.odumak .navi{
+			left:0;
+			right:0;
+			position:absolute;
+			margin:0 auto;	
+			z-index: 9;
+		}
+		.odumak .navi.fixed{
+			top:0;
+			position:fixed;
+			z-index: 9;
+		}
+		.odumak .navi li{
+			float:left;
+			width:19.896%;
+			margin-right:0.13%;
+			background:rgba(255,255,255,0.8);
+		}
+		.odumak .navi li:last-child{margin-right:0;}
+		.odumak .tab_tit p{
+			color: #fff;
+			position: absolute;
+			top:10.7vw;
+			left: 0;
+			right: 0;
+			margin: auto;
+			line-height: 1;
+		}
+		.head-hide .odumak .navi{
+			width:100%;
+			top:2.96875vw;
+			position:absolute;
+			margin:0 auto;	
+			max-width:750px;	
+		}
+		.head-hide .odumak .navi.fixed{
+			top:12.8vw;
+			position:fixed;
+		}
+		.odumak .t_ck_point {width: 33.75%;}
+
+		.odumak .tab_tit p {position: absolute; color: #fff; top:0; width: 100%;}
+		.odumak .ck_point {width: 33.75%;}
+		.odumak .tab_btn{display: block;}
+		.odumak .tab_btn li{display:inline-block; background-color: #dddddd; color: #888888; border-radius:7.8125vw; padding:3.125vw 5.46875vw; -webkit-box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				box-sizing: border-box;}
+		.odumak .tab_btn li:first-child {padding:3.125vw 8.28125vw;}
+		.odumak .tab_btn li:last-child {margin-right: 0;}
+		.odumak .tab_btn li.on {background-color: #e7bf60;}
+		.odumak .tab_btn li.on a{ color: #fff; font-weight: 600;}
+		.odumak .tab .tab_cont>div{display: none;}
+		.odumak .tab .tab_cont>div:first-child{display: block;}
+
+		/* 슬라이드 */
+		.odumak .odumak_t_slide .swiper-pagination{bottom:4%;}
+		.odumak .odumak_t_slide .swiper-wrapper{max-width:100% !important;}
+		.odumak .odumak_t_slide .swiper-slide {width: 100%;}
+		.odumak .odumak_t_slide .swiper-pagination-bullet { background: #000; width:5px; height: 5px;}
+		.odumak .odumak_t_slide .swiper-pagination-bullet-active {background: #777; width:7px; height: 7px;}
+
+		@media (min-width: 750px){
+			.odumak .inner{
+				margin-left:25px;
+				margin-right:25px;
+			}
+			.odumak .txt_bg{padding:0 7px;}	 
+			.odumak .mt3{margin-top:3px;}
+			.odumak .mt6{margin-top:6px;}
+			.odumak .mt10 {margin-top:10px;}
+			.odumak .mt27{margin-top:27px;}
+			.odumak .mt37{margin-top:37px;}
+			.odumak .mt50 {margin-top:50px;}
+			.odumak .mr10 {margin-right:10px;}	
+			.odumak .pt14{padding-top:14px;}
+			.odumak .pt18{padding-top:18px;}
+			.odumak .pt20{padding-top:20px;}
+			.odumak .pt27{padding-top:27px;}
+			.odumak .pt30{padding-top:30px;}
+			.odumak .pt32{padding-top:32px;}
+			.odumak .pt35{padding-top:35px;}
+			.odumak .pt40{padding-top:40px;}
+			.odumak .pt45{padding-top:45px;}
+			.odumak .pt50{padding-top:50px;}
+			.odumak .pt51{padding-top:51px;}
+			.odumak .pt60{padding-top:60px;}
+			.odumak .pt70{padding-top:70px;}
+			.odumak .pt77{padding-top:77px;}
+			.odumak .pt86{padding-top:86px;}
+			.odumak .pt92{padding-top:92px;}
+			.odumak .pt95{padding-top:95px;}
+			.odumak .pt120{padding-top:120px;}
+			.odumak .pt162{padding-top:162px;}
+			.odumak .pb26{padding-bottom:26px;}
+			.odumak .pb30{padding-bottom:30px;}
+			.odumak .pb35{padding-bottom:35px;}
+			.odumak .pb40{padding-bottom:40px;}
+			.odumak .pb44{padding-bottom:44px;}
+			.odumak .pb47{padding-bottom:47px;}
+			.odumak .pb50{padding-bottom:50px;}
+			.odumak .pb66{padding-bottom:66px;}
+			.odumak .pb68{padding-bottom:68px;}
+			.odumak .pb77{padding-bottom:77px;}
+			.odumak .pb85{padding-bottom:85px;}
+			.odumak .pb90{padding-bottom:90px;}
+			.odumak .pb95{padding-bottom:95px;}
+			.odumak .pl20{padding-left: 20px;}
+			.odumak .pl30{padding-left: 30px;}
+			.odumak .pl45{padding-left: 45px;}
+			.odumak .fs20{font-size:20px;}
+			.odumak .fs22{font-size:22px;}
+			.odumak .fs24{font-size:24px;}
+			.odumak .fs26{font-size:26px;}
+			.odumak .fs28{font-size:28px;}
+			.odumak .fs30{font-size:30px;}
+			.odumak .fs34{font-size:34px;}
+			.odumak .fs36{font-size:36px;}
+			.odumak .fs40{font-size:40px;}
+			.odumak .fs50{font-size:50px;}
+			.odumak .fs60{font-size:60px;}
+			
+			/* 사이드네비 */
+			.odumak .nav_btn{
+				width:22px;
+				left:20px;									
+			}
+			.odumak .nav_btn .tc>div,
+			.odumak .nav_btn .tab2 li{margin-bottom:30px;}
+			.odumak .nav_btn .tab1:before,
+			.odumak .nav_btn .tab3:before{left: 10px;}
+			.odumak .nav_btn .tab1{height:94px;}
+			.odumak .nav_btn .tab2>a{
+				margin-bottom: 7px;
+				height:29px;
+			}
+			.odumak .nav_btn .tab2 li a{height:29px;}
+			.odumak .nav_btn .tab3{height: 92px;}
+
+			/* 상단 */
+			.odumak .cont1{
+				background: #f7ebe5 url('https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_visual_cont1_bg.jpg') top 43px center no-repeat;
+				padding:165px 0 148px;
+			}
+			.odumak .cont2 .txt{top: -81px;}
+			.odumak .cont2 .img02{margin:-34px 0 14px 218px;}
+			.odumak .cont2 .img03{margin-left: 104px;}
+			.odumak .cont3{
+				margin-top:-112px;
+				padding:161px 35px 7px;
+			}
+			.odumak .cont3 li{margin-bottom:31px;}
+			.odumak .cont3 li .txt_wrap{height:347px;}
+			.odumak .cont3 li .txt_wrap .txt{padding:7px 0 18px;}
+			.odumak .cont4 p{top:144px;}
+			.odumak .cont5{padding:61px 0 76px;}
+			.odumak .cont5 .gif{
+				margin-top:-29px;
+				margin-left: 34px;
+			}
+			.odumak .cont5 .img02{margin-top:-37px;}
+			.odumak .cont7 ul .vs:before{
+				top:56px;
+				right:-26px;
+				width:42px;
+				height:42px;
+			}
+			.odumak .cont7 .txt01{
+				width:113px;
+				padding:7px 0 0 5px;
+			}
+			.odumak .cont7 .txt02{
+				width:91px;
+				padding:7px 0 0 4px;
+			}
+			.odumak .cont7 .txt03{
+				padding:7px 0 0 4px;
+				width:58px;
+			}
+			.odumak .cont8 .txt01{width:40px;}
+			.odumak .cont8 .txt02{
+				width:25px;
+				padding-top: 3px;
+			}
+			.odumak .cont8 .txt03{
+				padding-top: 3px;
+				width:111px;
+			}
+			.odumak .cont9 .white_box{
+				padding:34px 22px 36px 193px;
+				border:2px solid #eaddc6;
+				-webkit-border-radius: 10px;
+				-moz-border-radius: 10px;
+				border-radius: 10px;
+			}
+			.odumak .cont9 .white_box img{
+				left:25px;
+				width:152px;
+			}
+			.odumak .cont9 .txt{
+				width:113px;
+				padding-top:7px;
+			}
+			.odumak .cont10 .white_box2{padding:44px 25px 35px;}
+			.odumak .cont10 .txt01{
+				width:55px;
+				padding:8px 0 0 7px;
+			}
+			.odumak .cont10 .txt02{width:171px;}
+			.odumak .cont11 .txt{width:114px;}
+			.odumak .cont12 table th,
+			.odumak .cont12 table td{font-size:22px;}
+			.odumak .cont12 table th{font-size:24px;}
+			.odumak .cont12 table td{padding:23px 30px;}
+
+			/*스펙구성탭*/
+			.odumak .tab_btn li{border-radius:50px; padding:20px 30px; }
+			.odumak .tab_btn li:first-child {padding:20px 45px;}
+			
+			.odumak .navi{top:19px;}
+			.odumak .navi.fixed{top:96px;}
+		}
+	</style>
+	<div class="odumak">
+		<div class="rel tit">
+			<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_visual_tit.png" alt="" class="v_tit">
+			<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_visual_bg1.jpg" alt="" class="bg bg1">
+			<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_visual_bg2.jpg" alt="" class="bg bg2">
+			<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_visual_bg3.jpg" alt="" class="bg bg3">
+			<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_visual_bg4.jpg" alt="" class="bg bg4">
+		</div>
+		<div class="rel sub_tit pt77" id="tab1">
+			<div class="video_wrap ">
+				<div class="video rel">
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/j-ExIL5v9GI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</div>
+			</div>
+			<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_visual_sub_tit.jpg" alt="">
+		</div>
+		<div class="rel cont1">
+			<div class="inner clearfix">
+				<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/odumak_gif01.gif" alt="" class="gif gif01">
+				<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/odumak_gif02.gif" alt="" class="gif gif02">
+			</div>
+		</div>
+		<div class="rel cont2 txt_left">
+			<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_cont2_txt.png" alt="" class="txt">
+			<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_cont2_img01.jpg" alt="" class="img01">
+			<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_cont2_img02.jpg" alt="" class="img02">
+			<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_cont2_img03.jpg" alt="" class="img03">
+		</div>
+		<div class="rel cont3">
+			<ul class="clearfix">
+				<li>
+					<div class="img_wrap">
+						<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_cont3_img01.jpg" alt="" class="">
+					</div>
+					<div class="txt_wrap dt">
+						<div class="tc">
+							<span class="fs24 fw300">면텐트의 위대한 시작</span>
+							<p class="txt fs36 fw600"># 슈퍼팰리스C</p>
+							<p class="desc fs22 fw300">235만원의 고가로 런칭했으나<br>출시와 동시에 완판 기록</p>
+							<p class="desc fs22 fw300 pt20">여전히 이어지고 있는 슈퍼팰리스C<br>코튼버전 사용자들의 모임</p>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="img_wrap">
+						<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_cont3_img02.jpg" alt="" class="">
+					</div>
+					<div class="txt_wrap dt">
+						<div class="tc">
+							<span class="fs24 fw300">슈퍼팰리스 C 텐트가</span>
+							<p class="txt fs36 fw600">지금까지<br>사랑받은 이유는?</p>
+							<p class="desc fs22 fw300">자연을 닮은 내추럴한 색상<br>쾌적함을 높여주는 면소재</p>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="img_wrap">
+						<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_cont3_img03.jpg" alt="" class="">
+					</div>
+					<div class="txt_wrap dt">
+						<div class="tc">
+							<span class="fs24 fw300">그땐, 모두가 가질 수는 없었기에!</span>
+							<p class="txt fs36 fw600">꾸준한 앵콜 요청</p>
+							<p class="desc fs22 fw300">당시에는 대형 돔 스타일의 100% 면텐트는 <br>최초의 시도였으며 많은 수량을 생산하지 못했습니다.</p>
+							<p class="desc fs22 fw300 pt20">코오롱스포츠의 면텐트를 사랑하는 분들의 <br>꾸준한 문의와 요청에 힘입어 면텐트가 돌아왔습니다!</p>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="rel cont4" id="tab2">
+			<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_cont4_bg.jpg" alt="">
+			<p class="fs40 fw300">드디어, 6년만에 선보이는 <br><strong>면텐트 ‘오두막’</strong></p>
+		</div>
+		<div class="rel cont5 pb47" id="tab2_02">
+			<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/odumak_chapter1.png" alt="chapter1" class="chapt">
+			<p class="fs50 fw300 pt20 lh50"><img class="about" src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/odumak_cont5_txt.png" alt="ABOUT"> <strong>감성캠핑</strong></p>
+			<span class="fw300 fs22 lh22 pt32">자연과 호흡하는 면 100% 텐트로<br>캠핑 로망을 실현하다!</span>	
+			<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_cont5_img01.jpg" alt="" class="img01 pt50">
+			<div class="txt_left gif rel"><img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/odumak_gif04.gif" alt=""></div>
+			<div class="txt_right img02"><img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_cont5_img02.jpg" alt=""></div>
+		</div>
+		<div class="rel cont6 pt77 pb68">
+			<div class="clearfix inner">
+				<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_cont6_img01.jpg" alt="" class="img01">
+				<p class="fs22 fw300 txt_center lh22 pt60">도시에서 벗어나 쉼이 있는 캠핑<br>레트로 무드로 나만의 감성으로 즐기자!</p>
+				<div class="txt_right img02 pt60">
+					<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_cont6_img02.jpg" alt="">
+				</div>
+				<!-- <img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/odumak_gif03.gif" alt="" class="gif pt20">-->
+			</div>
+		</div>
+		<div class="rel cont7 bg_gray" id="tab3">
+			<div class="inner pt77 pb68">
+				<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/odumak_chapter2.png" alt="chapter2" class="chapt">
+				<p class="fw300 fs50 lh50 pt18"><strong>프리미엄 원단</strong></p>
+				<ul class="inner clearfix gif pt45 two_row">
+					<li class="f_left rel vs">
+						<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/odumak_gif05.gif" alt="" class="">
+						<p class="fs22 fw300 pt14">[오두막 텐트 원단]</p>
+					</li>
+					<li class="f_right">
+						<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/odumak_gif06.gif" alt="" class="">
+						<p class="fs22 fw300 pt14">[일반 텐트 원단]</p>
+					</li>
+				</ul>
+				<p class="fw300 fs40 lh40 pt40">자연 그대로의 <strong class="fw600"><br>‘면 <img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/odumak_cont7_txt02.png" alt="100%" class="txt02"> 숨쉬는 원단’</strong></p>
+				<p class="fw300 fs24 lh24 pt27">염색 가공 최소화한 코오롱스포츠의 프리미엄 <br>면 <img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/odumak_cont7_txt03.png" alt="100%" class="txt03"> 원단은 환경 친화적 공정 관리를 통해 제작한 <br>자연과 가장 가까운 상태의  숨쉬는 원단입니다.</p>
+				<div><p class="fw300 fs24 txt_bg ib lh24 mt27">- 습도를 일정하게 유지</p></div>
+				<div><p class="fw300 fs24 txt_bg ib lh24 mt3">- 공기 순환이 원활</p></div>
+				<div><p class="fw300 fs24 txt_bg ib lh24 mt3">- 내부에서도 쾌적함을 지속 유지</p></div>
+			</div>
+		</div>
+		<div class="rel cont10">
+			<div class="inner pt77 pb77">
+				<ul class="clearfix two_row">
+					<li class="f_left">
+						<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/odumak_gif07.gif" alt="">
+					</li>
+					<li class="f_right">
+						<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_cont10_img01.jpg" alt="">
+					</li>
+				</ul>
+				<p class="fw300 fs40 lh40 lsm5 pt45">비가 와도 샐 걱정 없어요!<br><strong class="fw600 lsm5">빈틈없이 지켜주는 ‘특수 방수 재봉사’</strong></p>
+				<p class="fs24 fw300 lh24 pt35">여름철 갑작스러운 소나기에도 <br><i class="txt_bg2 fw300">오두막 텐트는 겉면/내부면에 발수 가공 처리</i>가 되어있습니다.</p>
+				<p class="fs24 fw300 lh24 pb95 pt20">발수 가공된 <img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/odumak_cont10_txt01.png" alt="" class="txt01"> 면 원단 + 방수실을 사용하여 <br><i class="txt_bg2 fw300">비와 눈이 내려도 텐트 내부를 든든하게 지켜줍니다.</i></p>
+				<div class="white_box2">
+					<p class="fs36 fw300 lh36">방수 코팅 없이도 <br><strong class="fw600">빗물이 새지 않는 비법은?</strong></p>
+					<p class="fs22 fw300 lh22_ver2 pt27">오두막 면텐트는 별도의 방수 코팅 처리나 시즈닝*을<br>하지 않아도 <i class="txt_bg2 fw300 ">위사와 경사의 밀도 높은 조직감으로</p>
+					<p class="fs22 fw300 lh22_ver2 mt3">물방울의 투과를 강력하게 막아내</i> <br>텐트 내부로 빗물이 들어오지 않습니다.</p>
+					<p class="fs22 fw300 lh22_ver2 pt27">일반 면텐트는 시즈닝 작업 후 사용하는 것이 좋지만,<br><i class="txt_bg2 fw300">코오롱스포츠의 캠핑 제품은 강한 발수력으로</p>
+					<p class="fs22 fw300 lh22_ver2 mt3">별도의 시즈닝이 필요하지 않으며,</i> <br>사용하면서 자연스러운 시즈닝이 되어갑니다.</p>
+					<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/odumak_gif08.gif" class="pt60">
+					<div class="txt_left pt20">
+						<p class="fs22 fw600 lh22_ver2">* 시즈닝이란?</p>
+						<p class="fs22 fw300 lh22_ver2">면에 물을 적셨다가 말리는 과정을 통해<br>면섬유의 밀도감을 상승시키는 작업.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="rel cont11" id="tab4">
+			<div class="inner pt77 pb85">
+				<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/odumak_chapter3.png" alt="chapter3" class="chapt">
+				<p class="fw300 fs50 lh50 pt18"><strong>고강도 폴대</strong></p>
+				<ul class="clearfix two_row pt45">
+					<li class="f_left">
+						<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_cont11_img01.jpg" alt="">
+					</li>
+					<li class="f_right">
+						<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_cont11_img02.jpg" alt="">
+					</li>
+				</ul>
+				<p class="fw300 fs40 lh40 pt40"><strong>초경량 + 고강도의 </strong><br>두랄루민 폴대</p>
+				<p class="fw300 fs24 lh24 pt27"><i class="txt_bg3 fw300"> 상위 등급의 두랄루민 <img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/odumak_cont11_txt01.png" alt="" class="txt">은 폴대 중 </p>
+				<p class="fw300 fs24 lh24 mt3"> 가장 높은 강도와 가벼운 무게로 인정 </i>받고 있으며</p>
+				<p class="fw300 fs24 lh24 pt27">체계적인 공정을 통해 고급 아노다이징 처리되어<br>외부 충격에 강하며 품질이 뛰어납니다.</p>
+			</div>	
+		</div>
+		<div class="rel cont12 pt77 pb68">
+			<p class="fw300 fs40"><strong class="fw600">두랄루민을 선택한 확실한 이유</strong></p>
+			<table class="fs24 fw300 mt37">
+				<colgroup>
+					<col width="36%">
+					<col width="64%">
+				</colgroup>
+				<tbody>
+					<tr>
+						<th rowspan="4"  class="bg_ylw"><strong>두랄루민 6061</strong><br>(Duralumin Pole)</th>
+						<td class="bg_gry">구리, 마그네슘 등 합금을 알루미늄에 첨가해 강도는 스틸처럼 강하지만 무게는 스틸의 1/3 수준으로 <br>가볍고 견고함</td>
+					</tr>
+					<tr>
+						<td class="bg_gry"><strong>탄성과 강도가 매우 좋음</strong><br>(다양한 텐트 프레임 구조에 사용 가능)</td>
+					</tr>
+					<tr>
+						<td class="bg_gry">산화가 잘 일어나지 않아 <strong>잘 녹슬지 않음</strong></td>
+					</tr>
+					<tr>
+						<td class="bg_gry"><strong>가격대가 높음</strong></td>
+					</tr>
+					<tr>
+						<th rowspan="4"><strong>스틸</strong><br>(Steel Pole)</th>
+						<td>튼튼하고 강도는 좋으나<br>탄성이 없고 무거움</td>
+					</tr>
+					<tr>
+						<td>직선 프레임 구조에 적합함<br>(텐트 구조 사용에 제한적임)</td>
+					</tr>
+					<tr>
+						<td>관리에 따라 녹슬 우려가 높음</td>
+					</tr>
+					<tr>
+						<td>두랄루민에 비해 저렴한 편</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>						
+		<div class="cont rel" id="cont">
+			<ul class="navi clearfix inner">
+				<li>
+					<a href="javascript:void(0)" rel="t1" class="t_btn1"><img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_navi01_on.jpg" alt="오두막5.5"></a>
+				</li>
+				<li>
+					<a href="javascript:void(0)" rel="t2" class="t_btn2"><img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_navi02.jpg" alt="오두막7.8"></a>
+				</li>
+				<li>
+					<a href="javascript:void(0)" rel="t3" class="t_btn3"><img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_navi03.jpg" alt="오두막8.8"></a>
+				</li>
+				<li>
+					<a href="javascript:void(0)" rel="t4" class="t_btn4"><img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_navi04.jpg" alt="오두막타프M"></a>
+				</li>
+				<li>
+					<a href="javascript:void(0)" rel="t5" class="t_btn5"><img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_navi05.jpg" alt="오두막타프L"></a>
+				</li>
+			</ul>
+			<div class="tab t1 on" id="t1">
+				<div class="t1_cont01 pt162 pb66">
+					<div class="tab_tit rel">
+						<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t1_tit.jpg" alt="">
+						<p class="fs50 fw600 pt120">오두막 5.5 텐트</p>
+					</div>
+					<div class="odumak_t_slide swiper-container pt60 pb66" >
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">
+								<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t1_cont1_img01.jpg" alt="">
+							</div>
+							<div class="swiper-slide">
+								<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t1_cont1_img02.jpg" alt="">
+							</div>
+							<div class="swiper-slide">
+								<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t1_cont1_img03.jpg" alt="">
+							</div>
+						</div>
+					
+						<div class="swiper-pagination" ></div>
+					</div>
+				</div>
+				<div class="t1_cont02 bg_yellow pt77 pb77">
+					<div class="inner">
+						<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/odumak_ck_point01.png" alt="" class="t_ck_point">
+						<p class="fs22 pt40">#출입구 2개  #패널 2개</p>
+						<p class="fs50 fw600 pb44 pt14">개방감 극대화</p>
+						<p class="fs26 lh26 fw300">2중 구조로 설계되어 뛰어난 통기성, 탁월한 개방감<br />사계절 언제나 자연을 함께 즐길 수 있습니다.</p>
+						<div class="clearfix pt40">
+							<ul>
+								<li class="f_left w290 mr10 bg_white">
+								<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t1_cont2_img01.jpg" alt="">
+								<p class="fs22 pb30 pt30 lh22 fw300"><strong class="fw600">BIG 출입구 2개</strong><br />출입구 +<br />하단 사이드 패널</p>
+								</li>
+								<li class="f_left w290 bg_white">
+								<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t1_cont2_img02.jpg" alt="">
+								<p  class="fs22 pb30 pt30 lh22 fw300"><strong class="fw600">사이드 패널(창) 2개</strong><br />안쪽 면 원단 +<br />바깥쪽 메쉬 원단</p>
+								</li>
+							</ul>
+						</div>
+						<p class="fs30 fw600 pt70">2면에서 개방 가능한 2개의 사이드 패널</p>
+						<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t1_cont2_img03.jpg" alt="" class="pt40">
+						<p class="bg_white txt_left fs24 pl45 pt50 pb50 lh22 fw300">
+							<strong class="fw600">BIG 하단 사이드 패널</strong><br />
+							내부 공기 순환으로 한여름에도 시원하고 쾌적한<br />
+							캠핑 생활이 가능합니다.<br /><br />
+							<strong class="fw600">메쉬(OUT) / 원단(IN) 이중 구조</strong><br />
+							사용 목적에 따라 활용도가 높으며, <br />
+							바깥 풍경을 오롯이 즐길 수 있는 하우스 윈도우로 <br />
+							탁 트인 개방감과 안정감을 선사합니다.
+						</p>
+					</div>
+				</div>
+				<div class="t1_cont03 pt77">											
+					<p class="fs50 fw600 lh50">오두막 5.5<br />스펙 및 구성</p>
+					<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t1_cont7_img01.jpg" alt="" class=" pt40 pb44">										
+					<div class="tab_wrap">
+						<ul class="tab_btn tab_btn_1 clearfix inner">
+							<li class="on"><a href="javascript:void(0)" class="fs34">스펙</a></li>
+							<li><a href="javascript:void(0)" class="fs34">구성품</a></li>
+							<li><a href="javascript:void(0)" class="fs34">구성리스트</a></li>
+						</ul>
+						<div class="tab_cont tab_cont_1 pt30 pb50">
+							<div class="on"><img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t1_cont7_tab01.jpg" alt=""></div>
+							<div><img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t1_cont7_tab02.jpg" alt=""></div>
+							<div><img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t1_cont7_tab03.jpg" alt=""></div>
+						</div>
+					</div>									
+				</div>
+			</div>
+			<div class="tab t2" id="t2">
+				<div class="t2_cont01 pt162 pb66">
+					<div class="tab_tit rel">
+						<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t2_tit.jpg" alt="">
+						<p class="fs50 fw600 pt120">오두막 7.8 텐트</p>
+					</div>									
+					<div class="odumak_t_slide swiper-container pb66 pt60" >
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">
+								<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t2_cont1_img01.jpg" alt="">
+							</div>
+							<div class="swiper-slide">
+								<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t2_cont1_img02.jpg" alt="">
+							</div>
+							<div class="swiper-slide">
+								<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t2_cont1_img03.jpg" alt="">
+							</div>
+						</div>
+						<div class="swiper-pagination" ></div>
+					</div>
+				</div>
+				<div class="t2_cont02 bg_yellow pt77 pb77">
+					<div class="inner">
+						<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/odumak_ck_point01.png" alt="" class="t_ck_point">
+						<p class="fs22 pt40">#출입구 2개 #패널 4개</p>
+						<p class="fs50 fw600 pb44 pt14">개방감 극대화</p>
+						<p class="fs26 lh26 fw300">2중 구조로 설계되어 뛰어난 통기성, 탁월한 개방감<br />사계절 언제나 자연을 함께 즐길 수 있습니다.</p>
+						<div class="clearfix pt40">
+							<ul>
+								<li class="f_left w290 mr10 bg_white">
+									<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t2_cont2_img01.jpg" alt="">
+									<p class="fs22 pb30 pt30 lh22 fw300"><strong class="fw600">BIG 출입구 2개</strong><br />출입구 +<br />하단 사이드 패널</p>
+								</li>
+								<li class="f_left w290 bg_white">
+									<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t2_cont2_img02.jpg" alt="">
+									<p  class="fs22 pb30 pt30 lh22 fw300"><strong class="fw600">사이드 패널(창) 4개</strong><br />안쪽 면 원단 +<br />바깥쪽 메쉬 원단</p>
+								</li>
+							</ul>
+						</div>
+						<p class="fs30 fw600 pt70">2면에서 개방 가능한 4개의 사이드 패널</p>
+						<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t2_cont2_img03.jpg" alt="" class="pt40">
+						<p class="bg_white txt_left fs24 pl45 pt50 pb50 lh22 fw300">
+							<strong class="fw600">BIG 하단 사이드 패널</strong><br />
+							내부 공기 순환으로 한여름에도 시원하고 쾌적한<br />
+							캠핑 생활이 가능합니다.<br /><br />
+							<strong class="fw600">메쉬(OUT) / 원단(IN) 이중 구조</strong><br />
+							사용 목적에 따라 활용도가 높으며, <br />
+							바깥 풍경을 오롯이 즐길 수 있는 하우스 윈도우로 <br />
+							탁 트인 개방감과 안정감을 선사합니다.
+						</p>
+					</div>
+				</div>
+				<div class="t2_cont03 pt77">											
+					<p class="fs50 fw600 lh50">오두막 7.8<br />스펙 및 구성</p>
+					<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t2_cont7_img01.jpg" alt="" class=" pt40 pb44">										
+					<div class="tab_wrap">
+						<ul class="tab_btn tab_btn_2 clearfix inner">
+							<li class=" on"><a href="javascript:void(0)" class="fs34" >스펙</a></li>
+							<li ><a href="javascript:void(0)" class="fs34">구성품</a></li>
+							<li ><a href="javascript:void(0)" class="fs34" >구성리스트</a></li>
+						</ul>
+						<div class="tab_cont tab_cont_2 pt30 pb50">
+							<div class="on" ><img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t2_cont7_tab01.jpg" alt=""></div>
+							<div ><img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t2_cont7_tab02.jpg" alt=""></div>
+							<div ><img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t2_cont7_tab03.jpg" alt=""></div>
+						</div>
+					</div>									
+				</div>
+			</div>
+			<div class="tab t3" id="t3">
+				<div class="t3_cont01 pt162 pb66">
+					<div class="tab_tit rel">
+						<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t3_tit.jpg" alt="">
+						<p class="fs50 fw600 pt120">오두막 8.8 텐트</p>
+					</div>									
+					<div class="odumak_t_slide swiper-container pb66 pt60">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">
+								<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t3_cont1_img01.jpg" alt="">
+							</div>
+							<div class="swiper-slide">
+								<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t3_cont1_img02.jpg" alt="">
+							</div>
+						</div>
+						<div class="swiper-pagination"></div>
+					</div>
+				</div>
+				<div class="t3_cont02 bg_yellow pt77 pb77">
+					<div class="inner">
+						<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/odumak_ck_point01.png" alt="" class="t_ck_point">
+						<p class="fs22 pt40">#출입구 2개 #패널 3개</p>
+						<p class="fs50 fw600 pb44 pt14">개방감 극대화</p>
+						<p class="fs26 lh26 fw300">2중 구조로 설계되어 뛰어난 통기성, 탁월한 개방감<br />사계절 언제나 자연을 함께 즐길 수 있습니다.</p>
+						<div class="clearfix pt40">
+							<ul>
+								<li class="f_left w290 mr10 bg_white">
+									<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t3_cont2_img01.jpg" alt="">
+									<p class="fs22 pb30 pt30 lh22 fw300"><strong class="fw600">BIG 출입구 2개</strong><br />출입구 +<br />하단 사이드 패널</p>
+								</li>
+								<li class="f_left w290 bg_white">
+									<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t3_cont2_img02.jpg" alt="">
+									<p  class="fs22 pb30 pt30 lh22 fw300"><strong class="fw600">사이드 패널(창) 3개</strong><br />안쪽 면 원단 +<br />바깥쪽 메쉬 원단</p>
+								</li>
+							</ul>
+						</div>
+						<p class="fs30 fw600 pt70">3면에서 개방 가능한 3개의 사이드 패널</p>
+						<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t3_cont2_img03.jpg" alt="" class="pt40">
+						<p class="bg_white txt_left fs24 pl45 pt50 pb50 lh22 fw300">
+							<strong class="fw600">BIG 하단 사이드 패널</strong><br />
+							내부 공기 순환으로 한여름에도 시원하고 쾌적한<br />
+							캠핑 생활이 가능합니다.<br /><br />
+							<strong class="fw600">메쉬(OUT) / 원단(IN) 이중 구조</strong><br />
+							사용 목적에 따라 활용도가 높으며, <br />
+							바깥 풍경을 오롯이 즐길 수 있는 하우스 윈도우로 <br />
+							탁 트인 개방감과 안정감을 선사합니다.
+						</p>
+					</div>
+				</div>
+				<div class="t3_cont03 pt77">											
+					<p class="fs50 fw600 lh50">오두막 8.8<br />스펙 및 구성</p>
+					<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t3_cont8_img01.jpg" alt="" class=" pt40 pb44">										
+					<div class="tab_wrap">
+						<ul class="tab_btn tab_btn_3 clearfix inner">
+							<li class=" on"><a href="javascript:void(0)" class="fs34">스펙</a></li>
+							<li ><a href="javascript:void(0)" class="fs34" >구성품</a></li>
+							<li ><a href="javascript:void(0)" class="fs34">구성리스트</a></li>
+						</ul>
+						<div class="tab_cont tab_cont_3 pt30 pb50">
+							<div class="on" ><img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t3_cont8_tab01.jpg" alt=""></div>
+							<div ><img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t3_cont8_tab02.jpg" alt=""></div>
+							<div ><img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t3_cont8_tab03.jpg" alt=""></div>
+						</div>
+					</div>									
+				</div>
+			</div>
+			<div class="tab t4" id="t4">
+				<div class="t4_cont01 pt162 pb66">
+					<div class="tab_tit rel">
+						<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t4_tit.jpg" alt="">
+						<p class="fs50 fw600 pt120">옥타 타프 M</p>
+					</div>									
+					<div class="odumak_t_slide swiper-container pb66 pt60" >
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">
+								<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t4_cont1_img01.jpg" alt="">
+							</div>
+							<div class="swiper-slide">
+								<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t4_cont1_img02.jpg" alt="">
+							</div>
+						</div>
+						<div class="swiper-pagination" ></div>
+					</div>
+					<p class="fs26 lh26 pt30 fw300">혼자 혹은 연인과 타프 아래에서<br />자연과 천천히 호흡할 수 있도록,<br />아늑한 공간을 연출해주는 옥타 타프(M)입니다</p>
+				</div>
+				<div class="t4_cont02 bg_yellow pt77 pb77">
+					<div class="inner">
+						<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/odumak_ck_point01.png" alt="" class="t_ck_point">
+						<p class="fs50 fw600 pb44 pt40">쾌적한 공간 활용</p>
+						<div class=" pt40">
+							<ul>
+								<li class="bg_white">
+									<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t4_cont2_img01.jpg" alt="">
+									<p class="fs22 pb30 pt30 lh22 txt_left pl45 fw300"><strong class="fw600">태양광 차단 열 차단은 물론 알찬 공간 활용까지</strong><br />면 100% 원단을 사용해 뜨거운 햇빛을 효과적으로<br />
+									차단해 주는 팔각(OCTA) 형태의 타프(TARP)입니다.<br />
+									캠핑 공간을 보다 멋스럽게 연출해 주고<br />
+									더욱 넓고 쾌적한 공간 활용이 가능합니다.</p>
+								</li>
+								<li class="bg_white mt50">
+									<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t4_cont2_img02.jpg" alt="">
+									<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t4_cont2_img03.jpg" alt="">
+									<p class="fs30 pb30 pt30">언제나 튼튼한 고정 <strong class="fw600">코너 웨빙</strong></p>
+									<p class="fs22 lh22 pb30 fw300" >단단한 코너 웨빙 설계로 인장 강도를 높이고 타프 늘어짐<br />
+										현상을 방지해 주며 옥타 타프 면 가장자리 웨빙 부위는<br />
+										다중 처리되어 원단 손상은 최소화하고 튼튼하게 고정됩니다.</p>
+								</li>
+							</ul>
+						</div>										
+					</div>
+				</div>
+				<div class="t4_cont03 pt77">											
+					<p class="fs50 fw600 lh50">옥타 타프 M<br />스펙 및 구성</p>
+					<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t4_cont4_img01.jpg" alt="" class=" pt40 pb44">										
+					<div class="tab_wrap">
+						<ul class="tab_btn tab_btn_4 clearfix inner">
+							<li class=" on"><a href="javascript:void(0)" class="fs34" >스펙</a></li>
+							<li ><a href="javascript:void(0)" class="fs34">구성품</a></li>
+							<li ><a href="javascript:void(0)" class="fs34">구성리스트</a></li>
+						</ul>
+						<div class="tab_cont tab_cont_4 pt30 pb50">
+							<div class="on" ><img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t4_cont4_tab01.jpg" alt=""></div>
+							<div ><img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t4_cont4_tab02.jpg" alt=""></div>
+							<div ><img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t4_cont4_tab03.jpg" alt=""></div>
+						</div>
+					</div>									
+				</div>
+			</div>
+			<div class="tab t5" id="t5">
+				<div class="t5_cont01 pt162 pb66">
+					<div class="tab_tit rel">
+						<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t5_tit.jpg" alt="">
+						<p class="fs50 fw600 pt120">옥타 타프 L</p>
+					</div>									
+					<div class="odumak_t_slide swiper-container pb66 pt60" >
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">
+								<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t5_cont1_img01.jpg" alt="">
+							</div>
+							<div class="swiper-slide">
+								<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t5_cont1_img02.jpg" alt="">
+							</div>
+						</div>
+						<div class="swiper-pagination" ></div>
+					</div>
+					<p class="fs26 lh26 pt30 fw300">가족, 친구들과 함께 즐길 수 있는<br />넉넉한 사이즈의 옥타 타프(L)로 보다<br />여유로운 공간을 조성해 보세요.</p>
+				</div>
+				<div class="t5_cont02 bg_yellow pt77 pb77">
+					<div class="inner">
+						<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/odumak_ck_point01.png" alt="" class="t_ck_point">
+						<p class="fs50 fw600 pb44 pt40">쾌적한 공간 활용</p>
+						<div class="pt40">
+							<ul>
+								<li class="bg_white">
+									<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t5_cont2_img01.jpg" alt="">
+									<p class="fs22 pb30 pt30 lh22 txt_left pl45 fw300"><strong class="fw600">태양광 차단 열 차단은 물론 알찬 공간 활용까지</strong><br />면 100% 원단을 사용해 뜨거운 햇빛을 효과적으로<br />
+									차단해 주는 팔각(OCTA) 형태의 타프(TARP)입니다.<br />
+									캠핑 공간을 보다 멋스럽게 연출해 주고<br />
+									더욱 넓고 쾌적한 공간 활용이 가능합니다.</p>
+								</li>
+								<li class="bg_white mt50">
+									<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t5_cont2_img02.jpg" alt="">
+									<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t5_cont2_img03.jpg" alt="">
+									<p class="fs30 pb30 pt30">언제나 튼튼한 고정 <strong class="fw600">코너 웨빙</strong></p>
+									<p class="fs22 lh22 pb30 fw300" >단단한 코너 웨빙 설계로 인장 강도를 높이고 타프 늘어짐<br />
+										현상을 방지해 주며 옥타 타프 면 가장자리 웨빙 부위는<br />
+										다중 처리되어 원단 손상은 최소화하고 튼튼하게 고정됩니다.
+									</p>
+								</li>
+							</ul>
+						</div>										
+					</div>
+				</div>
+				<div class="t5_cont03 pt77 ">											
+					<p class="fs50 fw600 lh50">옥타 타프 L<br />스펙 및 구성</p>
+					<img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t5_cont4_img01.jpg" alt="" class=" pt40 pb44">										
+					<div class="tab_wrap">
+						<ul class="tab_btn tab_btn_5 clearfix inner">
+							<li class=" on"><a href="javascript:void(0)" class="fs34">스펙</a></li>
+							<li ><a href="javascript:void(0)" class="fs34">구성품</a></li>
+							<li ><a href="javascript:void(0)" class="fs34">구성리스트</a></li>
+						</ul>
+						<div class="tab_cont tab_cont_5 pt30 pb50">
+							<div class="on"><img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t5_cont4_tab01.jpg" alt=""></div>
+							<div><img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t5_cont4_tab02.jpg" alt=""></div>
+							<div><img src="https://images3.kolonmall.com/upload/content/5cc3c54f-52cb-41ff-a970-cbcbb04241d3/m_odumak_t5_cont4_tab03.jpg" alt=""></div>
+						</div>
+					</div>									
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		$(window).scroll(function(){
+			if($(this).scrollTop() > $("#tab1").offset().top - 100){
+				$(".nav_btn").fadeIn(300).css("display","table");
+			}else{
+				$(".nav_btn").fadeOut(300);
+			}
+
+			var scTop = $(window).scrollTop(),
+				subTit = $('.sub_tit').offset().top,
+				cont1 = $('.cont1').offset().top,
+				cont2 = $('.cont2').offset().top,
+				cont3 = $('.cont3').offset().top,
+				cont4 = $('.cont4').offset().top;
+				cont5 = $('.cont5').offset().top,
+				tab1 = $('#tab1').offset().top -500,
+				tab2 = $('#tab2').offset().top -500,
+				tab3 = $('#tab3').offset().top -500,
+				tab4 = $('#tab4').offset().top -500,
+				cont = $('#cont').offset().top -500;
+			if(scTop >= subTit){
+				$(".nav_btn a").addClass('gray');
+			}
+			if(scTop >= subTit + 450){
+				$(".nav_btn a").removeClass('gray');
+			}
+			if(scTop >= cont1 - 400){
+				$(".nav_btn a").addClass('gray');
+			}
+			if(scTop >= cont4 - 400){
+				$(".nav_btn a").removeClass('gray');
+			}
+			if(scTop >= cont5 - 400){
+				$(".nav_btn a").addClass('gray');
+			}
+			if(scTop >= tab1){
+				$(".nav_btn a").removeClass('on');
+				$('.tab1 a').addClass('on');
+			}
+			if(scTop >= tab2){
+				$(".nav_btn a").removeClass('on');	
+				$('.tab2>a').addClass('on');
+				$('.tab2 li').eq(0).children('a').addClass('on');
+			}
+			if(scTop >= tab3){
+				$(".nav_btn a").removeClass('on');
+				$('.tab2>a').addClass('on');
+				$('.tab2 li').eq(1).children('a').addClass('on');
+			}
+			if(scTop >= tab4){
+				$(".nav_btn a").removeClass('on');
+				$('.tab2>a').addClass('on');
+				$('.tab2 li').eq(2).children('a').addClass('on');
+			}
+			if(scTop >= cont){
+				$(".nav_btn a").removeClass('on');
+				$('.tab3 a').addClass('on');
+			}
+		});
+		$(".nav_btn a").on('click', function(event) {
+			$(".nav_btn a").removeClass('on');
+			$(this).addClass('on');
+
+			if (this.hash !== "") {
+				event.preventDefault();
+					var hash = this.hash;
+					
+				$('html, body').animate({
+						margintop:160,
+					scrollTop: $(hash).offset().top 
+				}, 800, function(){
+					window.location.hash = hash;
+				});
+			}  
+		});
+
+		$(".navi a").on("click", function(e){
+			e.preventDefault();
+			var $this = $(this);
+			$(".navi a").removeClass("active");
+			$(this).addClass("active");
+
+			$(".odumak .tab").removeClass('on');
+			var activeTab = $this.attr("rel");
+			$("#" + activeTab).addClass('on');
+
+			var $thisImg = $(this).children("img");
+			$(".navi a img").each(function(){
+				var tmpSrc = $(this).attr('src');
+				$(this).attr('src', tmpSrc.replace("_on.jpg", ".jpg"));
+			});
+			$thisImg.attr('src', $thisImg.attr('src').replace(".jpg", "_on.jpg"));
+
+			var offset = $(".odumak .cont").offset();
+			$('html, body').animate({scrollTop : offset.top}, 400);
+			return false;
+		});
+
+		$(window).scroll(function(){
+			var topArea = $(".odumak .cont").offset().top;
+			var scr = $(this).scrollTop();
+			if(scr > topArea  + 50){
+				$(".odumak .navi").addClass('fixed');
+			} else {
+				$(".odumak .navi").removeClass('fixed');
+			}
+	
+			var footer = $("div.nav").offset().top - 100;
+			if(scr > footer){
+				$(".odumak .navi").css("display","none");
+			} else {
+				$(".odumak .navi").css("display","block");
+			}
+		});
+
+		var tabSwiper = new Swiper('.odumak_t_slide', {
+			loop: true,
+			speed:2500,
+			autoplay: {
+				delay: 600,
+				disableOnInteraction: false,
+			},
+			observer: true,
+			observeParents: true,
+
+			pagination: {
+				el: '.odumak_t_slide .swiper-pagination'
+			}
+		});
+		/* 탭 */
+		$(document).ready(function(){
+			var tabBtn = $(".tab_btn > li");
+			tabBtn.click(function(){
+				var target = $(this);
+				var index = target.index()
+				var tabCont = target.parent().next(".tab_cont").children("div");
+				target.addClass("on").siblings().removeClass("on");
+				tabCont.eq(index).show().siblings().hide();
+			});
+		});
+	</script>
+</body>
+</html>
