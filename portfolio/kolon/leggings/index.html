@@ -1,995 +1,508 @@
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <meta charset="UTF-8" />
     <title>마운틴 레깅스의 기준</title>
-	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-</head>
-<body>
-	<div class="cont">
-		<style>
-			/*reset + common*/
-			@import url('https://fonts.googleapis.com/earlyaccess/notosanskr.css');
-			body{
-				margin:0;
-				padding:0;
-			}
-			.leggings{overflow:hidden;background-color:#fff;}
-			.leggings *{
-				margin:0;
-				padding:0;
-				/*line-height:0;*/
-				font-family: 'Noto Sans KR', sans-serif !important;
-				letter-spacing:-0.025em;
-			}
-			.leggings ul,
-			.leggings li{list-style: none;}
-			.leggings img{
-				display:inline-block;
-				max-width:100%;
-				vertical-align:top;
-				line-height:0;
-			}
-			.leggings .clearfix:after{
-				content:'';
-				display:block;
-				clear:both;
-				overflow:hidden;
-				height:0;
-			}
-			.leggings a{display:block;}
-			.leggings .f_left{float:left;}
-			.leggings .f_right{float:right;}
-			.leggings .rel{position:relative;}
-			.leggings .abs{position:absolute;width:100%;left:0;}
-			.leggings .inner{
-				width: 78.125vw;
-				margin-left: auto;
-				margin-right: auto;
-			}
-			.leggings .pt185{padding-top:9.635416666666667vw;}
-			.leggings .pb213{padding-bottom:11.09375vw;}
-			.leggings .mt50{margin-top:2.604166666666667vw;}
-			.leggings .mt117{margin-bottom:6.09375vw;}
-			.leggings .mb150{margin-bottom:7.8125vw;}
-			.leggings .show_bottom{transform:matrix(1, 0, 0, 1, 0, 30);opacity: 0;}
-			.leggings .show_left{transform:matrix(1, 0, 0, 1, -30, 0);opacity: 0;}
-			.leggings .show_right{transform:matrix(1, 0, 0, 1, 30, 0);opacity: 0;}
-
-			/* tit */
-			.leggings .tit_wrap .tit{top:42.73255813953488%;}
-			.leggings .tit_wrap .txt{top:56.97674418604651%;}
-
-			/* cont01 */
-			.leggings .cont01 .txt{top:5.807086614173228%;}
-
-			/* cont02 */
-			.leggings .cont02 .tit .f_left{width:50.26666666666667%;}
-			.leggings .cont02 .tit .f_right{width:46.06666666666667%;}
-			.leggings .cont02 .img>div{width:32%;}
-			.leggings .cont02 .img>div.b2{margin: 0 2%;}
-
-			/* cont04 */
-			.leggings .cont04 .inner{
-				position: absolute;
-				top: 0;
-				left: 0;
-				right: 0;
-				width: 78.125vw;
-				height: 100%;
-				margin: 0 auto;
-			}
-			.leggings .cont04 .tit{top:24.39393939393939%;}
-			.leggings .cont04 .txt{top:38.18181818181818%;}
-
-			/* cont05 */
-			.leggings .cont05 .gif01{
-				width: 14.32291666666667%;
-				top: 1.191362620997766%;
-				left: 46.5625%;
-			}
-			.leggings .cont05 .gif02{
-				width: 14.32291666666667%;
-				bottom: 15.33879374534624%;
-				left: 63.59375%;
-			}
-			.leggings .cont05 .btn_pop{
-				position: absolute;
-				width: 27.8125%;
-				height: 23.08265078183172%;
-				transition: all 0.3s ease;
-				font-size: 0;
-				text-indent: -9999px;
-			}
-			.leggings .cont05 .btn_pop.btn01{
-				top:0;
-				left:34.0625%;
-			}
-			.leggings .cont05 .btn_pop.btn02{
-				top:28.89054355919583%;
-				left:68.17708333333333%;
-			}
-			.leggings .cont05 .btn_pop.btn03{
-				top:62.99329858525689%;
-				left:51.19791666666667%;
-			}
-			.leggings .cont05 .btn_pop.btn04{
-				top:62.99329858525689%;
-				left:18.48958333333333%;
-			}
-			.leggings .cont05 .btn_pop.btn05{
-				top:28.89054355919583%;
-				left:5.572916666666667%;
-			}
-
-			/* popup */
-			.leggings .pop_bg{
-				display:none;
-				position: fixed;
-				top:0;
-				left:0;
-				width:100%;
-				height:100%;
-				background-color:rgba(0,0,0,0.8);
-				z-index:6;
-			}
-			.leggings .pop{
-				display:none;
-				position:fixed;
-				top: 0;
-				right: 0;
-				left: 0;
-				bottom: 0;
-				margin: auto;
-				height: 18.07291666666667vw;
-				width: 29.89583333333333vw;
-				z-index:7;
-			}
-			.leggings .btn_close{
-				position: absolute;
-				width:2.760416666666667vw;
-				height:2.760416666666667vw;
-				top: 0.15625vw;
-				right: 0.15625vw;
-				font-size:0;
-				text-indent:-9999px;
-			}
-
-
-			/* tab */
-			.leggings .txt_box{
-				position: absolute;
-				z-index: 1;
-				transform: matrix(1, 0, 0, 1, 0, 0);
-			}
-			.leggings .txt_box .txt{opacity: 0;}
-			.leggings .txt_box .line{ /* 기본: 왼쪽에서 오른쪽으로 */
-				position: absolute;
-				top:0%;
-				right:100%;
-			}
-			.leggings .txt_box .line img{
-				opacity: 0;
-				display: block;
-			}
-			.leggings .txt_box.active .line:after{
-				display:block;
-				position:absolute;
-				left:0;
-				top: 0;
-				width:100%;
-				height:100%;									
-				background-repeat: no-repeat;
-				background-position: left center;
-				-webkit-background-size: cover;
-				background-size: cover;
-				-webkit-animation: width .7s linear;
-				-moz-animation: width .7s linear;
-				animation: width .7s linear;
-				z-index:-1;
-				content:'';
-			}
-			@keyframes width{
-				0% {width:0;}
-				25% {width:25%;}
-				50% {width:50%;}
-				75% {width:75%;}
-				100% {width:100%;}
-			}
-			.leggings .txt_box.bottom .line{ /* 아래쪽에서 위쪽으로 */
-				top: 100%;
-				right: inherit;
-				left: 0%;
-			}
-			.leggings .txt_box.bottom.active .line:after{
-				top: auto;
-				bottom: 0;
-				-webkit-animation: height .7s linear;
-				-moz-animation: height .7s linear;
-				animation: height .7s linear;
-				background-position: bottom center;
-			}
-			.leggings .txt_box.top .line{ /* 위쪽에서 나래쪽으로 */
-				top: auto;
-				bottom: 100%;
-				right: inherit;
-			}
-			.leggings .txt_box.top.active .line:after{
-				background-position: top center;
-				-webkit-animation: height .7s linear;
-				-moz-animation: height .7s linear;
-				animation: height .7s linear;
-			}
-			@keyframes height{
-				0% {height:0;}
-				25% {height:25%;}
-				50% {height:50%;}
-				75% {height:75%;}
-				100% {height:100%;}
-			}
-
-			/* tab01 */
-			.leggings .tab01 .txt_box.tb01.active .line:after{background-image: url('https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab01_line01.png');}
-			.leggings .tab01 .txt_box.tb02.active .line:after{background-image: url('https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab01_line02.png');}
-			.leggings .tab01 .txt_box.tb03.active .line:after{background-image: url('https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab01_line02.png');}
-			.leggings .tab01 .txt_box.tb04.active .line:after{background-image: url('https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab01_line04.png');}
-			.leggings .tab01 .txt_box.tb01{
-				width:7.96875%;
-				right:30.05208333333333%;
-				top: 56.1%;
-			}
-			.leggings .tab01 .txt_box.tb01 .line{
-				width:72.54901960784314%;
-				right:106.535947712418301%;
-			}
-			.leggings .tab01 .txt_box.tb02,
-			.leggings .tab01 .txt_box.tb03{
-				width:10.10416666666667%;
-				right:13.75%;
-			}
-			.leggings .tab01 .txt_box.tb02{top:69.6%;}
-			.leggings .tab01 .txt_box.tb03{top:75%;}
-			.leggings .tab01 .txt_box.tb02 .line,
-			.leggings .tab01 .txt_box.tb03 .line{width:124.2268041237113%;}
-			.leggings .tab01 .txt_box.tb04{
-				width:7.916666666666667%;
-				right:27.03125%;
-				bottom:13.5%;
-			}
-			.leggings .tab01 .txt_box.tb04 .line{
-				top:-98.57142857142857%;
-				width:50%;
-			}
-			/* tab02 */
-			.leggings .tab02 .txt_box.tb01.active .line:after{background-image: url('https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab02_line01.png');}
-			.leggings .tab02 .txt_box.tb02.active .line:after{background-image: url('https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab02_line02.png');}
-			.leggings .tab02 .txt_box.tb03.active .line:after{background-image: url('https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab02_line03.png');}
-			.leggings .tab02 .txt_box.tb04.active .line:after{background-image: url('https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab02_line04.png');}
-			.leggings .tab02 .txt_box.tb05.active .line:after{background-image: url('https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab02_line05.png');}
-			.leggings .tab02 .txt_box.tb06.active .line:after{background-image: url('https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab02_line06.png');}
-			.leggings .tab02 .txt_box.tb01{
-				width:11.40625%;
-				right:27.29166666666667%;
-				top:54.1%;
-			}
-			.leggings .tab02 .txt_box.tb02{
-				width:9.53125%;
-				right:28.95833333333333%;
-				top:62.230769%;
-			}
-			.leggings .tab02 .txt_box.tb03{
-				width:6.822916666666667%;
-				right:15.46875%;
-				top:62.230769%;
-			}
-			.leggings .tab02 .txt_box.tb04{
-				width:7.65625%;
-				right:43.33333333333333%;
-				bottom:13.8%;
-			}
-			.leggings .tab02 .txt_box.tb05{
-				width:7.916666666666667%;
-				right:29.73958333333333%;
-				bottom:13.8%;
-			}
-			.leggings .tab02 .txt_box.tb06{
-				width:7.916666666666667%;
-				right:15.52083333333333%;
-				bottom:13.8%;
-			}
-			.leggings .tab02 .txt_box.tb01 .line{
-				width:57.53424657534247%;
-			}
-			.leggings .tab02 .txt_box.tb02 .line{
-				width:6.557377049180328%;
-				left:42.07650273224044%;
-			}
-			.leggings .tab02 .txt_box.tb03 .line{
-				width:12.97709923664122%;
-			}
-			.leggings .tab02 .txt_box.tb04 .line{
-				width:8.163265306122449%;
-				left:17.00680272108844%;
-			}
-			.leggings .tab02 .txt_box.tb05 .line{
-				width:7.894736842105263%;
-				left:28.28947368421053%;
-			}
-			.leggings .tab02 .txt_box.tb06 .line{
-				width:7.28476821192053%;
-				left:18.54304635761589%;
-			}
-			
-			.leggings .tab_cont .graph{
-				top: 9.836065573770492%;
-				left: 32.57839721254355%;
-				width: 34.14634146341463%;
-				opacity:0;
-			}
-			.leggings .tab_cont .graph_wrap{    
-				width: 27.08333333333333%;
-				height: 14.81647269471799%;
-				left: 53.55%;
-			}
-			.leggings .tab_cont .word{
-				width: 19.36056838365897%;
-				opacity:0;
-			}
-			.leggings .tab_cont .word01{
-				top: 2.73224043715847%;
-				left: 43.37979094076655%;
-			}
-			.leggings .tab_cont .word02,
-			.leggings .tab_cont .word05{top: 26.77595628415301%;}
-			.leggings .tab_cont .word03,
-			.leggings .tab_cont .word04{top: 62.29508196721311%;}
-			.leggings .tab_cont .word02{left: 66.89895470383275%;}
-			.leggings .tab_cont .word03{left: 56.62020905923345%;}
-			.leggings .tab_cont .word04{left: 25.08710801393728%;}
-			.leggings .tab_cont .word05{left: 13.85435168738899%;}
-			.leggings .tab01 .graph_wrap {top:36.09%;}
-			.leggings .tab02 .graph_wrap {top:36.56%;}
-			.leggings .tab03 .graph_wrap {top:36.89%;}
-			/* tab03 */
-			.leggings .tab03 .txt_box.tb01.active .line:after{background-image: url('https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab03_line01.png');}
-			.leggings .tab03 .txt_box.tb02.active .line:after{background-image: url('https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab03_line02.png');}
-			.leggings .tab03 .txt_box.tb03.active .line:after{background-image: url('https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab03_line03.png');}
-			.leggings .tab03 .txt_box.tb04.active .line:after{background-image: url('https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab03_line04.png');}
-			.leggings .tab03 .txt_box.tb05.active .line:after{background-image: url('https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab03_line05.png');}
-			.leggings .tab03 .txt_box.tb06.active .line:after{background-image: url('https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab03_line06.png');}
-			.leggings .tab03 .txt_box.tb01{
-				width:11.14583333333333%;
-				right:27.39583333333333%;
-				top:53.84615384615385%;
-			}
-			.leggings .tab03 .txt_box.tb02{
-				width:8.489583333333333%;
-				right:30.05208333333333%;
-				top:61.3%;
-			}
-			.leggings .tab03 .txt_box.tb03{
-				width:9.53125%;
-				right:17.60416666666667%;
-				top:63.56410256410256%;
-			}
-			.leggings .tab03 .txt_box.tb04{
-				width:11.14583333333333%;
-				right:40%;
-				top:83.3%;
-			}
-			.leggings .tab03 .txt_box.tb05{
-				width:11.14583333333333%;
-				right:28.48958333333333%;
-				top:83.29%;
-			}
-			.leggings .tab03 .txt_box.tb06{
-				width:11.14583333333333%;
-				right:17.03125%;
-				top:83.3%;
-			}
-			.leggings .tab03 .txt_box.tb01 .line{
-				width:44.39252336448598%;
-			}
-			.leggings .tab03 .txt_box.tb02 .line{
-				width:92.63803680981595%;
-			}
-			.leggings .tab03 .txt_box.tb03 .line{
-				width:67.75956284153005%;
-				left:-67.75956284153005%;
-			}
-			.leggings .tab03 .txt_box.tb04 .line{
-				width:23.36448598130841%;
-				left:0%;
-			}
-			.leggings .tab03 .txt_box.tb05 .line{
-				width:3.958333333333333vw;
-				left:-35.51401869158879%;
-				bottom:88%;	
-			}
-			.leggings .tab03 .txt_box.tb06 .line{
-				width:5.607476635514019%;
-				left:58.8785046728972%;
-			}
-
-
-			/* cont */
-			.leggings .btn{
-				position: absolute;
-				font-size: 0;
-				text-indent: -9999px;
-				display: block;
-			}
-			.leggings .tab_btn{
-				position: absolute;
-				top: 20.18800358102059%;
-				width: 78.125vw;
-				left: 0;
-				right: 0;
-				margin: 0 auto;
-				z-index: 2;
-			}
-			.leggings .tab_btn li{
-				width: 33%;
-				float: left;			
-				background: #fff;	
-			}
-			.leggings .tab_btn li a{						
-				transition:all 0.3s ease;
-				opacity: 0.3;
-			}
-			.leggings .tab_btn li:hover a{opacity:0.6;}
-			.leggings .tab_btn li.on:hover a,
-			.leggings .tab_btn li.on a{opacity:1;}
-			.leggings .tab_btn li:nth-child(2){margin:0 0.5%;}
-			.leggings .tab_cont .btn{
-				right: 10.9375%;	
-				bottom: 6.1%;
-				width: 19.79166666666667%;
-				height: 2.923076923076923%;								
-			}
-			.leggings .cont02 .btn{
-				width: 17.8125%;
-				height: 5.810147299509002%;
-				right: 29.63541666666667%;
-				bottom: 27.08674304418985%;									
-			}
-
-			/* 롤링이미지 */
-			.leggings .page_sect {
-				width:100%;
-				height:29.89583333333333vw;
-				overflow:hidden;
-				position: absolute;
-				top: 28.34645669291339%;
-				left: 0;
-			}
-			.leggings .page_sect .thisImageShowGrid {
-				position:relative;
-				width:256.7708333333333vw;
-				height:100%;
-			}
-			.leggings .page_sect .thisImageShowGrid:before,
-			.leggings .page_sect .thisImageShowGrid:after {
-				content:'';
-				display:block;
-				position:absolute;
-				top:0;
-				width:213.4375vw;
-				height:29.89583333333333vw;
-				background-repeat:no-repeat;
-				background-size:100% 100%;
-				-webkit-animation-duration:120s;
-				animation-duration:120s;
-				-webkit-animation-timing-function:linear;
-				animation-timing-function:linear;
-				-webkit-animation-iteration-count:infinite;
-				animation-iteration-count:infinite;
-				background-image:url('https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_rolling.png');
-			}
-			.leggings .page_sect .thisImageShowGrid:before {
-				-webkit-animation-name:showGridAnimationBeforeLarge;
-				animation-name:showGridAnimationBeforeLarge;
-			}
-			.leggings .page_sect .thisImageShowGrid:after {
-				-webkit-animation-name:showGridAnimationAfterLarge;
-				animation-name:showGridAnimationAfterLarge;
-			}
-			@-webkit-keyframes showGridAnimationBeforeLarge {
-				0% {
-					-webkit-transform:translate3d(0, 0, 0);
-					transform:translate3d(0, 0, 0)
-				} 50% {
-					-webkit-transform:translate3d(-213.4375vw, 0, 0);
-					transform:translate3d(-213.4375vw, 0, 0)
-				} 50.001% {
-					-webkit-transform:translate3d(213.4375vw, 0, 0);
-					transform:translate3d(213.4375vw, 0, 0)
-				} 100% {
-					-webkit-transform:translate3d(0, 0, 0);
-					transform:translate3d(0, 0, 0)
-				}
-			}
-			@keyframes showGridAnimationBeforeLarge {
-				0% {
-					-webkit-transform:translate3d(0, 0, 0);
-					transform:translate3d(0, 0, 0)
-				} 50% {
-					-webkit-transform:translate3d(-213.4375vw, 0, 0);
-					transform:translate3d(-213.4375vw, 0, 0)
-				} 50.001% {
-					-webkit-transform:translate3d(213.4375vw, 0, 0);
-					transform:translate3d(213.4375vw, 0, 0)
-				} 100% {
-					-webkit-transform:translate3d(0, 0, 0);
-					transform:translate3d(0, 0, 0)
-				}
-			}
-
-			@-webkit-keyframes showGridAnimationAfterLarge {
-				0% {
-					-webkit-transform:translate3d(213.4375vw, 0, 0);
-					transform:translate3d(213.4375vw, 0, 0)
-				} 50% {
-					-webkit-transform:translate3d(0, 0, 0);
-					transform:translate3d(0, 0, 0)
-				} 100% {
-					-webkit-transform:translate3d(-213.4375vw, 0, 0);
-					transform:translate3d(-213.4375vw, 0, 0)
-				}
-			}
-			@keyframes showGridAnimationAfterLarge {
-				0% {
-					-webkit-transform:translate3d(213.4375vw, 0, 0);
-					transform:translate3d(213.4375vw, 0, 0)
-				} 50% {
-					-webkit-transform:translate3d(0, 0, 0);
-					transform:translate3d(0, 0, 0)
-				} 100% {
-					-webkit-transform:translate3d(-213.4375vw, 0, 0);
-					transform:translate3d(-213.4375vw, 0, 0)
-				}
-			@media (max-width: 1280px) {
-			}
-		</style>
-		<div class="full-width">
-			<div class="leggings">
-				<div class="rel tit_wrap mb150">
-					<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_tit_bg.jpg" alt="">
-					<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_tit_tit.png" alt="마운틴 레깅스의 기준" class="abs tit show_bottom">
-					<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_tit_txt.png" alt="코오롱스포츠가 아웃도어 레깅스의 새로운 기준을 제안합니다." class="abs txt show_bottom">
-				</div>
-				<div class="cont01 rel">
-					<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont01_bg.jpg" alt="">
-					<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont01_txt.png" alt="균형 잡힌 핏과 탁월한 기능을 고루 갖춰 다양한 액티비티와 여행에 적합하며 일상 어디서든 운동의 강도와 상황에 따라 선택하여 착용할 수 있는 코오롱스포츠의 새로운 레깅스 라인을 소개합니다. " class="abs txt show_bottom">
-					<div class="page_sect">
-						<div class="thisImageShowGrid"></div>
-					</div>					
-				</div>
-				<div class="cont02 rel inner pb213 pt185">
-					<div class="clearfix tit">
-						<div class="f_left show_left"><img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont02_tit.png" alt=""></div>
-						<div class="f_right show_right"><img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont02_txt.png" alt=""></div>
-					</div>
-					<div class="clearfix img mt50">
-						<div class="f_left b1 show_bottom">
-							<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont02_img01.jpg" alt="">
-							<a href="javascript:void(0)" rel="tab01"><img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont02_btn01_new.png" alt=""></a>
-						</div>
-						<div class="f_left b2 show_bottom">
-							<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont02_img02.jpg" alt="">
-							<a href="javascript:void(0)" rel="tab02"><img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont02_btn02_new.png" alt=""></a>
-						</div>
-						<div class="f_right b3 show_bottom">
-							<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont02_img03.jpg" alt="">
-							<a href="javascript:void(0)" rel="tab03"><img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont02_btn03_new2.png" alt=""></a>
-						</div>
-					</div>
-				</div>
-				<div class="cont04 rel">
-					<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont04_bg.jpg" alt="">
-					<div class="inner rel">
-						<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont04_tit.png" alt="최적의 기능을 위한 테스트" class="abs tit show_bottom">
-						<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont04_txt.png" alt="코오롱스포츠는 KOLAS 제 1호 국제공인시험기관인 'FITI 시험 연구원'을 통해 내구성, 흡습속건, 신축성, 회복성 등 레깅스 관련 기능성에 대한 각종 시험진행을 완료하였으며, 본 테스트의 결과를 제품 개발에 반영하였습니다." class="abs txt show_bottom">
-					</div>
-				</div>
-				<div class="cont05 rel mt117">
-					<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont05_bg.jpg" alt="">
-					<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_stretch.gif" class="abs gif01">
-					<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_pressure.gif" class="abs gif02">
-					<a href="javascript:void:(0);" class="btn_pop btn01" rel="pop01">STRETCH 자세히보기</a>
-					<a href="javascript:void:(0);" class="btn_pop btn02" rel="pop02">QUICK DRY 자세히보기</a>
-					<a href="javascript:void:(0);" class="btn_pop btn03" rel="pop03">PRESSURE 자세히보기</a>
-					<a href="javascript:void:(0);" class="btn_pop btn04" rel="pop04">PROTECTION 자세히보기</a>
-					<a href="javascript:void:(0);" class="btn_pop btn05" rel="pop05">DURABILITY 자세히보기</a>
-					<!-- popup -->										
-					<div class="pop pop01" id="pop01">
-						<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont05_stretch_pop.jpg" alt="">
-						<a href="javascript:void:(0);" class="btn_close">close</a>
-					</div>							
-					<div class="pop pop02" id="pop02">
-						<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont05_dry_pop.jpg" alt="">
-						<a href="javascript:void:(0);" class="btn_close">close</a>
-					</div>							
-					<div class="pop pop03" id="pop03">
-						<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont05_pressure_pop.jpg" alt="">
-						<a href="javascript:void:(0);" class="btn_close">close</a>
-					</div>							
-					<div class="pop pop04" id="pop04">
-						<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont05_protect_pop.jpg" alt="">
-						<a href="javascript:void:(0);" class="btn_close">close</a>
-					</div>							
-					<div class="pop pop05" id="pop05">
-						<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont05_durability_pop.jpg" alt="">
-						<a href="javascript:void:(0);" class="btn_close">close</a>
-					</div>
-					<div class="pop_bg"></div>
-				</div>
-				<div class="cont03 rel">			
-					<ul class="tab_btn clearfix">
-						<li class="rel on tbt01"><a href="javascript:void(0)"><img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab_btn01.png" alt=""></a></li>
-						<li class="rel tbt02"><a href="javascript:void(0)"><img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab_btn02.png" alt=""></a></li>
-						<li class="rel tbt03"><a href="javascript:void(0)"><img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab_btn03.png" alt=""></a></li>
-					</ul>
-					<div class="tab_cont">
-						<div class="tab01 rel" id="tab01">
-							<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab01.jpg" alt="">
-							<div class="graph_wrap abs">
-								<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/m_leggings_cont03_tab01_02_graph.jpg" class="graph abs">
-								<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/m_leggings_cont03_tab01_02_txt01.jpg" class="word word01 abs">
-								<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/m_leggings_cont03_tab01_02_txt02.jpg" class="word word02 abs">
-								<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/m_leggings_cont03_tab01_02_txt03.jpg" class="word word03 abs">
-								<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/m_leggings_cont03_tab01_02_txt04.jpg" class="word word04 abs">
-								<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/m_leggings_cont03_tab01_02_txt05.jpg" class="word word05 abs">
-							</div>
-							<a href="javascript:void(0);" class="btn">플레인 레깅스 보러가기</a>
-							<div class="txt_box tb01">
-								<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab01_txt01.png" alt="힙라인을 안정감 있게 잡아주는 절개 패턴 " class="txt">
-								<p class="line"><img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab01_line01.png"></p>
-							</div>
-							<div class="txt_box tb02">
-								<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab01_txt03.png" alt="복부를 탄탄하게 잡아주는 탄성좋은 밴드를 적용" class="txt">
-								<p class="line"><img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab01_line02.png"></p>
-							</div>
-							<div class="txt_box tb03">
-								<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab01_txt02.png" alt="" class="txt">
-								<p class="line"><img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab01_line02.png"></p>
-							</div>
-							<div class="txt_box tb04">
-								<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab01_txt04.png" alt="고신축 소재를 사용하여 착용감을 강화한 스트레치 소재" class="txt">
-								<p class="line"><img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab01_line04.png"></p>
-							</div>
-						</div>
-						<div class="tab02" id="tab02">
-							<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab02_.jpg" alt="">
-							<div class="graph_wrap abs">
-								<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/m_leggings_cont03_tab02_02_graph.jpg" class="graph abs">
-								<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/m_leggings_cont03_tab01_02_txt01.jpg" class="word word01 abs">
-								<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/m_leggings_cont03_tab01_02_txt02.jpg" class="word word02 abs">
-								<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/m_leggings_cont03_tab01_02_txt03.jpg" class="word word03 abs">
-								<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/m_leggings_cont03_tab01_02_txt04.jpg" class="word word04 abs">
-								<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/m_leggings_cont03_tab01_02_txt05.jpg" class="word word05 abs">
-							</div>
-							<a href="javascript:void(0);" class="btn">밸리 레깅스 보러가기</a>
-							<div class="txt_box tb01">
-								<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab02_txt01.png" alt="" class="txt">
-								<p class="line"><img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab02_line01.png"></p>
-							</div>
-							<div class="txt_box tb02 bottom">
-								<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab02_txt02.png" alt="" class="txt">
-								<p class="line"><img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab02_line02.png"></p>
-							</div>
-							<div class="txt_box tb03 bottom">
-								<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab02_txt03.png" alt="" class="txt">
-								<p class="line"><img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab02_line03.png"></p>
-							</div>
-							<div class="txt_box tb04 top">
-								<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab02_txt04.png" alt="" class="txt">
-								<p class="line"><img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab02_line04.png"></p>
-							</div>
-							<div class="txt_box tb05 top">
-								<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab02_txt05.png" alt="" class="txt">
-								<p class="line"><img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab02_line05.png"></p>
-							</div>
-							<div class="txt_box tb06 top">
-								<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab02_txt06.png" alt="" class="txt">
-								<p class="line"><img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab02_line06.png"></p>
-							</div>
-						</div>
-						<div class="tab03" id="tab03">
-							<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab03.jpg" alt="">
-							<div class="graph_wrap abs">
-								<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/m_leggings_cont03_tab03_02_graph.jpg" class="graph abs">
-								<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/m_leggings_cont03_tab01_02_txt01.jpg" class="word word01 abs">
-								<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/m_leggings_cont03_tab01_02_txt02.jpg" class="word word02 abs">
-								<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/m_leggings_cont03_tab01_02_txt03.jpg" class="word word03 abs">
-								<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/m_leggings_cont03_tab01_02_txt04.jpg" class="word word04 abs">
-								<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/m_leggings_cont03_tab01_02_txt05.jpg" class="word word05 abs">
-							</div>
-							<a href="javascript:void(0);" class="btn">릿지 레깅스 보러가기</a>
-							<div class="txt_box tb01">
-								<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab03_txt01.png" alt="" class="txt">
-								<p class="line"><img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab03_line01.png"></p>
-							</div>
-							<div class="txt_box tb02">
-								<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab03_txt02.png" alt="" class="txt">
-								<p class="line"><img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab03_line02.png"></p>
-							</div>
-							<div class="txt_box tb03">
-								<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab03_txt03.png" alt="" class="txt">
-								<p class="line"><img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab03_line03.png"></p>
-							</div>
-							<div class="txt_box tb04 top">
-								<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab03_txt04.png" alt="" class="txt">
-								<p class="line"><img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab03_line04.png"></p>
-							</div>
-							<div class="txt_box tb05 top">
-								<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab03_txt05.png" alt="" class="txt">
-								<p class="line"><img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab03_line05.png"></p>
-							</div>
-							<div class="txt_box tb06 top">
-								<img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab03_txt06.png" alt="" class="txt">
-								<p class="line"><img src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab03_line06.png"></p>
-							</div>
-						</div>
-					</div>
-				</div>
-
-			</div>
-		</div>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js"></script>
-		<script>
-			$(document).ready(function(){
-			//$(window).on("load", function(){
-				TweenMax.to($(".tit_wrap .tit"), 1, {opacity:1,y:0,delay:0, ease: Power1.ease});
-				TweenMax.to($(".tit_wrap .txt"), 1, {opacity:1,y:0,delay:0.5, ease: Power1.ease});
-			});
-
-			$(window).scroll(function(){
-				var winTop = $(this).scrollTop();
-				var cont01 = $(".cont01").offset().top - 600;
-				var cont02 = $(".cont02").offset().top - 600;
-				var cont02Img = $(".cont02 .img").offset().top - 600;
-				var cont03 = $(".cont03").offset().top - 600;
-				var cont04 = $(".cont04").offset().top - 600;
-				var cont05 = $(".cont05").offset().top - 600;
-
-				if(cont01 < winTop && winTop < cont02){  
-					TweenMax.to($(".cont01 .txt"), 1, {opacity:1,y:0,delay:0, ease: Power1.ease});
-				}
-				if(cont02 < winTop && winTop < cont04){  
-					TweenMax.to($(".cont02 .tit .f_left"), 1, {opacity:1,x:0,delay:0, ease: Power1.ease});
-					TweenMax.to($(".cont02 .tit .f_right"), 1, {opacity:1,x:0,delay:0.5, ease: Power1.ease}); 
-					TweenMax.to($(".cont02 .img .b1"), 1, {opacity:1,y:0,delay:1, ease: Power1.ease});
-					TweenMax.to($(".cont02 .img .b2"), 1, {opacity:1,y:0,delay:1.5, ease: Power1.ease});
-					TweenMax.to($(".cont02 .img .b3"), 1, {opacity:1,y:0,delay:2, ease: Power1.ease});
-				}
-				if(cont04 < winTop && winTop < cont03){  
-					TweenMax.to($(".cont04 .tit"), 1, {opacity:1,y:0,delay:0, ease: Power1.ease});
-					TweenMax.to($(".cont04 .txt"), 1, {opacity:1,y:0,delay:0.5, ease: Power1.ease});
-				}
-			});
-
-			// popup
-			$(".btn_pop").click(function(){
-				pop_rel = $(this).attr('rel');
-				$('#'+pop_rel).fadeIn();
-				$('.pop_bg').fadeIn();
-			});
-			
-			$(".btn_close").click(function(){
-				$('.pop_bg').fadeOut();
-				$(this).parents(".pop").fadeOut();
-			});
-			
-			$(".pop_bg").click(function(){
-				$('.pop_bg').fadeOut();
-				$(".pop").fadeOut();
-			});
-
-			// tab
-			$(document).ready(function(){
-				var tabBtn = $(".tab_btn > li");
-				var tabCont = $(".tab_cont > div");
-
-				tabCont.hide().eq(0).show();
-
-				tabBtn.click(function(e){
-					e.preventDefault();
-					var target = $(this);
-					var index = target.index()
-					tabBtn.removeClass("on");
-					target.addClass("on");
-					tabCont.css("display","none");
-					tabCont.eq(index).css("display","block");
-				});
-			});
-
-			$(window).scroll(function(){
-				// animation
-				var tree = new TimelineMax();
-				var winTop = $(this).scrollTop();
-				var tabCont = $(".tab_cont").offset().top - 600;
-				var tab1_box1 = $(".tab01 .txt_box.tb01").offset().top - 600;
-				var tab1_box2 = $(".tab01 .txt_box.tb02").offset().top - 600;
-				var tab1_box3 = $(".tab01 .txt_box.tb03").offset().top - 600;
-				var tab1_box4 = $(".tab01 .txt_box.tb04").offset().top - 600;
-				var cont03 = $(".cont03").offset().top - 600;
-				var cont04 = $(".cont04").offset().top - 600;
-				var cont05 = $(".cont05").offset().top - 600;
-
-				if(cont03 < winTop && winTop < tab1_box1){
-					TweenMax.to($(".tab01 .graph"), 1, {opacity:1,delay:0});
-					TweenMax.to($(".tab01 .word01"), 1, {opacity:1,delay:0.3});
-					TweenMax.to($(".tab01 .word02"), 1, {opacity:1,delay:0.6});
-					TweenMax.to($(".tab01 .word03"), 1, {opacity:1,delay:0.9});
-					TweenMax.to($(".tab01 .word04"), 1, {opacity:1,delay:1.2});
-					TweenMax.to($(".tab01 .word05"), 1, {opacity:1,delay:1.5});
-				}
-				if(tab1_box1 < winTop && winTop < tab1_box3){
-					tree.add(TweenMax.to(function(){},0,{onComplete:function(){$('.tab01 .txt_box.tb01').addClass('active');}, delay:0}));
-					TweenMax.to($(".tab01 .txt_box.tb01 .txt"), 1, {opacity:1,delay:0.5});
-					tree.add(TweenMax.to(function(){},0,{onComplete:function(){$('.tab01 .txt_box.tb02').addClass('active');}, delay:1}));
-					TweenMax.to($(".tab01 .txt_box.tb02 .txt"), 1, {opacity:1,delay:1.5});
-				}
-				if(tab1_box3 < winTop && winTop < tab1_box4){
-					tree.add(TweenMax.to(function(){},0,{onComplete:function(){$('.tab01 .txt_box.tb03').addClass('active');}, delay:0}));
-					TweenMax.to($(".tab01 .txt_box.tb03 .txt"), 1, {opacity:1,delay:0.5});
-					tree.add(TweenMax.to(function(){},0,{onComplete:function(){$('.tab01 .txt_box.tb04').addClass('active');}, delay:1}));
-					TweenMax.to($(".tab01 .txt_box.tb04 .txt"), 1, {opacity:1,delay:1.5});
-				}
-			});
-
-			$(".cont02 .img a").on("click", function(e){
-				e.preventDefault();
-				var offset = $(".tab_btn").offset();
-				$('html, body').animate({scrollTop : offset.top}, 400);
-				return false;
-			});
-			$(".cont02 .img .b1 a").on("click", function(e){
-				var tabBtn = $(".tab_btn > li");
-				var tabCont = $(".tab_cont > div");
-				var tabBtnThis = $(".tab_btn .tbt01");
-				var tabContThis = $(".tab_cont .tab01");
-
-				e.preventDefault();
-				tabBtn.removeClass("on");
-				tabBtnThis.addClass("on");
-				tabCont.css("display","none");
-				tabContThis.css("display","block");
-			})
-			$(".cont02 .img .b2 a").on("click", function(e){
-				var tabBtn = $(".tab_btn > li");
-				var tabCont = $(".tab_cont > div");
-				var tabBtnThis = $(".tab_btn .tbt02");
-				var tabContThis = $(".tab_cont .tab02");
-
-				e.preventDefault();
-				tabBtn.removeClass("on");
-				tabBtnThis.addClass("on");
-				tabCont.css("display","none");
-				tabContThis.css("display","block");
-			});
-			$(".cont02 .img .b3 a").on("click", function(e){
-				var tabBtn = $(".tab_btn > li");
-				var tabCont = $(".tab_cont > div");
-				var tabBtnThis = $(".tab_btn .tbt03");
-				var tabContThis = $(".tab_cont .tab03");
-
-				e.preventDefault();
-				tabBtn.removeClass("on");
-				tabBtnThis.addClass("on");
-				tabCont.css("display","none");
-				tabContThis.css("display","block");
-			});
-
-			$(".tab_btn > li.tbt01, .cont02 .img .b1 a").on("click", function(e){
-				e.preventDefault();
-				$(".graph_wrap img,.txt_box .txt").css("opacity","0")
-				e.preventDefault();
-				var tree = new TimelineMax();
-				var tab1_box1 = $(".tab01 .txt_box.tb01").offset().top - 600;
-				var tab1_box2 = $(".tab01 .txt_box.tb02").offset().top - 600;
-				var tab1_box3 = $(".tab01 .txt_box.tb03").offset().top - 600;
-				var tab1_box4 = $(".tab01 .txt_box.tb04").offset().top - 600;
-				
-				TweenMax.to($(".tab01 .graph"), 1, {opacity:1,delay:0});
-				TweenMax.to($(".tab01 .word01"), 1, {opacity:1,delay:0.3});
-				TweenMax.to($(".tab01 .word02"), 1, {opacity:1,delay:0.6});
-				TweenMax.to($(".tab01 .word03"), 1, {opacity:1,delay:0.9});
-				TweenMax.to($(".tab01 .word04"), 1, {opacity:1,delay:1.2});
-				TweenMax.to($(".tab01 .word05"), 1, {opacity:1,delay:1.5});
-
-				tree.add(TweenMax.to(function(){},0,{onComplete:function(){$('.tab01 .txt_box.tb01').addClass('active');}, delay:1.7}));
-				TweenMax.to($(".tab01 .txt_box.tb01 .txt"), 1, {opacity:1,delay:2});
-
-				tree.add(TweenMax.to(function(){},0,{onComplete:function(){$('.tab01 .txt_box.tb02').addClass('active');}, delay:0.5}));
-				TweenMax.to($(".tab01 .txt_box.tb02 .txt"), 1, {opacity:1,delay:2});
-
-				tree.add(TweenMax.to(function(){},0,{onComplete:function(){$('.tab01 .txt_box.tb03').addClass('active');}, delay:0.4}));
-				TweenMax.to($(".tab01 .txt_box.tb03 .txt"), 1, {opacity:1,delay:2.9});
-
-				tree.add(TweenMax.to(function(){},0,{onComplete:function(){$('.tab01 .txt_box.tb04').addClass('active');}, delay:0.2}));
-				TweenMax.to($(".tab01 .txt_box.tb04 .txt"), 1, {opacity:1,delay:3.6});
-				return false;
-			})
-			$(".tab_btn > li.tbt02, .cont02 .img .b2 a").on("click", function(e){
-				e.preventDefault();
-				$(".graph_wrap img,.txt_box .txt").css("opacity","0")
-				var tree = new TimelineMax();
-				var tab2_box1 = $(".tab02 .txt_box.tb01").offset().top - 600;
-				var tab2_box2 = $(".tab02 .txt_box.tb02").offset().top - 600;
-				var tab2_box3 = $(".tab02 .txt_box.tb03").offset().top - 600;
-				var tab2_box4 = $(".tab02 .txt_box.tb04").offset().top - 600;
-				var tab2_box5 = $(".tab02 .txt_box.tb05").offset().top - 600;
-				var tab2_box6 = $(".tab02 .txt_box.tb06").offset().top - 600;
-
-				TweenMax.to($(".tab02 .graph"), 1, {opacity:1,delay:0});
-				TweenMax.to($(".tab02 .word01"), 1, {opacity:1,delay:0.3});
-				TweenMax.to($(".tab02 .word02"), 1, {opacity:1,delay:0.6});
-				TweenMax.to($(".tab02 .word03"), 1, {opacity:1,delay:0.9});
-				TweenMax.to($(".tab02 .word04"), 1, {opacity:1,delay:1.2});
-				TweenMax.to($(".tab02 .word05"), 1, {opacity:1,delay:1.5});
-
-				tree.add(TweenMax.to(function(){},0,{onComplete:function(){$('.tab02 .txt_box.tb01').addClass('active');}, delay:1.7}));
-				TweenMax.to($(".tab02 .txt_box.tb01 .txt"), 1, {opacity:1,delay:2});
-
-				tree.add(TweenMax.to(function(){},0,{onComplete:function(){$('.tab02 .txt_box.tb02').addClass('active');}, delay:0.5}));
-				TweenMax.to($(".tab02 .txt_box.tb02 .txt"), 1, {opacity:1,delay:2.5});
-
-				tree.add(TweenMax.to(function(){},0,{onComplete:function(){$('.tab02 .txt_box.tb03').addClass('active');}, delay:0.9}));
-				TweenMax.to($(".tab02 .txt_box.tb03 .txt"), 1, {opacity:1,delay:2.9});
-
-				tree.add(TweenMax.to(function(){},0,{onComplete:function(){$('.tab02 .txt_box.tb04').addClass('active');}, delay:0.4}));
-				TweenMax.to($(".tab02 .txt_box.tb04 .txt"), 1, {opacity:1,delay:3.6});
-
-				tree.add(TweenMax.to(function(){},0,{onComplete:function(){$('.tab02 .txt_box.tb05').addClass('active');}, delay:0.8}));
-				TweenMax.to($(".tab02 .txt_box.tb05 .txt"), 1, {opacity:1,delay:4.5});
-
-				tree.add(TweenMax.to(function(){},0,{onComplete:function(){$('.tab02 .txt_box.tb06').addClass('active');}, delay:0.9}));
-				TweenMax.to($(".tab02 .txt_box.tb06 .txt"), 1, {opacity:1,delay:5.5});
-
-				return false;
-			});
-			$(".tab_btn > li.tbt03, .cont02 .img .b3 a").on("click", function(e){
-				e.preventDefault();
-				$(".graph_wrap img,.txt_box .txt").css("opacity","0")
-				var tree = new TimelineMax();
-				var tab3_box1 = $(".tab03 .txt_box.tb01").offset().top - 600;
-				var tab3_box2 = $(".tab03 .txt_box.tb02").offset().top - 600;
-				var tab3_box3 = $(".tab03 .txt_box.tb03").offset().top - 600;
-				var tab3_box4 = $(".tab03 .txt_box.tb04").offset().top - 600;
-				var tab3_box5 = $(".tab03 .txt_box.tb05").offset().top - 600;
-				var tab3_box6 = $(".tab03 .txt_box.tb06").offset().top - 600;
-
-				TweenMax.to($(".tab03 .graph"), 1, {opacity:1,delay:0});
-				TweenMax.to($(".tab03 .word01"), 1, {opacity:1,delay:0.3});
-				TweenMax.to($(".tab03 .word02"), 1, {opacity:1,delay:0.6});
-				TweenMax.to($(".tab03 .word03"), 1, {opacity:1,delay:0.9});
-				TweenMax.to($(".tab03 .word04"), 1, {opacity:1,delay:1.2});
-				TweenMax.to($(".tab03 .word05"), 1, {opacity:1,delay:1.5});
-
-				tree.add(TweenMax.to(function(){},0,{onComplete:function(){$('.tab03 .txt_box.tb01').addClass('active');}, delay:1.7}));
-				TweenMax.to($(".tab03 .txt_box.tb01 .txt"), 1, {opacity:1,delay:2});
-
-				tree.add(TweenMax.to(function(){},0,{onComplete:function(){$('.tab03 .txt_box.tb02').addClass('active');}, delay:0.5}));
-				TweenMax.to($(".tab03 .txt_box.tb02 .txt"), 1, {opacity:1,delay:2.5});
-
-				tree.add(TweenMax.to(function(){},0,{onComplete:function(){$('.tab03 .txt_box.tb04').addClass('active');}, delay:0.9}));
-				TweenMax.to($(".tab03 .txt_box.tb04 .txt"), 1, {opacity:1,delay:2.9});
-
-				tree.add(TweenMax.to(function(){},0,{onComplete:function(){$('.tab03 .txt_box.tb05').addClass('active');}, delay:0.4}));
-				TweenMax.to($(".tab03 .txt_box.tb05 .txt"), 1, {opacity:1,delay:3.6});
-
-				tree.add(TweenMax.to(function(){},0,{onComplete:function(){$('.tab03 .txt_box.tb03').addClass('active');}, delay:0.8}));
-				TweenMax.to($(".tab03 .txt_box.tb03 .txt"), 1, {opacity:1,delay:4.5});
-
-				tree.add(TweenMax.to(function(){},0,{onComplete:function(){$('.tab03 .txt_box.tb06').addClass('active');}, delay:1}));
-				TweenMax.to($(".tab03 .txt_box.tb06 .txt"), 1, {opacity:1,delay:5.5});
-
-				return false;
-			});
-		</script>
-	</div>
-</body>	
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+  </head>
+  <body>
+    <div class="cont">
+      <div class="full-width">
+        <div class="leggings">
+          <div class="rel tit_wrap mb150">
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_tit_bg.jpg"
+              alt=""
+            />
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_tit_tit.png"
+              alt="마운틴 레깅스의 기준"
+              class="abs tit show_bottom"
+            />
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_tit_txt.png"
+              alt="코오롱스포츠가 아웃도어 레깅스의 새로운 기준을 제안합니다."
+              class="abs txt show_bottom"
+            />
+          </div>
+          <div class="cont01 rel">
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont01_bg.jpg"
+              alt=""
+            />
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont01_txt.png"
+              alt="균형 잡힌 핏과 탁월한 기능을 고루 갖춰 다양한 액티비티와 여행에 적합하며 일상 어디서든 운동의 강도와 상황에 따라 선택하여 착용할 수 있는 코오롱스포츠의 새로운 레깅스 라인을 소개합니다. "
+              class="abs txt show_bottom"
+            />
+            <div class="page_sect">
+              <div class="thisImageShowGrid"></div>
+            </div>
+          </div>
+          <div class="cont02 rel inner pb213 pt185">
+            <div class="clearfix tit">
+              <div class="f_left show_left">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont02_tit.png"
+                  alt=""
+                />
+              </div>
+              <div class="f_right show_right">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont02_txt.png"
+                  alt=""
+                />
+              </div>
+            </div>
+            <div class="clearfix img mt50">
+              <div class="f_left b1 show_bottom">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont02_img01.jpg"
+                  alt=""
+                />
+                <a href="javascript:void(0)" rel="tab01"
+                  ><img
+                    src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont02_btn01_new.png"
+                    alt=""
+                /></a>
+              </div>
+              <div class="f_left b2 show_bottom">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont02_img02.jpg"
+                  alt=""
+                />
+                <a href="javascript:void(0)" rel="tab02"
+                  ><img
+                    src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont02_btn02_new.png"
+                    alt=""
+                /></a>
+              </div>
+              <div class="f_right b3 show_bottom">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont02_img03.jpg"
+                  alt=""
+                />
+                <a href="javascript:void(0)" rel="tab03"
+                  ><img
+                    src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont02_btn03_new2.png"
+                    alt=""
+                /></a>
+              </div>
+            </div>
+          </div>
+          <div class="cont04 rel">
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont04_bg.jpg"
+              alt=""
+            />
+            <div class="inner rel">
+              <img
+                src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont04_tit.png"
+                alt="최적의 기능을 위한 테스트"
+                class="abs tit show_bottom"
+              />
+              <img
+                src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont04_txt.png"
+                alt="코오롱스포츠는 KOLAS 제 1호 국제공인시험기관인 'FITI 시험 연구원'을 통해 내구성, 흡습속건, 신축성, 회복성 등 레깅스 관련 기능성에 대한 각종 시험진행을 완료하였으며, 본 테스트의 결과를 제품 개발에 반영하였습니다."
+                class="abs txt show_bottom"
+              />
+            </div>
+          </div>
+          <div class="cont05 rel mt117">
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont05_bg.jpg"
+              alt=""
+            />
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_stretch.gif"
+              class="abs gif01"
+            />
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_pressure.gif"
+              class="abs gif02"
+            />
+            <a href="javascript:void:(0);" class="btn_pop btn01" rel="pop01"
+              >STRETCH 자세히보기</a
+            >
+            <a href="javascript:void:(0);" class="btn_pop btn02" rel="pop02"
+              >QUICK DRY 자세히보기</a
+            >
+            <a href="javascript:void:(0);" class="btn_pop btn03" rel="pop03"
+              >PRESSURE 자세히보기</a
+            >
+            <a href="javascript:void:(0);" class="btn_pop btn04" rel="pop04"
+              >PROTECTION 자세히보기</a
+            >
+            <a href="javascript:void:(0);" class="btn_pop btn05" rel="pop05"
+              >DURABILITY 자세히보기</a
+            >
+            <!-- popup -->
+            <div class="pop pop01" id="pop01">
+              <img
+                src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont05_stretch_pop.jpg"
+                alt=""
+              />
+              <a href="javascript:void:(0);" class="btn_close">close</a>
+            </div>
+            <div class="pop pop02" id="pop02">
+              <img
+                src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont05_dry_pop.jpg"
+                alt=""
+              />
+              <a href="javascript:void:(0);" class="btn_close">close</a>
+            </div>
+            <div class="pop pop03" id="pop03">
+              <img
+                src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont05_pressure_pop.jpg"
+                alt=""
+              />
+              <a href="javascript:void:(0);" class="btn_close">close</a>
+            </div>
+            <div class="pop pop04" id="pop04">
+              <img
+                src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont05_protect_pop.jpg"
+                alt=""
+              />
+              <a href="javascript:void:(0);" class="btn_close">close</a>
+            </div>
+            <div class="pop pop05" id="pop05">
+              <img
+                src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont05_durability_pop.jpg"
+                alt=""
+              />
+              <a href="javascript:void:(0);" class="btn_close">close</a>
+            </div>
+            <div class="pop_bg"></div>
+          </div>
+          <div class="cont03 rel">
+            <ul class="tab_btn clearfix">
+              <li class="rel on tbt01">
+                <a href="javascript:void(0)"
+                  ><img
+                    src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab_btn01.png"
+                    alt=""
+                /></a>
+              </li>
+              <li class="rel tbt02">
+                <a href="javascript:void(0)"
+                  ><img
+                    src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab_btn02.png"
+                    alt=""
+                /></a>
+              </li>
+              <li class="rel tbt03">
+                <a href="javascript:void(0)"
+                  ><img
+                    src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab_btn03.png"
+                    alt=""
+                /></a>
+              </li>
+            </ul>
+            <div class="tab_cont">
+              <div class="tab01 rel" id="tab01">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab01.jpg"
+                  alt=""
+                />
+                <div class="graph_wrap abs">
+                  <img
+                    src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/m_leggings_cont03_tab01_02_graph.jpg"
+                    class="graph abs"
+                  />
+                  <img
+                    src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/m_leggings_cont03_tab01_02_txt01.jpg"
+                    class="word word01 abs"
+                  />
+                  <img
+                    src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/m_leggings_cont03_tab01_02_txt02.jpg"
+                    class="word word02 abs"
+                  />
+                  <img
+                    src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/m_leggings_cont03_tab01_02_txt03.jpg"
+                    class="word word03 abs"
+                  />
+                  <img
+                    src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/m_leggings_cont03_tab01_02_txt04.jpg"
+                    class="word word04 abs"
+                  />
+                  <img
+                    src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/m_leggings_cont03_tab01_02_txt05.jpg"
+                    class="word word05 abs"
+                  />
+                </div>
+                <a href="javascript:void(0);" class="btn"
+                  >플레인 레깅스 보러가기</a
+                >
+                <div class="txt_box tb01">
+                  <img
+                    src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab01_txt01.png"
+                    alt="힙라인을 안정감 있게 잡아주는 절개 패턴 "
+                    class="txt"
+                  />
+                  <p class="line">
+                    <img
+                      src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab01_line01.png"
+                    />
+                  </p>
+                </div>
+                <div class="txt_box tb02">
+                  <img
+                    src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab01_txt03.png"
+                    alt="복부를 탄탄하게 잡아주는 탄성좋은 밴드를 적용"
+                    class="txt"
+                  />
+                  <p class="line">
+                    <img
+                      src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab01_line02.png"
+                    />
+                  </p>
+                </div>
+                <div class="txt_box tb03">
+                  <img
+                    src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab01_txt02.png"
+                    alt=""
+                    class="txt"
+                  />
+                  <p class="line">
+                    <img
+                      src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab01_line02.png"
+                    />
+                  </p>
+                </div>
+                <div class="txt_box tb04">
+                  <img
+                    src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab01_txt04.png"
+                    alt="고신축 소재를 사용하여 착용감을 강화한 스트레치 소재"
+                    class="txt"
+                  />
+                  <p class="line">
+                    <img
+                      src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab01_line04.png"
+                    />
+                  </p>
+                </div>
+              </div>
+              <div class="tab02" id="tab02">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab02_.jpg"
+                  alt=""
+                />
+                <div class="graph_wrap abs">
+                  <img
+                    src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/m_leggings_cont03_tab02_02_graph.jpg"
+                    class="graph abs"
+                  />
+                  <img
+                    src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/m_leggings_cont03_tab01_02_txt01.jpg"
+                    class="word word01 abs"
+                  />
+                  <img
+                    src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/m_leggings_cont03_tab01_02_txt02.jpg"
+                    class="word word02 abs"
+                  />
+                  <img
+                    src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/m_leggings_cont03_tab01_02_txt03.jpg"
+                    class="word word03 abs"
+                  />
+                  <img
+                    src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/m_leggings_cont03_tab01_02_txt04.jpg"
+                    class="word word04 abs"
+                  />
+                  <img
+                    src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/m_leggings_cont03_tab01_02_txt05.jpg"
+                    class="word word05 abs"
+                  />
+                </div>
+                <a href="javascript:void(0);" class="btn"
+                  >밸리 레깅스 보러가기</a
+                >
+                <div class="txt_box tb01">
+                  <img
+                    src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab02_txt01.png"
+                    alt=""
+                    class="txt"
+                  />
+                  <p class="line">
+                    <img
+                      src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab02_line01.png"
+                    />
+                  </p>
+                </div>
+                <div class="txt_box tb02 bottom">
+                  <img
+                    src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab02_txt02.png"
+                    alt=""
+                    class="txt"
+                  />
+                  <p class="line">
+                    <img
+                      src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab02_line02.png"
+                    />
+                  </p>
+                </div>
+                <div class="txt_box tb03 bottom">
+                  <img
+                    src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab02_txt03.png"
+                    alt=""
+                    class="txt"
+                  />
+                  <p class="line">
+                    <img
+                      src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab02_line03.png"
+                    />
+                  </p>
+                </div>
+                <div class="txt_box tb04 top">
+                  <img
+                    src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab02_txt04.png"
+                    alt=""
+                    class="txt"
+                  />
+                  <p class="line">
+                    <img
+                      src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab02_line04.png"
+                    />
+                  </p>
+                </div>
+                <div class="txt_box tb05 top">
+                  <img
+                    src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab02_txt05.png"
+                    alt=""
+                    class="txt"
+                  />
+                  <p class="line">
+                    <img
+                      src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab02_line05.png"
+                    />
+                  </p>
+                </div>
+                <div class="txt_box tb06 top">
+                  <img
+                    src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab02_txt06.png"
+                    alt=""
+                    class="txt"
+                  />
+                  <p class="line">
+                    <img
+                      src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab02_line06.png"
+                    />
+                  </p>
+                </div>
+              </div>
+              <div class="tab03" id="tab03">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab03.jpg"
+                  alt=""
+                />
+                <div class="graph_wrap abs">
+                  <img
+                    src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/m_leggings_cont03_tab03_02_graph.jpg"
+                    class="graph abs"
+                  />
+                  <img
+                    src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/m_leggings_cont03_tab01_02_txt01.jpg"
+                    class="word word01 abs"
+                  />
+                  <img
+                    src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/m_leggings_cont03_tab01_02_txt02.jpg"
+                    class="word word02 abs"
+                  />
+                  <img
+                    src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/m_leggings_cont03_tab01_02_txt03.jpg"
+                    class="word word03 abs"
+                  />
+                  <img
+                    src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/m_leggings_cont03_tab01_02_txt04.jpg"
+                    class="word word04 abs"
+                  />
+                  <img
+                    src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/m_leggings_cont03_tab01_02_txt05.jpg"
+                    class="word word05 abs"
+                  />
+                </div>
+                <a href="javascript:void(0);" class="btn"
+                  >릿지 레깅스 보러가기</a
+                >
+                <div class="txt_box tb01">
+                  <img
+                    src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab03_txt01.png"
+                    alt=""
+                    class="txt"
+                  />
+                  <p class="line">
+                    <img
+                      src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab03_line01.png"
+                    />
+                  </p>
+                </div>
+                <div class="txt_box tb02">
+                  <img
+                    src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab03_txt02.png"
+                    alt=""
+                    class="txt"
+                  />
+                  <p class="line">
+                    <img
+                      src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab03_line02.png"
+                    />
+                  </p>
+                </div>
+                <div class="txt_box tb03">
+                  <img
+                    src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab03_txt03.png"
+                    alt=""
+                    class="txt"
+                  />
+                  <p class="line">
+                    <img
+                      src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab03_line03.png"
+                    />
+                  </p>
+                </div>
+                <div class="txt_box tb04 top">
+                  <img
+                    src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab03_txt04.png"
+                    alt=""
+                    class="txt"
+                  />
+                  <p class="line">
+                    <img
+                      src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab03_line04.png"
+                    />
+                  </p>
+                </div>
+                <div class="txt_box tb05 top">
+                  <img
+                    src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab03_txt05.png"
+                    alt=""
+                    class="txt"
+                  />
+                  <p class="line">
+                    <img
+                      src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab03_line05.png"
+                    />
+                  </p>
+                </div>
+                <div class="txt_box tb06 top">
+                  <img
+                    src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab03_txt06.png"
+                    alt=""
+                    class="txt"
+                  />
+                  <p class="line">
+                    <img
+                      src="https://images.kolonmall.com/cms/special/upload/5ca7c587-ac44-4ee1-9241-dd73dca909a3/leggings_cont03_tab03_line06.png"
+                    />
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
-
