@@ -173,7 +173,8 @@ body {
   margin: 0 auto;
   width: 39.06666666666667%;
   height: 42.85714285714286%;
-  background: url("images/m_breeze_logo.png") no-repeat center;
+  background: url("https://cdn.eqlstore.com/display/html/TRND/20201124/m_breeze_logo.png")
+    no-repeat center;
   background-size: contain;
 }
 .breeze .bg .logo {

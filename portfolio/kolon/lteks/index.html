@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+    <title>LTEKS</title>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js"></script>
+</head>
+<body>
+	<div class="cont">
+		<style>
+			/*reset + common*/
+			body{
+				margin:0;
+				padding:0;
+			}
+			ul, li{list-style: none;}
+			.lteks{
+				overflow:hidden;
+				position:relative;
+			}
+			.lteks *{
+				margin:0;
+				padding:0;
+				line-height:0;
+			}
+			.lteks img{
+				display:inline-block;
+				width:100%;
+				vertical-align:top;
+			}
+			.lteks .clearfix:after{
+				content:'';
+				display:block;
+				clear:both;
+				overflow:hidden;
+				height:0;
+			}
+			.lteks .rel{position:relative;}
+			.lteks .txt,
+			.lteks .img{
+				position: absolute;
+				opacity:0;
+				transform: matrix(1, 0, 0, 1, 0, 30); 
+			}
+			.lteks .cont01 .txt{
+				width: 56.92708333333333%;
+				left: 0;
+				right: 0;
+				margin: 0 auto;
+			}
+			.lteks .cont01 .txt01{top: 31.08935128518972%;}
+			.lteks .cont01 .txt02{top: 41.2484700122399%;}
+			.lteks .cont02 .video_wrap{
+				position: absolute;
+				left: 0;
+				right: 0;
+				margin: 0 auto;
+				width: 70.20833333333333%;
+				top: 18.50622406639004%;
+			}
+			.lteks .cont02 .video_wrap video{
+				width: 100%;
+				height: 100%;
+			}
+			.lteks .cont03 .img{
+				left: 9.270833333333333%;
+				width: 42.91666666666667%;
+				top: 15.06565307532827%;
+			}
+			.lteks .cont04 .img{
+				width: 16.77083333333333%;
+				top: 8.425720620842572%;
+			}
+			.lteks .cont04 .left{
+				left: 24.58333333333333%;
+				transform: matrix(1, 0, 0, 1, 30, 0); 
+			}
+			.lteks .cont04 .front{left: 41.35416666666667%;}
+			.lteks .cont04 .right{
+				left: 58.17708333333333%;
+				transform: matrix(1, 0, 0, 1, -30, 0);
+			}
+			.lteks .cont05 .img01{
+				width: 34.16666666666667%;
+				left: 12.65625%;
+				top: 41.54302670623145%;
+				transform: matrix(1, 0, 0, 1, -30, 0); 
+			}
+			.lteks .cont05 .img02{
+				right: 7.552083333333333%;
+				width: 35%;
+				top: 6.305637982195846%;
+				transform: matrix(1, 0, 0, 1, 30, 0); 
+			}
+			.lteks .cont06 a{
+				display: block;
+				position: absolute;
+				top: 0;
+				font-size: 0;	
+				text-indent: -9999px;
+			}
+			.lteks .cont06 .pop_btn{
+				width: 25.52083333333333%;
+				height: 41.4455110107284%;
+			}
+			.lteks .cont06 .pop_btn.btn01{left: 39.0625%;}
+			.lteks .cont06 .pop_btn.btn02{left: 66.14583333333333%;}
+			.lteks .cont06 .pop_btn.btn03,
+			.lteks .cont06 .pop_btn.btn04{top: 44.49463579898363%;}
+			.lteks .cont06 .pop_btn.btn03{left: 26.66666666666667%;}
+			.lteks .cont06 .pop_btn.btn04{left: 53.75%;}
+			.lteks .cont06 .pop_bg{
+				display: none;
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: rgba(0,0,0,0.8);
+				z-index: 500;
+			}
+			.lteks .cont06 .popup{
+				display: none;
+				position: fixed;
+				/*width: 27.08333333333333vw;
+				height: 40.57291666666667vw;*/
+				width: 29.94791666666667vw;
+				height: 44.84375vw;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				margin: auto;
+				z-index: 501;
+			}
+			.lteks .cont06 .pop_cls{
+				right: 0;
+				width: 11.12637362637363%;
+				height: 7.522935779816514%;
+			}
+			.lteks .tit:before{
+				position: absolute;
+				content:'';
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: #000;
+				transition: all 1.5s ease-in;
+			}
+			.lteks .tit.on:before{height: 0;}
+			.lteks .tit .txt{
+				position: absolute;
+				top: 45.66473988439306%;
+				width: 100%;
+				left: 0;
+				margin: 0 auto;
+				z-index: 1;
+				text-align: center;
+				opacity: 1;
+			}
+			.lteks .tit .txt ul{
+				display: inline-block;
+				position: relative;
+			}
+			.lteks .tit .txt ul:before{
+				position: absolute;
+				content:'';
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: #000;
+				transition: all 1.5s 1.8s ease;
+			}
+			.lteks .tit .txt.on ul:before{width: 0%;}
+			.lteks .tit .txt li{
+				float: left;
+				opacity: 0.1;
+				width: 2.604166666666667vw;
+			}
+			.lteks .tit .txt .desc{
+				width: 14.94791666666667%;
+				margin: 1.145833333333333vw auto 0;
+				opacity: 0;
+			}
+		</style>
+		<div class="full-width">
+			<div class="lteks">
+				<div class="tit rel">
+					<img src="https://images.kolonmall.com/cms/special/upload/a69c400d-bb5b-45e4-afbb-a90946b2af94/lteks_tit.jpg" alt="" class="bg">
+					<div class="txt">
+						<ul class="clearfix rel">
+							<li class="txt01"><img src="https://images.kolonmall.com/cms/special/upload/a69c400d-bb5b-45e4-afbb-a90946b2af94/lteks_tit_txt01.png" alt=""></li>
+							<li class="txt02"><img src="https://images.kolonmall.com/cms/special/upload/a69c400d-bb5b-45e4-afbb-a90946b2af94/lteks_tit_txt02.png" alt=""></li>
+							<li class="txt03"><img src="https://images.kolonmall.com/cms/special/upload/a69c400d-bb5b-45e4-afbb-a90946b2af94/lteks_tit_txt03.png" alt=""></li>
+							<li class="txt04"><img src="https://images.kolonmall.com/cms/special/upload/a69c400d-bb5b-45e4-afbb-a90946b2af94/lteks_tit_txt04.png" alt=""></li>
+							<li class="txt05"><img src="https://images.kolonmall.com/cms/special/upload/a69c400d-bb5b-45e4-afbb-a90946b2af94/lteks_tit_txt05.png" alt=""></li>
+						</ul>
+						<p class="desc"><img src="https://images.kolonmall.com/cms/special/upload/a69c400d-bb5b-45e4-afbb-a90946b2af94/lteks_tit_desc.png" alt=""></p>
+					</div>
+				</div>
+				<div class="cont01 rel">
+					<img src="https://images.kolonmall.com/cms/special/upload/a69c400d-bb5b-45e4-afbb-a90946b2af94/lteks_cont01.jpg" alt="">
+					<img src="https://images.kolonmall.com/cms/special/upload/a69c400d-bb5b-45e4-afbb-a90946b2af94/lteks_cont01_txt01.png" alt="" class="txt txt01">
+					<img src="https://images.kolonmall.com/cms/special/upload/a69c400d-bb5b-45e4-afbb-a90946b2af94/lteks_cont01_txt02.png" alt="" class="txt txt02">
+				</div>
+				<div class="cont02 rel">
+					<img src="https://images.kolonmall.com/cms/special/upload/a69c400d-bb5b-45e4-afbb-a90946b2af94/lteks_cont02.jpg" alt="">
+					<div class="video_wrap">
+						<video autoplay="" loop="" muted="">
+							<source src="https://images.kolonmall.com/cms/special/upload/a69c400d-bb5b-45e4-afbb-a90946b2af94/lteks_video_w.mp4" type="video/mp4">
+						</video>
+					</div>
+				</div>
+				<div class="cont03 rel">
+					<img src="https://images.kolonmall.com/cms/special/upload/a69c400d-bb5b-45e4-afbb-a90946b2af94/lteks_cont03.jpg" alt="">
+					<img src="https://images.kolonmall.com/cms/special/upload/a69c400d-bb5b-45e4-afbb-a90946b2af94/lteks_cont03_img.jpg" alt="" class="img">
+				</div>
+				<div class="cont04 rel">
+					<img src="https://images.kolonmall.com/cms/special/upload/a69c400d-bb5b-45e4-afbb-a90946b2af94/lteks_cont04.jpg" alt="">
+					<img src="https://images.kolonmall.com/cms/special/upload/a69c400d-bb5b-45e4-afbb-a90946b2af94/lteks_cont04_left.jpg" alt="" class="img left">
+					<img src="https://images.kolonmall.com/cms/special/upload/a69c400d-bb5b-45e4-afbb-a90946b2af94/lteks_cont04_front.jpg" alt="" class="img front">
+					<img src="https://images.kolonmall.com/cms/special/upload/a69c400d-bb5b-45e4-afbb-a90946b2af94/lteks_cont04_right.jpg" alt="" class="img right">
+				</div>
+				<div class="cont05 rel">
+					<img src="https://images.kolonmall.com/cms/special/upload/a69c400d-bb5b-45e4-afbb-a90946b2af94/lteks_cont05.jpg" alt="">
+					<img src="https://images.kolonmall.com/cms/special/upload/a69c400d-bb5b-45e4-afbb-a90946b2af94/lteks_cont05_img01.jpg" alt="" class="img img01">
+					<img src="https://images.kolonmall.com/cms/special/upload/a69c400d-bb5b-45e4-afbb-a90946b2af94/lteks_cont05_img02.jpg" alt="" class="img img02">
+				</div>
+				<div class="cont06 rel">
+					<img src="https://images.kolonmall.com/cms/special/upload/a69c400d-bb5b-45e4-afbb-a90946b2af94/lteks_cont06.jpg" alt="">
+					<a href="#pop01" class="pop_btn btn01">크게보기</a>
+					<a href="#pop02" class="pop_btn btn02">크게보기</a>
+					<a href="#pop03" class="pop_btn btn03">크게보기</a>
+					<a href="#pop04" class="pop_btn btn04">크게보기</a>
+					<div class="popup" id="pop01">
+						<a href="javascript:void(0)" class="pop_cls">닫기</a>							
+						<img src="https://images.kolonmall.com/cms/special/upload/a69c400d-bb5b-45e4-afbb-a90946b2af94/lteks_cont06_pop01.jpg" alt="">
+					</div>
+					<div class="popup" id="pop02">
+						<a href="javascript:void(0)" class="pop_cls">닫기</a>							
+						<img src="https://images.kolonmall.com/cms/special/upload/a69c400d-bb5b-45e4-afbb-a90946b2af94/lteks_cont06_pop02.jpg" alt="">
+					</div>
+					<div class="popup" id="pop03">
+						<a href="javascript:void(0)" class="pop_cls">닫기</a>							
+						<img src="https://images.kolonmall.com/cms/special/upload/a69c400d-bb5b-45e4-afbb-a90946b2af94/lteks_cont06_pop03.jpg" alt="">
+					</div>
+					<div class="popup" id="pop04">
+						<a href="javascript:void(0)" class="pop_cls">닫기</a>							
+						<img src="https://images.kolonmall.com/cms/special/upload/a69c400d-bb5b-45e4-afbb-a90946b2af94/lteks_cont06_pop04.jpg" alt="">
+					</div>
+					<p class="pop_bg"></p>
+				</div>
+			</div>
+		</div>
+		<script>
+			$(document).ready(function(){
+				TweenMax.to($(".tit").addClass("on"));
+				TweenMax.to($(".tit .txt").addClass("on"));
+				TweenMax.to($(".tit .txt01"), 1, {opacity:1,y:0,delay:3.5});
+				TweenMax.to($(".tit .txt02"), 1, {opacity:1,y:0,delay:3.65});
+				TweenMax.to($(".tit .txt03"), 1, {opacity:1,y:0,delay:3.8});
+				TweenMax.to($(".tit .txt04"), 1, {opacity:1,y:0,delay:3.95});
+				TweenMax.to($(".tit .txt05"), 1, {opacity:1,y:0,delay:4.1});
+				TweenMax.to($(".tit .desc"), 1, {opacity:1,y:0,delay:4.25});
+			});
+
+			$(window).scroll(function(){
+				var winTop = $(this).scrollTop();
+				var cont01 = $(".cont01").offset().top - 600;
+				var cont02 = $(".cont02").offset().top - 600;
+				var cont03 = $(".cont03").offset().top - 600;
+				var cont04 = $(".cont04").offset().top - 600;
+				var cont05 = $(".cont05").offset().top - 600;
+				var cont06 = $(".cont06").offset().top - 600;
+
+				if(cont01 < winTop && winTop < cont02){  
+					TweenMax.to($(".cont01 .txt01"), 1, {opacity:1,y:0,delay:0});
+					TweenMax.to($(".cont01 .txt02"), 1, {opacity:1,y:0,delay:0.5});
+				}
+				if(cont03 < winTop && winTop < cont04){  
+					TweenMax.to($(".cont03 .img"), 1, {opacity:1,y:0,delay:0});
+				}
+				if(cont04 < winTop && winTop < cont05){  
+					TweenMax.to($(".cont04 .front"), 1, {opacity:1,y:0,delay:0});
+					TweenMax.to($(".cont04 .left"), 1, {opacity:1,x:0,delay:0.5});
+					TweenMax.to($(".cont04 .right"), 1, {opacity:1,x:0,delay:1});
+				}
+				if(cont05 < winTop && winTop < cont06){  
+					TweenMax.to($(".cont05 .img02"), 1, {opacity:1,x:0,delay:0});
+					TweenMax.to($(".cont05 .img01"), 1, {opacity:1,x:0,delay:0.5});
+				}					
+			});
+				
+			$('.lteks .pop_btn').click(function(){
+				var popHref = $(this).attr('href');
+				$('.popup').css('display','none');
+				$(popHref).css('display','block');
+				$('.pop_bg').css('display','block');
+				$('body').css({'overflow-y': 'hidden'}); /* , 'padding-right': '17px', 'box-sizing': 'border-box' */
+			});
+			$('.lteks .pop_cls, .lteks .pop_bg').click(function(){
+				$('.popup, .pop_bg').css('display','none');
+				$('body').css({'overflow-y': 'visible'}); /* , 'padding-right': '0', 'box-sizing': 'content-box' */
+			});
+		</script>
+    </div>
+</body>	
+</html>

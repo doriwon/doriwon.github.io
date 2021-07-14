@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=0, viewport-fit=cover"
+    />
+    <title>안타티카 패스포트 이벤트</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.css"
+    />
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js"></script>
+  </head>
+  <body>
+    <style>
+      /*reset + common*/
+      @import url("https://fonts.googleapis.com/earlyaccess/notosanskr.css");
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        font-family: "Noto Sans KR", sans-serif;
+      }
+      .anta_event {
+        position: relative;
+        background-color: #fff;
+        max-width: 750px;
+        margin: 0 auto;
+      }
+      .anta_event img {
+        width: 100%;
+        vertical-align: top;
+      }
+      .anta_event .clearfix:after {
+        display: block;
+        clear: both;
+        content: "";
+      }
+      .anta_event .rel {
+        position: relative;
+      }
+      .anta_event .rel {
+        position: relative;
+      }
+      .anta_event .tit {
+        z-index: 2;
+      }
+      .anta_event .tit .btn {
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 21.875%;
+        width: 56.09375%;
+        height: 4.08695652173913%;
+        font-size: 0;
+        text-indent: -9999px;
+        z-index: 2;
+      }
+      .anta_event .tit .pop {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        display: none;
+      }
+      .anta_event .tit .pop.on {
+        display: block;
+      }
+      .anta_event .tit .input_wrap {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+      }
+      .anta_event .tit .submit_btn {
+        border: 0;
+        background: transparent;
+        cursor: pointer;
+        position: absolute;
+        width: 47.8125%;
+        height: 5.91304347826087%;
+        left: 26.0937%;
+        bottom: 21.91304347826087%;
+        font-size: 0;
+        text-indent: -9999px;
+        transition: all 0.3s ease;
+        animation: blink 1s ease-in-out infinite;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-image: url("https://images.kolonmall.com/cms/event/upload/2e5849fc-dcda-4f2e-b5b2-0e6fda38512c/anta_event_submit_btn_on.png");
+      }
+      @keyframes blink {
+        0%,
+        20% {
+          background-image: url("https://images.kolonmall.com/cms/event/upload/2e5849fc-dcda-4f2e-b5b2-0e6fda38512c/anta_event_submit_btn_on.png");
+        }
+        55%,
+        75% {
+          background-image: url("https://images.kolonmall.com/cms/event/upload/2e5849fc-dcda-4f2e-b5b2-0e6fda38512c/anta_event_submit_btn.png");
+        }
+      }
+      .anta_event .tit .input_area {
+        position: absolute;
+        bottom: 34.34782608695652%;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .anta_event .tit .input_area span {
+        position: relative;
+        display: inline-block;
+      }
+      .anta_event .tit .input_area input {
+        width: 10.15625vw;
+        height: 13.28125vw;
+        background: #2b2b2b;
+        font-family: "Noto Sans KR";
+        color: #fff;
+        text-align: center;
+        font-size: 8.515625vw;
+        margin: 0 0.0625vw;
+        display: inline-block;
+        position: relative;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        outline: 0;
+      }
+      .anta_event .tit .input_area .first_num:before {
+        position: absolute;
+        content: "";
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 1px;
+        height: 90%;
+        background: #fff;
+        z-index: 1;
+        animation: cursor 1s ease-in-out infinite;
+      }
+      @keyframes cursor {
+        40% {
+          opacity: 1;
+        }
+        50%,
+        70% {
+          opacity: 0;
+        }
+      }
+      .anta_event .tit .input_area .first_num.off:before {
+        display: none;
+      }
+
+      @media (min-width: 750px) {
+        .anta_event .tit .input_area input {
+          width: 76px;
+          height: 99px;
+          font-size: 63px;
+          margin: 0 0.5px;
+        }
+      }
+    </style>
+    <div class="anta_event">
+      <div class="tit rel">
+        <img
+          src="https://images.kolonmall.com/cms/event/upload/2e5849fc-dcda-4f2e-b5b2-0e6fda38512c/m_anta_event_tit.jpg"
+          alt=""
+        />
+        <a href="javascript:void(0)" class="btn"
+          >이벤트 참여 전 꼭 확인해주세요!</a
+        >
+        <p class="pop">
+          <img
+            src="https://images.kolonmall.com/cms/event/upload/2e5849fc-dcda-4f2e-b5b2-0e6fda38512c/m_anta_event_pop.png"
+            alt=""
+          />
+        </p>
+        <div class="input_wrap">
+          <form name="input_form">
+            <div class="input_area clearfix">
+              <span class="first_num"><input type="text" maxlength="1" /></span>
+              <span><input type="text" maxlength="1" /></span>
+              <span><input type="text" maxlength="1" /></span>
+              <span><input type="text" maxlength="1" /></span>
+              <span><input type="text" maxlength="1" /></span>
+              <span><input type="text" maxlength="1" /></span>
+              <span><input type="text" maxlength="1" /></span>
+            </div>
+            <button class="submit_btn mt43" type="button">
+              확인 완료 (직원 확인)
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="cont">
+        <img
+          src="https://images.kolonmall.com/cms/event/upload/2e5849fc-dcda-4f2e-b5b2-0e6fda38512c/m_anta_event_cont_.png"
+          alt=""
+        />
+      </div>
+    </div>
+    <script>
+      $(".anta_event .tit .btn").click(function () {
+        $(this).next(".pop").toggleClass("on");
+      });
+
+      $(".anta_event .input_area input").click(function () {
+        $(".anta_event .input_area .first_num").addClass("off");
+      });
+    </script>
+  </body>
+</html>

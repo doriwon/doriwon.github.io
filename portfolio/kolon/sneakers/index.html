@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>스니커즈 캠프</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js"></script>
+  </head>
+  <body>
+    <style>
+      /*reset + common*/
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      .camping * {
+        margin: 0;
+        padding: 0;
+        line-height: 0;
+      }
+      .camping img {
+        display: inline-block;
+        width: 100%;
+        vertical-align: top;
+      }
+      .camping .rel {
+        position: relative;
+      }
+      .camping .cont01 .dot {
+        position: absolute;
+        width: 1.197916666666667%;
+      }
+      .camping .cont01 .dot01 {
+        top: 54.36156763590392%;
+        right: 37.65625%;
+      }
+      .camping .cont01 .dot02 {
+        right: 25.9375%;
+        top: 51.95954487989886%;
+      }
+      .camping .cont01 .dot03 {
+        right: 44.32291666666667%;
+        bottom: 27.18078381795196%;
+      }
+      .camping .cont01 .dot04 {
+        right: 32.76041666666667%;
+        bottom: 37.92667509481669%;
+      }
+      .camping .cont01 .dot:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(236, 118, 78, 0.25);
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+        animation: scale1 1.3s linear infinite;
+      }
+      .camping .cont01 .dot01:before {
+        animation: scale2 1.3s linear infinite;
+      }
+      .camping .cont01 .dot03:before {
+        animation: scale3 1.3s linear infinite;
+      }
+      @keyframes scale1 {
+        0%,
+        100% {
+          transform: scale(3);
+        }
+        50% {
+          transform: scale(1);
+        }
+      }
+      @keyframes scale2 {
+        0%,
+        100% {
+          transform: scale(5);
+        }
+        50% {
+          transform: scale(1);
+        }
+      }
+      @keyframes scale3 {
+        0%,
+        100% {
+          transform: scale(7);
+        }
+        50% {
+          transform: scale(1);
+        }
+      }
+      .camping .cont01 .dot img {
+        position: relative;
+      }
+      .camping .cont01 .txt {
+        position: absolute;
+        opacity: 0;
+        transform: matrix(1, 0, 0, 1, -30, 0);
+        width: 14.11458333333333%;
+      }
+      .camping .cont01 .txt01 {
+        right: 41.40625%;
+        top: 15.29709228824273%;
+      }
+      .camping .cont01 .txt02 {
+        right: 8.125%;
+        top: 20.98609355246523%;
+        transform: matrix(1, 0, 0, 1, 30, 0);
+      }
+      .camping .cont01 .txt03 {
+        right: 53.33333333333333%;
+        bottom: 31.3527180783818%;
+      }
+      .camping .cont01 .txt04 {
+        right: 13.54166666666667%;
+        bottom: 16.68773704171934%;
+        transform: matrix(1, 0, 0, 1, 30, 0);
+      }
+      .camping .cont02 .box {
+        position: absolute;
+        width: 21.04166666666667%;
+        top: 12.4223602484472%;
+      }
+      .camping .cont02 .box .txt {
+        position: relative;
+        z-index: 2;
+        padding: 0.8854166666666667vw 0;
+      }
+      .camping .cont02 .box .txt:before {
+        position: absolute;
+        content: "";
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+          rgba(0, 0, 0, 0.4) 0%,
+          rgba(0, 0, 0, 0) 50%
+        );
+        opacity: 0;
+        transition: all 0.2s linear;
+      }
+      .camping .cont02 .box .txt img {
+        position: relative;
+      }
+      .camping .cont02 .box .img {
+        opacity: 0;
+        transform: matrix(1, 0, 0, 1, -30, 0);
+      }
+      .camping .cont02 .box .img img {
+        transition: all 0.3s linear;
+      }
+      .camping .cont02 .box.hover {
+        z-index: 2;
+      }
+      .camping .cont02 .box.hover .txt:before {
+        transition: all 0.5s linear;
+        opacity: 1;
+      }
+      .camping .cont02 .box.hover .img img {
+        transform: scale(1.2);
+      }
+      .camping .cont02 .box01 {
+        left: 6.25%;
+      }
+      .camping .cont02 .box02 {
+        left: 28.38541666666667%;
+      }
+      .camping .cont02 .box03 {
+        left: 50.57291666666667%;
+      }
+      .camping .cont02 .box04 {
+        left: 72.70833333333333%;
+      }
+    </style>
+    <div class="full-width">
+      <div class="camping rel">
+        <img
+          src="https://images3.kolonmall.com/upload/content/d71f0172-ea20-4ab3-9264-d81158b04b3f/camping_tit.jpg"
+          alt="CAMPING ARCHIVE CAMP #캠프"
+        />
+        <div class="cont cont01 rel">
+          <img
+            src="https://images3.kolonmall.com/upload/content/d71f0172-ea20-4ab3-9264-d81158b04b3f/camping_cont01.jpg"
+            alt="오롱스포츠 캠핑 아카이브의 레트로한 컬러감을 스트리트 감성으로 재해석한 아웃도어 스니커즈"
+          />
+          <p class="dot dot01">
+            <img
+              src="https://images3.kolonmall.com/upload/content/d71f0172-ea20-4ab3-9264-d81158b04b3f/camping_cont01_dot.png"
+              alt=""
+            />
+          </p>
+          <p class="dot dot02">
+            <img
+              src="https://images3.kolonmall.com/upload/content/d71f0172-ea20-4ab3-9264-d81158b04b3f/camping_cont01_dot.png"
+              alt=""
+            />
+          </p>
+          <p class="dot dot03">
+            <img
+              src="https://images3.kolonmall.com/upload/content/d71f0172-ea20-4ab3-9264-d81158b04b3f/camping_cont01_dot.png"
+              alt=""
+            />
+          </p>
+          <p class="dot dot04">
+            <img
+              src="https://images3.kolonmall.com/upload/content/d71f0172-ea20-4ab3-9264-d81158b04b3f/camping_cont01_dot.png"
+              alt=""
+            />
+          </p>
+          <!--<img src="images/camping_cont01_txt01.png" alt="" class="txt txt01">
+          <img src="images/camping_cont01_txt02.png" alt="" class="txt txt02">
+          <img src="images/camping_cont01_txt03.png" alt="" class="txt txt03">
+          <img src="images/camping_cont01_txt04.png" alt="" class="txt txt04">-->
+        </div>
+        <div class="cont cont02 rel">
+          <img
+            src="https://images3.kolonmall.com/upload/content/d71f0172-ea20-4ab3-9264-d81158b04b3f/camping_cont02.jpg"
+            alt=""
+          />
+          <div class="box box01">
+            <p class="img">
+              <img
+                src="https://images3.kolonmall.com/upload/content/d71f0172-ea20-4ab3-9264-d81158b04b3f/camping_cont02_img01.jpg"
+                alt=""
+              />
+            </p>
+            <p class="txt">
+              <img
+                src="https://images3.kolonmall.com/upload/content/d71f0172-ea20-4ab3-9264-d81158b04b3f/camping_cont02_txt01.png"
+                alt=""
+              />
+            </p>
+          </div>
+          <div class="box box02">
+            <p class="img">
+              <img
+                src="https://images3.kolonmall.com/upload/content/d71f0172-ea20-4ab3-9264-d81158b04b3f/camping_cont02_img02.jpg"
+                alt=""
+              />
+            </p>
+            <p class="txt">
+              <img
+                src="https://images3.kolonmall.com/upload/content/d71f0172-ea20-4ab3-9264-d81158b04b3f/camping_cont02_txt02.png"
+                alt=""
+              />
+            </p>
+          </div>
+          <div class="box box03">
+            <p class="img">
+              <img
+                src="https://images3.kolonmall.com/upload/content/d71f0172-ea20-4ab3-9264-d81158b04b3f/camping_cont02_img03.jpg"
+                alt=""
+              />
+            </p>
+            <p class="txt">
+              <img
+                src="https://images3.kolonmall.com/upload/content/d71f0172-ea20-4ab3-9264-d81158b04b3f/camping_cont02_txt03.png"
+                alt=""
+              />
+            </p>
+          </div>
+          <div class="box box04">
+            <p class="img">
+              <img
+                src="https://images3.kolonmall.com/upload/content/d71f0172-ea20-4ab3-9264-d81158b04b3f/camping_cont02_img04.jpg"
+                alt=""
+              />
+            </p>
+            <p class="txt">
+              <img
+                src="https://images3.kolonmall.com/upload/content/d71f0172-ea20-4ab3-9264-d81158b04b3f/camping_cont02_txt04.png"
+                alt=""
+              />
+            </p>
+          </div>
+        </div>
+        <img
+          src="https://images3.kolonmall.com/upload/content/d71f0172-ea20-4ab3-9264-d81158b04b3f/camping_cont03.jpg"
+          alt=""
+          class="cont03"
+        />
+        <img
+          src="https://images3.kolonmall.com/upload/content/d71f0172-ea20-4ab3-9264-d81158b04b3f/camping_cont04.jpg"
+          alt=""
+        />
+        <img
+          src="https://images3.kolonmall.com/upload/content/d71f0172-ea20-4ab3-9264-d81158b04b3f/camping_cont05.jpg"
+          alt=""
+        />
+      </div>
+    </div>
+    <script>
+      $(window).scroll(function () {
+        var winTop = $(this).scrollTop();
+        var cont01 = $(".camping .cont01").offset().top - 400;
+        var cont02 = $(".camping .cont02").offset().top - 400;
+        var cont03 = $(".camping .cont03").offset().top - 400;
+
+        if (cont02 < winTop && winTop < cont03) {
+          TweenMax.to($(".camping .cont02 .box01 .img"), 1, {
+            opacity: 1,
+            x: 0,
+            delay: 0,
+          });
+          TweenMax.to($(".camping .cont02 .box02 .img"), 1, {
+            opacity: 1,
+            x: 0,
+            delay: 0.4,
+          });
+          TweenMax.to($(".camping .cont02 .box03 .img"), 1, {
+            opacity: 1,
+            x: 0,
+            delay: 0.8,
+          });
+          TweenMax.to($(".camping .cont02 .box04 .img"), 1, {
+            opacity: 1,
+            x: 0,
+            delay: 1.2,
+          });
+
+          let firstHover = setTimeout(function () {
+            $(".camping .cont02 .box01").addClass("hover");
+            const box01Txt = $(".camping .cont02 .box01").children(".txt");
+            const box01Img = box01Txt.children("img");
+            box01Img.attr(
+              "src",
+              box01Img.attr("src").replace(".png", "_on.png")
+            );
+          }, 1600);
+
+          $(".camping .cont02 .box").hover(function () {
+            clearTimeout(firstHover);
+          });
+        }
+
+        $(".camping .cont02 .box").hover(
+          function () {
+            //마우스오버 했을 때
+            $(".camping .cont02 .box").removeClass("hover");
+            $(this).addClass("hover");
+
+            const $thisTxt = $(this).children(".txt");
+            const $thisImg = $thisTxt.children("img");
+            $(".camping .cont02 .box .txt img").each(function () {
+              const tmpSrc = $(this).attr("src");
+              $(this).attr("src", tmpSrc.replace("_on.png", ".png"));
+            });
+            $thisImg.attr(
+              "src",
+              $thisImg.attr("src").replace(".png", "_on.png")
+            );
+          },
+          function () {
+            //마우스리브 했을 때
+            $(".camping .cont02 .box").removeClass("hover");
+            const $thisTxt = $(this).children(".txt");
+            const $thisImg = $thisTxt.children("img");
+            $thisImg.attr(
+              "src",
+              $thisImg.attr("src").replace("_on.png", ".png")
+            );
+          }
+        );
+      });
+    </script>
+  </body>
+</html>

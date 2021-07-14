@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>HANNAM</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.css"
+    />
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js"></script>
+  </head>
+  <body>
+    <div class="cont">
+      <style>
+        /*reset + common*/
+        body {
+          margin: 0;
+          padding: 0;
+        }
+        .hannam {
+          position: relative;
+          overflow: hidden;
+        }
+        .hannam * {
+          margin: 0;
+          padding: 0;
+          line-height: 0;
+        }
+        .hannam img {
+          display: inline-block;
+          width: 100%;
+          vertical-align: top;
+        }
+        .hannam .clearfix:after {
+          content: "";
+          display: block;
+          clear: both;
+          overflow: hidden;
+          height: 0;
+        }
+        .hannam .rel {
+          position: relative;
+        }
+        .hannam .tit .tit_bg {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 1;
+          background-image: url(https://images.kolonmall.com/cms/event/upload/5a772bb2-b352-472d-8b8e-e89aaf3db015/hannam_tit_bg.jpg);
+          overflow: hidden;
+          background-attachment: fixed;
+          background-position: center top;
+          background-size: cover;
+        }
+        .hannam .tit {
+          padding-bottom: 63.38541666666667vw;
+        }
+        .hannam .cont00 {
+          height: 45.67708333333333vw;
+          background: url(https://images.kolonmall.com/cms/event/upload/5a772bb2-b352-472d-8b8e-e89aaf3db015/hannam_slide_bg.jpg);
+        }
+        .hannam .auto_slide {
+          position: absolute;
+          top: 19.97716894977169%;
+          left: 0;
+          width: 83.07291666666667%;
+          overflow: visible;
+          z-index: 11;
+        }
+        .hannam .auto_slide .swiper-wrapper {
+          transition-timing-function: linear;
+        }
+        .hannam .move {
+          transform: matrix(1, 0, 0, 1, 0, 30);
+          opacity: 0;
+        }
+        .hannam .txt {
+          position: absolute;
+          z-index: 2;
+        }
+        .hannam .txt01,
+        .hannam .txt02,
+        .hannam .txt03,
+        .hannam .txt04 {
+          width: 23.64583333333333%;
+          left: 38.125%;
+        }
+        .hannam .txt01 {
+          top: 15vw;
+        }
+        .hannam .txt02 {
+          top: 21.5625vw;
+        }
+        .hannam .txt03 {
+          top: 28.28125vw;
+        }
+        .hannam .txt04 {
+          top: 33.07291666666667vw;
+        }
+        .hannam .txt05 {
+          width: 41.71875%;
+          left: 29.58333333333333%;
+          top: 38.90625vw;
+        }
+        .hannam .txt06 {
+          width: 12.1875%;
+          left: 43.90625%;
+          top: 45.9375vw;
+        }
+        .hannam .txt07 {
+          width: 25.57291666666667%;
+          left: 37.23958333333333%;
+          top: 18.79866518353726%;
+        }
+        .hannam .txt08 {
+          width: 28.22916666666667%;
+          left: 35.9375%;
+          top: 66.74082313681869%;
+        }
+        .hannam .txt08_1 {
+          width: 32.29166666666667%;
+          left: 33.85416666666667%;
+          top: 79.19911012235818%;
+        }
+        .hannam .txt09 {
+          width: 50.10416666666667%;
+          left: 25.625%;
+          top: 28.95662368112544%;
+        }
+        .hannam .txt10 {
+          width: 52.5%;
+          left: 25.625%;
+          top: 45.01758499413834%;
+        }
+        .hannam .map_left,
+        .hannam .map_right {
+          width: 50%;
+          height: 44.42708333333333vw;
+          float: left;
+        }
+        .hannam .map_left {
+          background: #000;
+        }
+        .hannam .map_right iframe {
+          width: 100%;
+          height: 100%;
+        }
+        .hannam .cont03 {
+          height: 57.96875vw;
+        }
+        .hannam .hannam_slide {
+          position: absolute;
+          top: 5.729166666666667vw;
+          right: 15.10416666666667%;
+          overflow: visible;
+          width: 69.79166666666667%;
+          height: 46.875vw;
+        }
+        .hannam .hannam_slide .swiper-container {
+          background: #000;
+          overflow: hidden;
+          width: 100%;
+          height: 100%;
+        }
+        .hannam .hannam_slide .swiper-wrapper {
+          max-width: 100%;
+        }
+        .hannam .hannam_slide .swiper-slide {
+          flex-direction: column;
+          background: #000;
+        }
+        .hannam .hannam_slide .swiper-slide img {
+          height: 100%;
+        }
+        .hannam .hannam_slide .swiper-pagination {
+          opacity: 1;
+          position: absolute;
+          top: 1.666666666666667vw;
+          left: inherit;
+          bottom: inherit;
+          margin: 0;
+          right: -6.25vw;
+          width: 5.052083333333333vw;
+          height: 5.208333333333333vw;
+        }
+        .hannam .hannam_slide .swiper-pagination-bullet {
+          display: inline-block;
+          width: 100%;
+          height: 2.03125vw;
+          vertical-align: top;
+          background-size: 100%;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-color: inherit;
+          text-indent: -9999px;
+          transition: all 0.3s ease;
+          cursor: pointer;
+          opacity: 0.5;
+          border-radius: 0;
+          background-color: #fff;
+          padding-bottom: 0.2604166666666667vw;
+          border-bottom: 2px solid #fff;
+          outline: 0;
+        }
+        .hannam .hannam_slide .swiper-pagination-bullet:hover,
+        .hannam .hannam_slide .swiper-pagination-bullet:active,
+        .hannam
+          .hannam_slide
+          .swiper-pagination-bullet.swiper-pagination-bullet-active {
+          opacity: 1;
+          border-bottom: 2px solid #000;
+        }
+        .hannam
+          .hannam_slide
+          .swiper-pagination
+          .swiper-pagination-bullet:first-child {
+          background-image: url("https://images.kolonmall.com/cms/event/upload/5a772bb2-b352-472d-8b8e-e89aaf3db015/hannam_cont3_slide_btn01.png");
+          margin-bottom: 1.145833333333333vw;
+        }
+        .hannam
+          .hannam_slide
+          .swiper-pagination
+          .swiper-pagination-bullet:nth-child(2) {
+          background-image: url("https://images.kolonmall.com/cms/event/upload/5a772bb2-b352-472d-8b8e-e89aaf3db015/hannam_cont3_slide_btn02.png");
+        }
+        .hannam .video_wrap {
+          width: 50%;
+          margin: 0 auto;
+          position: absolute;
+          right: 0;
+          left: 0;
+          top: 43.06676449009538%;
+          margin: 0 auto;
+          -webkit-box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.6);
+          -moz-box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.6);
+          box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.6);
+        }
+        .hannam .video_wrap .go_btn {
+          background: #0d0d0d;
+          display: block;
+          margin-top: -1px;
+        }
+        .hannam .video_wrap .go_btn img {
+          width: 39.6875%;
+        }
+        .hannam .video {
+          padding-bottom: 56.25%;
+        }
+        .hannam .video iframe {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100% !important;
+          height: 100% !important;
+        }
+      </style>
+      <div class="full-width">
+        <div class="hannam">
+          <div class="tit rel">
+            <img
+              src="https://images.kolonmall.com/cms/event/upload/5a772bb2-b352-472d-8b8e-e89aaf3db015/hannam_tit_img01.png"
+              alt=""
+              class="txt txt01 move"
+            />
+            <img
+              src="https://images.kolonmall.com/cms/event/upload/5a772bb2-b352-472d-8b8e-e89aaf3db015/hannam_tit_img02.png"
+              alt=""
+              class="txt txt02 move"
+            />
+            <img
+              src="https://images.kolonmall.com/cms/event/upload/5a772bb2-b352-472d-8b8e-e89aaf3db015/hannam_tit_img03_.png"
+              alt=""
+              class="txt txt03 move"
+            />
+            <img
+              src="https://images.kolonmall.com/cms/event/upload/5a772bb2-b352-472d-8b8e-e89aaf3db015/hannam_tit_img04.png"
+              alt=""
+              class="txt txt04 move"
+            />
+            <img
+              src="https://images.kolonmall.com/cms/event/upload/5a772bb2-b352-472d-8b8e-e89aaf3db015/hannam_tit_img05_.png"
+              alt=""
+              class="txt txt05 move"
+            />
+            <img
+              src="https://images.kolonmall.com/cms/event/upload/5a772bb2-b352-472d-8b8e-e89aaf3db015/hannam_tit_img06.png"
+              alt=""
+              class="txt txt06 move"
+            />
+            <div class="tit_bg"></div>
+          </div>
+          <div class="cont00 rel">
+            <div class="auto_slide swiper-container">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <img
+                    src="https://images3.kolonmall.com/upload/6565f8de-b463-4305-a535-959fb450215a/hannam_slide_img01.jpg"
+                    alt=""
+                  />
+                </div>
+                <div class="swiper-slide">
+                  <img
+                    src="https://images3.kolonmall.com/upload/6565f8de-b463-4305-a535-959fb450215a/hannam_slide_img02.jpg"
+                    alt=""
+                  />
+                </div>
+                <div class="swiper-slide">
+                  <img
+                    src="https://images3.kolonmall.com/upload/6565f8de-b463-4305-a535-959fb450215a/hannam_slide_img03.jpg"
+                    alt=""
+                  />
+                </div>
+                <div class="swiper-slide">
+                  <img
+                    src="https://images3.kolonmall.com/upload/6565f8de-b463-4305-a535-959fb450215a/hannam_slide_img04.jpg"
+                    alt=""
+                  />
+                </div>
+                <div class="swiper-slide">
+                  <img
+                    src="https://images3.kolonmall.com/upload/6565f8de-b463-4305-a535-959fb450215a/hannam_slide_img05.jpg"
+                    alt=""
+                  />
+                </div>
+                <div class="swiper-slide">
+                  <img
+                    src="https://images3.kolonmall.com/upload/6565f8de-b463-4305-a535-959fb450215a/hannam_slide_img06.jpg"
+                    alt=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="cont01 rel">
+            <img
+              src="https://images.kolonmall.com/cms/event/upload/5a772bb2-b352-472d-8b8e-e89aaf3db015/hannam_cont1_bg_new.jpg"
+              alt=""
+              class=""
+            />.
+            <img
+              src="https://images.kolonmall.com/cms/event/upload/5a772bb2-b352-472d-8b8e-e89aaf3db015/hannam_cont1_img01.png"
+              alt=""
+              class="txt txt07"
+            />
+            <img
+              src="https://images.kolonmall.com/cms/event/upload/5a772bb2-b352-472d-8b8e-e89aaf3db015/hannam_cont1_img02.png"
+              alt=""
+              class="txt txt08"
+            />
+            <img
+              src="https://images.kolonmall.com/cms/event/upload/5a772bb2-b352-472d-8b8e-e89aaf3db015/hannam_cont1_img03.png"
+              alt=""
+              class="txt txt08_1"
+            />
+          </div>
+          <div class="cont02 rel clearfix">
+            <div class="map_left rel">
+              <img
+                src="https://images.kolonmall.com/cms/event/upload/5a772bb2-b352-472d-8b8e-e89aaf3db015/hannam_cont2_img01.png"
+                alt=""
+                class="txt txt09"
+              />
+              <img
+                src="https://images.kolonmall.com/cms/event/upload/5a772bb2-b352-472d-8b8e-e89aaf3db015/hannam_cont2_img02.png"
+                alt=""
+                class="txt txt10"
+              />
+            </div>
+            <div class="map_right">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3163.739970541464!2d126.99931111531075!3d37.53762647980335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca3b230b8f43b%3A0xa0f500cf586ff6dd!2z64yA7ZWc66-86rWtIOyEnOyauO2KueuzhOyLnCDsmqnsgrDqtawg7ZWc64Ko64-ZIOydtO2DnOybkOuhnCAyNjA!5e0!3m2!1sko!2ssg!4v1600756990398!5m2!1sko!2ssg"
+                frameborder="0"
+                style="border: 0"
+                allowfullscreen=""
+                aria-hidden="false"
+                tabindex="0"
+              ></iframe>
+            </div>
+          </div>
+          <div class="cont03 rel">
+            <div class="hannam_slide slide_wrap s2">
+              <div class="swiper-container">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <img
+                      src="https://images.kolonmall.com/cms/event/upload/5a772bb2-b352-472d-8b8e-e89aaf3db015/hannam_cont3_slide_txt01_new_1.jpg"
+                      alt=""
+                    />
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="https://images.kolonmall.com/cms/event/upload/5a772bb2-b352-472d-8b8e-e89aaf3db015/hannam_cont3_slide_txt02_new.jpg"
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
+
+          <div class="cont04 rel">
+            <img
+              src="https://images.kolonmall.com/cms/event/upload/5a772bb2-b352-472d-8b8e-e89aaf3db015/hannam_cont3_1_bg.jpg"
+              alt=""
+            />
+            <div class="video_wrap">
+              <div class="video rel">
+                <iframe
+                  width="560"
+                  height="315"
+                  src="https://www.youtube.com/embed/crinzJnwvEM"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <a
+                href="https://www.youtube.com/embed/crinzJnwvEM"
+                class="go_btn"
+                target="_blank"
+                ><img
+                  src="https://images.kolonmall.com/cms/event/upload/5a772bb2-b352-472d-8b8e-e89aaf3db015/youtube_btn.png"
+                  alt="코오롱스포츠 한남스토어 FULL.ver으로 보기"
+              /></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+        $(document).ready(function () {
+          //$(window).on("load", function(){
+          TweenMax.to($(".tit .txt01"), 1, { opacity: 1, y: 0, delay: 0 });
+          TweenMax.to($(".tit .txt02"), 1, { opacity: 1, y: 0, delay: 0.3 });
+          TweenMax.to($(".tit .txt03"), 1, { opacity: 1, y: 0, delay: 0.6 });
+          TweenMax.to($(".tit .txt04"), 1, { opacity: 1, y: 0, delay: 0.9 });
+          TweenMax.to($(".tit .txt05"), 1, { opacity: 1, y: 0, delay: 1.2 });
+          TweenMax.to($(".tit .txt06"), 1, { opacity: 1, y: 0, delay: 1.5 });
+
+          var autoSwiper = new Swiper(".auto_slide.swiper-container", {
+            slidesPerView: 2,
+            spaceBetween: 13,
+            loop: true,
+            speed: 8000,
+            loopAdditionalSlides: 1,
+            allowTouchMove: false, //마우스 드래그 방지
+            autoplay: {
+              delay: 0,
+              disableOnInteraction: false,
+            },
+          });
+
+          var hannamSwiper = new Swiper(".hannam_slide .swiper-container", {
+            slidesPerView: 1,
+            direction: "vertical",
+            mousewheel: true,
+            speed: 1000,
+            autoplay: {
+              delay: 1500,
+              disableOnInteraction: false,
+            },
+            pagination: {
+              el: ".hannam_slide .swiper-pagination",
+              clickable: true,
+            },
+          });
+        });
+      </script>
+    </div>
+  </body>
+</html>

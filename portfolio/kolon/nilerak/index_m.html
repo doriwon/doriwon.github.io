@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=0, viewport-fit=cover"
+    />
+    <title>NILE;RAK</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.css"
+    />
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js"></script>
+  </head>
+  <body>
+    <style>
+      /*reset + common*/
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Noto Sans KR", sans-serif;
+      }
+      .nilerak {
+        position: relative;
+        background-color: #f1eade;
+        max-width: 750px;
+        margin: 0 auto;
+      }
+      .nilerak * {
+        margin: 0;
+        padding: 0;
+        line-height: 0;
+      }
+      .nilerak img {
+        width: 100%;
+        vertical-align: top;
+      }
+      .nilerak .rel {
+        position: relative;
+      }
+      .nilerak .bar .swiper-wrapper {
+        transition-timing-function: linear;
+      }
+      .nilerak .tit .txt {
+        position: absolute;
+        top: 6.875%;
+        left: 0%;
+        font-size: 0;
+        text-indent: -9999px;
+        width: 100%;
+        height: 3.421052631578947%;
+      }
+      .nilerak .tit .txt:after {
+        content: "";
+        position: absolute;
+        width: 10.625%;
+        height: 51.92307692307692%;
+        right: 4.6875%;
+        top: 49.03846153846154%;
+        background: transparent
+          url("https://images3.kolonmall.com/upload/content/d54cc043-002f-44f5-8936-a4e0609de2f1/m_nilerak_tit_tag.png")
+          center no-repeat;
+        background-size: contain;
+      }
+      .nilerak .tit .txt.active:before {
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        background: url("https://images3.kolonmall.com/upload/content/d54cc043-002f-44f5-8936-a4e0609de2f1/m_nilerak_tit_txt.png")
+          0 0 no-repeat;
+        background-size: cover;
+        -webkit-animation: width 1.3s cubic-bezier(0, 0, 0.18, 0.98);
+        -moz-animation: width 1.3s cubic-bezier(0, 0, 0.18, 0.98);
+        animation: width 1.3s cubic-bezier(0, 0, 0.18, 0.98);
+        content: "";
+      }
+      -webkit- @keyframes width {
+        0% {
+          width: 0;
+        }
+        100% {
+          width: 100%;
+        }
+      }
+      @keyframes width {
+        0% {
+          width: 0;
+        }
+        100% {
+          width: 100%;
+        }
+      }
+
+      .nilerak .cont04 .swiper-container {
+        width: 87.1875%;
+        margin: 0 auto;
+        position: absolute;
+        bottom: 9.510869565217391%;
+        left: 0;
+        right: 0;
+      }
+      .nilerak .cont04 .swiper-wrapper {
+        transition-timing-function: linear;
+      }
+    </style>
+
+    <div class="nilerak">
+      <div class="bar">
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img
+                src="https://images3.kolonmall.com/upload/content/d54cc043-002f-44f5-8936-a4e0609de2f1/m_nilerak_bar_txt.jpg"
+                alt=""
+              />
+            </div>
+            <div class="swiper-slide">
+              <img
+                src="https://images3.kolonmall.com/upload/content/d54cc043-002f-44f5-8936-a4e0609de2f1/m_nilerak_bar_txt.jpg"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tit rel">
+        <img
+          src="https://images3.kolonmall.com/upload/content/d54cc043-002f-44f5-8936-a4e0609de2f1/m_nilerak_tit.jpg"
+          alt=""
+        />
+        <p class="txt active">NILE;RAK</p>
+      </div>
+      <img
+        src="https://images3.kolonmall.com/upload/content/d54cc043-002f-44f5-8936-a4e0609de2f1/m_nilerak_cont01.jpg"
+        alt=""
+      />
+      <img
+        src="https://images3.kolonmall.com/upload/content/d54cc043-002f-44f5-8936-a4e0609de2f1/m_nilerak_cont02.jpg"
+        alt=""
+      />
+      <div>
+        <div class="bar">
+          <div class="swiper-container" dir="rtl">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img
+                  src="https://images3.kolonmall.com/upload/content/d54cc043-002f-44f5-8936-a4e0609de2f1/m_nilerak_bar_txt.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="swiper-slide">
+                <img
+                  src="https://images3.kolonmall.com/upload/content/d54cc043-002f-44f5-8936-a4e0609de2f1/m_nilerak_bar_txt.jpg"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <img
+        src="https://images3.kolonmall.com/upload/content/d54cc043-002f-44f5-8936-a4e0609de2f1/m_nilerak_cont03.jpg"
+        alt=""
+      />
+      <div class="cont04 rel">
+        <img
+          src="https://images3.kolonmall.com/upload/content/d54cc043-002f-44f5-8936-a4e0609de2f1/m_nilerak_cont04.jpg"
+          alt=""
+        />
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img
+                src="https://images3.kolonmall.com/upload/content/d54cc043-002f-44f5-8936-a4e0609de2f1/m_nilerak_cont04_img01.jpg"
+                alt=""
+              />
+            </div>
+            <div class="swiper-slide">
+              <img
+                src="https://images3.kolonmall.com/upload/content/d54cc043-002f-44f5-8936-a4e0609de2f1/m_nilerak_cont04_img02.jpg"
+                alt=""
+              />
+            </div>
+            <div class="swiper-slide">
+              <img
+                src="https://images3.kolonmall.com/upload/content/d54cc043-002f-44f5-8936-a4e0609de2f1/m_nilerak_cont04_img03.jpg"
+                alt=""
+              />
+            </div>
+            <div class="swiper-slide">
+              <img
+                src="https://images3.kolonmall.com/upload/content/d54cc043-002f-44f5-8936-a4e0609de2f1/m_nilerak_cont04_img04.jpg"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <img
+        src="https://images3.kolonmall.com/upload/content/d54cc043-002f-44f5-8936-a4e0609de2f1/m_nilerak_cont05.jpg"
+        alt=""
+      />
+    </div>
+    <script>
+      $(document).ready(function () {
+        var barSwiper = new Swiper(".bar .swiper-container", {
+          slidesPerView: 1,
+          loop: true,
+          speed: 5000,
+          loopAdditionalSlides: 1,
+          allowTouchMove: false,
+          autoplay: {
+            delay: 0,
+            disableOnInteraction: false,
+          },
+        });
+        var contSwiper = new Swiper(".cont04 .swiper-container", {
+          loop: true,
+          speed: 4000,
+          spaceBetween: "5%",
+          allowTouchMove: false,
+          autoplay: {
+            delay: 0,
+            disableOnInteraction: false,
+          },
+        });
+      });
+    </script>
+  </body>
+</html>

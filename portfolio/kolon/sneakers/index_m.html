@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=0, viewport-fit=cover"
+    />
+    <title>스니커즈 캠프</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.css"
+    />
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js"></script>
+  </head>
+  <body>
+    <style>
+      /*reset + common*/
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+      }
+      .camping {
+        position: relative;
+        background-color: #f1eade;
+        margin: 0 auto;
+        max-width: 750px;
+      }
+      .camping * {
+        margin: 0;
+        padding: 0;
+        line-height: 0;
+      }
+      .camping img {
+        width: 100%;
+        vertical-align: top;
+      }
+      .camping .rel {
+        position: relative;
+      }
+      .camping .cont01 .dot {
+        position: absolute;
+        width: 2.03125%;
+        height: 1.016419077404222%;
+      }
+      .camping .cont01 .dot01 {
+        top: 43.54964816262705%;
+        right: 48.90625%;
+      }
+      .camping .cont01 .dot02 {
+        top: 51.75918686473808%;
+        left: 32.03125%;
+      }
+      .camping .cont01 .dot03 {
+        top: 46.12978889757623%;
+        right: 36.5625%;
+      }
+      .camping .cont01 .dot04 {
+        top: 42.29867083659109%;
+        right: 18.90625%;
+      }
+      .camping .cont01 .dot:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(236, 118, 78, 0.25);
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+        animation: scale1 1.3s linear infinite;
+      }
+      .camping .cont01 .dot04:before {
+        animation: scale2 1.3s linear infinite;
+      }
+      .camping .cont01 .dot02:before {
+        animation: scale3 1.3s linear infinite;
+      }
+      @keyframes scale1 {
+        0%,
+        100% {
+          transform: scale(3);
+        }
+        50% {
+          transform: scale(1);
+        }
+      }
+      @keyframes scale2 {
+        0%,
+        100% {
+          transform: scale(5);
+        }
+        50% {
+          transform: scale(1);
+        }
+      }
+      @keyframes scale3 {
+        0%,
+        100% {
+          transform: scale(7);
+        }
+        50% {
+          transform: scale(1);
+        }
+      }
+      .camping .cont02 {
+        background-color: #f0f0f0;
+      }
+      .camping .cont02 .swiper-container {
+        padding: 10.46875vw 0;
+        width: 76.71875%;
+        margin: 0 auto;
+      }
+      .camping .cont02 .swiper-container .swiper-slide {
+        background: transparent;
+      }
+      .camping .cont02 .btn {
+        width: 5.15625%;
+        background-repeat: no-repeat;
+        -webkit-background-size: contain;
+        background-size: contain;
+        top: 63.28125vw;
+      }
+      .camping .cont02 .swiper-button-next {
+        background-image: url("https://images3.kolonmall.com/upload/content/d71f0172-ea20-4ab3-9264-d81158b04b3f/m_camping_cont02_next.png");
+        right: 3.4375%;
+      }
+      .camping .cont02 .swiper-button-prev {
+        background-image: url("https://images3.kolonmall.com/upload/content/d71f0172-ea20-4ab3-9264-d81158b04b3f/m_camping_cont02_prev.png");
+        left: 3.4375%;
+      }
+
+      @media (min-width: 750px) {
+        .camping .cont02 .swiper-container {
+          padding: 67px 0;
+        }
+        .camping .cont02 .btn {
+          top: 405px;
+        }
+      }
+    </style>
+
+    <div class="camping rel">
+      <div class="tit rel">
+        <img
+          src="https://images3.kolonmall.com/upload/content/d71f0172-ea20-4ab3-9264-d81158b04b3f/m_camping_tit.jpg"
+          alt="CAMPING ARCHIVE CAMP #캠프"
+        />
+      </div>
+      <div class="cont cont01 rel">
+        <img
+          src="https://images3.kolonmall.com/upload/content/d71f0172-ea20-4ab3-9264-d81158b04b3f/m_camping_cont01.jpg"
+          alt="코오롱스포츠 캠핑 아카이브의 레트로한 컬러감을 스트리트 감성으로 재해석한 아웃도어 스니커즈 "
+        />
+        <p class="dot dot01">
+          <img
+            src="https://images3.kolonmall.com/upload/content/d71f0172-ea20-4ab3-9264-d81158b04b3f/camping_cont01_dot.png"
+            alt=""
+          />
+        </p>
+        <p class="dot dot02">
+          <img
+            src="https://images3.kolonmall.com/upload/content/d71f0172-ea20-4ab3-9264-d81158b04b3f/camping_cont01_dot.png"
+            alt=""
+          />
+        </p>
+        <p class="dot dot03">
+          <img
+            src="https://images3.kolonmall.com/upload/content/d71f0172-ea20-4ab3-9264-d81158b04b3f/camping_cont01_dot.png"
+            alt=""
+          />
+        </p>
+        <p class="dot dot04">
+          <img
+            src="https://images3.kolonmall.com/upload/content/d71f0172-ea20-4ab3-9264-d81158b04b3f/camping_cont01_dot.png"
+            alt=""
+          />
+        </p>
+      </div>
+      <div class="cont cont02 rel">
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img
+                src="https://images3.kolonmall.com/upload/content/d71f0172-ea20-4ab3-9264-d81158b04b3f/m_camping_cont02_img01.png"
+                alt=""
+              />
+            </div>
+            <div class="swiper-slide">
+              <img
+                src="https://images3.kolonmall.com/upload/content/d71f0172-ea20-4ab3-9264-d81158b04b3f/m_camping_cont02_img02.png"
+                alt=""
+              />
+            </div>
+            <div class="swiper-slide">
+              <img
+                src="https://images3.kolonmall.com/upload/content/d71f0172-ea20-4ab3-9264-d81158b04b3f/m_camping_cont02_img03.png"
+                alt=""
+              />
+            </div>
+            <div class="swiper-slide">
+              <img
+                src="https://images3.kolonmall.com/upload/content/d71f0172-ea20-4ab3-9264-d81158b04b3f/m_camping_cont02_img04.png"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+        <div class="swiper-button-next btn"></div>
+        <div class="swiper-button-prev btn"></div>
+      </div>
+      <img
+        src="https://images3.kolonmall.com/upload/content/d71f0172-ea20-4ab3-9264-d81158b04b3f/m_camping_cont03.jpg"
+        alt="#CAMP_Khaki #CAMP_Dark Gray"
+      />
+      <img
+        src="https://images3.kolonmall.com/upload/content/d71f0172-ea20-4ab3-9264-d81158b04b3f/m_camping_cont04.jpg"
+        alt="Camping Archive"
+      />
+    </div>
+    <script>
+      $(document).ready(function () {
+        var swiper = new Swiper(".cont02 .swiper-container", {
+          loop: true,
+          speed: 1000,
+          autoplay: {
+            delay: 1000,
+            disableOnInteraction: false,
+          },
+          navigation: {
+            nextEl: ".cont02 .swiper-button-next",
+            prevEl: ".cont02 .swiper-button-prev",
+          },
+        });
+      });
+    </script>
+  </body>
+</html>

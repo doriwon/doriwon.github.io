@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>NILE;RAK</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.css"
+    />
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.js"></script>
+  </head>
+  <body>
+    <style>
+      /*reset + common*/
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      .nilerak_wrap {
+        overflow: hidden;
+      }
+      .nilerak {
+        position: relative;
+        width: 1920px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #fff;
+      }
+      .nilerak * {
+        margin: 0;
+        padding: 0;
+        line-height: 0;
+      }
+      .nilerak img {
+        display: inline-block;
+        width: 100%;
+        vertical-align: top;
+      }
+      .nilerak .rel {
+        position: relative;
+      }
+      .nilerak .tit .txt {
+        position: absolute;
+        top: 12.687265917603%;
+        left: 26.66666666666667%;
+        font-size: 0;
+        text-indent: -9999px;
+        width: 910px;
+        height: 170px;
+      }
+      .nilerak .tit .txt:after {
+        content: "";
+        position: absolute;
+        width: 80px;
+        height: 64px;
+        right: 0;
+        bottom: 5px;
+        background: transparent
+          url("https://images3.kolonmall.com/upload/content/d54cc043-002f-44f5-8936-a4e0609de2f1/nilerak_tit_tag.png")
+          center no-repeat;
+        background-size: contain;
+      }
+      .nilerak .tit .txt.active:before {
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        background: url("https://images3.kolonmall.com/upload/content/d54cc043-002f-44f5-8936-a4e0609de2f1/nilerak_tit_txt.png")
+          0 0 no-repeat;
+        background-size: 910px auto;
+        -webkit-animation: width 1.3s cubic-bezier(0, 0, 0.18, 0.98);
+        -moz-animation: width 1.3s cubic-bezier(0, 0, 0.18, 0.98);
+        animation: width 1.3s cubic-bezier(0, 0, 0.18, 0.98);
+        content: "";
+      }
+      -webkit-@keyframes width {
+        0% {
+          width: 0;
+        }
+        100% {
+          width: 100%;
+        }
+      }
+      @keyframes width {
+        0% {
+          width: 0;
+        }
+        100% {
+          width: 100%;
+        }
+      }
+
+      /* image slide */
+      .nilerak .page_sect {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+      .nilerak .page_sect .thisImageShowGrid {
+        position: relative;
+        width: 1910px;
+        height: 100%;
+      }
+      .nilerak .page_sect .thisImageShowGrid:before,
+      .nilerak .page_sect .thisImageShowGrid:after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        height: 100%;
+        background-repeat: no-repeat;
+        -webkit-animation-duration: 75s;
+        animation-duration: 75s;
+        -webkit-animation-timing-function: linear;
+        animation-timing-function: linear;
+        -webkit-animation-iteration-count: infinite;
+        animation-iteration-count: infinite;
+      }
+
+      /* image slide: tit bar */
+      .nilerak .tit .page_sect {
+        width: 62px;
+        height: 100%;
+        left: auto;
+        right: 0;
+      }
+      .nilerak .tit .page_sect .thisImageShowGrid {
+        width: 100%;
+        height: 2548px;
+      }
+      .nilerak .tit .page_sect .thisImageShowGrid:before,
+      .nilerak .tit .page_sect .thisImageShowGrid:after {
+        height: 2548px;
+        width: 100%;
+        background-size: 100% 2548px;
+        background-image: url("https://images3.kolonmall.com/upload/content/d54cc043-002f-44f5-8936-a4e0609de2f1/nilerak_tit_bar.png");
+      }
+      .nilerak .tit .page_sect .thisImageShowGrid:before {
+        -webkit-animation-name: showGridAnimationBeforeLargeTit;
+        animation-name: showGridAnimationBeforeLargeTit;
+      }
+      .nilerak .tit .page_sect .thisImageShowGrid:after {
+        -webkit-animation-name: showGridAnimationAfterLargeTit;
+        animation-name: showGridAnimationAfterLargeTit;
+      }
+      @-webkit-keyframes showGridAnimationBeforeLargeTit {
+        0% {
+          -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+        }
+        50% {
+          -webkit-transform: translate3d(0, 2548px, 0);
+          transform: translate3d(0, 2548px, 0);
+        }
+        50.001% {
+          -webkit-transform: translate3d(0, -2548px, 0);
+          transform: translate3d(0, -2548px, 0);
+        }
+        100% {
+          -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+        }
+      }
+      @keyframes showGridAnimationBeforeLargeTit {
+        0% {
+          -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+        }
+        50% {
+          -webkit-transform: translate3d(0, 2548px, 0);
+          transform: translate3d(0, 2548px, 0);
+        }
+        50.001% {
+          -webkit-transform: translate3d(0, -2548px, 0);
+          transform: translate3d(0, -2548px, 0);
+        }
+        100% {
+          -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+        }
+      }
+      @-webkit-keyframes showGridAnimationAfterLargeTit {
+        0% {
+          -webkit-transform: translate3d(0, -2548px, 0);
+          transform: translate3d(0, -2548px, 0);
+        }
+        50% {
+          -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+        }
+        100% {
+          -webkit-transform: translate3d(0, 2548px, 0);
+          transform: translate3d(0, 2548px, 0);
+        }
+      }
+      @keyframes showGridAnimationAfterLargeTit {
+        0% {
+          -webkit-transform: translate3d(0, -2548px, 0);
+          transform: translate3d(0, -2548px, 0);
+        }
+        50% {
+          -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+        }
+        100% {
+          -webkit-transform: translate3d(0, 2548px, 0);
+          transform: translate3d(0, 2548px, 0);
+        }
+      }
+
+      /* image slide: cont bar */
+      .nilerak .bar .page_sect .thisImageShowGrid {
+        width: 1910px;
+      }
+      .nilerak .bar .page_sect .thisImageShowGrid:before,
+      .nilerak .bar .page_sect .thisImageShowGrid:after {
+        width: 1910px;
+        background-size: 1910px 100%;
+        background-image: url("https://images3.kolonmall.com/upload/content/d54cc043-002f-44f5-8936-a4e0609de2f1/nilerak_bar_txt.png");
+      }
+      .nilerak .bar .page_sect .thisImageShowGrid:before {
+        -webkit-animation-name: showGridAnimationBeforeLargeBar;
+        animation-name: showGridAnimationBeforeLargeBar;
+      }
+      .nilerak .bar .page_sect .thisImageShowGrid:after {
+        -webkit-animation-name: showGridAnimationAfterLargeBar;
+        animation-name: showGridAnimationAfterLargeBar;
+      }
+      @-webkit-keyframes showGridAnimationBeforeLargeBar {
+        0% {
+          -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+        }
+        50% {
+          -webkit-transform: translate3d(-1910px, 0, 0);
+          transform: translate3d(-1910px, 0, 0);
+        }
+        50.001% {
+          -webkit-transform: translate3d(1910px, 0, 0);
+          transform: translate3d(1910px, 0, 0);
+        }
+        100% {
+          -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+        }
+      }
+      @keyframes showGridAnimationBeforeLargeBar {
+        0% {
+          -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+        }
+        50% {
+          -webkit-transform: translate3d(1910px, 0, 0);
+          transform: translate3d(1910px, 0, 0);
+        }
+        50.001% {
+          -webkit-transform: translate3d(-1910px, 0, 0);
+          transform: translate3d(-1910px, 0, 0);
+        }
+        100% {
+          -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+        }
+      }
+      @-webkit-keyframes showGridAnimationAfterLargeBar {
+        0% {
+          -webkit-transform: translate3d(-1910px, 0, 0);
+          transform: translate3d(-1910px, 0, 0);
+        }
+        50% {
+          -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+        }
+        100% {
+          -webkit-transform: translate3d(1910px, 0, 0);
+          transform: translate3d(1910px, 0, 0);
+        }
+      }
+      @keyframes showGridAnimationAfterLargeBar {
+        0% {
+          -webkit-transform: translate3d(-1910px, 0, 0);
+          transform: translate3d(-1910px, 0, 0);
+        }
+        50% {
+          -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+        }
+        100% {
+          -webkit-transform: translate3d(1910px, 0, 0);
+          transform: translate3d(1910px, 0, 0);
+        }
+      }
+
+      /* image slide: cont06 */
+      .nilerak .cont06 .page_sect {
+        top: 27.20232333010649%;
+        height: 610px;
+      }
+      .nilerak .cont06 .page_sect .thisImageShowGrid {
+        width: 2680px;
+      }
+      .nilerak .cont06 .page_sect .thisImageShowGrid:before,
+      .nilerak .cont06 .page_sect .thisImageShowGrid:after {
+        width: 2680px;
+        background-size: 2680px 100%;
+        background-image: url("https://images3.kolonmall.com/upload/content/d54cc043-002f-44f5-8936-a4e0609de2f1/nilerak_cont06_slide.png");
+      }
+      .nilerak .cont06 .page_sect .thisImageShowGrid:before {
+        -webkit-animation-name: showGridAnimationBeforeLargeImage;
+        animation-name: showGridAnimationBeforeLargeImage;
+      }
+      .nilerak .cont06 .page_sect .thisImageShowGrid:after {
+        -webkit-animation-name: showGridAnimationAfterLargeImage;
+        animation-name: showGridAnimationAfterLargeImage;
+      }
+      @-webkit-keyframes showGridAnimationBeforeLargeImage {
+        0% {
+          -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+        }
+        50% {
+          -webkit-transform: translate3d(-2680px, 0, 0);
+          transform: translate3d(-2680px, 0, 0);
+        }
+        50.001% {
+          -webkit-transform: translate3d(2680px, 0, 0);
+          transform: translate3d(2680px, 0, 0);
+        }
+        100% {
+          -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+        }
+      }
+      @keyframes showGridAnimationBeforeLargeImage {
+        0% {
+          -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+        }
+        50% {
+          -webkit-transform: translate3d(-2680px, 0, 0);
+          transform: translate3d(-2680px, 0, 0);
+        }
+        50.001% {
+          -webkit-transform: translate3d(2680px, 0, 0);
+          transform: translate3d(2680px, 0, 0);
+        }
+        100% {
+          -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+        }
+      }
+      @-webkit-keyframes showGridAnimationAfterLargeImage {
+        0% {
+          -webkit-transform: translate3d(2680px, 0, 0);
+          transform: translate3d(2680px, 0, 0);
+        }
+        50% {
+          -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+        }
+        100% {
+          -webkit-transform: translate3d(-2680px, 0, 0);
+          transform: translate3d(-2680px, 0, 0);
+        }
+      }
+      @keyframes showGridAnimationAfterLargeImage {
+        0% {
+          -webkit-transform: translate3d(2680px, 0, 0);
+          transform: translate3d(2680px, 0, 0);
+        }
+        50% {
+          -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+        }
+        100% {
+          -webkit-transform: translate3d(-2680px, 0, 0);
+          transform: translate3d(-2680px, 0, 0);
+        }
+      }
+    </style>
+
+    <div class="nilerak_wrap">
+      <div class="nilerak">
+        <div class="tit rel">
+          <img
+            src="https://images3.kolonmall.com/upload/content/d54cc043-002f-44f5-8936-a4e0609de2f1/nilerak_tit.jpg"
+            alt=""
+          />
+          <p class="txt">NILE;RAK</p>
+          <div class="page_sect">
+            <div class="thisImageShowGrid"></div>
+          </div>
+        </div>
+        <img
+          src="https://images3.kolonmall.com/upload/content/d54cc043-002f-44f5-8936-a4e0609de2f1/nilerak_cont01.jpg"
+          alt=""
+        />
+        <img
+          src="https://images3.kolonmall.com/upload/content/d54cc043-002f-44f5-8936-a4e0609de2f1/nilerak_cont02.jpg"
+          alt=""
+        />
+        <img
+          src="https://images3.kolonmall.com/upload/content/d54cc043-002f-44f5-8936-a4e0609de2f1/nilerak_cont03.jpg"
+          alt=""
+        />
+        <img
+          src="https://images3.kolonmall.com/upload/content/d54cc043-002f-44f5-8936-a4e0609de2f1/nilerak_cont04.jpg"
+          alt=""
+        />
+        <div class="bar rel">
+          <img
+            src="https://images3.kolonmall.com/upload/content/d54cc043-002f-44f5-8936-a4e0609de2f1/nilerak_bar.jpg"
+            alt=""
+          />
+          <div class="page_sect">
+            <div class="thisImageShowGrid"></div>
+          </div>
+        </div>
+        <img
+          src="https://images3.kolonmall.com/upload/content/d54cc043-002f-44f5-8936-a4e0609de2f1/nilerak_cont05.jpg"
+          alt=""
+        />
+        <div class="cont06 rel">
+          <img
+            src="https://images3.kolonmall.com/upload/content/d54cc043-002f-44f5-8936-a4e0609de2f1/nilerak_cont06.jpg"
+            alt=""
+          />
+          <div class="page_sect">
+            <div class="thisImageShowGrid"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      $(document).ready(function () {
+        //$(window).on("load", function(){
+        $(".tit .txt").addClass("active");
+      });
+    </script>
+  </body>
+</html>

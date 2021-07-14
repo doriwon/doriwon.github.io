@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>LIFE TECH</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js"></script>
+  </head>
+  <body>
+    <style>
+      /*reset + common*/
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      .lifetech {
+        position: relative;
+        background-color: #fff;
+      }
+      .lifetech * {
+        margin: 0;
+        padding: 0;
+        line-height: 0;
+      }
+      .lifetech img {
+        display: inline-block;
+        width: 100%;
+        vertical-align: top;
+      }
+      .lifetech .clearfix:after {
+        display: block;
+        clear: both;
+        content: "";
+      }
+      .lifetech .f_left {
+        float: left;
+      }
+      .lifetech .f_right {
+        float: right;
+      }
+      .lifetech .rel {
+        position: relative;
+      }
+
+      /* intro */
+      .lifetech .intro .pro {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: matrix(1, 0, 0, 1, 30, 0);
+        opacity: 0;
+        z-index: 1;
+        animation: floating 3s linear infinite;
+      }
+      .lifetech .intro .bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+      }
+      .lifetech .intro .bg02 {
+        transform: matrix(1, 0, 0, 1, -30, 0);
+      }
+      @keyframes floating {
+        from {
+          transform: translate(0, 0px);
+        }
+        65% {
+          transform: translate(0, 15px);
+        }
+        to {
+          transform: translate(0, -0px);
+        }
+      }
+      .lifetech .intro .tit,
+      .lifetech .intro .stit {
+        position: absolute;
+        opacity: 0;
+      }
+      .lifetech .intro .tit {
+        top: 33.43881856540084%;
+      }
+      .lifetech .intro .tit01 {
+        transform: matrix(1, 0, 0, 1, -200, 0);
+        z-index: 0;
+        left: 13.125%;
+        width: 33.64583333333333%;
+      }
+      .lifetech .intro .tit02 {
+        transform: matrix(1, 0, 0, 1, 200, 0);
+        left: 46.77083333333333%;
+        width: 40.3125%;
+        z-index: 2;
+      }
+      .lifetech .intro .stit {
+        top: 52.42616033755274%;
+        left: 14.94791666666667%;
+        width: 18.17708333333333%;
+        transform: matrix(1, 0, 0, 1, 0, 30);
+      }
+
+      /* cont01 */
+      .lifetech .cont01 .txt {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        opacity: 0;
+        transform: matrix(1, 0, 0, 1, 0, 30);
+      }
+      .lifetech .cont01 .txt01 {
+        top: 40.54696789536266%;
+      }
+      .lifetech .cont01 .txt02 {
+        top: 45.0653983353151%;
+      }
+      .lifetech .cont01 .txt03 {
+        top: 51.48632580261593%;
+      }
+      .lifetech .cont01 .txt04 {
+        top: 56.00475624256837%;
+      }
+      .lifetech .cont01 .txt05 {
+        top: 66.70630202140309%;
+      }
+      .lifetech .cont01 .txt06 {
+        top: 70.86801426872771%;
+      }
+      .lifetech .cont01 .txt07 {
+        top: 77.40784780023781%;
+      }
+      .lifetech .cont01 .txt08 {
+        top: 81.56956004756243%;
+      }
+
+      /* cont02 */
+      .lifetech .cont02 .logo {
+        position: absolute;
+        top: 45.16971279373368%;
+        left: 45.10416666666667%;
+        width: 9.895833333333333%;
+        z-index: 10;
+      }
+      .lifetech .cont02 .history {
+        position: absolute;
+      }
+      .lifetech .cont02 .history .btn_pop {
+        display: block;
+        position: absolute;
+        z-index: 1;
+      }
+      .lifetech .cont02 .history .btn_pop.left {
+        left: 0;
+      }
+      .lifetech .cont02 .history .btn_pop.right {
+        right: 0;
+      }
+      .lifetech .cont02 .history .btn_pop img {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 4.791666666666667vw;
+      }
+      .lifetech .cont02 .history .btn_pop.hover img,
+      .lifetech .cont02 .history .btn_pop:hover img {
+        -webkit-box-shadow: 0 0 0 2px #80ffec;
+        box-shadow: 0 0 0 2px #80ffec;
+      }
+      /* history 06 */
+      .lifetech .cont02 .h06 {
+        top: 55.93994778067885%;
+        left: 24.47916666666667%;
+      }
+      .lifetech .cont02 .h06 .btn_pop {
+        top: 12.86458333333333vw;
+        width: 9.270833333333333vw;
+        height: 18.28125vw;
+      }
+      .lifetech .cont02 .h06 > img {
+        width: 25.52083333333333vw;
+      }
+      /* history 07 */
+      .lifetech .cont02 .h07 {
+        top: 53.91644908616188%;
+        left: 16.14583333333333%;
+      }
+      .lifetech .cont02 .h07 .btn_pop {
+        top: 11.04166666666667vw;
+        width: 6.822916666666667vw;
+        height: 20.83333333333333vw;
+      }
+      .lifetech .cont02 .h07 > img {
+        width: 33.85416666666667vw;
+      }
+      /* history 08 */
+      .lifetech .cont02 .h08 {
+        top: 53.91644908616188%;
+        left: 3.90625%;
+      }
+      .lifetech .cont02 .h08 .btn_pop {
+        top: 0.4166666666666667vw;
+        width: 10.26041666666667vw;
+        height: 23.90625vw;
+      }
+      .lifetech .cont02 .h08 > img {
+        width: 46.14583333333333vw;
+      }
+      /* history 09 */
+      .lifetech .cont02 .h09 {
+        top: 41.71018276762402%;
+        left: 25.83333333333333%;
+      }
+      .lifetech .cont02 .h09 .btn_pop {
+        top: 0;
+        width: 15.98958333333333vw;
+        height: 19.94791666666667vw;
+      }
+      .lifetech .cont02 .h09 > img {
+        width: 24.94791666666667vw;
+      }
+      /* history 10 */
+      .lifetech .cont02 .h10 {
+        top: 38.83812010443864%;
+        left: 17.8125%;
+      }
+      .lifetech .cont02 .h10 .btn_pop {
+        top: 0;
+        width: 7.5vw;
+        height: 19.27083333333333vw;
+      }
+      .lifetech .cont02 .h10 > img {
+        width: 28.95833333333333vw;
+      }
+      /* history 11 */
+      .lifetech .cont02 .h11 {
+        top: 28.3289817232376%;
+        left: 6.510416666666667%;
+      }
+      .lifetech .cont02 .h11 .btn_pop {
+        top: 0;
+        width: 10.88541666666667vw;
+        height: 21.04166666666667vw;
+      }
+      .lifetech .cont02 .h11 > img {
+        width: 43.33333333333333vw;
+      }
+      /* history 12 */
+      .lifetech .cont02 .h12 {
+        top: 5.483028720626632%;
+        left: 27.13541666666667%;
+      }
+      .lifetech .cont02 .h12 .btn_pop {
+        top: 0;
+        width: 11.5625vw;
+        height: 22.29166666666667vw;
+      }
+      .lifetech .cont02 .h12 > img {
+        width: 21.82291666666667vw;
+      }
+      /* history 13 */
+      .lifetech .cont02 .h13 {
+        top: 2.415143603133159%;
+        left: 6.5625%;
+      }
+      .lifetech .cont02 .h13 .btn_pop {
+        top: 0;
+        width: 14.27083333333333vw;
+        height: 19.63541666666667vw;
+      }
+      .lifetech .cont02 .h13 > img {
+        width: 42.60416666666667vw;
+      }
+      /* history 14 */
+      .lifetech .cont02 .h14 {
+        top: 53.59007832898172%;
+        left: 49.47916666666667%;
+      }
+      .lifetech .cont02 .h14 .btn_pop {
+        top: 9.739583333333333vw;
+        width: 11.92708333333333vw;
+        height: 21.04166666666667vw;
+      }
+      .lifetech .cont02 .h14 > img {
+        width: 27.39583333333333vw;
+      }
+      /* history 15 */
+      .lifetech .cont02 .h15 {
+        top: 55.93994778067885%;
+        left: 52.76041666666667%;
+      }
+      .lifetech .cont02 .h15 .btn_pop {
+        top: 10.83333333333333vw;
+        width: 9.010416666666667vw;
+        height: 17.39583333333333vw;
+      }
+      .lifetech .cont02 .h15 > img {
+        width: 33.95833333333333vw;
+      }
+      /* history 16 */
+      .lifetech .cont02 .h16 {
+        top: 54.30809399477807%;
+        left: 52.65625%;
+      }
+      .lifetech .cont02 .h16 .btn_pop {
+        top: 4.635416666666667vw;
+        width: 11.40625vw;
+        height: 18.90625vw;
+      }
+      .lifetech .cont02 .h16 > img {
+        width: 46.04166666666667vw;
+      }
+      /* history 17 */
+      .lifetech .cont02 .h17 {
+        top: 34.72584856396867%;
+        left: 52.8125%;
+      }
+      .lifetech .cont02 .h17 .btn_pop {
+        top: 0;
+        width: 25.3125vw;
+        height: 18.22916666666667vw;
+      }
+      .lifetech .cont02 .h17 .btn_pop img {
+        width: 14.89583333333333vw;
+      }
+      .lifetech .cont02 .h17 > img {
+        width: 44.375vw;
+      }
+      /* history 18 */
+      .lifetech .cont02 .h18 {
+        top: 9.268929503916449%;
+        left: 52.55208333333333%;
+      }
+      .lifetech .cont02 .h18 .btn_pop {
+        top: 0;
+        width: 12.5vw;
+        height: 18.90625vw;
+      }
+      .lifetech .cont02 .h18 > img {
+        width: 31.77083333333333vw;
+      }
+      /* history 19 */
+      .lifetech .cont02 .h19 {
+        top: 6.266318537859008%;
+        left: 49.63541666666667%;
+      }
+      .lifetech .cont02 .h19 .btn_pop {
+        top: 0;
+        width: 12.65625vw;
+        height: 20.20833333333333vw;
+      }
+      .lifetech .cont02 .h19 > img {
+        width: 48.59375vw;
+      }
+      /* history 20 */
+      .lifetech .cont02 .h20 {
+        top: 10.63968668407311%;
+        left: 50.57291666666667%;
+      }
+      .lifetech .cont02 .h20 .btn_pop {
+        top: 0;
+        left: 2.916666666666667vw;
+        width: 14.375vw;
+        height: 11.51041666666667vw;
+      }
+      .lifetech .cont02 .h20 .btn_pop img {
+        left: auto;
+        right: 0;
+      }
+      .lifetech .cont02 .h20 > img {
+        width: 11.77083333333333vw;
+      }
+      /* popup */
+      .lifetech .pop_bg {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 6;
+      }
+      .lifetech .pop {
+        display: none;
+        position: absolute;
+        z-index: 7;
+      }
+      .lifetech .btn_close {
+        position: absolute;
+        width: 1.666666666666667vw;
+        height: 1.666666666666667vw;
+        font-size: 0;
+        text-indent: -9999px;
+      }
+      .lifetech .pop06 {
+        left: 2.8125%;
+        top: 56.82560418027433%;
+        width: 46.51041666666667%;
+      }
+      .lifetech .pop06 .btn_close {
+        top: 13.95833333333333vw;
+        right: 16.35416666666667vw;
+      }
+      .lifetech .pop07 {
+        left: 2.8125%;
+        top: 56.17243631613325%;
+        width: 45.10416666666667%;
+      }
+      .lifetech .pop07 .btn_close {
+        top: 12.44791666666667vw;
+        right: 14.94791666666667vw;
+      }
+      .lifetech .pop08 {
+        left: 2.8125%;
+        bottom: 3.853690398432397%;
+        width: 44.94791666666667%;
+      }
+      .lifetech .pop08 .btn_close {
+        top: 11.51041666666667vw;
+        right: 14.79166666666667vw;
+      }
+      .lifetech .pop09 {
+        left: 2.8125%;
+        top: 17.8314826910516%;
+        width: 42.86458333333333%;
+      }
+      .lifetech .pop09 .btn_close {
+        top: 1.71875vw;
+        right: 12.70833333333333vw;
+      }
+      .lifetech .pop10 {
+        left: 2.8125%;
+        top: 16.19856303069889%;
+        width: 42.86458333333333%;
+      }
+      .lifetech .pop10 .btn_close {
+        top: 1.71875vw;
+        right: 12.76041666666667vw;
+      }
+      .lifetech .pop11 {
+        left: 2.8125%;
+        top: 13.71652514696277%;
+        width: 43.48958333333333%;
+      }
+      .lifetech .pop11 .btn_close {
+        top: 1.71875vw;
+        right: 13.33333333333333vw;
+      }
+      .lifetech .pop12 {
+        left: 2.8125%;
+        top: 6.270411495754409%;
+        width: 45.10416666666667%;
+      }
+      .lifetech .pop12 .btn_close {
+        top: 4.376224689745265vw;
+        right: 14.94791666666667vw;
+      }
+      .lifetech .pop13 {
+        left: 2.8125%;
+        top: 1.306335728282169%;
+        width: 45.20833333333333%;
+      }
+      .lifetech .pop13 .btn_close {
+        top: 1.71875vw;
+        right: 15vw;
+      }
+      .lifetech .pop14 {
+        right: 3.177083333333333%;
+        top: 56.5643370346179%;
+        width: 45.26041666666667%;
+      }
+      .lifetech .pop14 .btn_close {
+        top: 9.0625vw;
+        right: 1.666666666666667vw;
+      }
+      .lifetech .pop15 {
+        right: 6.25%;
+        top: 56.04180274330503%;
+        width: 40.98958333333333%;
+      }
+      .lifetech .pop15 .btn_close {
+        top: 5.677083333333333vw;
+        right: 1.666666666666667vw;
+      }
+      .lifetech .pop16 {
+        right: 1.927083333333333%;
+        top: 54.86610058785108%;
+        width: 44.63541666666667%;
+      }
+      .lifetech .pop16 .btn_close {
+        top: 8.802083333333333vw;
+        right: 1.666666666666667vw;
+      }
+      .lifetech .pop17 {
+        right: 1.927083333333333%;
+        top: 32.00522534291313%;
+        width: 43.64583333333333%;
+      }
+      .lifetech .pop17 .btn_close {
+        top: 1.71875vw;
+        right: 1.666666666666667vw;
+      }
+      .lifetech .pop18 {
+        right: 6.25%;
+        top: 8.491182233834095%;
+        width: 39.79166666666667%;
+      }
+      .lifetech .pop18 .btn_close {
+        top: 1.71875vw;
+        right: 1.666666666666667vw;
+      }
+      .lifetech .pop19 {
+        right: 1.927083333333333%;
+        top: 7.05421293272371%;
+        width: 48.4375%;
+      }
+      .lifetech .pop19 .btn_close {
+        top: 2.864583333333333vw;
+        right: 1.666666666666667vw;
+      }
+      .lifetech .pop20 {
+        right: 14.6875%;
+        top: 8.491182233834095%;
+        width: 34.53125%;
+      }
+      .lifetech .pop20 .btn_close {
+        top: 1.71875vw;
+        right: 1.666666666666667vw;
+      }
+
+      /* cont03 */
+      .lifetech .cont03 .img {
+        position: absolute;
+        width: 19.84375%;
+        top: 8.860759493670886%;
+        opacity: 0;
+      }
+      .lifetech .cont03 .img01 {
+        left: 7.03125%;
+        transform: matrix(1, 0, 0, 1, -50, 0);
+      }
+      .lifetech .cont03 .img02 {
+        right: 7.34375%;
+        transform: matrix(1, 0, 0, 1, 50, 0);
+      }
+      .lifetech .cont03 .txt {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        opacity: 0;
+        transform: matrix(1, 0, 0, 1, 0, 30);
+      }
+      .lifetech .cont03 .txt01 {
+        top: 52.88326300984529%;
+      }
+      .lifetech .cont03 .txt02 {
+        top: 57.80590717299578%;
+      }
+      .lifetech .cont03 .txt03 {
+        top: 67.65119549929677%;
+      }
+      .lifetech .cont03 .txt04 {
+        top: 72.43319268635724%;
+      }
+
+      /* cont04 */
+      .lifetech .cont04 {
+        background: #000;
+      }
+      .lifetech .cont04 .pro {
+        position: absolute;
+        top: 43.31004836109618%;
+        left: 27.8125%;
+        width: 27.5%;
+        transform: matrix(1, 0, 0, 1, 0, 0);
+        opacity: 0;
+      }
+      .lifetech .cont04 .info {
+        position: absolute;
+        transform: matrix(1, 0, 0, 1, 0, 0);
+        opacity: 0;
+      }
+      .lifetech .cont04 .info01 {
+        top: 35.67974207415368%;
+        left: 39.73958333333333%;
+        width: 33.28125%;
+      }
+      .lifetech .cont04 .info02 {
+        top: 40.62332079527136%;
+        left: 40.57291666666667%;
+        width: 28.64583333333333%;
+      }
+      .lifetech .cont04 .info03 {
+        top: 44.00859752821064%;
+        left: 34.84375%;
+        width: 32.8125%;
+      }
+      .lifetech .cont04 .info04 {
+        top: 47.77001612036539%;
+        left: 47.86458333333333%;
+        width: 20.52083333333333%;
+      }
+      .lifetech .cont04 .info05 {
+        top: 52.39118753358409%;
+        left: 45.46875%;
+        width: 30%;
+      }
+      .lifetech .cont04 .info06 {
+        top: 56.36754433100484%;
+        left: 46.61458333333333%;
+        width: 43.69791666666667%;
+      }
+      .lifetech .cont04 .info07 {
+        top: 61.90220311660398%;
+        left: 47.44791666666667%;
+        width: 22.1875%;
+      }
+      .lifetech .cont04 .info08 {
+        top: 67.11445459430414%;
+        left: 52.23958333333333%;
+        width: 30.3125%;
+      }
+      .lifetech .cont04 .img {
+        width: 25%;
+        opacity: 0;
+        transform: matrix(1, 0, 0, 1, -30, 0);
+        position: relative;
+      }
+      .lifetech .cont04 .img01 {
+        z-index: 3;
+      }
+      .lifetech .cont04 .img02 {
+        z-index: 2;
+      }
+      .lifetech .cont04 .img03 {
+        z-index: 1;
+      }
+    </style>
+
+    <div class="full-width">
+      <div class="lifetech">
+        <div class="intro rel">
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_intro_bg.jpg"
+            alt=""
+          />
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_intro.png"
+            alt=""
+            class="pro"
+          />
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_intro_light.png"
+            alt=""
+            class="bg bg01"
+          />
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_intro_shadow.png"
+            alt=""
+            class="bg bg02"
+          />
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_tit01_.png"
+            alt=""
+            class="tit tit01"
+          />
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_tit02_.png"
+            alt=""
+            class="tit tit02"
+          />
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_stit.png"
+            alt=""
+            class="stit"
+          />
+        </div>
+        <div class="cont01 rel">
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont01.jpg"
+            alt=""
+          />
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont01_txt01.png"
+            alt="PEOPLE SAY, IT'S NOT A CHALLENGE WITHOUT RISK,"
+            class="txt txt01"
+          />
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont01_txt02.png"
+            alt="BUT KEEPING SOMEONE SAFE, IN A RISKY SITUATION SHOULD BE THE GOAL OF OUTDOOR TECHNOLOGY."
+            class="txt txt02"
+          />
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont01_txt03.png"
+            alt="LEADER IN INNOVATION"
+            class="txt txt03"
+          />
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont01_txt04.png"
+            alt="SPIRIT TO OVERCOME CHALLENGES, TO FIND THE PERFECT TECHNOLOGY TO PROTECT LIFE."
+            class="txt txt04"
+          />
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont01_txt05.png"
+            alt="위험이 없다면 도전이 아니라고 하지만"
+            class="txt txt05"
+          />
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont01_txt06.png"
+            alt="생명이 위험하지 않도록 지키는 것이 아웃도어 기술의 목표가 되어야 한다."
+            class="txt txt06"
+          />
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont01_txt07.png"
+            alt="리더의 혁신."
+            class="txt txt07"
+          />
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont01_txt08.png"
+            alt="생명을 보호하는 완벽한 기술을 향한 상징적인 도전정신."
+            class="txt txt08"
+          />
+        </div>
+        <div class="cont02">
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02_tit.jpg"
+            alt="LIFE TECH HISTORY"
+          />
+          <div class="rel">
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02.jpg"
+              alt=""
+            />
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02_logo.png"
+              alt=""
+              class="logo"
+            />
+            <div class="history h06">
+              <a href="javascript:void:(0);" class="btn_pop left" rel="pop06">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02_06_img.jpg"
+                  alt=""
+                />
+              </a>
+              <img
+                src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02_06.png"
+                alt=""
+              />
+            </div>
+            <div class="history h07">
+              <a href="javascript:void:(0);" class="btn_pop left" rel="pop07">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02_07_img.jpg"
+                  alt=""
+                />
+              </a>
+              <img
+                src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02_07.png"
+                alt=""
+              />
+            </div>
+            <div class="history h08">
+              <a href="javascript:void:(0);" class="btn_pop left" rel="pop08">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02_08_img.jpg"
+                  alt=""
+                />
+              </a>
+              <img
+                src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02_08.png"
+                alt=""
+              />
+            </div>
+            <div class="history h09">
+              <a href="javascript:void:(0);" class="btn_pop left" rel="pop09">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02_09_img.jpg"
+                  alt=""
+                />
+              </a>
+              <img
+                src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02_09.png"
+                alt=""
+              />
+            </div>
+            <div class="history h10">
+              <a href="javascript:void:(0);" class="btn_pop left" rel="pop10">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02_10_img.jpg"
+                  alt=""
+                />
+              </a>
+              <img
+                src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02_10.png"
+                alt=""
+              />
+            </div>
+            <div class="history h11">
+              <a href="javascript:void:(0);" class="btn_pop left" rel="pop11">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02_11_img.jpg"
+                  alt=""
+                />
+              </a>
+              <img
+                src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02_11.png"
+                alt=""
+              />
+            </div>
+            <div class="history h12">
+              <a href="javascript:void:(0);" class="btn_pop left" rel="pop12">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02_12_img.jpg"
+                  alt=""
+                />
+              </a>
+              <img
+                src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02_12.png"
+                alt=""
+              />
+            </div>
+            <div class="history h13">
+              <a href="javascript:void:(0);" class="btn_pop left" rel="pop13">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02_13_img.jpg"
+                  alt=""
+                />
+              </a>
+              <img
+                src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02_13.png"
+                alt=""
+              />
+            </div>
+            <div class="history h14">
+              <a href="javascript:void:(0);" class="btn_pop right" rel="pop14">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02_14_img.jpg"
+                  alt=""
+                />
+              </a>
+              <img
+                src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02_14.png"
+                alt=""
+              />
+            </div>
+            <div class="history h15">
+              <a href="javascript:void:(0);" class="btn_pop right" rel="pop15">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02_15_img.jpg"
+                  alt=""
+                />
+              </a>
+              <img
+                src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02_15.png"
+                alt=""
+              />
+            </div>
+            <div class="history h16">
+              <a href="javascript:void:(0);" class="btn_pop right" rel="pop16">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02_16_img.jpg"
+                  alt=""
+                />
+              </a>
+              <img
+                src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02_16.png"
+                alt=""
+              />
+            </div>
+            <div class="history h17">
+              <a href="javascript:void:(0);" class="btn_pop right" rel="pop17">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02_17_img.png"
+                  alt=""
+                />
+              </a>
+              <img
+                src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02_17.png"
+                alt=""
+              />
+            </div>
+            <div class="history h18">
+              <a href="javascript:void:(0);" class="btn_pop right" rel="pop18">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02_18_img.jpg"
+                  alt=""
+                />
+              </a>
+              <img
+                src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02_18.png"
+                alt=""
+              />
+            </div>
+            <div class="history h19">
+              <a href="javascript:void:(0);" class="btn_pop right" rel="pop19">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02_19_img.jpg"
+                  alt=""
+                />
+              </a>
+              <img
+                src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02_19.png"
+                alt=""
+              />
+            </div>
+            <div class="history h20">
+              <a href="javascript:void:(0);" class="btn_pop" rel="pop20">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02_20_img.jpg"
+                  alt=""
+                />
+              </a>
+              <img
+                src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02_20.png"
+                alt=""
+              />
+            </div>
+            <!-- popup -->
+            <div class="pop pop06" id="pop06">
+              <img
+                src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02_06_pop.png"
+                alt=""
+              />
+              <a href="javascript:void:(0);" class="btn_close">close</a>
+            </div>
+            <div class="pop pop07" id="pop07">
+              <img
+                src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02_07_pop.png"
+                alt=""
+              />
+              <a href="javascript:void:(0);" class="btn_close">close</a>
+            </div>
+            <div class="pop pop08" id="pop08">
+              <img
+                src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02_08_pop.png"
+                alt=""
+              />
+              <a href="javascript:void:(0);" class="btn_close">close</a>
+            </div>
+            <div class="pop pop09" id="pop09">
+              <img
+                src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02_09_pop.png"
+                alt=""
+              />
+              <a href="javascript:void:(0);" class="btn_close">close</a>
+            </div>
+            <div class="pop pop10" id="pop10">
+              <img
+                src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02_10_pop.png"
+                alt=""
+              />
+              <a href="javascript:void:(0);" class="btn_close">close</a>
+            </div>
+            <div class="pop pop11" id="pop11">
+              <img
+                src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02_11_pop.png"
+                alt=""
+              />
+              <a href="javascript:void:(0);" class="btn_close">close</a>
+            </div>
+            <div class="pop pop12" id="pop12">
+              <img
+                src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02_12_pop.png"
+                alt=""
+              />
+              <a href="javascript:void:(0);" class="btn_close">close</a>
+            </div>
+            <div class="pop pop13" id="pop13">
+              <img
+                src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02_13_pop.png"
+                alt=""
+              />
+              <a href="javascript:void:(0);" class="btn_close">close</a>
+            </div>
+            <div class="pop pop14" id="pop14">
+              <img
+                src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02_14_pop.png"
+                alt=""
+              />
+              <a href="javascript:void:(0);" class="btn_close">close</a>
+            </div>
+            <div class="pop pop15" id="pop15">
+              <img
+                src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02_15_pop.png"
+                alt=""
+              />
+              <a href="javascript:void:(0);" class="btn_close">close</a>
+            </div>
+            <div class="pop pop16" id="pop16">
+              <img
+                src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02_16_pop.png"
+                alt=""
+              />
+              <a href="javascript:void:(0);" class="btn_close">close</a>
+            </div>
+            <div class="pop pop17" id="pop17">
+              <img
+                src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02_17_pop.png"
+                alt=""
+              />
+              <a href="javascript:void:(0);" class="btn_close">close</a>
+            </div>
+            <div class="pop pop18" id="pop18">
+              <img
+                src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02_18_pop.png"
+                alt=""
+              />
+              <a href="javascript:void:(0);" class="btn_close">close</a>
+            </div>
+            <div class="pop pop19" id="pop19">
+              <img
+                src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02_19_pop.png"
+                alt=""
+              />
+              <a href="javascript:void:(0);" class="btn_close">close</a>
+            </div>
+            <div class="pop pop20" id="pop20">
+              <img
+                src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont02_20_pop.png"
+                alt=""
+              />
+              <a href="javascript:void:(0);" class="btn_close">close</a>
+            </div>
+            <div class="pop_bg"></div>
+          </div>
+        </div>
+        <div class="cont03">
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont03_tit.jpg"
+            alt="Ver.09 LIFE TECH"
+          />
+          <div class="rel">
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont03.jpg"
+              alt=""
+            />
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont03_img01.png"
+              alt=""
+              class="img img01"
+            />
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont03_img02.png"
+              alt=""
+              class="img img02"
+            />
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont03_txt01.png"
+              alt="코오롱스포츠에서 2006년부터 진행한 라이프테크는"
+              class="txt txt01"
+            />
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont03_txt02.png"
+              alt="대자연 속에서의 생존을 위해 탄생한 프로텍트 자켓입니다."
+              class="txt txt02"
+            />
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont03_txt03.png"
+              alt="극한 상황에서 생명과 관련된 긴급대응 및 효과적인 구조 활동을 위한"
+              class="txt txt03"
+            />
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont03_txt04.png"
+              alt="기능을 탑재한 제품으로 지속적인 연구 개발을 하고 있습니다."
+              class="txt txt04"
+            />
+          </div>
+        </div>
+        <div class="cont04">
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont04_tit.jpg"
+            alt="Ver.09 LIFE TECH FUNCTION"
+          />
+          <div class="rel">
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont04.jpg"
+              alt=""
+            />
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont04_pro.png"
+              alt=""
+              class="pro"
+            />
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont04_info01.png"
+              alt=""
+              class="info info01"
+            />
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont04_info02.png"
+              alt=""
+              class="info info02"
+            />
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont04_info03.png"
+              alt=""
+              class="info info03"
+            />
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont04_info04.png"
+              alt=""
+              class="info info04"
+            />
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont04_info05.png"
+              alt=""
+              class="info info05"
+            />
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont04_info06.png"
+              alt=""
+              class="info info06"
+            />
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont04_info07.png"
+              alt=""
+              class="info info07"
+            />
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont04_info08.png"
+              alt=""
+              class="info info08"
+            />
+          </div>
+          <ul class="rel clearfix">
+            <li class="f_left img img01">
+              <img
+                src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont04_img01_.jpg"
+                alt="COMPASS/WATCH/THERMOMETER 나침반/시계/온도계 예상치 못한 조난시 휴대폰이 작동하지 않을 경우 위치와 진행방향을 파악하고 온도 차이로 고지대와 저지대의 차이를 가늠할 수 있음"
+              />
+            </li>
+            <li class="f_left img img02">
+              <img
+                src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont04_img02.jpg"
+                alt="VENTILATION SYSTEM 통풍 시스템 통풍 시스템으로 온도의 밸런스를 유지하여 쾌적한 상태를 유지하는데 도움을 줌"
+              />
+            </li>
+            <li class="f_left img img03">
+              <img
+                src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont04_img03.jpg"
+                alt="WATERPROOF POCKET 방수 포켓 완벽한 방수 포켓"
+              />
+            </li>
+            <li class="f_left img img04">
+              <img
+                src="https://images.kolonmall.com/cms/special/upload/9621bdeb-a555-4c5f-be15-8ccd1a6e6e95/lifetech_cont04_img04_.jpg"
+                alt="EMERGENCY BLANKET 비상용 보온포 예상치 못한 기상변화로 인하여 조난이 되거나 비바람 눈보라 등으로 저체온증을 막기위해 위급시 열손실을 최소화하는 역할을 함"
+              />
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <script>
+      $(document).ready(function () {
+        TweenMax.to($(".lifetech .intro .pro"), 0.5, {
+          opacity: 1,
+          x: 0,
+          delay: 0,
+        });
+        TweenMax.to($(".lifetech .intro .bg01"), 1, { opacity: 1, delay: 0.5 });
+        TweenMax.to($(".lifetech .intro .bg02"), 1, {
+          opacity: 1,
+          x: 0,
+          delay: 1,
+        });
+        TweenMax.to($(".lifetech .intro .tit01"), 1, {
+          opacity: 1,
+          x: 0,
+          delay: 1.5,
+        });
+        TweenMax.to($(".lifetech .intro .tit02"), 1, {
+          opacity: 1,
+          x: 0,
+          delay: 1.8,
+        });
+        TweenMax.to($(".lifetech .intro .stit"), 2, {
+          opacity: 1,
+          y: 0,
+          delay: 2.2,
+        });
+      });
+
+      $(".lifetech .history a").hover(
+        function () {
+          var $this = $(this);
+          var this_a = $(this);
+
+          $(".lifetech .history a").removeClass("hover");
+          $this.addClass("hover");
+
+          //이미지 교체
+          $(".btn_pop + img").each(function () {
+            var tmpSrc = $(this).attr("src");
+            $(this).attr("src", tmpSrc.replace("on.png", ".png"));
+          });
+
+          var $thisImg = $(this).siblings("img");
+          $thisImg.attr("src", $thisImg.attr("src").replace(".png", "on.png"));
+        },
+        function () {
+          var $this = $(this);
+          $this.removeClass("hover");
+
+          var $thisImg = $(this).siblings("img");
+          $thisImg.attr("src", $thisImg.attr("src").replace("on.png", ".png"));
+        }
+      );
+
+      // popup
+      $(".btn_pop").click(function () {
+        pop_rel = $(this).attr("rel");
+        $("#" + pop_rel).fadeIn();
+        $(".pop_bg").fadeIn();
+        // $('body').css({'overflow-y': 'hidden', 'padding-right': '17px', 'box-sizing': 'border-box'});
+      });
+
+      $(".btn_close").click(function () {
+        $(".pop_bg").fadeOut();
+        $(this).parents(".pop").fadeOut();
+        // $('body').css({'overflow-y': 'visible', 'padding-right': '0', 'box-sizing': 'content-box'});
+      });
+      $(".pop_bg").click(function () {
+        $(".pop_bg").fadeOut();
+        $(".pop").fadeOut();
+      });
+
+      $(window).scroll(function () {
+        var winTop = $(this).scrollTop();
+        var cont01 = $(".cont01").offset().top - 600;
+        var cont01p = $(".cont01 .txt01").offset().top - 600;
+        var cont02 = $(".cont02").offset().top - 600;
+        var cont03 = $(".cont03>div").offset().top - 600;
+        var cont04 = $(".cont04").offset().top - 600;
+        var cont04_pro = $(".cont04 .pro").offset().top - 600;
+        var cont04_ul = $(".cont04>ul").offset().top - 600;
+
+        if (cont01p < winTop && winTop < cont02) {
+          TweenMax.to($(".cont01 .txt01"), 1, { opacity: 1, y: 0, delay: 0 });
+          TweenMax.to($(".cont01 .txt02"), 1, { opacity: 1, y: 0, delay: 0.5 });
+          TweenMax.to($(".cont01 .txt03"), 1, { opacity: 1, y: 0, delay: 1 });
+          TweenMax.to($(".cont01 .txt04"), 1, { opacity: 1, y: 0, delay: 1.5 });
+          TweenMax.to($(".cont01 .txt05"), 1, { opacity: 1, y: 0, delay: 2 });
+          TweenMax.to($(".cont01 .txt06"), 1, { opacity: 1, y: 0, delay: 2.5 });
+          TweenMax.to($(".cont01 .txt07"), 1, { opacity: 1, y: 0, delay: 3 });
+          TweenMax.to($(".cont01 .txt08"), 1, { opacity: 1, y: 0, delay: 3.5 });
+        }
+        if (cont03 < winTop && winTop < cont04) {
+          TweenMax.to($(".cont03 .img01"), 1, { opacity: 1, x: 0, delay: 0 });
+          TweenMax.to($(".cont03 .img02"), 1, { opacity: 1, x: 0, delay: 0.5 });
+          TweenMax.to($(".cont03 .txt01"), 1, { opacity: 1, y: 0, delay: 1 });
+          TweenMax.to($(".cont03 .txt02"), 1, { opacity: 1, y: 0, delay: 1.5 });
+          TweenMax.to($(".cont03 .txt03"), 1, { opacity: 1, y: 0, delay: 2 });
+          TweenMax.to($(".cont03 .txt04"), 1, { opacity: 1, y: 0, delay: 2.5 });
+        }
+        if (cont04_pro < winTop && winTop < cont04_ul) {
+          TweenMax.to($(".cont04 .pro"), 1, { opacity: 1, y: 0, delay: 0 });
+          TweenMax.to($(".cont04 .info01"), 1, {
+            opacity: 1,
+            y: 0,
+            delay: 0.5,
+          });
+          TweenMax.to($(".cont04 .info02"), 1, {
+            opacity: 1,
+            y: 0,
+            delay: 0.8,
+          });
+          TweenMax.to($(".cont04 .info03"), 1, {
+            opacity: 1,
+            y: 0,
+            delay: 1.1,
+          });
+          TweenMax.to($(".cont04 .info04"), 1, {
+            opacity: 1,
+            y: 0,
+            delay: 1.4,
+          });
+          TweenMax.to($(".cont04 .info05"), 1, {
+            opacity: 1,
+            y: 0,
+            delay: 1.7,
+          });
+          TweenMax.to($(".cont04 .info06"), 1, { opacity: 1, y: 0, delay: 2 });
+          TweenMax.to($(".cont04 .info07"), 1, {
+            opacity: 1,
+            y: 0,
+            delay: 2.3,
+          });
+          TweenMax.to($(".cont04 .info08"), 1, {
+            opacity: 1,
+            y: 0,
+            delay: 2.7,
+          });
+        }
+        if (cont04_ul < winTop) {
+          TweenMax.to($(".cont04 .img01"), 1, { opacity: 1, x: 0, delay: 0 });
+          TweenMax.to($(".cont04 .img02"), 1, { opacity: 1, x: 0, delay: 0.5 });
+          TweenMax.to($(".cont04 .img03"), 1, { opacity: 1, x: 0, delay: 1 });
+          TweenMax.to($(".cont04 .img04"), 1, { opacity: 1, x: 0, delay: 1.5 });
+        }
+      });
+    </script>
+  </body>
+</html>

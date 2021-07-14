@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, viewport-fit=cover">
@@ -20,8 +20,10 @@
 		}
 		.odumak{
 			position:relative;
-			background-color:#fff;
+			background-color:rgb(44, 39, 39);
 			text-align: center;
+			max-width: 750px;
+    		margin: 0 auto;
 		}
 		.odumak *{
 			margin:0;
@@ -520,8 +522,9 @@
 			left:0;
 			right:0;
 			position:absolute;
-			margin:0 auto;	
+			margin:0 auto !important;	
 			z-index: 9;
+			max-width: 750px;
 		}
 		.odumak .navi.fixed{
 			top:0;
@@ -543,17 +546,6 @@
 			right: 0;
 			margin: auto;
 			line-height: 1;
-		}
-		.head-hide .odumak .navi{
-			width:100%;
-			top:2.96875vw;
-			position:absolute;
-			margin:0 auto;	
-			max-width:750px;	
-		}
-		.head-hide .odumak .navi.fixed{
-			top:12.8vw;
-			position:fixed;
 		}
 		.odumak .t_ck_point {width: 33.75%;}
 
@@ -734,8 +726,6 @@
 			.odumak .tab_btn li{border-radius:50px; padding:20px 30px; }
 			.odumak .tab_btn li:first-child {padding:20px 45px;}
 			
-			.odumak .navi{top:19px;}
-			.odumak .navi.fixed{top:96px;}
 		}
 	</style>
 	<div class="odumak">

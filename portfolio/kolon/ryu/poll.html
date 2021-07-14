@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>New Signature Poll</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.css"
+    />
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js"></script>
+  </head>
+  <body>
+    <style>
+      /*reset + common*/
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      @import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+      .ss20 {
+        position: relative;
+        font-family: "Noto Sans KR";
+        background-color: #fff;
+      }
+      .ss20 .reset {
+        margin: 0;
+        padding: 0;
+      }
+      .ss20 * {
+        margin: 0;
+        padding: 0;
+        line-height: 0;
+      }
+      .ss20 button {
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+      .ss20 input::-moz-focus-inner,
+      .ss20 button::-moz-focus-inner {
+        border: 0;
+        padding: 0;
+      }
+      .ss20 img {
+        display: inline-block;
+        width: 100%;
+        vertical-align: top;
+      }
+      .ss20 .rel {
+        position: relative;
+      }
+
+      /* 투표하기 */
+      .ss20 .poll div {
+        position: absolute;
+        width: 36.97916666666667%;
+        font-size: 0;
+      }
+      .ss20 .poll div.story {
+        top: 23.4590616375345%;
+        left: 13.28125%;
+      }
+      .ss20 .poll div.inuk {
+        top: 28.1508739650414%;
+        left: 54.42708333333333%;
+      }
+      .ss20 .poll div.night {
+        top: 53.54185832566697%;
+        left: 6.770833333333333%;
+      }
+
+      .ss20 .poll div.city {
+        top: 58.14167433302668%;
+        left: 53.48958333333333%;
+      }
+      .ss20 .poll input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 0;
+        border: 0;
+        vertical-align: baseline;
+        opacity: 0;
+      }
+      .ss20 .poll label {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+      }
+      .ss20 .poll label:before {
+        display: block;
+        position: absolute;
+        background-color: #fff;
+        background-size: cover;
+        background-repeat: no-repeat;
+        z-index: 2;
+        content: "";
+      }
+      .ss20 .poll .story label:before {
+        top: -5.769230769230769%;
+        right: -6.47887323943662%;
+        width: 49.01408450704225%;
+        height: 53.84615384615385%;
+        background-image: url("images/ss20_poll_01_check.png");
+      }
+      .ss20 .poll .story input:checked + label:before {
+        background-image: url("images/ss20_poll_01_checked.png");
+      }
+      .ss20 .poll .inuk label:before {
+        top: 56.73076923076923%;
+        right: -7.887323943661972%;
+        width: 39.01408450704225%;
+        height: 50%;
+        background-image: url("images/ss20_poll_02_check.png");
+      }
+      .ss20 .poll .inuk input:checked + label:before {
+        background-image: url("images/ss20_poll_02_checked.png");
+      }
+      .ss20 .poll .night label:before {
+        top: -15%;
+        right: -12.53521126760563%;
+        width: 46.47887323943662%;
+        height: 57.69230769230769%;
+        background-image: url("images/ss20_poll_03_check.png");
+      }
+      .ss20 .poll .night input:checked + label:before {
+        background-image: url("images/ss20_poll_03_checked.png");
+      }
+      .ss20 .poll .city label:before {
+        top: 52.11538461538462%;
+        left: -12.53521126760563%;
+        width: 41.97183098591549%;
+        height: 51.73076923076923%;
+        background-image: url("images/ss20_poll_04_check.png");
+      }
+      .ss20 .poll .city input:checked + label:before {
+        background-image: url("images/ss20_poll_04_checked.png");
+      }
+      .ss20 .poll label:after {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0.7291666666666667vw solid #ea4242;
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        z-index: 1;
+        content: "";
+      }
+      .ss20 .poll input:checked + label:after {
+        display: block;
+      }
+      .ss20 .btn_poll {
+        position: absolute;
+        top: 88.50045998160074%;
+        left: 40.26041666666667%;
+        width: 19.47916666666667%;
+      }
+      /* 투표현황 */
+      .ss20 .result {
+        position: absolute;
+        top: 43.02600472813239%;
+        left: 50%;
+        width: 46.875%;
+        margin-left: -23.4375%;
+      }
+      .ss20 .result .bar {
+        position: relative;
+        width: 0;
+        margin-bottom: 0.78125vw;
+        color: #fff;
+        border-radius: 6px;
+        transition: width 2s, background 0.2s;
+        -webkit-transform: translate3d(0, 0, 0);
+        clear: both;
+      }
+      .ss20 .result .bar.story {
+        background: #d3654c;
+      }
+      .ss20 .result .bar.inuk {
+        background: #ec8d74;
+      }
+      .ss20 .result .bar.night {
+        background: #f0b57a;
+      }
+      .ss20 .result .bar.city {
+        background: #cd8d61;
+      }
+      .ss20 .result .bar .label {
+        display: inline-block;
+        position: relative;
+        width: 11.09375vw;
+        padding: 0.78125vw 1.875vw 1.145833333333333vw;
+        font-family: "Noto Sans KR", sans-serif;
+        font-weight: bold;
+        font-size: 1.979166666666667vw;
+        letter-spacing: -0.025em;
+        line-height: 1;
+        z-index: 2;
+      }
+      .ss20 .result .bar.story .label {
+        text-shadow: -1px -1px 0 #d3654c, 1px -1px 0 #d3654c, -1px 1px 0 #d3654c,
+          1px 1px 0 #d3654c;
+      }
+      .ss20 .result .bar.inuk .label {
+        text-shadow: -1px -1px 0 #ec8d74, 1px -1px 0 #ec8d74, -1px 1px 0 #ec8d74,
+          1px 1px 0 #ec8d74;
+      }
+      .ss20 .result .bar.night .label {
+        text-shadow: -1px -1px 0 #f0b57a, 1px -1px 0 #f0b57a, -1px 1px 0 #f0b57a,
+          1px 1px 0 #f0b57a;
+      }
+      .ss20 .result .bar.city .label {
+        text-shadow: -1px -1px 0 #cd8d61, 1px -1px 0 #cd8d61, -1px 1px 0 #cd8d61,
+          1px 1px 0 #cd8d61;
+      }
+      .ss20 .result .count {
+        position: absolute;
+        right: 0.2083333333333333vw;
+        top: 0.2083333333333333vw;
+        font-family: "Noto Sans KR", sans-serif;
+        font-weight: 300;
+        font-size: 0.625vw;
+        line-height: 1;
+      }
+    </style>
+    <div class="full-width">
+      <div class="ss20">
+        <div class="rel">
+          <img
+            src="images/ss20_tit.jpg"
+            alt="올 봄엔 그 곳으로! 계획에 없던. 어딘가. 코오롱스포츠의 봄이 시작됩니다 #somewhere | 이 봄, 떠나볼까요? 자연에 맞춰. 우리의 아웃도어 천재가 봄을 불러 세웁니다. 함께 찾아온 코오롱스포츠의 새로운 시그니쳐들과 말이죠. 온라인에서 먼저 만나볼 수 있다니, 이건 정말 계획에 없던 #무언가 네요!"
+          />
+          <div class="video_wrap">
+            <!-- 영상 넣는 곳 -->
+          </div>
+        </div>
+        <div class="poll rel">
+          <img
+            src="images/ss20_poll.jpg"
+            alt="코오롱스포츠 X  류준열 NEW signature Poll"
+          />
+          <div class="rel story">
+            <img src="images/ss20_poll_01_img.jpg" alt="" /><input
+              type="radio"
+              name="poll"
+              id="story"
+              value=""
+            /><label for="story"
+              ><i></i>아웃도어 천재는 가방을 입고 다닌다 #STORY-G</label
+            >
+          </div>
+          <div class="rel inuk">
+            <img src="images/ss20_poll_02_img.jpg" alt="" /><input
+              type="radio"
+              name="poll"
+              id="inuk"
+              value=""
+            /><label for="inuk"><i></i>전설이 돌아왔다 #이누크</label>
+          </div>
+          <div class="rel night">
+            <img src="images/ss20_poll_03_img.jpg" alt="" /><input
+              type="radio"
+              name="poll"
+              id="night"
+              value=""
+            /><label for="night"
+              ><i></i>스타는 가만 있어도 빛난다 #나이트하이커</label
+            >
+          </div>
+          <div class="rel city">
+            <img src="images/ss20_poll_04_img.jpg" alt="" /><input
+              type="radio"
+              name="poll"
+              id="city"
+              value=""
+            /><label for="city"><i></i>젖지 않고 패스 #시티원더</label>
+          </div>
+          <button
+            class="btn_poll"
+            onclick="alert('NEW signature 10% COUPON 발급완료되었습니다.')"
+          >
+            <img src="images/ss20_poll_btn.png" alt="투표하기" />
+          </button>
+        </div>
+        <div class="rel">
+          <img
+            src="images/ss20_result.jpg"
+            alt="올 봄을 책임질 NEW signature 투표현황"
+          />
+          <div class="result">
+            <div class="bar story" data-percent="20%">
+              <span class="label">STORY-G</span><span class="count"></span>
+            </div>
+            <div class="bar inuk" data-percent="40%">
+              <span class="label">이누크</span><span class="count"></span>
+            </div>
+            <div class="bar night" data-percent="10%">
+              <span class="label">나이트하이커</span><span class="count"></span>
+            </div>
+            <div class="bar city" data-percent="30%">
+              <span class="label">시티원더</span><span class="count"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      $(function () {
+        $(".poll label").on("click", function () {
+          $(this).siblings().attr("checked", true);
+        });
+        $(".poll label").keydown(function (key) {
+          if (key.keyCode == 13) {
+            $(this).siblings().attr("checked", true);
+          }
+        });
+      });
+
+      function start() {
+        $(".bar").each(function (i) {
+          var $bar = $(this);
+          setTimeout(function () {
+            $bar.css("width", $bar.attr("data-percent"));
+          }, i * 100);
+        });
+      }
+
+      function counting() {
+        $(".count").each(function () {
+          $(this)
+            .prop("Counter", 0)
+            .animate(
+              {
+                Counter: $(this).parent(".bar").attr("data-percent"),
+              },
+              {
+                duration: 2000,
+                easing: "swing",
+                step: function (now) {
+                  $(this).text(Math.ceil(now) + "%");
+                },
+              }
+            );
+        });
+      }
+
+      $(window).scroll(function () {
+        var winTop = $(this).scrollTop();
+        var result = $(".result").offset().top - 800;
+
+        if (result < winTop) {
+          setTimeout(function () {
+            start();
+            counting();
+          }, 500);
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+    <title>Remind 2020</title>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js"></script>
+</head>
+<body>
+	<div class="cont">
+		<style>
+			/*reset + common*/
+			body{
+				margin:0;
+				padding:0;
+			}
+			ul, li{list-style: none;}
+			.remind * {
+				margin: 0;
+				padding: 0;
+				line-height: 0;
+			}
+			.remind img {
+				display: inline-block;
+				width: 100%;
+				vertical-align: top;
+			}
+			.remind .clearfix:after{
+				content:'';
+				clear:both;
+				display: block;
+			}
+			.remind .rel{position: relative;}
+			.remind .btn{
+				position: absolute;
+				top: 34.27083333333333vw;
+				right: 22.1875%;
+				text-indent: -9999px;
+				font-size: 0;
+				width: 33.85416666666667%;
+				height: 4.166666666666667vw;
+			}
+			.remind .sum{display: none;}
+			.remind .sum .num{
+				position: absolute;
+				line-height: 1;
+				font-family: 'Noto Sans KR', sans-serif;
+				text-align: right;
+				font-weight: 200;
+				font-size: 3.125vw;
+				color: #fff;
+				bottom: 5.75vw;
+				left: 10.98958333333333%;  
+				opacity: 0;
+			}
+			.remind .sum .num:before{
+				content:'';
+				position: absolute;
+				bottom: 0;
+				left: -2.708333333333333vw;
+				width: 1.71875vw;
+				height: 1.302083333333333vw;
+				background: url('https://images3.kolonmall.com/upload/content/ddcd8eee-b3b6-4c05-a76a-77bfef637e29/remind_price.png') no-repeat center;
+				background-size: contain;
+			}
+			.remind .sum .bar{
+				position: absolute;
+				right: 7.1875%;
+				bottom: 34.48275862068966%;
+				width: 46.09375%;
+				height: 1.40625vw;
+				opacity: 0;
+			}
+			.remind .sum .bar span{
+				display: block;
+				height: 100%;
+				width: 0%;	
+				background: #cba554;
+				position: relative;
+				overflow: visible !important;
+			}
+			.remind .sum .bar span:before{
+				content:'';
+				position: absolute;
+				right: -27px;
+				bottom:-63px;
+				width: 54px;
+				height: 56px;
+				background: url('https://images3.kolonmall.com/upload/content/ddcd8eee-b3b6-4c05-a76a-77bfef637e29/remind_point.png') no-repeat center;
+				background-size: contain;
+			}
+		</style>
+		<div class="full-width">
+			<div class="remind">
+				<img src="https://images3.kolonmall.com/upload/content/ddcd8eee-b3b6-4c05-a76a-77bfef637e29/remind01.jpg" alt="">
+				<img src="https://images3.kolonmall.com/upload/content/ddcd8eee-b3b6-4c05-a76a-77bfef637e29/remind02.jpg" alt="">
+				<div class="rel">
+					<img src="https://images3.kolonmall.com/upload/content/ddcd8eee-b3b6-4c05-a76a-77bfef637e29/remind03.jpg" alt="">
+					<a href="javascript:void(0)" class="btn">지금 나의 누적 금액 확인하기</a>
+					<div class="sum rel">
+						<img src="https://images3.kolonmall.com/upload/content/ddcd8eee-b3b6-4c05-a76a-77bfef637e29/remind04.jpg" alt="">
+						<p class="bar" data-percent="50%"><span></span></p>
+						<p class="num">1124567000</p>
+					</div>
+				</div>
+				<img src="https://images3.kolonmall.com/upload/content/ddcd8eee-b3b6-4c05-a76a-77bfef637e29/remind05.jpg" alt="">
+			</div>
+		</div>
+		<script>
+			$(document).ready(function(){
+				//bar 
+				function start (){
+					$('.bar').each(function(){
+						var percent = $(this).attr('data-percent')
+						$(this).find('span').animate({
+							width: percent
+						}, 1500);
+					});
+				}
+				
+				//num
+				function count (){
+					function ncomma(num) {
+						return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+					}
+					$('.num').each(function () {
+						$(this).prop('Counter',0).animate({
+							Counter: parseInt($(this).text())
+						}, {
+							duration: 1500,
+							easing: 'swing',
+							step: function (now) {
+								$(this).text(ncomma(Math.ceil(now)));
+							}
+						});
+					});
+				}
+
+				$('.remind .btn').click(function(){
+					$(this).next(".sum").addClass("on").slideDown();
+					setTimeout(function() { 
+						start();
+						count();
+						$(".remind .sum").find(".num, .bar").css("opacity",1);
+					}, 500);
+				});
+			});
+		</script>
+    </div>
+</body>	
+</html>

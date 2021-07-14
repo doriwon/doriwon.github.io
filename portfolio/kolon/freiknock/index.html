@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>PREIKNOCK</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js"></script>
+  </head>
+  <body>
+    <style>
+      /*reset + common*/
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      ul,
+      li {
+        list-style: none;
+      }
+      .freiknock {
+        overflow: hidden;
+
+        position: relative;
+      }
+      .freiknock * {
+        margin: 0;
+        padding: 0;
+        line-height: 0;
+      }
+      .freiknock img {
+        display: inline-block;
+        width: 100%;
+        vertical-align: top;
+      }
+      .freiknock .clearfix:after {
+        content: "";
+        display: block;
+        clear: both;
+        overflow: hidden;
+        height: 0;
+      }
+      .freiknock .rel {
+        position: relative;
+      }
+      .freiknock .img {
+        position: absolute;
+        opacity: 0;
+      }
+      .freiknock .tit .img {
+        top: 14.53703703703704%;
+        left: 0;
+        width: 21.30208333333333%;
+        z-index: 2;
+      }
+      .freiknock .tit .img01 {
+        left: 15.625%;
+      }
+      .freiknock .tit .img02 {
+        left: 31.14583333333333%;
+      }
+      .freiknock .tit .img03 {
+        left: 47.55208333333333%;
+      }
+      .freiknock .tit .img04 {
+        left: 64.47916666666667%;
+      }
+      .freiknock .tit .txt {
+        position: absolute;
+        top: 46.2962962962963%;
+        width: 100%;
+        left: 0;
+        margin: 0 auto;
+        z-index: 1;
+        text-align: center;
+      }
+      .freiknock .tit .txt ul {
+        display: inline-block;
+      }
+      .freiknock .tit .txt li {
+        float: left;
+        opacity: 0.1;
+      }
+      .freiknock .tit .txt li.txt01 {
+        width: 6.71875vw;
+      }
+      .freiknock .tit .txt li.txt02 {
+        width: 2.239583333333333vw;
+        margin-left: 1.302083333333333vw;
+        margin-right: 0.8333333333333333vw;
+      }
+      .freiknock .tit .txt li.txt03 {
+        width: 5.9375vw;
+      }
+      .freiknock .tit .txt li.txt04 {
+        width: 8.489583333333333vw;
+      }
+      .freiknock .tit .txt li.txt05 {
+        width: 6.40625vw;
+        margin-left: 4.010416666666667vw;
+        margin-right: 0.9895833333333333vw;
+      }
+      .freiknock .tit .txt li.txt06 {
+        width: 7.552083333333333vw;
+        margin-right: 1.40625vw;
+      }
+      .freiknock .tit .txt li.txt07 {
+        width: 7.1875vw;
+      }
+      .freiknock .tit .txt li.txt08 {
+        margin-left: -0.46875vw;
+        width: 9.0625vw;
+      }
+      .freiknock .tit .txt li.txt09 {
+        width: 2.239583333333333vw;
+        margin-left: 0.5208333333333333vw;
+        margin-right: 0.5729166666666667vw;
+      }
+      .freiknock .tit .txt li.txt10 {
+        width: 9.0625vw;
+      }
+      .freiknock .tit .txt li.txt11 {
+        margin-left: -1.25vw;
+        margin-right: 0.6770833333333333vw;
+        width: 9.0625vw;
+      }
+      .freiknock .tit .txt li.txt12 {
+        width: 4.947916666666667vw;
+      }
+      .freiknock .tit .txt li.txt13 {
+        width: 4.947916666666667vw;
+        position: absolute;
+        bottom: -4.739583333333333vw;
+        right: 0;
+        transform: matrix(1, 0, 0, 1, 0, 0);
+      }
+      .freiknock .cont02 {
+        overflow: hidden;
+      }
+      .freiknock .cont02 .img {
+        width: 66.19791666666667%;
+        left: 0;
+        right: 0;
+        top: 3.043968432919955%;
+        margin: 0 auto;
+        opacity: 1;
+        transform: matrix(1, 0, 0, 1, 0, 300);
+      }
+      .freiknock .cont03 {
+        margin-top: 4.6875vw;
+      }
+      .freiknock .cont03 .img {
+        width: 14.63541666666667%;
+        top: 14.60674157303371%;
+      }
+      .freiknock .cont03 .img01 {
+        width: 24.42708333333333%;
+        top: 5.280898876404494%;
+        left: 33.75%;
+      }
+      .freiknock .cont03 .img02 {
+        width: 18.64583333333333%;
+        left: 59.17948717948718%;
+        top: 9.101123595505618%;
+      }
+      .freiknock .cont03 .img03 {
+        left: 7.604166666666667%;
+        width: 16.71875%;
+      }
+      .freiknock .cont03 .img04 {
+        width: 18.38541666666667%;
+        right: 7.03125%;
+      }
+      .freiknock .cont03 .img05 {
+        left: 23.125%;
+        width: 15.15625%;
+        top: 14.60674157303371;
+      }
+      .freiknock .cont03 .img06 {
+        left: 48.4375%;
+        width: 15.15625%;
+        top: 14.60674157303371;
+      }
+      .freiknock .cont04 .img01 {
+        width: 60.83333333333333%;
+        left: 0;
+        bottom: 0;
+        transform: matrix(1, 0, 0, 1, -30, 0);
+      }
+      .freiknock .cont04 .img02 {
+        width: 23.48958333333333%;
+        right: 0;
+        top: 12.05555555555556%;
+        transform: matrix(1, 0, 0, 1, 30, 0);
+      }
+      .freiknock .cont04 .img03 {
+        width: 31.51041666666667%;
+        right: 0;
+        bottom: 0;
+        transform: matrix(1, 0, 0, 1, 30, 0);
+      }
+      .freiknock .cont05 .txt {
+        position: absolute;
+        bottom: 18.12990720913633%;
+        left: 6.770833333333333%;
+        width: 34.21875%;
+        z-index: 2;
+        opacity: 0;
+      }
+      .freiknock .cont05 .img {
+        top: 17.9157744468237%;
+        transform: matrix(1, 0, 0, 1, 0, 30);
+      }
+      .freiknock .cont05 .img01 {
+        width: 31.66666666666667%;
+        left: 34.6875%;
+      }
+      .freiknock .cont05 .img02 {
+        width: 31.51041666666667%;
+        right: 0;
+      }
+      .freiknock .cont06 a {
+        position: absolute;
+        display: block;
+        font-size: 0;
+        text-indent: -9999px;
+      }
+      .freiknock .cont06 .pop_bg {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 500;
+      }
+      .freiknock .cont06 .popup {
+        display: none;
+        position: fixed;
+        width: 31.66666666666667vw;
+        height: 44.16666666666667vw;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        z-index: 501;
+      }
+      .freiknock .cont06 .pop_cls {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 3.229166666666667vw;
+        height: 3.229166666666667vw;
+        background: url("https://images.kolonmall.com/cms/special/upload/055abb6b-2bd0-4d0e-85d7-9cf662b1c677/freiknock_pop_cls.jpg")
+          no-repeat center;
+        background-size: contain;
+      }
+      .freiknock .cont06 .pop_btn {
+        position: absolute;
+        display: block;
+        width: 16.40625%;
+        height: 60.24759284731774%;
+        top: 17.88170563961486%;
+      }
+      .freiknock .cont06 .btn01 {
+        left: 6.770833333333333%;
+      }
+      .freiknock .cont06 .btn02 {
+        left: 24.32291666666667%;
+      }
+      .freiknock .cont06 .btn03 {
+        left: 41.82291666666667%;
+      }
+      .freiknock .cont06 .btn04 {
+        left: 59.375%;
+      }
+      .freiknock .cont06 .btn05 {
+        left: 76.875%;
+      }
+      .freiknock .cont06 .link {
+        width: 16.40625%;
+        height: 3.301237964236589%;
+      }
+      .freiknock .cont06 .link_top {
+        top: 85.55708390646492%;
+      }
+      .freiknock .cont06 .link_middle {
+        bottom: 7.015130674002751%;
+      }
+      .freiknock .cont06 .link_bottom {
+        bottom: 2.888583218707015%;
+      }
+    </style>
+    <div class="full-width">
+      <div class="freiknock">
+        <div class="tit rel">
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/055abb6b-2bd0-4d0e-85d7-9cf662b1c677/freiknock_tit_bg.jpg"
+            alt=""
+          />
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/055abb6b-2bd0-4d0e-85d7-9cf662b1c677/freiknock_tit_img01.png"
+            alt=""
+            class="img img01"
+          />
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/055abb6b-2bd0-4d0e-85d7-9cf662b1c677/freiknock_tit_img02.png"
+            alt=""
+            class="img img02"
+          />
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/055abb6b-2bd0-4d0e-85d7-9cf662b1c677/freiknock_tit_img03.png"
+            alt=""
+            class="img img03"
+          />
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/055abb6b-2bd0-4d0e-85d7-9cf662b1c677/freiknock_tit_img04.png"
+            alt=""
+            class="img img04"
+          />
+          <div class="txt">
+            <ul class="clearfix rel">
+              <li class="txt01">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/055abb6b-2bd0-4d0e-85d7-9cf662b1c677/freiknock_tit_txt01.png"
+                  alt=""
+                />
+              </li>
+              <li class="txt02">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/055abb6b-2bd0-4d0e-85d7-9cf662b1c677/freiknock_tit_txt02.png"
+                  alt=""
+                />
+              </li>
+              <li class="txt03">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/055abb6b-2bd0-4d0e-85d7-9cf662b1c677/freiknock_tit_txt03.png"
+                  alt=""
+                />
+              </li>
+              <li class="txt04">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/055abb6b-2bd0-4d0e-85d7-9cf662b1c677/freiknock_tit_txt04.png"
+                  alt=""
+                />
+              </li>
+              <li class="txt05">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/055abb6b-2bd0-4d0e-85d7-9cf662b1c677/freiknock_tit_txt05.png"
+                  alt=""
+                />
+              </li>
+              <li class="txt06">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/055abb6b-2bd0-4d0e-85d7-9cf662b1c677/freiknock_tit_txt06.png"
+                  alt=""
+                />
+              </li>
+              <li class="txt07">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/055abb6b-2bd0-4d0e-85d7-9cf662b1c677/freiknock_tit_txt07.png"
+                  alt=""
+                />
+              </li>
+              <li class="txt08">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/055abb6b-2bd0-4d0e-85d7-9cf662b1c677/freiknock_tit_txt10.png"
+                  alt=""
+                />
+              </li>
+              <li class="txt09">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/055abb6b-2bd0-4d0e-85d7-9cf662b1c677/freiknock_tit_txt09.png"
+                  alt=""
+                />
+              </li>
+              <li class="txt10">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/055abb6b-2bd0-4d0e-85d7-9cf662b1c677/freiknock_tit_txt10.png"
+                  alt=""
+                />
+              </li>
+              <li class="txt11">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/055abb6b-2bd0-4d0e-85d7-9cf662b1c677/freiknock_tit_txt11.png"
+                  alt=""
+                />
+              </li>
+              <li class="txt12">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/055abb6b-2bd0-4d0e-85d7-9cf662b1c677/freiknock_tit_txt12.png"
+                  alt=""
+                />
+              </li>
+              <li class="txt13">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/055abb6b-2bd0-4d0e-85d7-9cf662b1c677/freiknock_tit_txt13.png"
+                  alt=""
+                />
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="cont01 rel">
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/055abb6b-2bd0-4d0e-85d7-9cf662b1c677/freiknock_cont01.jpg"
+            alt=""
+          />
+        </div>
+        <div class="cont02 rel">
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/055abb6b-2bd0-4d0e-85d7-9cf662b1c677/freiknock_cont02_bg.jpg"
+            alt=""
+          />
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/055abb6b-2bd0-4d0e-85d7-9cf662b1c677/freiknock_cont02.png"
+            alt=""
+            class="img"
+          />
+        </div>
+        <div class="cont03 rel">
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/055abb6b-2bd0-4d0e-85d7-9cf662b1c677/freiknock_cont03_bg.jpg"
+            alt=""
+          />
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/055abb6b-2bd0-4d0e-85d7-9cf662b1c677/freiknock_cont03_img01.png"
+            alt=""
+            class="img img01"
+          />
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/055abb6b-2bd0-4d0e-85d7-9cf662b1c677/freiknock_cont03_img02.png"
+            alt=""
+            class="img img02"
+          />
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/055abb6b-2bd0-4d0e-85d7-9cf662b1c677/freiknock_cont03_img03.png"
+            alt=""
+            class="img img03"
+          />
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/055abb6b-2bd0-4d0e-85d7-9cf662b1c677/freiknock_cont03_img04.png"
+            alt=""
+            class="img img04"
+          />
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/055abb6b-2bd0-4d0e-85d7-9cf662b1c677/freiknock_cont03_img05.png"
+            alt=""
+            class="img img05"
+          />
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/055abb6b-2bd0-4d0e-85d7-9cf662b1c677/freiknock_cont03_img06.png"
+            alt=""
+            class="img img06"
+          />
+        </div>
+        <div class="cont04 rel">
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/055abb6b-2bd0-4d0e-85d7-9cf662b1c677/freiknock_cont04_bg.jpg"
+            alt=""
+          />
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/055abb6b-2bd0-4d0e-85d7-9cf662b1c677/freiknock_cont04_img01.png"
+            alt=""
+            class="img img01"
+          />
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/055abb6b-2bd0-4d0e-85d7-9cf662b1c677/freiknock_cont04_img02.png"
+            alt=""
+            class="img img02"
+          />
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/055abb6b-2bd0-4d0e-85d7-9cf662b1c677/freiknock_cont04_img03.png"
+            alt=""
+            class="img img03"
+          />
+        </div>
+        <div class="cont05 rel">
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/055abb6b-2bd0-4d0e-85d7-9cf662b1c677/freiknock_cont05_bg.jpg"
+            alt=""
+          />
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/055abb6b-2bd0-4d0e-85d7-9cf662b1c677/freiknock_cont05_txt.png"
+            alt=""
+            class="txt"
+          />
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/055abb6b-2bd0-4d0e-85d7-9cf662b1c677/freiknock_cont05_img01.png"
+            alt=""
+            class="img img01"
+          />
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/055abb6b-2bd0-4d0e-85d7-9cf662b1c677/freiknock_cont05_img02.png"
+            alt=""
+            class="img img02"
+          />
+        </div>
+        <div class="cont06 rel">
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/055abb6b-2bd0-4d0e-85d7-9cf662b1c677/freiknock_cont06.jpg"
+            alt=""
+          />
+          <a href="#pop01" class="pop_btn btn01">#001</a>
+          <a href="#pop02" class="pop_btn btn02">#002</a>
+          <a href="#pop03" class="pop_btn btn03">#003</a>
+          <a href="#pop04" class="pop_btn btn04">#004</a>
+          <a href="#pop05" class="pop_btn btn05">#005</a>
+          <a
+            href="https://www.kolonmall.com/Product/TLVAW20897BLK"
+            target="_blank"
+            class="link btn01 link_top"
+            >OUTER</a
+          >
+          <a
+            href="https://www.kolonmall.com/Product/TLTBW20893BLK"
+            target="_blank"
+            class="link btn01 link_middle"
+            >top</a
+          >
+          <a
+            href="https://www.kolonmall.com/Product/TLPNW20893BLK"
+            target="_blank"
+            class="link btn01 link_bottom"
+            >pants</a
+          >
+          <a
+            href="https://www.kolonmall.com/Product/TLTBW20891REX"
+            target="_blank"
+            class="link btn02 link_top"
+            >top</a
+          >
+          <a
+            href="https://www.kolonmall.com/Product/TLPNW20891BLK"
+            target="_blank"
+            class="link btn02 link_middle"
+            >pants</a
+          >
+          <a
+            href="https://www.kolonmall.com/Product/TLTBW20893REX"
+            target="_blank"
+            class="link btn03 link_top"
+            >top</a
+          >
+          <a
+            href="https://www.kolonmall.com/Product/TLPNW20893REX"
+            target="_blank"
+            class="link btn03 link_middle"
+            >pants</a
+          >
+          <a
+            href="https://www.kolonmall.com/Product/TLVAW20897BLK"
+            target="_blank"
+            class="link btn04 link_top"
+            >OUTER</a
+          >
+          <a
+            href="https://www.kolonmall.com/Product/TLTBW20893BLK"
+            target="_blank"
+            class="link btn04 link_middle"
+            >top</a
+          >
+          <a
+            href="https://www.kolonmall.com/Product/TLJGW20893BLK"
+            target="_blank"
+            class="link btn05 link_top"
+            >top</a
+          >
+          <div class="popup" id="pop01">
+            <a href="javascript:void(0)" class="pop_cls">닫기</a>
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/055abb6b-2bd0-4d0e-85d7-9cf662b1c677/m_freiknock_cont06_pop01.jpg"
+              alt=""
+            />
+          </div>
+          <div class="popup" id="pop02">
+            <a href="javascript:void(0)" class="pop_cls">닫기</a>
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/055abb6b-2bd0-4d0e-85d7-9cf662b1c677/m_freiknock_cont06_pop02.jpg"
+              alt=""
+            />
+          </div>
+          <div class="popup" id="pop03">
+            <a href="javascript:void(0)" class="pop_cls">닫기</a>
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/055abb6b-2bd0-4d0e-85d7-9cf662b1c677/m_freiknock_cont06_pop03.jpg"
+              alt=""
+            />
+          </div>
+          <div class="popup" id="pop04">
+            <a href="javascript:void(0)" class="pop_cls">닫기</a>
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/055abb6b-2bd0-4d0e-85d7-9cf662b1c677/m_freiknock_cont06_pop04.jpg"
+              alt=""
+            />
+          </div>
+          <div class="popup" id="pop05">
+            <a href="javascript:void(0)" class="pop_cls">닫기</a>
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/055abb6b-2bd0-4d0e-85d7-9cf662b1c677/m_freiknock_cont06_pop05.jpg"
+              alt=""
+            />
+          </div>
+          <p class="pop_bg"></p>
+        </div>
+      </div>
+    </div>
+    <script>
+      $(document).ready(function () {
+        //$(window).on("load", function(){
+        TweenMax.to($(".tit .txt01"), 1, { opacity: 1, y: 0, delay: 0 });
+        TweenMax.to($(".tit .txt02"), 1, { opacity: 1, y: 0, delay: 0.15 });
+        TweenMax.to($(".tit .txt03"), 1, { opacity: 1, y: 0, delay: 0.3 });
+        TweenMax.to($(".tit .txt04"), 1, { opacity: 1, y: 0, delay: 0.45 });
+        TweenMax.to($(".tit .txt05"), 1, { opacity: 1, y: 0, delay: 0.6 });
+        TweenMax.to($(".tit .txt06"), 1, { opacity: 1, y: 0, delay: 0.75 });
+        TweenMax.to($(".tit .txt07"), 1, { opacity: 1, y: 0, delay: 0.9 });
+        TweenMax.to($(".tit .txt08"), 1, { opacity: 1, y: 0, delay: 1.05 });
+        TweenMax.to($(".tit .txt09"), 1, { opacity: 1, y: 0, delay: 1.2 });
+        TweenMax.to($(".tit .txt10"), 1, { opacity: 1, y: 0, delay: 1.35 });
+        TweenMax.to($(".tit .txt11"), 1, { opacity: 1, y: 0, delay: 1.5 });
+        TweenMax.to($(".tit .txt12"), 1, { opacity: 1, y: 0, delay: 1.65 });
+        TweenMax.to($(".tit .txt13"), 1, { opacity: 1, y: 0, delay: 1.8 });
+        TweenMax.to($(".tit .img01"), 1, {
+          opacity: 1,
+          y: 0,
+          delay: 2,
+          ease: Power2.easeInOut,
+        });
+        TweenMax.to($(".tit .img03"), 1, {
+          opacity: 1,
+          y: 0,
+          delay: 2.5,
+          ease: Power2.easeInOut,
+        });
+        TweenMax.to($(".tit .img02"), 1, {
+          opacity: 1,
+          y: 0,
+          delay: 3,
+          ease: Power2.easeInOut,
+        });
+        TweenMax.to($(".tit .img04"), 1, {
+          opacity: 1,
+          y: 0,
+          delay: 3.5,
+          ease: Power2.easeInOut,
+        });
+      });
+
+      $(window).scroll(function () {
+        var winTop = $(this).scrollTop();
+        var cont01 = $(".cont01").offset().top - 600;
+        var cont02Img = $(".cont02 .img").offset().top - 600;
+        var cont03 = $(".cont03").offset().top - 600;
+        var cont04 = $(".cont04").offset().top - 600;
+        var cont05 = $(".cont05").offset().top - 600;
+        var cont06 = $(".cont06").offset().top - 600;
+
+        if (cont02Img < winTop && winTop < cont03) {
+          TweenMax.to($(".cont02 .img"), 1, { opacity: 1, y: 0, delay: 0 });
+        }
+        if (cont03 < winTop && winTop < cont04) {
+          TweenMax.to($(".cont03 .img01"), 1, { opacity: 1, y: 0, delay: 0 });
+          TweenMax.to($(".cont03 .img02"), 1, { opacity: 1, y: 0, delay: 0.3 });
+          TweenMax.to($(".cont03 .img03"), 1, { opacity: 1, y: 0, delay: 0.6 });
+          TweenMax.to($(".cont03 .img04"), 1, { opacity: 1, y: 0, delay: 0.9 });
+          TweenMax.to($(".cont03 .img05"), 1, { opacity: 1, y: 0, delay: 1.2 });
+          TweenMax.to($(".cont03 .img06"), 1, { opacity: 1, y: 0, delay: 1.5 });
+        }
+        if (cont04 < winTop && winTop < cont05) {
+          TweenMax.to($(".cont04 .img01"), 1, { opacity: 1, x: 0, delay: 0 });
+          TweenMax.to($(".cont04 .img02"), 1, { opacity: 1, x: 0, delay: 0.5 });
+          TweenMax.to($(".cont04 .img03"), 1, { opacity: 1, x: 0, delay: 1 });
+        }
+        if (cont05 < winTop && winTop < cont06) {
+          TweenMax.to($(".cont05 .img01"), 1, { opacity: 1, y: 0, delay: 0 });
+          TweenMax.to($(".cont05 .img02"), 1, { opacity: 1, y: 0, delay: 0.5 });
+          TweenMax.to($(".cont05 .txt"), 1, { opacity: 1, y: 0, delay: 1 });
+        }
+        /*if(cont06 < winTop){  
+            TweenMax.to($(".cont06 .img01"), 1, {opacity:1,y:0,delay:0});
+            TweenMax.to($(".cont06 .img02"), 1, {opacity:1,y:0,delay:0.2});
+            TweenMax.to($(".cont06 .img03"), 1, {opacity:1,y:0,delay:0.4});
+            TweenMax.to($(".cont06 .img04"), 1, {opacity:1,y:0,delay:0.6});
+            TweenMax.to($(".cont06 .img05"), 1, {opacity:1,y:0,delay:0.8});
+          }*/
+      });
+
+      $(".freiknock .pop_btn").click(function () {
+        var popHref = $(this).attr("href");
+        $(".popup").css("display", "none");
+        $(popHref).css("display", "block");
+        $(".pop_bg").css("display", "block");
+        $("body").css({
+          "overflow-y": "hidden",
+        }); /* , 'padding-right': '17px', 'box-sizing': 'border-box' */
+      });
+      $(".freiknock .pop_cls, .freiknock .pop_bg").click(function () {
+        $(".popup, .pop_bg").css("display", "none");
+        $("body").css({
+          "overflow-y": "visible",
+        }); /* , 'padding-right': '0', 'box-sizing': 'content-box' */
+      });
+    </script>
+  </body>
+</html>

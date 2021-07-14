@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, viewport-fit=cover">
+    <title>Remind 2020</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js"></script>
+</head>
+<body>
+	<style>
+		/*reset + common*/
+		html,body {
+			margin:0;
+			padding:0;
+			width:100%;
+			height:100%;
+		}
+		ul, li{list-style: none;}
+		.remind{
+			position:relative;
+			background-color:#fff;
+			max-width: 750px;
+    		margin: 0 auto;
+		}
+		.remind * {
+			margin: 0;
+			padding: 0;
+			line-height: 0;
+		}
+		.remind img{
+			width:100%;
+			vertical-align:top;
+		}
+		.remind .clearfix:after{display:block; clear:both; content:'';}
+		.remind .rel{position:relative;}
+		.remind .btn{
+			position: absolute;
+			top: 125.3125vw;
+			left: 5.46875%;
+			text-indent: -9999px;
+			font-size: 0;
+			width: 89.0625%;
+			height: 12.5vw;
+		}
+		.remind .sum{display: none;}
+		.remind .sum .num{
+			position: absolute;
+			line-height: 1;
+			font-family: 'Noto Sans KR', sans-serif;
+			font-weight: 200;
+			font-size:9.375vw;
+			color: #fff;
+			top: 25.4259501965924%;
+			left: 0;
+			right: 0;
+			margin: 0 auto;
+			text-align: center;	
+			opacity: 0;
+		}
+		.remind .sum .num span{ 
+			position: relative;
+			display: inline-block;
+			margin-left: 7%;
+			line-height: 1;
+		}
+		.remind .sum .num span:before{
+			content:'';
+			position: absolute;
+			bottom: 9%;
+			left: -12.5%;
+			width: 5.15625vw;
+			height: 3.90625vw;
+			background: url('https://images3.kolonmall.com/upload/content/ddcd8eee-b3b6-4c05-a76a-77bfef637e29/remind_price.png') no-repeat center;
+			background-size: contain;
+		}
+		.remind .sum .bar{ 
+			position: absolute;
+			left: 5.46875%;
+			bottom: 20.18348623853211%;
+			width: 89.0625%;
+			height: 3.538663171690695%;
+			opacity: 0;
+		}
+		.remind .sum .bar span{
+			display: block;
+			height: 100%;
+			width: 0%;	
+			background: #cba554;
+			position: relative;
+		}
+		.remind .sum .bar span{
+			display: block;
+			height: 100%;
+			width: 0%;	
+			background: #cba554;
+			position: relative;
+			overflow: visible !important;
+		}
+		.remind .sum .bar span:before{
+			content:'';
+			position: absolute;
+			right: -4.21875vw;
+			bottom: -9.84375vw;
+			width: 8.4375vw;
+			height: 8.75vw;
+			background: url('https://images3.kolonmall.com/upload/content/ddcd8eee-b3b6-4c05-a76a-77bfef637e29/remind_point.png') no-repeat center;
+			background-size: contain;
+		}
+
+		@media (min-width: 750px){	
+			.remind .btn{
+				top: 939px;
+				height: 93px;
+			}
+			.remind .sum .num{font-size:70px;}
+			.remind .sum .num span:before{
+				width: 38px;
+				height: 29px;
+			}
+			.remind .sum .bar span:before{
+				right: -31px;
+				bottom:-73px;
+				width: 63px;
+				height: 65px;
+			}
+		}
+	</style>
+	<div class="remind">
+		<img src="https://images3.kolonmall.com/upload/content/ddcd8eee-b3b6-4c05-a76a-77bfef637e29/m_remind01.jpg" alt="">
+		<img src="https://images3.kolonmall.com/upload/content/ddcd8eee-b3b6-4c05-a76a-77bfef637e29/m_remind02.jpg" alt="">
+		<div class="rel">
+			<img src="https://images3.kolonmall.com/upload/content/ddcd8eee-b3b6-4c05-a76a-77bfef637e29/m_remind03.jpg" alt="">
+			<a href="javascript:void(0)" class="btn">지금 나의 누적 금액 확인하기</a>
+			<div class="sum rel">
+				<img src="https://images3.kolonmall.com/upload/content/ddcd8eee-b3b6-4c05-a76a-77bfef637e29/m_remind04.jpg" alt="">
+				<p class="bar" data-percent="50%"><span></span></p>
+				<p class="num"><span>1124567000</span></p>
+			</div>
+		</div>
+		<img src="https://images3.kolonmall.com/upload/content/ddcd8eee-b3b6-4c05-a76a-77bfef637e29/m_remind05.jpg" alt="">
+	</div>
+	<script>
+		$(document).ready(function(){
+			//bar 
+			function start (){
+				$('.bar').each(function(){
+					var percent = $(this).attr('data-percent')
+					$(this).find('span').animate({
+						width: percent
+					}, 1500);
+				});
+			}
+			
+			//num
+			function count (){
+				function ncomma(num) {
+					return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+				}
+				$('.num span').each(function () {
+					$(this).prop('Counter',0).animate({
+						Counter: parseInt($(this).text())
+					}, {
+						duration: 1500,
+						easing: 'swing',
+						step: function (now) {
+							$(this).text(ncomma(Math.ceil(now)));
+						}
+					});
+				});
+			}
+			$('.remind .btn').click(function(){
+				$(this).next(".sum").addClass("on").slideDown();
+				setTimeout(function() { 
+					start();
+					count();
+					$(".remind .sum").find(".num, .bar").css("opacity",1);
+				}, 500);
+			});
+		});
+	</script>
+</body>
+</html>

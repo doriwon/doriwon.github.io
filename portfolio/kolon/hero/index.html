@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>우리의 히어로</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.css"
+    />
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.js"></script>
+  </head>
+  <body>
+    <style>
+      /*reset + common*/
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      .exepedi {
+        position: relative;
+      }
+      .exepedi img {
+        width: 100%;
+        vertical-align: top;
+      }
+      .exepedi .rel {
+        position: relative;
+      }
+      .exepedi .cont03 {
+        background-color: #f5f5f5;
+        padding-bottom: 130px;
+      }
+      .exepedi .tab_slide.swiper-container {
+        overflow: visible;
+      }
+      .exepedi .tab_slide .swiper-slide {
+        border-top: 1px solid #e6e0d8;
+        background: #faf5f0;
+      }
+      .exepedi .tab_slide .arrow_btn {
+        position: absolute;
+        width: 4.479166666666667%;
+        height: 7.743153918791313%; /* 82px */
+        left: inherit;
+        right: inherit;
+        cursor: pointer;
+        background: inherit;
+        top: 13%; /* 102px */
+        z-index: 1;
+      }
+      .exepedi .tab_slide .swiper-button-prev {
+        right: 27.23958333333333%;
+      }
+      .exepedi .tab_slide .swiper-button-next {
+        right: 18.28125%;
+      }
+      .exepedi .paging_wrap {
+        width: 63.54166666666667vw;
+        margin-left: auto;
+        margin-right: auto;
+        position: absolute;
+        top: -16.33616619452314%; /* -173px */
+        left: 0;
+        right: 0;
+        height: 4.739583333333333vw; /* 91px */
+      }
+      .exepedi .tab_slide .tab_cont {
+        position: relative;
+      }
+      .exepedi .tab_slide .swiper-pagination {
+        left: auto;
+        bottom: auto;
+        opacity: 1;
+        width: 100%;
+      }
+      .exepedi .swiper-pagination .swiper-pagination-bullet {
+        display: inline-block;
+        width: 7.45%;
+        height: 4.739583333333333vw; /* 91px */
+        margin: 0 0.2625% 0 0;
+        vertical-align: top;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        text-indent: -9999px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        opacity: 1;
+        border-radius: 0;
+      }
+      .exepedi .swiper-pagination .swiper-pagination-bullet:first-child {
+        background-image: url("https://images.kolonmall.com/cms/special/upload/5689a26d-5303-48fb-9d81-d81b150b10af/exepedi_cont3_hero01_off.jpg");
+      }
+      .exepedi .swiper-pagination .swiper-pagination-bullet:first-child:hover,
+      .exepedi .swiper-pagination .swiper-pagination-bullet:first-child:active,
+      .exepedi
+        .swiper-pagination
+        .swiper-pagination-bullet:first-child.swiper-pagination-bullet-active {
+        background-image: url("https://images.kolonmall.com/cms/special/upload/5689a26d-5303-48fb-9d81-d81b150b10af/exepedi_cont3_hero01.jpg");
+      }
+      .exepedi .swiper-pagination .swiper-pagination-bullet:nth-child(2) {
+        background-image: url("https://images.kolonmall.com/cms/special/upload/5689a26d-5303-48fb-9d81-d81b150b10af/exepedi_cont3_hero02_off.jpg");
+      }
+      .exepedi .swiper-pagination .swiper-pagination-bullet:nth-child(2):hover,
+      .exepedi .swiper-pagination .swiper-pagination-bullet:nth-child(2):active,
+      .exepedi
+        .swiper-pagination
+        .swiper-pagination-bullet:nth-child(2).swiper-pagination-bullet-active {
+        background-image: url("https://images.kolonmall.com/cms/special/upload/5689a26d-5303-48fb-9d81-d81b150b10af/exepedi_cont3_hero02.jpg");
+      }
+      .exepedi .swiper-pagination .swiper-pagination-bullet:nth-child(3) {
+        background-image: url("https://images.kolonmall.com/cms/special/upload/5689a26d-5303-48fb-9d81-d81b150b10af/exepedi_cont3_hero03_off.jpg");
+      }
+      .exepedi .swiper-pagination .swiper-pagination-bullet:nth-child(3):hover,
+      .exepedi .swiper-pagination .swiper-pagination-bullet:nth-child(3):active,
+      .exepedi
+        .swiper-pagination
+        .swiper-pagination-bullet:nth-child(3).swiper-pagination-bullet-active {
+        background-image: url("https://images.kolonmall.com/cms/special/upload/5689a26d-5303-48fb-9d81-d81b150b10af/exepedi_cont3_hero03.jpg");
+      }
+      .exepedi .swiper-pagination .swiper-pagination-bullet:nth-child(4) {
+        background-image: url("https://images.kolonmall.com/cms/special/upload/5689a26d-5303-48fb-9d81-d81b150b10af/exepedi_cont3_hero04_off.jpg");
+      }
+      .exepedi .swiper-pagination .swiper-pagination-bullet:nth-child(4):hover,
+      .exepedi .swiper-pagination .swiper-pagination-bullet:nth-child(4):active,
+      .exepedi
+        .swiper-pagination
+        .swiper-pagination-bullet:nth-child(4).swiper-pagination-bullet-active {
+        background-image: url("https://images.kolonmall.com/cms/special/upload/5689a26d-5303-48fb-9d81-d81b150b10af/exepedi_cont3_hero04.jpg");
+      }
+      .exepedi .swiper-pagination .swiper-pagination-bullet:nth-child(5) {
+        background-image: url("https://images.kolonmall.com/cms/special/upload/5689a26d-5303-48fb-9d81-d81b150b10af/exepedi_cont3_hero05_off.jpg");
+      }
+      .exepedi .swiper-pagination .swiper-pagination-bullet:nth-child(5):hover,
+      .exepedi .swiper-pagination .swiper-pagination-bullet:nth-child(5):active,
+      .exepedi
+        .swiper-pagination
+        .swiper-pagination-bullet:nth-child(5).swiper-pagination-bullet-active {
+        background-image: url("https://images.kolonmall.com/cms/special/upload/5689a26d-5303-48fb-9d81-d81b150b10af/exepedi_cont3_hero05.jpg");
+      }
+      .exepedi .swiper-pagination .swiper-pagination-bullet:nth-child(6) {
+        background-image: url("https://images.kolonmall.com/cms/special/upload/5689a26d-5303-48fb-9d81-d81b150b10af/exepedi_cont3_hero06_off.jpg");
+      }
+      .exepedi .swiper-pagination .swiper-pagination-bullet:nth-child(6):hover,
+      .exepedi .swiper-pagination .swiper-pagination-bullet:nth-child(6):active,
+      .exepedi
+        .swiper-pagination
+        .swiper-pagination-bullet:nth-child(6).swiper-pagination-bullet-active {
+        background-image: url("https://images.kolonmall.com/cms/special/upload/5689a26d-5303-48fb-9d81-d81b150b10af/exepedi_cont3_hero06.jpg");
+      }
+      .exepedi .swiper-pagination .swiper-pagination-bullet:nth-child(7) {
+        background-image: url("https://images.kolonmall.com/cms/special/upload/5689a26d-5303-48fb-9d81-d81b150b10af/exepedi_cont3_hero07_off.jpg");
+      }
+      .exepedi .swiper-pagination .swiper-pagination-bullet:nth-child(7):hover,
+      .exepedi .swiper-pagination .swiper-pagination-bullet:nth-child(7):active,
+      .exepedi
+        .swiper-pagination
+        .swiper-pagination-bullet:nth-child(7).swiper-pagination-bullet-active {
+        background-image: url("https://images.kolonmall.com/cms/special/upload/5689a26d-5303-48fb-9d81-d81b150b10af/exepedi_cont3_hero07.jpg");
+      }
+      .exepedi .swiper-pagination .swiper-pagination-bullet:nth-child(8) {
+        background-image: url("https://images.kolonmall.com/cms/special/upload/5689a26d-5303-48fb-9d81-d81b150b10af/exepedi_cont3_hero08_off.jpg");
+      }
+      .exepedi .swiper-pagination .swiper-pagination-bullet:nth-child(8):hover,
+      .exepedi .swiper-pagination .swiper-pagination-bullet:nth-child(8):active,
+      .exepedi
+        .swiper-pagination
+        .swiper-pagination-bullet:nth-child(8).swiper-pagination-bullet-active {
+        background-image: url("https://images.kolonmall.com/cms/special/upload/5689a26d-5303-48fb-9d81-d81b150b10af/exepedi_cont3_hero08.jpg");
+      }
+      .exepedi .swiper-pagination .swiper-pagination-bullet:nth-child(9) {
+        background-image: url("https://images.kolonmall.com/cms/special/upload/5689a26d-5303-48fb-9d81-d81b150b10af/exepedi_cont3_hero09_off.jpg");
+      }
+      .exepedi .swiper-pagination .swiper-pagination-bullet:nth-child(9):hover,
+      .exepedi .swiper-pagination .swiper-pagination-bullet:nth-child(9):active,
+      .exepedi
+        .swiper-pagination
+        .swiper-pagination-bullet:nth-child(9).swiper-pagination-bullet-active {
+        background-image: url("https://images.kolonmall.com/cms/special/upload/5689a26d-5303-48fb-9d81-d81b150b10af/exepedi_cont3_hero09.jpg");
+      }
+      .exepedi .swiper-pagination .swiper-pagination-bullet:nth-child(10) {
+        background-image: url("https://images.kolonmall.com/cms/special/upload/5689a26d-5303-48fb-9d81-d81b150b10af/exepedi_cont3_hero10_off.jpg");
+      }
+      .exepedi .swiper-pagination .swiper-pagination-bullet:nth-child(10):hover,
+      .exepedi
+        .swiper-pagination
+        .swiper-pagination-bullet:nth-child(10):active,
+      .exepedi
+        .swiper-pagination
+        .swiper-pagination-bullet:nth-child(10).swiper-pagination-bullet-active {
+        background-image: url("https://images.kolonmall.com/cms/special/upload/5689a26d-5303-48fb-9d81-d81b150b10af/exepedi_cont3_hero10.jpg");
+      }
+      .exepedi .swiper-pagination .swiper-pagination-bullet:nth-child(11) {
+        background-image: url("https://images.kolonmall.com/cms/special/upload/5689a26d-5303-48fb-9d81-d81b150b10af/exepedi_cont3_hero11_off.jpg");
+      }
+      .exepedi .swiper-pagination .swiper-pagination-bullet:nth-child(11):hover,
+      .exepedi
+        .swiper-pagination
+        .swiper-pagination-bullet:nth-child(11):active,
+      .exepedi
+        .swiper-pagination
+        .swiper-pagination-bullet:nth-child(11).swiper-pagination-bullet-active {
+        background-image: url("https://images.kolonmall.com/cms/special/upload/5689a26d-5303-48fb-9d81-d81b150b10af/exepedi_cont3_hero11.jpg");
+      }
+      .exepedi .swiper-pagination .swiper-pagination-bullet:nth-child(12) {
+        background-image: url("https://images.kolonmall.com/cms/special/upload/5689a26d-5303-48fb-9d81-d81b150b10af/exepedi_cont3_hero12_off.jpg");
+      }
+      .exepedi .swiper-pagination .swiper-pagination-bullet:nth-child(12):hover,
+      .exepedi
+        .swiper-pagination
+        .swiper-pagination-bullet:nth-child(12):active,
+      .exepedi
+        .swiper-pagination
+        .swiper-pagination-bullet:nth-child(12).swiper-pagination-bullet-active {
+        background-image: url("https://images.kolonmall.com/cms/special/upload/5689a26d-5303-48fb-9d81-d81b150b10af/exepedi_cont3_hero12.jpg");
+      }
+      .exepedi .swiper-pagination .swiper-pagination-bullet:last-child {
+        margin-right: 0;
+        background-image: url("https://images.kolonmall.com/cms/special/upload/5689a26d-5303-48fb-9d81-d81b150b10af/exepedi_cont3_hero13_off.jpg");
+      }
+      .exepedi .swiper-pagination .swiper-pagination-bullet:last-child:hover,
+      .exepedi .swiper-pagination .swiper-pagination-bullet:last-child:active,
+      .exepedi
+        .swiper-pagination
+        .swiper-pagination-bullet:last-child.swiper-pagination-bullet-active {
+        background-image: url("https://images.kolonmall.com/cms/special/upload/5689a26d-5303-48fb-9d81-d81b150b10af/exepedi_cont3_hero13.jpg");
+      }
+
+      /* 이미지롤링 */
+      .exepedi .cont02 .rolling {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        position: absolute;
+        top: 4.267701260911736%;
+        left: 0;
+      }
+      .exepedi .cont02 .thisImageShowGrid {
+        position: relative;
+        width: 256.7708333333333vw;
+        height: 100%;
+      }
+      .exepedi .cont02 .thisImageShowGrid:before,
+      .exepedi .cont02 .thisImageShowGrid:after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        width: 182.96875vw;
+        height: 29.89583333333333vw;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        -webkit-animation-duration: 120s;
+        animation-duration: 120s;
+        -webkit-animation-timing-function: linear;
+        animation-timing-function: linear;
+        -webkit-animation-iteration-count: infinite;
+        animation-iteration-count: infinite;
+        background-image: url("https://images.kolonmall.com/cms/special/upload/5689a26d-5303-48fb-9d81-d81b150b10af/exepedi_cont2_img.jpg");
+      }
+      .exepedi .cont02 .thisImageShowGrid:before {
+        -webkit-animation-name: showGridAnimationBeforeLarge;
+        animation-name: showGridAnimationBeforeLarge;
+      }
+      .exepedi .cont02 .thisImageShowGrid:after {
+        -webkit-animation-name: showGridAnimationAfterLarge;
+        animation-name: showGridAnimationAfterLarge;
+      }
+      @-webkit-keyframes showGridAnimationBeforeLarge {
+        0% {
+          -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+        }
+        50% {
+          -webkit-transform: translate3d(-182.96875vw, 0, 0);
+          transform: translate3d(-182.96875vw, 0, 0);
+        }
+        50.001% {
+          -webkit-transform: translate3d(182.96875vw, 0, 0);
+          transform: translate3d(182.96875vw, 0, 0);
+        }
+        100% {
+          -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+        }
+      }
+      @keyframes showGridAnimationBeforeLarge {
+        0% {
+          -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+        }
+        50% {
+          -webkit-transform: translate3d(-182.96875vw, 0, 0);
+          transform: translate3d(-182.96875vw, 0, 0);
+        }
+        50.001% {
+          -webkit-transform: translate3d(182.96875vw, 0, 0);
+          transform: translate3d(182.96875vw, 0, 0);
+        }
+        100% {
+          -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+        }
+      }
+
+      @-webkit-keyframes showGridAnimationAfterLarge {
+        0% {
+          -webkit-transform: translate3d(182.96875vw, 0, 0);
+          transform: translate3d(182.96875vw, 0, 0);
+        }
+        50% {
+          -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+        }
+        100% {
+          -webkit-transform: translate3d(-182.96875vw, 0, 0);
+          transform: translate3d(-182.96875vw, 0, 0);
+        }
+      }
+      @keyframes showGridAnimationAfterLarge {
+        0% {
+          -webkit-transform: translate3d(182.96875vw, 0, 0);
+          transform: translate3d(182.96875vw, 0, 0);
+        }
+        50% {
+          -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+        }
+        100% {
+          -webkit-transform: translate3d(-182.96875vw, 0, 0);
+          transform: translate3d(-182.96875vw, 0, 0);
+        }
+      }
+    </style>
+
+    <div class="full-width">
+      <div class="exepedi">
+        <img
+          src="https://images.kolonmall.com/cms/special/upload/5689a26d-5303-48fb-9d81-d81b150b10af/exepedi_tit_.jpg"
+          alt=""
+        />
+        <img
+          src="https://images.kolonmall.com/cms/special/upload/5689a26d-5303-48fb-9d81-d81b150b10af/exepedi_cont1.jpg"
+          alt=""
+        />
+        <div class="cont02 rel">
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/5689a26d-5303-48fb-9d81-d81b150b10af/exepedi_cont2_2.jpg"
+            alt=""
+          />
+          <div class="rolling"><div class="thisImageShowGrid"></div></div>
+        </div>
+        <div class="cont03">
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/5689a26d-5303-48fb-9d81-d81b150b10af/exepedi_cont3.jpg"
+            alt=""
+          />
+          <div class="tab_slide swiper-container">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide tab-cont">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/5689a26d-5303-48fb-9d81-d81b150b10af/exepedi_cont3_hero01_txt.jpg"
+                  alt="윤재학"
+                />
+              </div>
+              <div class="swiper-slide tab-cont">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/5689a26d-5303-48fb-9d81-d81b150b10af/exepedi_cont3_hero02_txt.jpg"
+                  alt="김재수"
+                />
+              </div>
+              <div class="swiper-slide tab-cont">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/5689a26d-5303-48fb-9d81-d81b150b10af/exepedi_cont3_hero03_txt.jpg"
+                  alt="문성욱"
+                />
+              </div>
+              <div class="swiper-slide tab-cont">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/5689a26d-5303-48fb-9d81-d81b150b10af/exepedi_cont3_hero04_txt_.jpg"
+                  alt="배대원"
+                />
+              </div>
+              <div class="swiper-slide tab-cont">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/5689a26d-5303-48fb-9d81-d81b150b10af/exepedi_cont3_hero05_txt.jpg"
+                  alt="양유석"
+                />
+              </div>
+              <div class="swiper-slide tab-cont">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/5689a26d-5303-48fb-9d81-d81b150b10af/exepedi_cont3_hero06_txt_.jpg"
+                  alt="민은주"
+                />
+              </div>
+              <div class="swiper-slide tab-cont">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/5689a26d-5303-48fb-9d81-d81b150b10af/exepedi_cont3_hero07_txt.jpg"
+                  alt="유한규"
+                />
+              </div>
+              <div class="swiper-slide tab-cont">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/5689a26d-5303-48fb-9d81-d81b150b10af/exepedi_cont3_hero08_txt_.jpg"
+                  alt="손성일"
+                />
+              </div>
+              <div class="swiper-slide tab-cont">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/5689a26d-5303-48fb-9d81-d81b150b10af/exepedi_cont3_hero09_txt_.jpg"
+                  alt="양희종"
+                />
+              </div>
+              <div class="swiper-slide tab-cont">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/5689a26d-5303-48fb-9d81-d81b150b10af/exepedi_cont3_hero10_txt_.jpg"
+                  alt="이하늘"
+                />
+              </div>
+              <div class="swiper-slide tab-cont">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/5689a26d-5303-48fb-9d81-d81b150b10af/exepedi_cont3_hero11_txt_.jpg"
+                  alt="이윤주"
+                />
+              </div>
+              <div class="swiper-slide tab-cont">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/5689a26d-5303-48fb-9d81-d81b150b10af/exepedi_cont3_hero12_txt_.jpg"
+                  alt="김진완"
+                />
+              </div>
+              <div class="swiper-slide tab-cont">
+                <img
+                  src="https://images.kolonmall.com/cms/special/upload/5689a26d-5303-48fb-9d81-d81b150b10af/exepedi_cont3_hero13_txt.jpg"
+                  alt=""
+                />
+              </div>
+            </div>
+            <div class="paging_wrap rel">
+              <div class="swiper-pagination"></div>
+            </div>
+            <div class="arrow_btn swiper-button-prev"></div>
+            <div class="arrow_btn swiper-button-next"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      var tabSwiper = new Swiper(".tab_slide", {
+        effect: "fade",
+        speed: 600,
+        pagination: {
+          el: ".tab_slide .swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".tab_slide .swiper-button-next",
+          prevEl: ".tab_slide .swiper-button-prev",
+        },
+      });
+    </script>
+  </body>
+</html>

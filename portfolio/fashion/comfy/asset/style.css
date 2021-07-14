@@ -1,0 +1,634 @@
+@charset "UTF-8";
+
+@import url("https://fonts.googleapis.com/earlyaccess/notosanskr.css");
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+.newOuter_wrap {
+  min-width: 1280px;
+  overflow: hidden;
+  position: relative;
+  /*left: 50%;
+  transform: translateX(-50%);*/
+  height: 24890px;
+  background: #fff;
+}
+.newOuter {
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  width: 1920px;
+  overflow: hidden;
+  position: absolute;
+  text-align: center;
+  margin-left: -960px;
+  top: 0;
+  left: 50%;
+  background: #fff;
+}
+.newOuter * {
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+  font-family: "Noto Sans KR", sans-serif;
+}
+.newOuter li {
+  list-style: none;
+}
+.newOuter img {
+  display: inline-block;
+  max-width: 100%;
+  vertical-align: top;
+}
+.newOuter .btn {
+  font-size: 0;
+  text-indent: -9999px;
+  display: block;
+  position: absolute;
+}
+.newOuter .clearfix:after {
+  display: block;
+  clear: both;
+  content: "";
+}
+.newOuter .rel {
+  position: relative;
+}
+.newOuter .video_wrap .video {
+  padding-bottom: 56.25%;
+}
+.newOuter .video_wrap .video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+.newOuter .txt,
+.newOuter .img {
+  position: absolute;
+  overflow: hidden;
+}
+
+/* animation */
+.animated {
+  visibility: hidden;
+  animation-name: none;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+.animated.on {
+  visibility: visible;
+}
+.animated.on:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  animation-duration: 1s;
+}
+.fadeToRight {
+  visibility: visible;
+  animation-name: fadeToRight;
+  animation-duration: 0.8s;
+}
+
+@keyframes fadeToRight {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(100px);
+    -ms-transform: translateX(100px);
+    transform: translateX(100px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+.fadeToLeft {
+  visibility: visible;
+  animation-name: fadeToLeft;
+  animation-duration: 0.8s;
+}
+
+@keyframes fadeToLeft {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-100px);
+    -ms-transform: translateX(-100px);
+    transform: translateX(-100px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+.titFadeToLeft {
+  visibility: visible;
+  animation-name: titFadeToLeft;
+  animation-duration: 0.35s;
+}
+
+@keyframes titFadeToLeft {
+  0% {
+    -webkit-transform: translateX(-1000px);
+    -ms-transform: translateX(-1000px);
+    transform: translateX(-1000px);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+@keyframes blinkFadeInOut {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(50px);
+    -ms-transform: translateY(50px);
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+.blinkFadeInOut {
+  visibility: visible;
+  animation-duration: 1.7s;
+  -webkit-animation-name: blinkFadeInOut;
+  animation-name: blinkFadeInOut;
+}
+@keyframes blurFadeInOut {
+  0% {
+    opacity: 0;
+    text-shadow: 0px 0px 40px #fff;
+    filter: blur(15px);
+    -webkit-filter: blur(15px);
+    -webkit-transform: translateY(30px);
+    -ms-transform: translateY(30px);
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    text-shadow: 0px 0px 1px #fff;
+    filter: blur(0px);
+    -webkit-filter: blur(0px);
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+.blurFadeInOut {
+  visibility: visible;
+  animation-duration: 1.5s;
+  -webkit-animation-name: blurFadeInOut;
+  animation-name: blurFadeInOut;
+}
+.fadeIn {
+  visibility: visible;
+  animation-name: fadeIn;
+  animation-duration: 1s;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.fadeInUp {
+  visibility: visible;
+  animation-name: fadeInUp;
+  animation-duration: 1s;
+}
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(50px);
+    -ms-transform: translateY(50px);
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+.delay200 {
+  animation-delay: 0.2s;
+}
+.delay300 {
+  animation-delay: 0.3s;
+}
+.delay400 {
+  animation-delay: 0.4s;
+}
+.delay500 {
+  animation-delay: 0.5s;
+}
+.delay700 {
+  animation-delay: 0.7s;
+}
+.delay800 {
+  animation-delay: 0.8s;
+}
+.delay1000 {
+  animation-delay: 1s;
+}
+.delay1100 {
+  animation-delay: 1.1s;
+}
+.delay1200 {
+  animation-delay: 1.2s;
+}
+.delay1300 {
+  animation-delay: 1.3s;
+}
+.delay1500 {
+  animation-delay: 1.5s;
+}
+.delay1600 {
+  animation-delay: 1.6s;
+}
+.delay1900 {
+  animation-delay: 1.9s;
+}
+.delay2000 {
+  animation-delay: 2s;
+}
+.delay2400 {
+  animation-delay: 2.4s;
+}
+.delay2500 {
+  animation-delay: 2.5s;
+}
+.delay3000 {
+  animation-delay: 3s;
+}
+.delay2100 {
+  animation-delay: 2.1s;
+}
+
+/* tit */
+.newOuter .tit {
+  background: #dfc4ac;
+}
+.newOuter .tit .color_bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+.newOuter .tit .color_bg.light {
+  background: #dfc4ac;
+}
+.newOuter .tit .color_bg.beige {
+  background: #b29377;
+}
+.newOuter .tit .color_bg.brown {
+  background: #886b56;
+}
+.open {
+  visibility: visible;
+  animation-name: open;
+  animation-duration: 0.6s;
+  animation-fill-mode: both;
+}
+@keyframes open {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+  }
+}
+.newOuter .tit .bar {
+  position: absolute;
+  width: 16.5625%;
+  top: 180px;
+  right: 25.52083333333333%;
+}
+.newOuter .tit .txt {
+  position: absolute;
+  width: 16.5625%;
+  right: 25.52083333333333%;
+  z-index: 3;
+}
+.newOuter .tit .txt01 {
+  top: 14.43708609271523%;
+}
+.newOuter .tit .txt02 {
+  top: 32.45033112582781%;
+}
+.newOuter .tit .txt03 {
+  top: 64.7682119205298%;
+}
+.newOuter .tit .txt04 {
+  position: absolute;
+  right: 17.08333333333333%;
+  bottom: 5.298013245033113%;
+  width: 33.80208333333333%;
+}
+.newOuter .tit .txt05 {
+  position: absolute;
+  z-index: 2;
+  width: 29.01041666666667%;
+  right: 18.54166666666667%;
+  top: 30.06622516556291%;
+}
+
+/* nav_ */
+.newOuter .nav_wrap {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1920px;
+  transform: translateX(-50%);
+  background: #200f08;
+  z-index: 10;
+}
+.newOuter .nav_wrap.fixed {
+  position: fixed;
+}
+.newOuter .nav_wrap li {
+  float: left;
+  height: 70px;
+  background-repeat: no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+  opacity: 0.6;
+}
+.newOuter .nav_wrap li.on {
+  opacity: 1;
+}
+.newOuter .nav_wrap li a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.newOuter .nav_wrap li.nav01 {
+  width: 322px;
+  background-image: url(https://cdn.eqlstore.com/display/html/TRND/magazine_2102_03/newOuter_tab01.png);
+  margin-left: 223px;
+}
+.newOuter .nav_wrap li.nav02 {
+  width: 260px;
+  background-image: url(https://cdn.eqlstore.com/display/html/TRND/magazine_2102_03/newOuter_tab02.png);
+}
+.newOuter .nav_wrap li.nav03 {
+  width: 285px;
+  background-image: url(https://cdn.eqlstore.com/display/html/TRND/magazine_2102_03/newOuter_tab03.png);
+}
+.newOuter .nav_wrap li.nav04 {
+  width: 265px;
+  background-image: url(https://cdn.eqlstore.com/display/html/TRND/magazine_2102_03/newOuter_tab04.png);
+}
+.newOuter .nav_wrap li.nav05 {
+  width: 342px;
+  background-image: url(https://cdn.eqlstore.com/display/html/TRND/magazine_2102_03/newOuter_tab05.png);
+  margin-right: 223px;
+}
+.newOuter .nav_wrap li.nav01.on {
+  background-image: url(https://cdn.eqlstore.com/display/html/TRND/magazine_2102_03/newOuter_tab01_on.png);
+}
+.newOuter .nav_wrap li.nav02.on {
+  background-image: url(https://cdn.eqlstore.com/display/html/TRND/magazine_2102_03/newOuter_tab02_on.png);
+}
+.newOuter .nav_wrap li.nav03.on {
+  background-image: url(https://cdn.eqlstore.com/display/html/TRND/magazine_2102_03/newOuter_tab03_on.png);
+}
+.newOuter .nav_wrap li.nav04.on {
+  background-image: url(https://cdn.eqlstore.com/display/html/TRND/magazine_2102_03/newOuter_tab04_on.png);
+}
+.newOuter .nav_wrap li.nav05.on {
+  background-image: url(https://cdn.eqlstore.com/display/html/TRND/magazine_2102_03/newOuter_tab05_on.png);
+}
+.newOuter .section01 .cont01 .video_wrap {
+  position: absolute;
+  top: 179px;
+  left: 359px;
+  width: 1200px;
+}
+.newOuter .section01 .cont01 .img01 {
+  top: 1154px;
+  right: 131px;
+}
+.newOuter .section01 .cont01 .copy {
+  top: 2047px;
+  right: 714px;
+}
+.newOuter .section01 .cont01 .img03 {
+  width: 517px;
+  height: 767px;
+  bottom: 556px;
+  left: 134px;
+}
+.newOuter .section01 .cont01 .img04 {
+  bottom: 286px;
+  right: 667px;
+}
+
+.newOuter .section01 .cont02 .img01 {
+  top: 231px;
+  left: 359px;
+}
+.newOuter .section01 .cont02 .img02 {
+  top: 231px;
+  left: 757px;
+}
+.newOuter .section01 .cont02 .img03 {
+  top: 231px;
+  left: 1157px;
+}
+.newOuter .section01 .cont02 .img04 {
+  top: 841px;
+  left: 359px;
+}
+.newOuter .section01 .cont02 .img05 {
+  top: 841px;
+  left: 756px;
+}
+.newOuter .section01 .cont02 .img06 {
+  top: 841px;
+  left: 1156px;
+}
+.newOuter .detail {
+  transition: 0.3s ease all;
+}
+.newOuter .detail:hover {
+  -webkit-transform: scale(1.2); /*  크롬 */
+  -moz-transform: scale(1.2); /* FireFox */
+  -o-transform: scale(1.2); /* Opera */
+  transform: scale(1.3);
+}
+
+.newOuter .section02 .cont01 .img01 {
+  top: 140px;
+  left: 130px;
+}
+.newOuter .section02 .cont01 .copy {
+  top: 1022px;
+  left: 733px;
+  z-index: 3;
+}
+.newOuter .section02 .cont01 .img02 {
+  bottom: 559px;
+  right: 134px;
+}
+.newOuter .section02 .cont01 .img03 {
+  bottom: 290px;
+  right: 641px;
+}
+.newOuter .section02 .cont02 .img01 {
+  top: 259px;
+  right: 363px;
+}
+.newOuter .section02 .cont02 .img02 {
+  bottom: 0px;
+  right: 434px;
+}
+
+.newOuter .section03 .cont01 .img01 {
+  top: 67px;
+  right: 131px;
+}
+.newOuter .section03 .cont02 .img01 {
+  top: 231px;
+  left: 359px;
+}
+.newOuter .section03 .cont02 .img02 {
+  width: 400px;
+  height: 525px;
+  top: 231px;
+  left: 757px;
+}
+/* .newOuter .section03 .cont02 .img03 {
+  top:231px;
+  left: 1157px;
+} */
+.newOuter .section03 .cont02 .img03 {
+  top: 231px;
+  left: 1157px;
+}
+.newOuter .section03 .cont02 .img05 {
+  top: 841px;
+  left: 560px;
+}
+.newOuter .section03 .cont02 .img06 {
+  top: 841px;
+  left: 960px;
+}
+
+.newOuter .section04 .cont01 .img01 {
+  top: 122px;
+  left: 130px;
+}
+.newOuter .section04 .cont01 .copy {
+  top: 1006px;
+  left: 717px;
+  z-index: 3;
+}
+.newOuter .section04 .cont01 .img02 {
+  bottom: 410px;
+  right: 134px;
+}
+.newOuter .section04 .cont01 .img03 {
+  bottom: 140px;
+  right: 642px;
+}
+
+.newOuter .section04 .cont02 .img01 {
+  top: 231px;
+  left: 359px;
+}
+.newOuter .section04 .cont02 .img02 {
+  top: 231px;
+  left: 757px;
+}
+.newOuter .section04 .cont02 .img03 {
+  top: 231px;
+  left: 1156px;
+}
+
+.newOuter .section05 .cont01 .img01 {
+  top: 118px;
+  right: 131px;
+}
+.newOuter .section05 .cont01 .copy {
+  top: 1006px;
+  right: 710px;
+}
+
+.newOuter .section05 .cont01 .img02 {
+  bottom: 387px;
+  left: 135px;
+}
+.newOuter .section05 .cont01 .img03 {
+  bottom: 119px;
+  left: 642px;
+}
+
+.newOuter .section05 .cont02 .img01 {
+  top: 231px;
+  left: 359px;
+}
+.newOuter .section05 .cont02 .img02 {
+  top: 231px;
+  left: 757px;
+}
+.newOuter .section05 .cont02 .img03 {
+  top: 231px;
+  left: 1156px;
+}
+
+.newOuter .product_list {
+  width: 1490px;
+  margin: 110px auto 100px;
+  position: relative;
+}
+.newOuter .product_list .swiper-slide {
+  padding-bottom: 50px;
+}
+.newOuter .product_list .swiper-slide p {
+  line-height: 1;
+  padding-top: 30px;
+  font-size: 15px;
+  text-align: center;
+  font-weight: 500;
+  line-height: 1.667em;
+}
+.newOuter .product_list .swiper-slide p span {
+  font-weight: 600;
+}
+.newOuter .product_list .arrow_btn {
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 19px;
+  height: 37px;
+  outline: 0;
+  top: 193px;
+}
+.newOuter .product_list .swiper-button-prev {
+  background-image: url("https://cdn.eqlstore.com/display/html/TRND/magazine_2102_03/newOuter_prev_btn.png");
+  left: -40px;
+}
+.newOuter .product_list .swiper-button-next {
+  background-image: url("https://cdn.eqlstore.com/display/html/TRND/magazine_2102_03/newOuter_next_btn.png");
+  right: -40px;
+}

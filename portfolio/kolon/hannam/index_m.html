@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=0, viewport-fit=cover"
+    />
+    <title>HANNAM</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.css"
+    />
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js"></script>
+  </head>
+  <body>
+    <style>
+      /*reset + common*/
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+      }
+      ul,
+      li {
+        list-style: none;
+      }
+      .hannam {
+        overflow: hidden;
+        position: relative;
+        max-width: 750px;
+        margin: 0 auto;
+      }
+      .hannam * {
+        margin: 0;
+        padding: 0;
+        line-height: 0;
+      }
+      .hannam img {
+        width: 100%;
+        vertical-align: top;
+      }
+      .hannam .rel {
+        position: relative;
+      }
+      .hannam .tit {
+        padding-bottom: 172.34375vw;
+      }
+      .hannam .tit .tit_bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        background-image: url(https://images.kolonmall.com/cms/event/upload/5a772bb2-b352-472d-8b8e-e89aaf3db015/m_hannam_tit_bg.jpg);
+        overflow: hidden;
+        background-attachment: fixed;
+        background-position: center top;
+        background-size: 100%;
+      }
+      .hannam .cont00 {
+        height: 137.03125vw;
+        background: url(https://images.kolonmall.com/cms/event/upload/5a772bb2-b352-472d-8b8e-e89aaf3db015/m_hannam_slide_bg.jpg);
+      }
+      .hannam .auto_slide {
+        position: absolute;
+        top: 27.34375vw;
+        left: 0;
+        width: 120%;
+        overflow: visible;
+        z-index: 11;
+      }
+      .hannam .auto_slide .swiper-wrapper {
+        transition-timing-function: linear;
+      }
+      .hannam .move {
+        transform: matrix(1, 0, 0, 1, 0, 30);
+        opacity: 0;
+      }
+      .hannam .txt {
+        position: absolute;
+        z-index: 2;
+        width: 100%;
+        left: 0;
+      }
+      .hannam .txt01 {
+        top: 37.03125vw;
+      }
+      .hannam .txt02 {
+        top: 56.5625vw;
+      }
+      .hannam .txt03 {
+        top: 76.25vw;
+      }
+      .hannam .txt04 {
+        top: 89.6875vw;
+      }
+      .hannam .txt05 {
+        top: 107.34375vw;
+      }
+      .hannam .txt06 {
+        top: 126.71875vw;
+      }
+      .hannam .txt07 {
+        top: 19.63636363636364%;
+      }
+      .hannam .txt08 {
+        top: 64.36363636363636%;
+      }
+      .hannam .txt08_1 {
+        top: 76.48484848484848%;
+      }
+      .hannam .map_left {
+        background: #000;
+        height: 92.34375vw;
+      }
+      .hannam .map_right {
+        height: 75.15625vw;
+      }
+      .hannam .map_right iframe {
+        width: 100%;
+        height: 100%;
+      }
+      .hannam .txt09 {
+        top: 19.62774957698816%;
+      }
+      .hannam .txt10 {
+        top: 45.01758499413834%;
+      }
+      .hannam .swiper-container {
+        z-index: auto;
+      }
+      .hannam .cont03 {
+        padding: 15.625vw 4.375vw;
+      }
+      .hannam .hannam_slide.swiper-container,
+      .hannam .hannam_slide .swiper-slide {
+        height: 259.53125vw;
+        width: 100%;
+      }
+      .hannam .cont03 .hannam_slide {
+        position: relative;
+        overflow: hidden;
+      }
+      .hannam .slide_wrap .btn {
+        position: absolute;
+        width: 13.75vw;
+        height: 14.53125vw;
+        background-size: contain;
+        background-repeat: no-repeat;
+        margin: auto;
+        z-index: 1;
+      }
+      .hannam .slide_wrap .swiper-button-prev {
+        right: 0;
+        left: auto;
+        top: 39.55448524984949%;
+        background-image: url("https://images.kolonmall.com/cms/event/upload/5a772bb2-b352-472d-8b8e-e89aaf3db015/m_hannam_prev_new.png");
+      }
+      .hannam .slide_wrap .swiper-button-next {
+        right: 0;
+        top: 45.09331727874774%;
+        background-image: url("https://images.kolonmall.com/cms/event/upload/5a772bb2-b352-472d-8b8e-e89aaf3db015/m_hannam_next_new.png");
+      }
+      .hannam .video_wrap {
+        width: 92.65625%;
+        margin: 0 auto;
+        position: absolute;
+        right: 0;
+        left: 0;
+        bottom: 14.52612931798051%;
+        margin: 0 auto;
+        -webkit-box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.6);
+        -moz-box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.6);
+        box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.6);
+      }
+      .hannam .video_wrap .go_btn {
+        background: #0d0d0d;
+        display: block;
+        margin-top: -1px;
+        text-align: center;
+      }
+      .hannam .video_wrap .go_btn img {
+        width: 59.53125%;
+      }
+      .hannam .video {
+        padding-bottom: 56.25%;
+      }
+      .hannam .video iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100% !important;
+      }
+
+      @media (min-width: 750px) {
+        .hannam .tit {
+          padding-bottom: 1103px;
+        }
+        .hannam .tit .tit_bg {
+          height: 1103px;
+        }
+        .hannam .cont00 {
+          height: 877px;
+        }
+        .hannam .auto_slide {
+          top: 175px;
+        }
+        .hannam .map_left {
+          height: 591px;
+        }
+        .hannam .map_right {
+          height: 481px;
+        }
+        .hannam .txt01 {
+          top: 237px;
+        }
+        .hannam .txt02 {
+          top: 362px;
+        }
+        .hannam .txt03 {
+          top: 488px;
+        }
+        .hannam .txt04 {
+          top: 574px;
+        }
+        .hannam .txt05 {
+          top: 687px;
+        }
+        .hannam .txt06 {
+          top: 811px;
+        }
+        .hannam .txt07 {
+          top: 132px;
+        }
+        .hannam .txt08 {
+          top: 531px;
+        }
+        .hannam .txt08_1 {
+          top: 631px;
+        }
+        .hannam .txt09 {
+          top: 116px;
+        }
+        .hannam .txt10 {
+          top: 264px;
+        }
+        .hannam .cont03 {
+          padding: 100px 28px;
+        }
+        .hannam .video_wrap {
+          width: 593px;
+          bottom: 164px;
+        }
+        .hannam .video_wrap .go_btn {
+          background: #0d0d0d;
+          display: block;
+          margin-top: -1px;
+        }
+        .hannam .video_wrap .go_btn img {
+          width: 381px;
+        }
+        .hannam .hannam_slide.swiper-container,
+        .hannam .hannam_slide .swiper-slide {
+          height: 1661px;
+        }
+        .hannam .slide_wrap .btn {
+          width: 88px;
+          height: 93px;
+        }
+        .hannam .slide_wrap .swiper-button-prev {
+          top: 800px;
+        }
+        .hannam .slide_wrap .swiper-button-next {
+          top: 893px;
+        }
+      }
+    </style>
+    <div class="hannam">
+      <div class="tit rel">
+        <img
+          src="https://images.kolonmall.com/cms/event/upload/5a772bb2-b352-472d-8b8e-e89aaf3db015/m_hannam_tit_img01.png"
+          alt=""
+          class="txt txt01 move"
+        />
+        <img
+          src="https://images.kolonmall.com/cms/event/upload/5a772bb2-b352-472d-8b8e-e89aaf3db015/m_hannam_tit_img02.png"
+          alt=""
+          class="txt txt02 move"
+        />
+        <img
+          src="https://images.kolonmall.com/cms/event/upload/5a772bb2-b352-472d-8b8e-e89aaf3db015/m_hannam_tit_img03_.png"
+          alt=""
+          class="txt txt03 move"
+        />
+        <img
+          src="https://images.kolonmall.com/cms/event/upload/5a772bb2-b352-472d-8b8e-e89aaf3db015/m_hannam_tit_img04.png"
+          alt=""
+          class="txt txt04 move"
+        />
+        <img
+          src="https://images.kolonmall.com/cms/event/upload/5a772bb2-b352-472d-8b8e-e89aaf3db015/m_hannam_tit_img05_.png"
+          alt=""
+          class="txt txt05 move"
+        />
+        <img
+          src="https://images.kolonmall.com/cms/event/upload/5a772bb2-b352-472d-8b8e-e89aaf3db015/m_hannam_tit_img06.png"
+          alt=""
+          class="txt txt06 move"
+        />
+        <div class="tit_bg"></div>
+      </div>
+      <div class="cont00 rel">
+        <div class="auto_slide swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img
+                src="https://images3.kolonmall.com/upload/6565f8de-b463-4305-a535-959fb450215a/hannam_slide_img01.jpg"
+                alt=""
+              />
+            </div>
+            <div class="swiper-slide">
+              <img
+                src="https://images3.kolonmall.com/upload/6565f8de-b463-4305-a535-959fb450215a/hannam_slide_img02.jpg"
+                alt=""
+              />
+            </div>
+            <div class="swiper-slide">
+              <img
+                src="https://images3.kolonmall.com/upload/6565f8de-b463-4305-a535-959fb450215a/hannam_slide_img03.jpg"
+                alt=""
+              />
+            </div>
+            <div class="swiper-slide">
+              <img
+                src="https://images3.kolonmall.com/upload/6565f8de-b463-4305-a535-959fb450215a/hannam_slide_img04.jpg"
+                alt=""
+              />
+            </div>
+            <div class="swiper-slide">
+              <img
+                src="https://images3.kolonmall.com/upload/6565f8de-b463-4305-a535-959fb450215a/hannam_slide_img05.jpg"
+                alt=""
+              />
+            </div>
+            <div class="swiper-slide">
+              <img
+                src="https://images3.kolonmall.com/upload/6565f8de-b463-4305-a535-959fb450215a/hannam_slide_img06.jpg"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cont01 rel">
+        <img
+          src="https://images.kolonmall.com/cms/event/upload/5a772bb2-b352-472d-8b8e-e89aaf3db015/m_hannam_cont1_bg.jpg"
+          alt=""
+          class=""
+        />.
+        <img
+          src="https://images.kolonmall.com/cms/event/upload/5a772bb2-b352-472d-8b8e-e89aaf3db015/m_hannam_cont1_img01.png"
+          alt=""
+          class="txt txt07"
+        />
+        <img
+          src="https://images.kolonmall.com/cms/event/upload/5a772bb2-b352-472d-8b8e-e89aaf3db015/m_hannam_cont1_img02.png"
+          alt=""
+          class="txt txt08"
+        />
+        <img
+          src="https://images.kolonmall.com/cms/event/upload/5a772bb2-b352-472d-8b8e-e89aaf3db015/m_hannam_cont1_img03.png"
+          alt=""
+          class="txt txt08_1"
+        />
+      </div>
+      <div class="cont02 rel clearfix">
+        <div class="map_right">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3163.739970541464!2d126.99931111531075!3d37.53762647980335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca3b230b8f43b%3A0xa0f500cf586ff6dd!2z64yA7ZWc66-86rWtIOyEnOyauO2KueuzhOyLnCDsmqnsgrDqtawg7ZWc64Ko64-ZIOydtO2DnOybkOuhnCAyNjA!5e0!3m2!1sko!2ssg!4v1600756990398!5m2!1sko!2ssg"
+            frameborder="0"
+            style="border: 0"
+            allowfullscreen=""
+            aria-hidden="false"
+            tabindex="0"
+          ></iframe>
+        </div>
+        <div class="map_left rel">
+          <img
+            src="https://images.kolonmall.com/cms/event/upload/5a772bb2-b352-472d-8b8e-e89aaf3db015/m_hannam_cont2_img01.png"
+            alt=""
+            class="txt txt09"
+          />
+          <img
+            src="https://images.kolonmall.com/cms/event/upload/5a772bb2-b352-472d-8b8e-e89aaf3db015/m_hannam_cont2_img02.png"
+            alt=""
+            class="txt txt10"
+          />
+        </div>
+      </div>
+      <div class="cont03 rel clearfix">
+        <div class="slide_wrap">
+          <div class="hannam_slide swiper-container">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img
+                  src="https://images.kolonmall.com/cms/event/upload/5a772bb2-b352-472d-8b8e-e89aaf3db015/m_hannam_cont3_slide_txt01_new_1.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="swiper-slide">
+                <img
+                  src="https://images.kolonmall.com/cms/event/upload/5a772bb2-b352-472d-8b8e-e89aaf3db015/m_hannam_cont3_slide_txt02_new.jpg"
+                  alt=""
+                />
+              </div>
+            </div>
+            <div class="swiper-button-next btn"></div>
+            <div class="swiper-button-prev btn"></div>
+          </div>
+        </div>
+      </div>
+      <div class="cont04 rel">
+        <img
+          src="https://images.kolonmall.com/cms/event/upload/5a772bb2-b352-472d-8b8e-e89aaf3db015/m_hannam_cont3_1_bg.jpg"
+          alt=""
+        />
+        <div class="video_wrap">
+          <div class="video rel">
+            <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/crinzJnwvEM?rel=0&amp;autoplay=1&amp;mute=1&amp;loop=1&amp;"
+              frameborder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen=""
+            ></iframe>
+          </div>
+          <a
+            href="https://www.youtube.com/embed/crinzJnwvEM"
+            class="go_btn"
+            target="_blank"
+            ><img
+              src="https://images.kolonmall.com/cms/event/upload/5a772bb2-b352-472d-8b8e-e89aaf3db015/youtube_btn.png"
+              alt="코오롱스포츠 한남스토어 FULL.ver으로 보기"
+          /></a>
+        </div>
+      </div>
+    </div>
+    <script>
+      $(document).ready(function () {
+        //$(window).on("load", function(){
+        TweenMax.to($(".tit .txt01"), 1, { opacity: 1, y: 0, delay: 0 });
+        TweenMax.to($(".tit .txt02"), 1, { opacity: 1, y: 0, delay: 0.3 });
+        TweenMax.to($(".tit .txt03"), 1, { opacity: 1, y: 0, delay: 0.6 });
+        TweenMax.to($(".tit .txt04"), 1, { opacity: 1, y: 0, delay: 0.9 });
+        TweenMax.to($(".tit .txt05"), 1, { opacity: 1, y: 0, delay: 1.2 });
+        TweenMax.to($(".tit .txt06"), 1, { opacity: 1, y: 0, delay: 1.5 });
+
+        var autoSwiper = new Swiper(".auto_slide.swiper-container", {
+          slidesPerView: 1,
+          spaceBetween: 13,
+          loop: true,
+          speed: 8000,
+          loopAdditionalSlides: 1,
+          allowTouchMove: false, //마우스 드래그 방지
+          autoplay: {
+            delay: 0,
+            disableOnInteraction: false,
+          },
+        });
+
+        var hannamSwiper = new Swiper(".hannam_slide.swiper-container", {
+          slidesPerView: 1,
+          direction: "vertical",
+          speed: 1000,
+          autoplay: {
+            delay: 1500,
+            disableOnInteraction: false,
+          },
+          navigation: {
+            nextEl: ".hannam_slide .swiper-button-next",
+            prevEl: ".hannam_slide .swiper-button-prev",
+          },
+        });
+      });
+    </script>
+  </body>
+</html>

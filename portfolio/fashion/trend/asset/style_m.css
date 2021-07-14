@@ -1,0 +1,386 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/earlyaccess/notosanskr.css");
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+.trend {
+  overflow: hidden;
+}
+.trend * {
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+  font-family: "Noto Sans KR", sans-serif;
+}
+.trend img {
+  display: inline-block;
+  width: 100%;
+  vertical-align: top;
+}
+.trend li {
+  list-style: none;
+}
+.trend .clearfix:after {
+  display: block;
+  clear: both;
+  content: "";
+}
+.trend .rel {
+  position: relative;
+}
+.trend .txt,
+.trend .img {
+  position: absolute;
+}
+
+/* animation */
+.animated {
+  visibility: hidden;
+  animation-name: none;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+.animated.on {
+  visibility: visible;
+}
+
+.animated.on:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  animation-duration: 1s;
+}
+
+.fadeToLeft {
+  visibility: visible;
+  animation-name: fadeToLeft;
+  animation-duration: 1.5s;
+}
+@keyframes fadeToLeft {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(30px);
+    -ms-transform: translateX(30px);
+    transform: translateX(30px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+    -ms-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+.fadeToRight {
+  visibility: visible;
+  animation-name: fadeToRight;
+  animation-duration: 1.5s;
+}
+@keyframes fadeToRight {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-30px);
+    -ms-transform: translateX(-30px);
+    transform: translateX(-30px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+    -ms-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+.fadeToTop {
+  visibility: visible;
+  animation-name: fadeToTop;
+  animation-duration: 1.5s;
+}
+@keyframes fadeToTop {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(30px);
+    -ms-transform: translateY(30px);
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+.fadeToBottom {
+  visibility: visible;
+  animation-name: fadeToBottom;
+  animation-duration: 1.5s;
+}
+@keyframes fadeToBottom {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-30px);
+    -ms-transform: translateY(-30px);
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+@keyframes blinkFadeInOut {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(50px);
+    -ms-transform: translateY(50px);
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+.blinkFadeInOut {
+  visibility: visible;
+  animation-duration: 1s;
+  -webkit-animation-name: blinkFadeInOut;
+  animation-name: blinkFadeInOut;
+}
+@keyframes blurFadeInOut {
+  0% {
+    opacity: 0;
+    text-shadow: 0px 0px 5.333333333333333vw #fff;
+    filter: blur(2vw);
+    -webkit-filter: blur(2vw);
+  }
+  100% {
+    opacity: 1;
+    text-shadow: 0px 0px 1px #fff;
+    filter: blur(0);
+    -webkit-filter: blur(0);
+  }
+}
+.blurFadeInOut {
+  visibility: visible;
+  animation-duration: 1s;
+  -webkit-animation-name: blurFadeInOut;
+  animation-name: blurFadeInOut;
+}
+
+.delay500 {
+  animation-delay: 0.5s;
+}
+.delay700 {
+  animation-delay: 0.7s;
+}
+.delay1000 {
+  animation-delay: 1s;
+}
+.delay1200 {
+  animation-delay: 1.2s;
+}
+.delay1500 {
+  animation-delay: 1.5s;
+}
+.delay2000 {
+  animation-delay: 2s;
+}
+.delay2500 {
+  animation-delay: 2.5s;
+}
+.delay3000 {
+  animation-delay: 3s;
+}
+
+.trend .tit .img01 {
+  top: 14.41136671177267%;
+  left: 5.333333333333333%;
+  width: 60.13333333333333%;
+}
+.trend .tit .img02 {
+  top: 42.48985115020298%;
+  right: 0;
+  width: 45.73333333333333%;
+}
+.trend .tit .txt01 {
+  right: 0;
+  top: 21.38024357239513%;
+  width: 60.53333333333333%;
+}
+.trend .tit .txt02 {
+  left: 0;
+  bottom: 32.81461434370771%;
+  width: 52.8%;
+}
+
+/* nav */
+.trend .nav_wrap {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  padding: 0 2.666666666666667%;
+  width: 100%;
+  transform: translateX(-50%);
+  background: #705d4a;
+  z-index: 10;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.trend .nav_wrap.fixed {
+  position: fixed;
+}
+.trend .nav_wrap a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  font-size: 0;
+  text-indent: -9999px;
+}
+.trend .nav_wrap li {
+  float: left;
+  width: 20%;
+  height: 12vw; /* 90px */
+  display: block;
+  background-repeat: no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+.trend .nav_wrap li.nav01 {
+  background-image: url(https://cdn.eqlstore.com/display/html/TRND/magazine_2102_01/m_trend_tab01.png);
+}
+.trend .nav_wrap li.nav02 {
+  background-image: url(https://cdn.eqlstore.com/display/html/TRND/magazine_2102_01/m_trend_tab02.png);
+}
+.trend .nav_wrap li.nav03 {
+  background-image: url(https://cdn.eqlstore.com/display/html/TRND/magazine_2102_01/m_trend_tab03.png);
+}
+.trend .nav_wrap li.nav04 {
+  background-image: url(https://cdn.eqlstore.com/display/html/TRND/magazine_2102_01/m_trend_tab04.png);
+}
+.trend .nav_wrap li.nav05 {
+  background-image: url(https://cdn.eqlstore.com/display/html/TRND/magazine_2102_01/m_trend_tab05.png);
+}
+.trend .nav_wrap li.nav01.on {
+  background-image: url(https://cdn.eqlstore.com/display/html/TRND/magazine_2102_01/m_trend_tab01_on.png);
+}
+.trend .nav_wrap li.nav02.on {
+  background-image: url(https://cdn.eqlstore.com/display/html/TRND/magazine_2102_01/m_trend_tab02_on.png);
+}
+.trend .nav_wrap li.nav03.on {
+  background-image: url(https://cdn.eqlstore.com/display/html/TRND/magazine_2102_01/m_trend_tab03_on.png);
+}
+.trend .nav_wrap li.nav04.on {
+  background-image: url(https://cdn.eqlstore.com/display/html/TRND/magazine_2102_01/m_trend_tab04_on.png);
+}
+.trend .nav_wrap li.nav05.on {
+  background-image: url(https://cdn.eqlstore.com/display/html/TRND/magazine_2102_01/m_trend_tab05_on.png);
+}
+
+.trend .prd_wrap {
+  width: 89.2%;
+  margin: 10.13333333333333vw auto 13.33333333333333vw;
+}
+.trend .swiper-container a {
+  font-size: 3.333333333333333vw;
+  line-height: 1;
+  text-decoration: none;
+  color: #000;
+  font-family: "Noto Sans KR", sans-serif;
+}
+.trend .swiper-container a p {
+  line-height: 1;
+  text-align: center;
+}
+.trend .section01 {
+  padding-top: 12vw;
+}
+.trend .section01 .img01 {
+  left: 0;
+  width: 93.2%;
+  top: 26.33053221288515%;
+}
+.trend .section01 .img02,
+.trend .section01 .img03 {
+  bottom: 0;
+}
+.trend .section01 .img02 {
+  left: 0;
+  width: 32.8%;
+}
+.trend .section01 .img03 {
+  width: 36.93333333333333%;
+  left: 35.46666666666667%;
+}
+.trend .section02 .img01 {
+  top: 20.94623655913978%;
+  right: 0;
+  width: 94.66666666666667%;
+}
+.trend .section02 .img02 {
+  left: 0;
+  width: 55.06666666666667%;
+  top: 49.0752688172043%;
+}
+.trend .section02 .img03 {
+  right: 0;
+  bottom: 0;
+  width: 48.8%;
+}
+.trend .section03 .img01,
+.trend .section03 .img02 {
+  top: 22.25249772933697%;
+}
+.trend .section03 .img01 {
+  left: 0;
+  width: 50.26666666666667%;
+}
+.trend .section03 .img02 {
+  right: 0;
+  width: 49.73333333333333%;
+}
+.trend .section03 .img03 {
+  right: 5.333333333333333%;
+  width: 41.73333333333333%;
+  bottom: 0;
+}
+.trend .section04 .img01,
+.trend .section04 .img02 {
+  width: 46%;
+  top: 42.54067151263413%;
+}
+.trend .section04 .img01 {
+  left: 0;
+}
+.trend .section04 .img02 {
+  left: 48.66666666666667%;
+}
+.trend .section04 .img03 {
+  right: 0;
+  width: 52.66666666666667%;
+  bottom: 24.29906542056075%;
+}
+.trend .section05 .img01 {
+  left: 0;
+  width: 71.86666666666667%;
+  top: 17.48133061778683%;
+}
+.trend .section05 .img02 {
+  top: 33.87644263408011%;
+  right: 5.333333333333333%;
+  width: 38.66666666666667%;
+}
+.trend .section05 .img03 {
+  width: 52.66666666666667%;
+  right: 0;
+  bottom: 0;
+}

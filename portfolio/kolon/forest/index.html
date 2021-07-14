@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>노아 프로젝트 Forest</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js"></script>
+  </head>
+  <body>
+    <style>
+      /*reset + common*/
+      @import url("https://fonts.googleapis.com/earlyaccess/notosanskr.css");
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      .forest {
+        background-color: #fff;
+      }
+      .forest * {
+        margin: 0;
+        padding: 0;
+        font-family: "Noto Sans KR", sans-serif;
+      }
+      .forest img {
+        display: block;
+        width: 100%;
+        vertical-align: top;
+      }
+      .forest .clearfix:after {
+        content: "";
+        clear: both;
+        display: block;
+      }
+      .forest .rel {
+        position: relative;
+      }
+      .forest .tit .txt {
+        position: absolute;
+        width: 44.11458333333333%;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        opacity: 0;
+      }
+      .forest .tit .txt01 {
+        top: 14.34830230010953%;
+      }
+      .forest .tit .txt02 {
+        top: 19.11281489594743%;
+      }
+      .forest .tit .txt03 {
+        top: 32.20153340635268%;
+      }
+      .forest .tit .logo {
+        width: 17.23958333333333%;
+        top: 11.17196056955093%;
+        opacity: 1;
+      }
+      .forest .cont04 .num {
+        transition: all 0.3s 1s ease;
+        opacity: 0;
+        font-weight: 600;
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        line-height: 1;
+        top: 41.06382978723404%;
+        color: #fff;
+        font-size: 14.27083333333333vw; /* 274px */
+        letter-spacing: -0.05em;
+        text-align: center;
+      }
+      .forest .cont04 .num.on {
+        opacity: 1;
+      }
+      .forest .cont05 .num_wrap {
+        text-align: right;
+        width: 41.0625%;
+        bottom: 58.82352941176471%;
+        font-size: 7.447916666666667vw; /* 143px */
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        line-height: 1;
+        padding-left: 1%;
+      }
+      .forest .cont05 .num_wrap span {
+        float: left;
+        transition: all 0.3s 1s ease;
+        opacity: 0;
+        letter-spacing: -0.05em;
+        color: #000;
+        font-weight: 600;
+        line-height: 1;
+        position: relative;
+      }
+      .forest .cont05 .num_wrap.on span {
+        opacity: 1;
+      }
+      .forest .cont05 .num_wrap span:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 105%;
+        text-align: left;
+        height: 100%;
+        background: #fff;
+      }
+      .forest .cont05 .num_wrap .num1.hide:before {
+        content: "2";
+      }
+      .forest .cont05 .num_wrap .num2.hide:before {
+        content: "0";
+      }
+      .forest .cont05 .num_wrap .num3.hide:before {
+        content: "1";
+      }
+      .forest .cont05 .num_wrap .num4.hide:before {
+        content: "4";
+      }
+      .forest .cont05 .num_wrap .num5.hide:before {
+        content: "1";
+      }
+      .forest .cont05 .num_wrap .num6.hide:before {
+        content: "0";
+      }
+      .forest .cont05 .num_wrap .num7.hide:before {
+        content: "2";
+      }
+      .forest .cont05 .num_wrap .num8.hide:before {
+        content: "8";
+      }
+      .forest .cont05 .num_wrap .num9.hide:before {
+        content: "8";
+      }
+    </style>
+    <div class="full-width">
+      <div class="forest rel">
+        <div class="tit rel">
+          <img
+            src="https://images3.kolonmall.com/upload/content/c19b3ca3-0296-4464-8cf4-1b8b4b2c4ea3/forest_img01.jpg"
+            alt=""
+          />
+          <img
+            src="https://images3.kolonmall.com/upload/content/c19b3ca3-0296-4464-8cf4-1b8b4b2c4ea3/forest_img01_logo.png"
+            alt=""
+            class="txt logo"
+          />
+          <!-- 코몰 -->
+          <img
+            src="https://images3.kolonmall.com/upload/content/c19b3ca3-0296-4464-8cf4-1b8b4b2c4ea3/forest_img01_txt01.png"
+            alt=""
+            class="txt txt01"
+          />
+          <img
+            src="https://images3.kolonmall.com/upload/content/c19b3ca3-0296-4464-8cf4-1b8b4b2c4ea3/forest_img01_txt02.png"
+            alt=""
+            class="txt txt02"
+          />
+          <img
+            src="https://images3.kolonmall.com/upload/content/c19b3ca3-0296-4464-8cf4-1b8b4b2c4ea3/forest_img01_txt03.png"
+            alt=""
+            class="txt txt03"
+          />
+        </div>
+        <img
+          src="https://images3.kolonmall.com/upload/content/c19b3ca3-0296-4464-8cf4-1b8b4b2c4ea3/forest_img02.jpg"
+          alt=""
+        />
+        <img
+          src="https://images3.kolonmall.com/upload/content/c19b3ca3-0296-4464-8cf4-1b8b4b2c4ea3/forest_img03.jpg"
+          alt=""
+        />
+        <div class="cont04 rel">
+          <img
+            src="https://images3.kolonmall.com/upload/content/c19b3ca3-0296-4464-8cf4-1b8b4b2c4ea3/forest_img04.jpg"
+            alt=""
+          />
+          <p class="num">1037</p>
+        </div>
+        <div class="cont05 rel">
+          <img
+            src="https://images3.kolonmall.com/upload/content/c19b3ca3-0296-4464-8cf4-1b8b4b2c4ea3/forest_img05.jpg"
+            alt=""
+          />
+          <p class="num_wrap clearfix">
+            <span class="num num1">2</span>
+            <span class="num num2">0</span>
+            <span class="num num3">1</span>
+            <span>,</span>
+            <span class="num num4">4</span>
+            <span class="num num5">1</span>
+            <span class="num num6">0</span>
+            <span>,</span>
+            <span class="num num7">2</span>
+            <span class="num num8">8</span>
+            <span class="num num9">8</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <script>
+      $(document).ready(function () {
+        //$(window).on("load", function(){
+        TweenMax.to($(".forest .tit .txt01"), 1, {
+          opacity: 1,
+          y: 0,
+          delay: 0,
+          ease: Power2.easeInOut,
+        });
+        TweenMax.to($(".forest .tit .txt02"), 1, {
+          opacity: 1,
+          y: 0,
+          delay: 0.5,
+          ease: Power2.easeInOut,
+        });
+        TweenMax.to($(".forest .tit .txt03"), 1, {
+          opacity: 1,
+          y: 0,
+          delay: 1,
+          ease: Power2.easeInOut,
+        });
+      });
+      $(window).scroll(function () {
+        var winTop = $(this).scrollTop();
+        var cont04 = $(".forest .cont04").offset().top - 1100;
+        var cont05 = $(".forest .cont05").offset().top - 800;
+
+        if (cont04 < winTop && winTop < cont05) {
+          $(".cont04 .num").addClass("on");
+        }
+        if (cont05 < winTop) {
+          $(".cont05 .num_wrap").addClass("on");
+        }
+      });
+
+      function count() {
+        function ncomma(num) {
+          return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+        $(".cont04 .num").each(function () {
+          $(this)
+            .prop("Counter", 0)
+            .animate(
+              {
+                Counter: parseInt($(this).text().replace(",", "")),
+              },
+              {
+                duration: 1500,
+                easing: "swing",
+                step: function (now) {
+                  $(this).text(ncomma(Math.ceil(now)));
+                },
+              }
+            );
+        });
+      }
+      function count2() {
+        var count = 0;
+        var eachNum = setInterval(function () {
+          var nIndex = $(this).index();
+          var random1 = Math.ceil(Math.random() * 9);
+          var random2 = Math.ceil(Math.random() * 9);
+          var random3 = Math.ceil(Math.random() * 9);
+          var random4 = Math.ceil(Math.random() * 9);
+          var random5 = Math.ceil(Math.random() * 9);
+          var random6 = Math.ceil(Math.random() * 9);
+          var random7 = Math.ceil(Math.random() * 9);
+          var random8 = Math.ceil(Math.random() * 9);
+          var random9 = Math.ceil(Math.random() * 9);
+          $(".cont05 .num_wrap .num").eq(0).html(random1);
+          $(".cont05 .num_wrap .num").eq(1).html(random2);
+          $(".cont05 .num_wrap .num").eq(2).html(random3);
+          $(".cont05 .num_wrap .num").eq(3).html(random4);
+          $(".cont05 .num_wrap .num").eq(4).html(random5);
+          $(".cont05 .num_wrap .num").eq(5).html(random6);
+          $(".cont05 .num_wrap .num").eq(6).html(random7);
+          $(".cont05 .num_wrap .num").eq(7).html(random8);
+          $(".cont05 .num_wrap .num").eq(8).html(random9);
+
+          count++;
+          if (count == 100) {
+            $(".cont05 .num_wrap").html(
+              '<span class="num num1">2</span><span class="num num2">0</span><span class="num num3">1</span><span>,</span><span class="num num4">4</span><span class="num num5">1</span><span class="num num6">0</span><span>,</span><span class="num num7">2</span><span class="num num8">8</span><span class="num num9">8</span>'
+            );
+            clearInterval(eachNum);
+          }
+          if (count == 10) {
+            $(".cont05 .num_wrap .num9").addClass("hide");
+          }
+          if (count == 15) {
+            $(".cont05 .num_wrap .num8").addClass("hide");
+          }
+          if (count == 20) {
+            $(".cont05 .num_wrap .num7").addClass("hide");
+          }
+          if (count == 25) {
+            $(".cont05 .num_wrap .num6").addClass("hide");
+          }
+          if (count == 40) {
+            $(".cont05 .num_wrap .num5").addClass("hide");
+          }
+          if (count == 55) {
+            $(".cont05 .num_wrap .num4").addClass("hide");
+          }
+          if (count == 70) {
+            $(".cont05 .num_wrap .num3").addClass("hide");
+          }
+          if (count == 85) {
+            $(".cont05 .num_wrap .num2").addClass("hide");
+          }
+        }, 20);
+      }
+
+      var counting = setInterval(function () {
+        if ($(".cont04 .num").hasClass("on")) {
+          count();
+          clearInterval(counting);
+        }
+      }, 1000);
+
+      var counting2 = setInterval(function () {
+        if ($(".cont05 .num_wrap").hasClass("on")) {
+          count2();
+          clearInterval(counting2);
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>

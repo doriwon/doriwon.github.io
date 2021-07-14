@@ -191,7 +191,8 @@ body {
   margin: 0 auto;
   width: 267px;
   height: 57px;
-  background: url("images/breeze_logo.png") no-repeat center;
+  background: url("https://cdn.eqlstore.com/display/html/TRND/20201124/breeze_logo.png")
+    no-repeat center;
 }
 .breeze .bg .logo {
   position: absolute;
@@ -819,7 +820,7 @@ body {
 
 /* tit */
 .breeze .tit:before {
-  background: url("images/breeze_tit_bg.png");
+  background: url("https://cdn.eqlstore.com/display/html/TRND/20201124/breeze_tit_bg.png");
   content: "";
   position: absolute;
   bottom: 0;

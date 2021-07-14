@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>에어로라이트 'AEROLITE'</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.css"
+    />
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js"></script>
+  </head>
+  <body>
+    <style>
+      /*reset + common*/
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      .aerolite {
+        overflow: hidden;
+      }
+      .aerolite * {
+        margin: 0;
+        padding: 0;
+        line-height: 0;
+      }
+      .aerolite img {
+        display: inline-block;
+        width: 100%;
+        vertical-align: top;
+      }
+      .aerolite .rel {
+        position: relative;
+      }
+      .aerolite .swiper-container {
+        position: absolute;
+      }
+      .aerolite .cont02 .swiper-container {
+        width: 56.875%;
+        top: 21.03718199608611%;
+        right: 0;
+      }
+      .aerolite .cont02 .swiper-pagination {
+        width: 100%;
+        height: 12.48185776487663%;
+        opacity: 1;
+        text-align: center;
+        left: 0;
+        bottom: 10.79207920792079%;
+      }
+      .aerolite .cont02 .swiper-pagination .swiper-pagination-bullet {
+        width: 4.375vw;
+        height: 4.375vw;
+        display: inline-block;
+        background-repeat: no-repeat;
+        -webkit-background-size: cover;
+        background-size: contain;
+        background-color: transparent;
+        cursor: pointer;
+        margin: 0;
+        opacity: 1;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        border-radius: 0;
+        border: 1px solid #c4c4c4;
+        outline: 0;
+        margin: 0 0.3125vw;
+        background-image: url("https://images3.kolonmall.com/upload/content/660288bd-e2fe-4b4d-afe1-01cf76edee8c/aerolite_cont02_img01.jpg");
+      }
+      .aerolite .cont02 .swiper-pagination .swiper-pagination-bullet-active {
+        border-color: #e6bd10;
+      }
+      .aerolite
+        .cont02
+        .swiper-pagination
+        .swiper-pagination-bullet:nth-child(1) {
+        background-image: url("https://images3.kolonmall.com/upload/content/660288bd-e2fe-4b4d-afe1-01cf76edee8c/aerolite_cont02_tab01.jpg");
+      }
+      .aerolite
+        .cont02
+        .swiper-pagination
+        .swiper-pagination-bullet:nth-child(2) {
+        background-image: url("https://images3.kolonmall.com/upload/content/660288bd-e2fe-4b4d-afe1-01cf76edee8c/aerolite_cont02_tab02.jpg");
+      }
+      .aerolite
+        .cont02
+        .swiper-pagination
+        .swiper-pagination-bullet:nth-child(3) {
+        background-image: url("https://images3.kolonmall.com/upload/content/660288bd-e2fe-4b4d-afe1-01cf76edee8c/aerolite_cont02_tab03.jpg");
+      }
+      .aerolite
+        .cont02
+        .swiper-pagination
+        .swiper-pagination-bullet:nth-child(4) {
+        background-image: url("https://images3.kolonmall.com/upload/content/660288bd-e2fe-4b4d-afe1-01cf76edee8c/aerolite_cont02_tab04.jpg");
+      }
+      .aerolite .cont03 .swiper-container {
+        right: 16.375%;
+        bottom: 17.30926989335521%;
+        overflow: visible;
+        width: 15.67708333333333%;
+      }
+      .aerolite .cont03 .swiper-container .swiper-slide {
+        width: 100%;
+      }
+      .aerolite .cont03 .swiper-container .swiper-slide-active {
+        transition: all 0.3s ease;
+        margin-top: -11.82291666666667vw;
+        transform: scale(2.02);
+        z-index: 2;
+      }
+    </style>
+
+    <div class="full-width">
+      <div class="aerolite">
+        <img
+          src="https://images3.kolonmall.com/upload/content/660288bd-e2fe-4b4d-afe1-01cf76edee8c/aerolite_cont01.jpg"
+          alt=""
+        />
+        <div class="cont02 rel">
+          <img
+            src="https://images3.kolonmall.com/upload/content/660288bd-e2fe-4b4d-afe1-01cf76edee8c/aerolite_cont02.jpg"
+            alt=""
+          />
+          <div class="swiper-container">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img
+                  src="https://images3.kolonmall.com/upload/content/660288bd-e2fe-4b4d-afe1-01cf76edee8c/aerolite_cont02_img01.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="swiper-slide">
+                <img
+                  src="https://images3.kolonmall.com/upload/content/660288bd-e2fe-4b4d-afe1-01cf76edee8c/aerolite_cont02_img02.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="swiper-slide">
+                <img
+                  src="https://images3.kolonmall.com/upload/content/660288bd-e2fe-4b4d-afe1-01cf76edee8c/aerolite_cont02_img03.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="swiper-slide">
+                <img
+                  src="https://images3.kolonmall.com/upload/content/660288bd-e2fe-4b4d-afe1-01cf76edee8c/aerolite_cont02_img04.jpg"
+                  alt=""
+                />
+              </div>
+            </div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+        <div class="cont03 rel">
+          <img
+            src="https://images3.kolonmall.com/upload/content/660288bd-e2fe-4b4d-afe1-01cf76edee8c/aerolite_cont03.jpg"
+            alt=""
+          />
+          <div class="swiper-container">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img
+                  src="https://images3.kolonmall.com/upload/content/660288bd-e2fe-4b4d-afe1-01cf76edee8c/aerolite_cont03_img01.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="swiper-slide">
+                <img
+                  src="https://images3.kolonmall.com/upload/content/660288bd-e2fe-4b4d-afe1-01cf76edee8c/aerolite_cont03_img02.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="swiper-slide">
+                <img
+                  src="https://images3.kolonmall.com/upload/content/660288bd-e2fe-4b4d-afe1-01cf76edee8c/aerolite_cont03_img03.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="swiper-slide">
+                <img
+                  src="https://images3.kolonmall.com/upload/content/660288bd-e2fe-4b4d-afe1-01cf76edee8c/aerolite_cont03_img04.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="swiper-slide">
+                <img
+                  src="https://images3.kolonmall.com/upload/content/660288bd-e2fe-4b4d-afe1-01cf76edee8c/aerolite_cont03_img05.jpg"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      var swiper01 = new Swiper(".cont02 .swiper-container", {
+        effect: "fade",
+        speed: 500,
+        touchRatio: 0,
+        pagination: {
+          el: ".cont02 .swiper-pagination",
+          clickable: true,
+        },
+      });
+      var swiper02 = new Swiper(".cont03 .swiper-container", {
+        //mousewheel: true,
+        keyboard: true,
+        slidesPerView: "auto",
+        loop: true,
+        spaceBetween: 20,
+        speed: 1200,
+        autoplay: {
+          delay: 1200,
+          disableOnInteraction: false,
+        },
+      });
+    </script>
+  </body>
+</html>

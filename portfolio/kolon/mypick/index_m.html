@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=0, viewport-fit=cover"
+    />
+    <title>ODUMAK</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.css"
+    />
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js"></script>
+  </head>
+  <body>
+    <style>/*reset + common*/
+      @import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+      }
+      ul,
+      li {
+        list-style: none;
+      }
+      .history {
+        position: relative;
+        font-family: "Noto Sans KR";
+        max-width: 750px;
+        margin: 0 auto;
+      }
+      .history * {
+        margin: 0;
+        padding: 0;
+        line-height: 0;
+      }
+      .history img {
+        width: 100%;
+        vertical-align: top;
+      }
+      .history .rel {
+        position: relative;
+      }
+      /* 투표하기 */
+      .history .poll div {
+        position: absolute;
+        width: 100%;
+        font-size: 0;
+      }
+      .history .poll div.trust {
+        top: 1.787234042553191%;
+      }
+      .history .poll div.somewhere {
+        top: 24.14184397163121%;
+      }
+      .history .poll div.night {
+        top: 46.49645390070922%;
+      }
+      .history .poll div.hero {
+        top: 68.87943262411348%;
+      }
+      .history .poll input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 0;
+        border: 0;
+        vertical-align: baseline;
+        opacity: 0;
+      }
+      .history .poll label {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+      }
+      .history .poll label:before {
+        display: block;
+        position: absolute;
+        /* background-color:#fff; */
+        background-size: cover;
+        background-repeat: no-repeat;
+        z-index: 2;
+        content: "";
+        width: 100%;
+        height: 100%;
+      }
+      .history .poll > div {
+        height: 5.50354609929078%;
+      }
+      .history .poll .trust label:before {
+        background-image: url("https://images.kolonmall.com/cms/event/upload/5f07c008-175c-4b04-8111-8dfd8cacaa00/m_history_img01_txt.png");
+      }
+      .history .poll .trust input:checked + label:before {
+        background-image: url("https://images.kolonmall.com/cms/event/upload/5f07c008-175c-4b04-8111-8dfd8cacaa00/m_history_img01_txt_checked.png");
+      }
+      .history .poll .somewhere label:before {
+        background-image: url("https://images.kolonmall.com/cms/event/upload/5f07c008-175c-4b04-8111-8dfd8cacaa00/m_history_img02_txt.png");
+      }
+      .history .poll .somewhere input:checked + label:before {
+        background-image: url("https://images.kolonmall.com/cms/event/upload/5f07c008-175c-4b04-8111-8dfd8cacaa00/m_history_img02_txt_checked.png");
+      }
+      .history .poll .night label:before {
+        background-image: url("https://images.kolonmall.com/cms/event/upload/5f07c008-175c-4b04-8111-8dfd8cacaa00/m_history_img03_txt.png");
+      }
+      .history .poll .night input:checked + label:before {
+        background-image: url("https://images.kolonmall.com/cms/event/upload/5f07c008-175c-4b04-8111-8dfd8cacaa00/m_history_img03_txt_checked.png");
+      }
+      .history .poll .hero label:before {
+        background-image: url("https://images.kolonmall.com/cms/event/upload/5f07c008-175c-4b04-8111-8dfd8cacaa00/m_history_img04_txt.png");
+      }
+      .history .poll .hero input:checked + label:before {
+        background-image: url("https://images.kolonmall.com/cms/event/upload/5f07c008-175c-4b04-8111-8dfd8cacaa00/m_history_img04_txt_checked.png");
+      }
+      .history .poll input:checked + label:after {
+        display: block;
+      }
+      .history .btn_poll {
+        position: absolute;
+        bottom: 4.737589%;
+        left: 19.53125%;
+        width: 61%;
+        border: 0;
+        border-radius: 50px;
+        height: 4%;
+        animation: coloring 1.5s ease-in-out infinite;
+      }
+      @keyframes coloring {
+        0% {
+          background: #000;
+        }
+        50% {
+          background: #f02241;
+        }
+        100% {
+          background: #000;
+        }
+      }
+      .history .btn_img {
+        width: 61%;
+      }
+
+      /* 투표현황 */
+      .history .result {
+        position: absolute;
+        width: 89.0625%;
+        height: 65.42111506524318%;
+        top: 16.07354685646501%;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+      }
+      .history .result > li {
+        float: left;
+        height: 47.55%;
+        width: 47.7%;
+        position: relative;
+        margin-bottom: 4.9%;
+      }
+      .history .result > li:nth-child(odd) {
+        margin-right: 4.6%;
+      }
+      .history .result .num {
+        text-align: center;
+        letter-spacing: -0.025em;
+        font-size: 3.4375vw;
+        color: #000;
+        display: inline-block;
+        background: #fff;
+        width: 10vw;
+        height: 4.4375vw;
+        line-height: 4.4375vw;
+        border-radius: 2.604166666666667vw;
+        margin-left: 14%;
+        margin-top: 38%;
+      }
+      .history .result .bar_wrap {
+        position: absolute;
+        background: #fff;
+        border-radius: 10px;
+        bottom: 5%;
+        right: 5%;
+        height: 65.3%;
+        padding: 2px;
+        box-sizing: border-box;
+      }
+      .history .result .bar {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 0;
+        background: #176eff;
+        border-radius: 6px;
+        transition: height 2s, background 0.2s;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: rotate(360deg);
+        clear: both;
+      }
+      .history .result .bar .label {
+        display: inline-block;
+        position: relative;
+        z-index: 2;
+        padding: 2px;
+      }
+
+      @media (min-width: 750px) {
+        .history .btn_poll {
+          border-radius: 83px;
+        }
+        .history .result .bar {
+          height: 13px;
+        }
+        .history .result .num {
+          font-size: 22px;
+          width: 75px;
+          height: 29px;
+          line-height: 25px;
+          border-radius: 16px;
+        }
+        .history .result .bar_wrap {
+          padding: 3.5px;
+        }
+        .history .result .bar .label {
+          padding: 3.5px;
+        }
+      }
+    </style>
+    <div class="history">
+      <img src="https://images.kolonmall.com/cms/event/upload/5f07c008-175c-4b04-8111-8dfd8cacaa00/m_history_cont01.jpg" alt="HISTORY EVENT 가장 공감하는 코오롱스포츠 20SS 캠페인을 골라주세요! 당신이 선택할 캠페인이 미래 코오롱스포츠의 히스토리가 됩니다.">
+      <div class="poll rel">
+        <img src="https://images.kolonmall.com/cms/event/upload/5f07c008-175c-4b04-8111-8dfd8cacaa00/m_history_cont02.jpg" alt="">
+        <div class="rel trust">
+          <input type="radio" name="poll" id="trust" value="" checked="checked"/>
+          <label for="trust"><i></i>#TRUST KOLON SPORT 인생길 우리, 같이 걸어가요</label>
+        </div>
+        <div class="rel somewhere">
+          <input type="radio" name="poll" id="somewhere" value=""/>
+          <label for="somewhere"><i></i>#somewhere 계획에 없던 어딘가 일정도 동선도 없지만 이게 바로 여행이죠!</label>
+        </div>
+        <div class="rel night">
+          <input type="radio" name="poll" id="night" value=""/>
+          <label for="night"><i></i>#I AM NIGHT-HIKER 나의 밤은 내가 비춘다</label>
+        </div>
+        <div class="rel hero">
+          <input type="radio" name="poll" id="hero" value=""/>
+          <label for="hero"><i></i>#꿈을 향한 여정 나의 꿈을 포기하지 않습니다</label>
+        </div>
+        <button class="btn_poll" onclick="alert('쿠폰이 발급되었습니다.')">
+          <img src="https://images.kolonmall.com/cms/event/upload/5f07c008-175c-4b04-8111-8dfd8cacaa00/m_history_poll_btn.png" alt="투표하기" class="btn_img">
+        </button>
+      </div>
+      <img src="https://images.kolonmall.com/cms/event/upload/5f07c008-175c-4b04-8111-8dfd8cacaa00/m_history_cont03.jpg" alt="투표시 즉시 사용 가능한 쿠폰이 발급됩니다"></a>
+      <div class="rel">
+        <img src="https://images.kolonmall.com/cms/event/upload/5f07c008-175c-4b04-8111-8dfd8cacaa00/m_history_cont04.jpg" alt="Score 투표현황">
+        <ul class="result clearfix">
+          <li class="trust">
+            <p class="num count" data="184"></p>
+            <div class="bar_wrap">
+              <div class="bar" data-percent="23%">
+                <span class="label"></span>
+              </div>
+            </div>
+          </li>
+          <li class="somewhere">
+            <p class="num count" data="304"></p>
+            <div class="bar_wrap">
+              <div class="bar" data-percent="38%">
+                <span class="label"></span>
+              </div>
+            </div>
+          </li>
+          <li class="night">
+            <p class="num count" data="104"></p>
+            <div class="bar_wrap">
+              <div class="bar" data-percent="13%">
+                <span class="label"></span>
+              </div>
+            </div>
+          </li>
+          <li class="hero">
+            <p class="num count" data="208"></p>
+            <div class="bar_wrap">
+              <div class="bar" data-percent="26%">
+                <span class="label"></span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <script>
+      //투표
+      $( function() {
+        $(".poll label").on('click',function(){
+          $(this).siblings().attr('checked',true);
+        });
+        $(".poll label").keydown(function(key){
+          if (key.keyCode == 13) {
+            $(this).siblings().attr('checked',true);
+          }
+        });
+      });
+
+      //카운팅
+      function start (){
+        $('.bar').each(function(i){
+          var $bar = $(this);
+          setTimeout(function(){
+            $bar.css('height', $bar.attr('data-percent'));      
+          }, i*100);
+        });
+      }
+
+      function counting(){
+      $('.count').each(function () {
+          $(this).prop('Counter',0).animate({
+            Counter: $(this).attr('data')
+          }, {
+            duration: 2000,
+            easing: 'swing',
+            step: function (now) {
+              $(this).text(Math.ceil(now));
+            }
+          });
+        });
+      }
+
+      $(window).scroll(function(){
+        let scrTop = $(this).scrollTop();
+        const result = $(".result").offset().top - 800;
+        if(result < scrTop && scrTop){
+          setTimeout(function() { 
+            start();
+            counting();
+          }, 500);
+        }
+      });
+    </script>
+  </body>
+</html>

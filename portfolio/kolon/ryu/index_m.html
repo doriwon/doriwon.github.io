@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=0, viewport-fit=cover"
+    />
+    <title>준열's True Story</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.css"
+    />
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js"></script>
+  </head>
+  <body>
+    <style>
+      /*reset + common*/
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+      }
+      ul,
+      li {
+        list-style: none;
+      }
+      .ryu {
+        position: relative;
+        background-color: #fff;
+        max-width: 750px;
+        margin: 0 auto;
+      }
+      .ryu * {
+        margin: 0;
+        padding: 0;
+        line-height: 0;
+      }
+      .ryu .clearfix:after {
+        content: "";
+        display: block;
+        clear: both;
+        overflow: hidden;
+        height: 0;
+      }
+      .ryu .f_left {
+        float: left;
+      }
+      .ryu .f_right {
+        float: right;
+      }
+      .ryu h1,
+      .ryu h2,
+      .ryu h3,
+      .ryu h4,
+      .ryu h5,
+      .ryu h6 {
+        margin: 0;
+        padding: 0;
+      }
+      .ryu ol,
+      .ryu ul,
+      .ryu li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .ryu button {
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+      .ryu img {
+        max-width: 100%;
+        vertical-align: top;
+      }
+      .ryu .alt {
+        width: 0;
+        height: 0;
+        font-size: 0;
+        line-height: 0;
+        position: absolute;
+        overflow: hidden;
+        visibility: hidden;
+      }
+      .ryu .rel {
+        position: relative;
+      }
+      .ryu .txt_center {
+        text-align: center;
+      }
+      .ryu .txt_left {
+        text-align: left;
+      }
+      .ryu .txt_right {
+        text-align: right;
+      }
+      .ryu .w100p {
+        width: 100%;
+      }
+
+      .ryu .after {
+        transform: matrix(1, 0, 0, 1, 0, 0);
+      }
+      .ryu .after.active:after {
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 4.21875vw;
+        background-color: #ffa03b;
+        -webkit-animation: width 0.7s linear;
+        -moz-animation: width 0.7s linear;
+        animation: width 0.7s linear;
+        z-index: -1;
+        content: "";
+      }
+      -webkit-@keyframes width {
+        0% {
+          width: 0;
+        }
+        25% {
+          width: 25%;
+        }
+        50% {
+          width: 50%;
+        }
+        75% {
+          width: 75%;
+        }
+        100% {
+          width: 100%;
+        }
+      }
+      @keyframes width {
+        0% {
+          width: 0;
+        }
+        25% {
+          width: 25%;
+        }
+        50% {
+          width: 50%;
+        }
+        75% {
+          width: 75%;
+        }
+        100% {
+          width: 100%;
+        }
+      }
+      .ryu .after2 {
+        transform: matrix(1, 0, 0, 1, -30, 0);
+        opacity: 0;
+      }
+      .ryu .after2:after {
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 2.2916vw;
+        background-color: #ffa03b;
+        z-index: -1;
+        content: "";
+      }
+      .ryu .tit_box {
+        position: absolute;
+        top: 7.150153217568948%;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 87.5%;
+        height: 56.69050051072523%;
+        padding: 13.39285714285714% 0 0 14.59459459459459%;
+        background-color: rgba(255, 255, 255, 0.7);
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        z-index: 1;
+      }
+      .ryu .tit_box .tit01 {
+        width: 31.06936416184971%;
+      }
+      .ryu .tit_box .tit02 {
+        width: 70.23121387283237%;
+        margin-top: 1.041666666666667vw;
+      }
+      .ryu .tit_box .txt {
+        width: 84.32989690721649%;
+      }
+      .ryu .tit_box .txt01 {
+        margin-top: 9.6875vw;
+      }
+      .ryu .tit_box .txt02 {
+        margin-top: 6.09375vw;
+      }
+
+      /* navi */
+      .ryu .navi_wrap {
+        padding-top: 16.40625vw;
+        margin-bottom: 14.53125vw;
+      }
+      .ryu .navi_wrap .txt02 {
+        margin-top: 8.75vw;
+      }
+      .ryu .navi_wrap .txt img {
+        width: 66.71875%;
+      }
+      .ryu .navi_wrap .tit {
+        margin: 0 auto;
+      }
+      .ryu .navi_wrap .tit.tit01 {
+        width: 28.90625%;
+        margin-top: 14.84375vw;
+      }
+      .ryu .navi_wrap .tit.tit02 {
+        width: 75.9375%;
+        margin-top: 2.5vw;
+      }
+      .ryu .navi {
+        margin-top: 10vw;
+        width: 100%;
+        display: inline-block;
+        vertical-align: top;
+      }
+      .ryu .navi.navi01 {
+        background: url("https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_ryu_nav_bg01.png")
+          bottom -8.4375vw center no-repeat;
+        -webkit-background-size: cover;
+        background-size: cover;
+      }
+      .ryu .navi.navi02 {
+        background: url("https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_ryu_nav_bg02.png")
+          bottom -4.0625vw center no-repeat;
+        -webkit-background-size: cover;
+        background-size: cover;
+        margin-top: 0;
+      }
+      .ryu .navi li.first {
+        margin: 0 18.90625% 0 7.03125%;
+      }
+      .ryu .navi li.second {
+        margin: 6.5625vw 22.65625% 0 0;
+      }
+      .ryu .navi li.fourth {
+        margin: 3.75vw 23.4375% 0 26.5625%;
+      }
+      .ryu .navi li.last {
+        margin-top: 10.78125vw;
+      }
+      .ryu .navi li a {
+        display: block;
+        opacity: 0.4;
+        filter: Alpha(opacity=40);
+      }
+      .ryu .navi li a.on,
+      .ryu .navi li a:active {
+        opacity: 1;
+        filter: Alpha(opacity=100);
+      }
+      .ryu .navi li a:before {
+        display: block;
+        width: 10.46875vw;
+        height: 13.75vw;
+        margin: 0 auto 7.8125vw;
+        background-image: url("https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_ryu_nav_ico.png");
+        background-position: center bottom;
+        background-size: contain;
+        background-repeat: no-repeat;
+        content: "";
+      }
+      .ryu .navi li a.on:before {
+        background-size: cover;
+        animation: bounce 1.3s cubic-bezier(0.15, 0.41, 0.69, 0.94) infinite;
+      }
+      .ryu .navi li a:after {
+        display: block;
+        position: absolute;
+        top: 15.15625vw;
+        left: 50%;
+        width: 2.34375vw;
+        height: 2.34375vw;
+        margin-left: -1.171875vw;
+        background-color: #fff;
+        border: 0.15625vw solid #ffa03b;
+        border-radius: 50%;
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        content: "";
+      }
+      -webkit-@keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+      .ryu .navi li img {
+        width: 10.46875vw;
+      }
+      .ryu .navi li img.long {
+        width: 18.90625vw;
+      }
+
+      /* tit_wrap */
+      .ryu .tit_wrap p {
+        position: absolute;
+        left: 0;
+        width: 100%;
+      }
+      .ryu .tit_wrap .index {
+        top: 4.359197907585004%;
+        width: 85.46875%;
+      }
+      .ryu .tit_wrap .tit {
+        top: 49.51965065502183%;
+      }
+      .ryu .tit_wrap .tit img,
+      .ryu .tit_wrap .txt img {
+        width: 75.9375%;
+      }
+      .ryu .tit_wrap .txt {
+        top: 73.86363636363636%;
+      }
+
+      /* stit_wrap */
+      .ryu .stit_wrap .index {
+        position: absolute;
+        top: 5.310457516339869%;
+        left: 0;
+        width: 20.9375%;
+      }
+      .ryu .stit_wrap .tit {
+        position: absolute;
+        top: 10.75471698113208%;
+        left: 0;
+        width: 100%;
+      }
+      .ryu .stit_wrap .tit img {
+        width: 87.5%;
+      }
+      .ryu .stit_wrap .txt_box {
+        position: absolute;
+        top: 29.33962264150943%;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 87.5%;
+        height: 60.66037735849057%;
+        padding: 15.625vw 8.28125vw 0; /* 100px 53px 0 */
+        border: 1px solid rgba(0, 0, 0, 0.4);
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+      }
+      .ryu .stit_wrap .txt_box:before {
+        content: "";
+        position: absolute;
+        top: -2.03125vw;
+        left: -2.03125vw;
+        width: 0;
+        height: 0;
+        border-top: 13.4375vw solid #fda854;
+        border-right: 13.4375vw solid transparent;
+      }
+      .ryu .stit_wrap .txt {
+        width: 78.85462555066079%;
+      }
+      .ryu .stit_wrap .txt02 {
+        margin: 7.5vw 0 8.90625vw;
+      } /* 48px 0 57px */
+      .ryu .stit_wrap .txt04 {
+        margin-top: 3.59375vw;
+      } /* 23px */
+      .ryu .stit_wrap .txt05 {
+        position: absolute;
+        top: 77.26415094339623%;
+        right: 7.142857142857143%;
+        width: 65.35714285714286%;
+      }
+      .ryu .stit_wrap .txt05:after {
+        height: 3.4375vw; /* 22px */
+        background: transparent
+          url("https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/ryu01_stit_txt05_line.png")
+          0 0 no-repeat;
+        background-size: 100% 100%;
+      }
+
+      /* cont */
+      .ryu .cont {
+        padding: 15.9375vw 0 0;
+      } /* 102px */
+      .ryu .cont .f_left {
+        width: 44.6875%;
+        margin-top: 12.7083vw;
+      }
+      .ryu .cont .f_right {
+        width: 53.80208333333333%;
+      }
+      .ryu .cont .img {
+        transform: matrix(1, 0, 0, 1, 0, 30);
+        opacity: 0;
+      }
+      .ryu .cont .txt {
+        position: absolute;
+        transform: matrix(1, 0, 0, 1, 30, 0);
+        opacity: 0;
+        z-index: 2;
+      }
+      .ryu .cont .img01 img {
+        width: 82.03125%;
+      }
+      .ryu .cont .img02 {
+        padding-top: 19.8125vw;
+      }
+      .ryu .cont .img02 img {
+        width: 75.625%;
+      }
+      .ryu .cont .txt01 {
+        top: 9.71028%;
+        left: 5.9375%;
+        width: 62.03125%;
+      }
+      .ryu .cont .img03 {
+        padding-top: 20vw;
+      }
+      .ryu .cont .img03 img {
+        width: 82%;
+      }
+      .ryu .cont .txt02 {
+        top: 8.4%;
+        right: 3.125%;
+        width: 49.84375%;
+      }
+      .ryu .cont .img04 {
+        padding-top: 19vw;
+      }
+      .ryu .cont .img04 img {
+        width: 100%;
+      }
+      .ryu .cont .txt03 {
+        top: 10%;
+        right: 6.5625%;
+        width: 50%;
+        transform: matrix(1, 0, 0, 1, -30, 0);
+      }
+      .ryu .cont .img05 {
+        padding-top: 10.9375vw;
+        margin-left: 6.25%;
+      }
+      .ryu .cont .img05 img {
+        width: 73%;
+      }
+      .ryu .cont .txt04 {
+        top: 48.66666666666667%;
+        right: 3.125%;
+        width: 43.28125%;
+      }
+      .ryu .cont .img06 {
+        padding-top: 36vw;
+        z-index: 1;
+      }
+      .ryu .cont .img06 img {
+        width: 89%;
+      }
+      .ryu .cont .txt05 {
+        top: 6%;
+        right: 6.25%;
+        width: 52.34375%;
+      }
+      .ryu .cont .img07 {
+        padding-top: 49.0625vw;
+        z-index: 0;
+      }
+      .ryu .cont .img07 img {
+        width: 100%;
+      }
+      .ryu .cont .txt06 {
+        top: 4%;
+        left: 6.25%;
+        width: 67.34375%;
+      }
+      .ryu .cont .img08 {
+        margin-bottom: 11.25vw;
+        margin-top: 4.53125vw;
+      }
+      .ryu .cont .img08 img {
+        width: 60.3125%;
+      }
+      .ryu .cont .txt07 {
+        top: 29.68197879858657%;
+        right: 1.875%;
+        width: 44.0625%;
+      }
+      .ryu .cont .txt08 {
+        top: 10.13513513513514%;
+        left: 0;
+        width: 100%;
+      }
+      .ryu .cont .txt08 img {
+        width: 52.8125%;
+      }
+      .ryu .cont .vdo-wrap {
+        width: 75%;
+        z-index: 1;
+        margin-top: 10.78125vw;
+      }
+      .ryu .cont .vdo-wrap video {
+        width: 100%;
+      }
+      .ryu .cont .img10 {
+        margin-top: -10.78125vw;
+      }
+      .ryu .cont .img10 img {
+        width: 61.875%;
+      }
+      .ryu .cont .txt09 {
+        top: 22.31270358306189%;
+        left: 6.25%;
+        width: 57.34375%;
+      }
+      .ryu .cont .img11 {
+        margin-bottom: 11.5625vw;
+        padding-top: 10.625vw;
+      }
+      .ryu .cont .img11 img {
+        width: 61.5625%;
+      }
+      .ryu .cont .txt10 {
+        top: 42.98507462686567%;
+        right: 5.15625%;
+        width: 45.15625%;
+      }
+      .ryu .video_wrap {
+        width: 87.5%;
+        margin: 0 auto;
+      }
+      .ryu .video_wrap iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100% !important;
+      }
+      .ryu .go_video {
+        display: block;
+        width: 100%;
+        margin: 7.8125vw 0;
+      }
+
+      /* 하단 네비 */
+      .ryu .swiper-slide a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        transition: all 0.5s ease;
+      }
+
+      .ryu .swiper-slide.nav01 a {
+        background-image: url("https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_bottom01_gray.jpg");
+      }
+      .ryu .swiper-slide.nav02 a {
+        background-image: url("https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_bottom02_gray.jpg");
+      }
+      .ryu .swiper-slide.nav03 a {
+        background-image: url("https://images.kolonmall.com/cms/special/upload/f1032c0a-aeae-4b0f-a899-f575bb1a1e37/m_bottom03_gray.jpg");
+      }
+      .ryu .swiper-slide.nav04 a {
+        background-image: url("https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_bottom04_gray.jpg");
+      }
+      .ryu .swiper-slide.nav05 a {
+        background-image: url("https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_bottom_ready.jpg");
+      }
+      .ryu .swiper-slide.nav05 a {
+        background-image: url("https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_bottom05_gray.jpg");
+      }
+      .ryu .swiper-slide.nav01 a.on,
+      .ryu .swiper-slide.nav01 a:active {
+        background-image: url("https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_bottom01.jpg");
+      }
+      .ryu .swiper-slide.nav02 a.on,
+      .ryu .swiper-slide.nav02 a:active {
+        background-image: url("https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_bottom02.jpg");
+      }
+      .ryu .swiper-slide.nav03 a.on,
+      .ryu .swiper-slide.nav03 a:active {
+        background-image: url("https://images.kolonmall.com/cms/special/upload/f1032c0a-aeae-4b0f-a899-f575bb1a1e37/m_bottom03.jpg");
+      }
+      .ryu .swiper-slide.nav04 a.on,
+      .ryu .swiper-slide.nav04 a:active {
+        background-image: url("https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_bottom04.jpg");
+      }
+      .ryu .swiper-slide.nav05 a.on,
+      .ryu .swiper-slide.nav05 a:active {
+        background-image: url("https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_bottom05.jpg");
+      }
+      .ryu .image_nav_wrap .btn {
+        display: block;
+        position: absolute;
+        top: 50%;
+        width: 5.78125vw;
+        height: 7.8125vw;
+        margin-top: -3.90625vw;
+        background-size: cover;
+        background-repeat: no-repeat;
+        z-index: 2;
+      }
+      .ryu .image_nav_wrap .swiper-button-prev {
+        left: 0;
+        background-image: url("https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_btn_prev.png");
+      }
+
+      .ryu .image_nav_wrap .swiper-button-next {
+        right: 0;
+        background-image: url("https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_btn_next.png");
+      }
+
+      @media (min-width: 750px) {
+        .ryu .after.active:after {
+          height: 39px;
+        }
+        .ryu .tit_box .txt01 {
+          margin-top: 62px;
+        }
+        .ryu .tit_box .txt02 {
+          margin-top: 39px;
+        }
+
+        /* navi */
+        .ryu .navi_wrap {
+          padding-top: 105px;
+          margin-bottom: 93px;
+        }
+        .ryu .navi_wrap .txt02 {
+          margin-top: 56px;
+        }
+        .ryu .navi_wrap .tit.tit01 {
+          margin-top: 95px;
+        }
+        .ryu .navi_wrap .tit.tit02 {
+          margin-top: 16px;
+        }
+        .ryu .navi {
+          margin-top: 64px;
+        }
+        .ryu .navi.navi01 {
+          background: url("https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_ryu_nav_bg01.png")
+            bottom -74px center no-repeat;
+          -webkit-background-size: cover;
+          background-size: cover;
+        }
+        .ryu .navi.navi02 {
+          background: url("https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_ryu_nav_bg02.png")
+            bottom -24px center no-repeat;
+          -webkit-background-size: cover;
+          background-size: cover;
+        }
+        .ryu .navi li.first {
+          margin: -8px 18.90625% 0 10.5%;
+        }
+        .ryu .navi li.second {
+          margin: 42px 22.65625% 0 0;
+        }
+        .ryu .navi li.fourth {
+          margin: 15px 23.4375% 0 26.5625%;
+        }
+        .ryu .navi li.third {
+          margin-top: 0;
+        }
+        .ryu .navi li.last {
+          margin-top: 69px;
+        }
+        .ryu .navi li a:before {
+          width: 67px;
+          height: 88px;
+          margin: 0 auto 50px;
+        }
+        .ryu .navi li a:after {
+          top: 97px;
+          left: 50%;
+          width: 15px;
+          height: 15px;
+          margin-left: -7.5px;
+          background-color: #fff;
+          border: 1px solid #ffa03b;
+        }
+        .ryu .navi li img {
+          width: 67px;
+        }
+        .ryu .navi li img.long {
+          width: 121px;
+        }
+        /* ryu01 cont */
+        .ryu01 .cont {
+          padding-top: 279px;
+        }
+        .ryu01 .cont .txt {
+          top: 134px;
+        }
+
+        /* stit_wrap */
+        .ryu .stit_wrap .txt_box {
+          padding: 100px 53px 0;
+        }
+        .ryu .stit_wrap .txt_box:before {
+          top: -13px;
+          left: -13px;
+          border-top: 86px solid #fda854;
+          border-right: 86px solid transparent;
+        }
+        .ryu .stit_wrap .txt02 {
+          margin: 48px 0 57px;
+        }
+        .ryu .stit_wrap .txt04 {
+          margin-top: 23px;
+        }
+        .ryu .stit_wrap .txt05:after {
+          height: 22px;
+        }
+
+        /* cont */
+        .ryu .cont {
+          padding: 102px 0 0;
+        }
+        .ryu .cont .img02 {
+          padding-top: 146px;
+        }
+        .ryu .cont .img03 {
+          padding-top: 128px;
+        }
+        .ryu .cont .img04 {
+          padding-top: 121px;
+        }
+        .ryu .cont .img05 {
+          padding-top: 70px;
+        }
+        .ryu .cont .img06 {
+          padding-top: 230px;
+        }
+        .ryu .cont .img07 {
+          padding-top: 314px;
+        }
+        .ryu .cont .img08 {
+          margin-bottom: 72px;
+          margin-top: 29px;
+        }
+        .ryu .cont .vdo-wrap {
+          margin-top: 69px;
+        }
+        .ryu .cont .img10 {
+          margin-top: -69px;
+        }
+        .ryu .cont .img11 {
+          margin-bottom: 74px;
+          padding-top: 68px;
+        }
+        .ryu .go_video {
+          margin: 58px 0;
+        }
+
+        /* 하단 네비 */
+        .ryu .image_nav_wrap .btn {
+          width: 37px;
+          height: 50px;
+          margin-top: -25px;
+        }
+      }
+    </style>
+    <div class="ryu">
+      <div class="rel">
+        <img
+          src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_ryu_tit_bg.jpg"
+          alt=""
+          class="w100p"
+        />
+        <div class="tit_box txt_left">
+          <p class="tit tit01 after rel">
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_ryu_tit01.png"
+              alt=""
+            />
+          </p>
+          <p class="tit tit02 after rel">
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_ryu_tit02.png"
+              alt=""
+            />
+          </p>
+          <p class="txt txt01">
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_ryu_txt01.png"
+              alt=""
+            />
+          </p>
+          <p class="txt txt02">
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_ryu_txt02.png"
+              alt=""
+            />
+          </p>
+        </div>
+      </div>
+      <div class="navi_wrap txt_center rel">
+        <p class="txt txt01">
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_ryu_nav_txt01.png"
+            alt="얼마나 설레는지 물어도 좋습니다. 하지만 그곳이 어디냐고 묻진 마세요"
+          />
+        </p>
+        <p class="txt txt02">
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_ryu_nav_txt02.png"
+            alt="공유보단 소유할 테니까요 #somewhere"
+          />
+        </p>
+        <p class="tit tit01 after rel">
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_ryu_nav_tit01.png"
+            alt="준열’s ON HIS WAY"
+          />
+        </p>
+        <p class="tit tit02 after rel">
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_ryu_nav_tit02.png"
+            alt="준열’s ON HIS WAY"
+          />
+        </p>
+        <ul class="navi navi01 clearfix">
+          <li class="f_left first rel">
+            <a onclick="return false;" class="on"
+              ><img
+                src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/ryu_nav01_on.png"
+                alt="설렘의 시작 그리고 출발"
+                class="long"
+            /></a>
+          </li>
+          <li class="f_left second rel">
+            <!-- http://kolonsport.mrromance.co.kr/ryu/ryu02_m.html -->
+            <a href="javascript:void(0)" onclick="alert('Coming soon!')"
+              ><img
+                src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/ryu_nav02.png"
+                alt="도착!"
+            /></a>
+          </li>
+          <li class="f_left third rel">
+            <a href="javascript:void(0)" onclick="alert('Coming soon!')"
+              ><img
+                src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/ryu_nav03.png"
+                alt="어딘가 여행지"
+            /></a>
+          </li>
+        </ul>
+        <ul class="navi navi02 clearfix">
+          <li class="f_left fourth rel">
+            <a href="javascript:void(0)" onclick="alert('Coming soon!')"
+              ><img
+                src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/ryu_nav04.png"
+                alt="여정의 친구"
+            /></a>
+          </li>
+          <li class="f_left last rel">
+            <a href="javascript:void(0)" onclick="alert('Coming soon!')"
+              ><img
+                src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/ryu_nav05.png"
+                alt="또다른 어딘가"
+            /></a>
+          </li>
+        </ul>
+      </div>
+      <div class="tit_wrap rel">
+        <img
+          src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_ryu01_tit_bg.jpg"
+          alt=""
+          class="w100p"
+        />
+        <p class="index">
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_ryu01_tit_index.png"
+            alt="설렘의 시작 그리고 출발"
+            class="w100p"
+          />
+        </p>
+        <p class="tit txt_center">
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_ryu01_tit.png"
+            alt="류준열의 TRUE STORY"
+          />
+        </p>
+        <p class="txt txt_center">
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_ryu01_tit_txt.png"
+            alt="이 가을, 나만의 여행을 떠납니다. 그곳이 어디냐고 묻는다면. 류준열의 #어딘가"
+          />
+        </p>
+      </div>
+      <div class="stit_wrap rel">
+        <img
+          src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_ryu01_stit_bg.jpg"
+          alt=""
+          class="w100p"
+        />
+        <p class="tit txt_center">
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_ryu01_stit.png"
+            alt="마침내 눈을 뜬 아웃도어천재 류준열의 가을여행을 지켜볼까요? #어딘가"
+          />
+        </p>
+        <div class="txt_box txt_left rel">
+          <p class="txt txt01">
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_ryu01_stit_txt01.png"
+              alt="육지가 끝나는 곳, 바다가 시작됩니다. 하지만 육지는 섬으로 남아 점선처럼 나를 안내해줍니다."
+            />
+          </p>
+          <p class="txt txt02">
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_ryu01_stit_txt02.png"
+              alt="나만의 어딘가 -"
+            />
+          </p>
+          <p class="txt txt03">
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_ryu01_stit_txt03.png"
+              alt="시작해볼까요?"
+            />
+          </p>
+          <p class="txt txt04">
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_ryu01_stit_txt04.png"
+              alt="완전한 내 위주의 여행을 -"
+            />
+          </p>
+          <p class="txt05 after rel">
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_ryu01_stit_txt05.png"
+              alt="그리고 시작은 언제나, 키퍼"
+            />
+          </p>
+        </div>
+      </div>
+      <div class="cont">
+        <p class="img img01 txt_left">
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_ryu01_img01.jpg"
+            alt=""
+          />
+        </p>
+        <div class="rel">
+          <p class="img img02 txt_right">
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_ryu01_img02.jpg"
+              alt=""
+            />
+          </p>
+          <p class="txt txt01">
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_ryu01_txt01.png"
+              alt="지난 밤 설레임과 걱정에 다 챙겨놓은 짐을 쌌다 풀었다하며 잠을 설쳐서인지 눈꺼풀이 무겁네요."
+            />
+          </p>
+        </div>
+        <div class="rel">
+          <p class="img img03 txt_left">
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_ryu01_img03.jpg"
+              alt=""
+            />
+          </p>
+          <p class="txt txt02">
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_ryu01_txt02.png"
+              alt="이제 정신을 차려야겠습니다! 배가 뜰것 같아요!"
+            />
+          </p>
+        </div>
+        <div class="rel">
+          <p class="img img04 txt_right">
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_ryu01_img04.jpg"
+              alt=""
+            />
+          </p>
+          <p class="txt txt03">
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_ryu01_txt03.png"
+              alt="여행고수인 저이지만 오랜만이라 준열둥절하네요. 이 배인가…"
+            />
+          </p>
+        </div>
+        <div class="rel">
+          <p class="img img05 txt_left">
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/ryu01_img05.jpg"
+              alt=""
+            />
+          </p>
+          <p class="txt txt04">
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_ryu01_txt04.png"
+              alt="하지만 금방 정신을 챙기고, 무사히 승선완료!"
+            />
+          </p>
+        </div>
+        <div class="rel">
+          <p class="img img06 txt_left rel">
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_ryu01_img06.jpg"
+              alt=""
+            />
+          </p>
+          <p class="txt txt05">
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_ryu01_txt05.png"
+              alt="배를 타니 역시 바람이 꽤 쌀쌀하네요. 이럴줄 알고 준비해왔죠."
+            />
+          </p>
+        </div>
+        <div class="rel">
+          <p class="img img07 txt_right rel">
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/ryu01_img07.jpg"
+              alt=""
+            />
+          </p>
+          <p class="txt txt06">
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_ryu01_txt06.png"
+              alt="가을에 만능 ‘키퍼’ 꽁꽁 싸온 키퍼를 척 걸쳤습니다. 역시 포근합니다~ 아웃도어 천재의 가을 교복답습니다 ㅎㅎ"
+            />
+          </p>
+        </div>
+        <div class="rel">
+          <p class="img img08 txt_left">
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_ryu01_img08.jpg"
+              alt=""
+            />
+          </p>
+          <p class="txt txt07">
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_ryu01_txt07.png"
+              alt="바닷바람을 좀 맞다보니 벌써 내릴 때인가 봅니다. 오오~"
+            />
+          </p>
+        </div>
+        <div class="rel">
+          <img
+            src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_ryu01_img09.jpg"
+            alt=""
+            class="img img09 w100p"
+          />
+          <p class="txt txt08 txt_center">
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_ryu01_txt08.png"
+              alt="도착했나봐요!"
+            />
+          </p>
+        </div>
+        <div class="vdo-wrap rel">
+          <video autoplay="" loop="" muted="" playsinline="">
+            <source
+              src="https://images.kolonmall.com/cms/tmp/ks/ks_h_n_keeper.mp4"
+              type="video/mp4"
+            />
+          </video>
+        </div>
+        <div class="rel">
+          <p class="img img10 txt_right rel">
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_ryu01_img10.jpg"
+              alt=""
+            />
+          </p>
+          <p class="txt txt09">
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_ryu01_txt09.png"
+              alt="드디어 도착했습니다! 이 낯설고 설레는 곳에서 어떤 순간이 기다리고 있을까요?"
+            />
+          </p>
+        </div>
+        <div class="rel">
+          <p class="img img11 txt_left">
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_ryu01_img11.jpg"
+              alt=""
+            />
+          </p>
+          <p class="txt txt10">
+            <img
+              src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_ryu01_txt10-2.png"
+              alt="준열이의 어딘가여행이 시작되었습니다!"
+            />
+          </p>
+        </div>
+      </div>
+      <div class="video_wrap rel">
+        <iframe
+          src="https://www.youtube.com/embed/videoseries?list=PLfWVLCVoRZ21xMgSur2POm43FI66Ispbb&amp;vq=hd1080;rel=0&loop=1&playlist=IrhbWUCuUpE;"
+          width="100%"
+          height="100%"
+          frameborder="0"
+          allowfullscreen=""
+        ></iframe>
+      </div>
+      <img
+        src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_ryu01_footer.jpg"
+        alt="아웃도어천재의 ‘도착’편을 기대해주세요 !"
+      />
+      <div class="image_nav_wrap swiper-container rel">
+        <div class="image_nav swiper-wrapper">
+          <div class="swiper-slide nav01">
+            <a onclick="return false;" class="on">
+              <img
+                src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_bottom01_txt.png"
+                alt="설렘의 시작 그리고 출발"
+              />
+            </a>
+          </div>
+          <div class="swiper-slide nav02">
+            <a href="javascript:void(0)" onclick="alert('Coming soon!')">
+              <img
+                src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_bottom02_txt.png"
+                alt="도착!"
+              />
+            </a>
+          </div>
+          <div class="swiper-slide nav03">
+            <a href="javascript:void(0)" onclick="alert('Coming soon!')">
+              <img
+                src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_bottom03_txt.png"
+                alt="어딘가 여행자"
+              />
+            </a>
+          </div>
+          <div class="swiper-slide nav04">
+            <a href="javascript:void(0)" onclick="alert('Coming soon!')">
+              <img
+                src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_bottom04_txt.png"
+                alt="여정의 친구"
+              />
+            </a>
+          </div>
+          <div class="swiper-slide nav05">
+            <a href="javascript:void(0)" onclick="alert('Coming soon!')">
+              <img
+                src="https://images.kolonmall.com/cms/special/upload/94ca17b3-3dc0-4506-a2b0-8046f81e2481/m_bottom05_txt.png"
+                alt="또다른 어딘가"
+              />
+            </a>
+          </div>
+        </div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next btn"></div>
+        <div class="swiper-button-prev btn"></div>
+      </div>
+    </div>
+    <script>
+      $(window).on("load", function () {
+        var tree = new TimelineMax();
+        tree.add(
+          TweenMax.to(function () {}, 0, {
+            onComplete: function () {
+              $(".tit_box .tit01").addClass("active");
+            },
+            delay: 0,
+          })
+        );
+        tree.add(
+          TweenMax.to(function () {}, 0, {
+            onComplete: function () {
+              $(".tit_box .tit02").addClass("active");
+            },
+            delay: 0.8,
+          })
+        );
+      });
+
+      $(window).scroll(function () {
+        // animation
+        var tree = new TimelineMax();
+        var winTop = $(this).scrollTop();
+        var navi_tit = $(".navi_wrap .tit").offset().top - 400;
+        var cont = $(".cont").offset().top - 400;
+        var txt_box = $(".stit_wrap .txt_box").offset().top - 400;
+        var cont_img02 = $(".cont .img02").offset().top - 400;
+        var cont_img03 = $(".cont .img03").offset().top - 400;
+        var cont_img04 = $(".cont .img04").offset().top - 400;
+        var cont_img05 = $(".cont .img05").offset().top - 400;
+        var cont_img06 = $(".cont .img06").offset().top - 400;
+        var cont_img07 = $(".cont .img07").offset().top - 400;
+        var cont_img08 = $(".cont .img08").offset().top - 400;
+        var cont_img09 = $(".cont .img09").offset().top - 400;
+        var cont_img10 = $(".cont .img10").offset().top - 400;
+        var cont_img11 = $(".cont .img11").offset().top - 400;
+
+        if (navi_tit < winTop && winTop < cont) {
+          tree.add(
+            TweenMax.to(function () {}, 0, {
+              onComplete: function () {
+                $(".navi_wrap .tit").addClass("active");
+              },
+              delay: 0,
+            })
+          );
+        }
+        if (txt_box < winTop && winTop < cont) {
+          tree.add(
+            TweenMax.to(function () {}, 0, {
+              onComplete: function () {
+                $(".stit_wrap .txt05").addClass("active");
+              },
+              delay: 0,
+            })
+          );
+        }
+        if (cont < winTop && winTop < cont_img03) {
+          TweenMax.to($(".cont .img01"), 1, { opacity: 1, y: 0, delay: 0 });
+        }
+        if (cont_img02 < winTop && winTop < cont_img03) {
+          TweenMax.to($(".cont .img02"), 1, { opacity: 1, y: 0, delay: 0 });
+          TweenMax.to($(".cont .txt01"), 1, { opacity: 1, x: 0, delay: 0.5 });
+        }
+        if (cont_img03 < winTop && winTop < cont_img04) {
+          TweenMax.to($(".cont .img03"), 1, { opacity: 1, y: 0, delay: 0 });
+          TweenMax.to($(".cont .txt02"), 1, { opacity: 1, x: 0, delay: 0.5 });
+        }
+        if (cont_img04 < winTop && winTop < cont_img05) {
+          TweenMax.to($(".cont .img04"), 1, { opacity: 1, y: 0, delay: 0 });
+          TweenMax.to($(".cont .txt03"), 1, { opacity: 1, x: 0, delay: 0.5 });
+        }
+        if (cont_img05 < winTop && winTop < cont_img06) {
+          TweenMax.to($(".cont .img05"), 1, { opacity: 1, y: 0, delay: 0 });
+          TweenMax.to($(".cont .txt04"), 1, { opacity: 1, x: 0, delay: 0.5 });
+        }
+        if (cont_img06 < winTop && winTop < cont_img08) {
+          TweenMax.to($(".cont .img06"), 1, { opacity: 1, y: 0, delay: 0 });
+          TweenMax.to($(".cont .txt05"), 1, { opacity: 1, x: 0, delay: 0.5 });
+        }
+        if (cont_img07 < winTop && winTop < cont_img08) {
+          TweenMax.to($(".cont .img07"), 1, { opacity: 1, y: 0, delay: 0 });
+          TweenMax.to($(".cont .txt06"), 1, { opacity: 1, x: 0, delay: 0.5 });
+        }
+        if (cont_img08 < winTop && winTop < cont_img09) {
+          TweenMax.to($(".cont .img08"), 1, { opacity: 1, y: 0, delay: 0 });
+          TweenMax.to($(".cont .txt07"), 1, { opacity: 1, x: 0, delay: 0.5 });
+        }
+        if (cont_img09 < winTop && winTop < cont_img10) {
+          TweenMax.to($(".cont .img09"), 1, { opacity: 1, y: 0, delay: 0 });
+          TweenMax.to($(".cont .txt08"), 1, { opacity: 1, x: 0, delay: 0.5 });
+        }
+        if (cont_img10 < winTop && winTop < cont_img11) {
+          TweenMax.to($(".cont .img10"), 1, { opacity: 1, y: 0, delay: 0 });
+          TweenMax.to($(".cont .txt09"), 1, { opacity: 1, x: 0, delay: 0.5 });
+        }
+        if (cont_img11 < winTop) {
+          TweenMax.to($(".cont .img11"), 1, { opacity: 1, y: 0, delay: 0 });
+          TweenMax.to($(".cont .txt10"), 1, { opacity: 1, x: 0, delay: 0.5 });
+        }
+      });
+      var swiper = new Swiper(".image_nav_wrap", {
+        slidesPerView: 3,
+        loop: true,
+        spaceBetween: 15,
+        speed: 600,
+        loop: true,
+        navigation: {
+          nextEl: ".image_nav_wrap .swiper-button-next",
+          prevEl: ".image_nav_wrap .swiper-button-prev",
+        },
+      });
+    </script>
+  </body>
+</html>

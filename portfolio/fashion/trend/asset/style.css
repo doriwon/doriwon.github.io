@@ -1,0 +1,444 @@
+@charset "UTF-8";
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+.trend_wrap {
+  min-width: 1280px;
+  overflow: hidden;
+  position: relative;
+  height: 14318px;
+  background: #fff;
+}
+.trend {
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  width: 1920px;
+  overflow: hidden;
+  position: absolute;
+  text-align: center;
+  margin-left: -960px;
+  top: 0;
+  left: 50%;
+  background: #fff;
+}
+.trend * {
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+}
+.trend li {
+  list-style: none;
+}
+.trend img {
+  display: inline-block;
+  max-width: 100%;
+  vertical-align: top;
+}
+.trend .btn {
+  font-size: 0;
+  text-indent: -9999px;
+  display: block;
+  position: absolute;
+}
+.trend .clearfix:after {
+  display: block;
+  clear: both;
+  content: "";
+}
+.trend .rel {
+  position: relative;
+}
+.trend .video_wrap .video {
+  padding-bottom: 56.25%;
+}
+.trend .video_wrap .video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+.trend .txt,
+.trend .img {
+  position: absolute;
+}
+
+/* animation */
+.animated {
+  visibility: hidden;
+  animation-name: none;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+.animated.on {
+  visibility: visible;
+}
+
+.animated.on:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  animation-duration: 1s;
+}
+.fadeIn {
+  visibility: visible;
+  animation-name: fadeIn;
+  animation-duration: 1s;
+  animation-delay: 0.2s;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fadeToLeft {
+  visibility: visible;
+  animation-name: fadeToLeft;
+  animation-duration: 1.5s;
+}
+@keyframes fadeToLeft {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(30px);
+    -ms-transform: translateX(30px);
+    transform: translateX(30px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+    -ms-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+.fadeToRight {
+  visibility: visible;
+  animation-name: fadeToRight;
+  animation-duration: 1.5s;
+}
+@keyframes fadeToRight {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-30px);
+    -ms-transform: translateX(-30px);
+    transform: translateX(-30px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+    -ms-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+.fadeToTop {
+  visibility: visible;
+  animation-name: fadeToTop;
+  animation-duration: 1.5s;
+}
+@keyframes fadeToTop {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(30px);
+    -ms-transform: translateY(30px);
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+.fadeToBottom {
+  visibility: visible;
+  animation-name: fadeToBottom;
+  animation-duration: 1.5s;
+}
+@keyframes fadeToBottom {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-30px);
+    -ms-transform: translateY(-30px);
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+@keyframes blinkFadeInOut {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(50px);
+    -ms-transform: translateY(50px);
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+.blinkFadeInOut {
+  visibility: visible;
+  animation-duration: 1.7s;
+  -webkit-animation-name: blinkFadeInOut;
+  animation-name: blinkFadeInOut;
+}
+@keyframes blurFadeInOut {
+  0% {
+    opacity: 0;
+    text-shadow: 0px 0px 40px #fff;
+    filter: blur(15px);
+    -webkit-filter: blur(15px);
+  }
+  100% {
+    opacity: 1;
+    text-shadow: 0px 0px 1px #fff;
+    filter: blur(0px);
+    -webkit-filter: blur(0px);
+  }
+}
+.blurFadeInOut {
+  visibility: visible;
+  animation-duration: 1.5s;
+  -webkit-animation-name: blurFadeInOut;
+  animation-name: blurFadeInOut;
+}
+
+.delay300 {
+  animation-delay: 0.3s;
+}
+.delay500 {
+  animation-delay: 0.5s;
+}
+.delay700 {
+  animation-delay: 0.7s;
+}
+.delay1000 {
+  animation-delay: 1s;
+}
+.delay1200 {
+  animation-delay: 1.2s;
+}
+.delay1500 {
+  animation-delay: 1.5s;
+}
+.delay2000 {
+  animation-delay: 2s;
+}
+.delay2500 {
+  animation-delay: 2.5s;
+}
+.delay3000 {
+  animation-delay: 3s;
+}
+
+.titFadeIn {
+  visibility: visible;
+  animation-name: titFadeIn;
+  animation-duration: 1s;
+}
+@keyframes titFadeIn {
+  0% {
+    opacity: 0;
+    transform: translate3d(100px, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateZ(0);
+  }
+}
+.titFadeOut {
+  visibility: visible;
+  animation-name: titFadeOut;
+  animation-duration: 1s;
+}
+@keyframes titFadeOut {
+  0% {
+    opacity: 1;
+    transform: translateZ(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(100px, 0, 0);
+  }
+}
+.trend .tit .txt {
+  top: 314px;
+  left: 257px;
+}
+.trend .tit .img {
+  opacity: 1;
+  transition: all 1s ease;
+}
+.trend .tit .img01 {
+  top: 150px;
+  right: 489px;
+}
+.trend .tit .img02 {
+  top: 372px;
+  right: 260px;
+  animation-delay: 0.5s;
+}
+
+/* nav_ */
+.trend .nav_wrap {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1920px;
+  transform: translateX(-50%);
+  background: #705d4a;
+  z-index: 10;
+  padding: 0 162.5px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.trend .nav_wrap.fixed {
+  position: fixed;
+}
+.trend .nav_wrap li {
+  float: left;
+  height: 83px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 319px;
+}
+.trend .nav_wrap li a {
+  display: block;
+  font-size: 0;
+  text-indent: -9999px;
+  width: 100%;
+  height: 100%;
+}
+.trend .nav_wrap li.nav01 {
+  background-image: url(https://cdn.eqlstore.com/display/html/TRND/magazine_2102_01/trend_tab01.png);
+}
+.trend .nav_wrap li.nav02 {
+  background-image: url(https://cdn.eqlstore.com/display/html/TRND/magazine_2102_01/trend_tab02.png);
+}
+.trend .nav_wrap li.nav03 {
+  background-image: url(https://cdn.eqlstore.com/display/html/TRND/magazine_2102_01/trend_tab03.png);
+}
+.trend .nav_wrap li.nav04 {
+  background-image: url(https://cdn.eqlstore.com/display/html/TRND/magazine_2102_01/trend_tab04.png);
+}
+.trend .nav_wrap li.nav05 {
+  background-image: url(https://cdn.eqlstore.com/display/html/TRND/magazine_2102_01/trend_tab05.png);
+}
+.trend .nav_wrap li.nav01.on {
+  background-image: url(https://cdn.eqlstore.com/display/html/TRND/magazine_2102_01/trend_tab01_on.png);
+}
+.trend .nav_wrap li.nav02.on {
+  background-image: url(https://cdn.eqlstore.com/display/html/TRND/magazine_2102_01/trend_tab02_on.png);
+}
+.trend .nav_wrap li.nav03.on {
+  background-image: url(https://cdn.eqlstore.com/display/html/TRND/magazine_2102_01/trend_tab03_on.png);
+}
+.trend .nav_wrap li.nav04.on {
+  background-image: url(https://cdn.eqlstore.com/display/html/TRND/magazine_2102_01/trend_tab04_on.png);
+}
+.trend .nav_wrap li.nav05.on {
+  background-image: url(https://cdn.eqlstore.com/display/html/TRND/magazine_2102_01/trend_tab05_on.png);
+}
+
+.trend .prd_wrap {
+  width: 1600px;
+  margin: 160px auto 154px;
+}
+.trend .prd_wrap.p4 {
+  width: 1276px;
+}
+.trend .swiper-container a {
+  font-size: 0;
+  text-indent: -9999px;
+}
+.trend .section01 {
+  padding-top: 83px;
+}
+.trend .section01 .img01 {
+  left: 0;
+  top: 181px;
+}
+.trend .section01 .img02,
+.trend .section01 .img03 {
+  bottom: 0;
+}
+.trend .section01 .img02 {
+  left: 360px;
+}
+.trend .section01 .img03 {
+  left: 750px;
+}
+.trend .section02 .img01 {
+  top: 133px;
+  right: 0;
+}
+.trend .section02 .img02 {
+  left: 70px;
+  bottom: 428px;
+}
+.trend .section02 .img03 {
+  right: 70px;
+  bottom: 0;
+}
+.trend .section02 .img03 .blurFadeInOut {
+  animation-duration: 1.7s;
+}
+.trend .section03 .img01,
+.trend .section03 .img02 {
+  left: 0;
+  top: 0;
+}
+.trend .section03 .img02 {
+  left: 543px;
+}
+.trend .section03 .img03 {
+  left: 322px;
+  bottom: 0;
+}
+.trend .section03 .img03 .blurFadeInOut {
+  animation-duration: 1.7s;
+}
+.trend .section04 .img01,
+.trend .section04 .img02 {
+  top: 636px;
+}
+.trend .section04 .img01 {
+  right: 464px;
+}
+.trend .section04 .img02 {
+  right: 70px;
+}
+.trend .section04 .img03 {
+  left: 691px;
+  bottom: 0;
+}
+.trend .section05 .img01 {
+  left: 70px;
+  top: 245px;
+}
+.trend .section05 .img02 {
+  left: 665px;
+  bottom: 389px;
+}
+.trend .section05 .img03 {
+  right: 188px;
+  bottom: 0;
+}

@@ -116,7 +116,7 @@ body {
   -webkit-transform: scale(1.1);
   transition: transform 4.5s cubic-bezier(0.23, 1, 0.32, 1);
   -webkit-transition: transform 4.5s cubic-bezier(0.23, 1, 0.32, 1);
-  background-image: url("images/m_camping_tit.jpg");
+  background-image: url("https://cdn.eqlstore.com/display/html/TRND/20201117/m_camping_tit.jpg");
 }
 .tit.active .img_wrap {
   transform: scale(1);
